@@ -9,10 +9,16 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="https://assets.hellogustav.com/fonts/bariol_bold-webfont.woff2">
 
         <!-- Styles -->
         <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/bulma.css')); ?>">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style type="text/css">
+          .container{
+            margin-top: 50px;
+          }
+        </style>
      </head>
     <body>
     <nav class="navbar is-transparent">
@@ -178,7 +184,101 @@
   <div class="column">4</div>
 </div>
     
+<div class="tile is-ancestor">
+
+<!-- SIDEBAR -->
+
+<div class="tile is-parent">
+    
+<nav class="panel">
+  <p class="panel-heading">
+    Kategori
+  </p>
+<div class="panel-block">
+  <aside class="menu">
+  <p class="menu-label">
+    General
+  </p>
+  <ul class="menu-list">
+    <li><a>Dashboard</a></li>
+    <li><a>Customers</a></li>
+  </ul>
+  <p class="menu-label">
+    Administration
+  </p>
+  <ul class="menu-list">
+    <li><a>Team Settings</a></li>
+    <li>
+      <a class="is-active">Manage Your Team</a>
+      <ul>
+        <li><a>Members</a></li>
+        <li><a>Plugins</a></li>
+        <li><a>Add a member</a></li>
+      </ul>
+    </li>
+    <li><a>Invitations</a></li>
+    <li><a>Cloud Storage Environment Settings</a></li>
+    <li><a>Authentication</a></li>
+  </ul>
+  <p class="menu-label">
+    Transactions
+  </p>
+  <ul class="menu-list">
+    <li><a>Payments</a></li>
+    <li><a>Transfers</a></li>
+    <li><a>Balance</a></li>
+  </ul>
+  </aside>
+  </div>
+  </nav>
+
+  </div>
+
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child box">
+          <!-- Put any content you want -->
+        </article>
+        <article class="tile is-child box">
+          <!-- Put any content you want -->
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <!-- Put any content you want -->
+        </article>
+      </div>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <!-- Put any content you want -->
+      </article>
+    </div>
+  </div>
+  
 </div>
+
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Bulma</strong> by <a href="http://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+      </p>
+      <p>
+        <a class="icon" href="https://github.com/jgthms/bulma">
+          <i class="fa fa-github"></i>
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
         <script type="text/javascript" src="<?php echo e(asset('js/app.js')); ?>"></script>
         <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function () {
