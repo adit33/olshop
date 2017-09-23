@@ -19,12 +19,17 @@
           .container{
             margin-top: 50px;
           }
+
+          .footer{
+            margin-top: 50px;
+          }
           /* external css: flickity.css */
 
           * { box-sizing: border-box; }
 
           .carousel {
             background: #EEE;
+            margin-bottom: 50px;
           }
 
           .carousel-cell {
@@ -44,6 +49,14 @@
             line-height: 200px;
             font-size: 80px;
             color: white;
+          }
+          .navbar{
+
+          }
+          .navbar-divider{
+  height: 50px;
+  box-shadow: 0 20px 5px -20px #333;
+  margin: -50px auto 10px; 
           }
 
         </style>
@@ -130,47 +143,27 @@
     </div>
 
     <div class="navbar-end">
-      <a class="navbar-item is-hidden-desktop-only" href="https://github.com/jgthms/bulma" target="_blank">
-        <span class="icon" style="color: #333;">
-          <i class="fa fa-lg fa-github"></i>
-        </span>
-      </a>
-      <a class="navbar-item is-hidden-desktop-only" href="https://twitter.com/jgthms" target="_blank">
-        <span class="icon" style="color: #55acee;">
-          <i class="fa fa-lg fa-twitter"></i>
-        </span>
-      </a>
       <div class="navbar-item">
         <div class="field is-grouped">
           <p class="control">
-            <a class="bd-tw-button button"
-  data-social-network="Twitter"
-  data-social-action="tweet"
-  data-social-target="http://bulma.io"
-  target="_blank"
-  href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&hashtags=bulmaio&url=http://bulma.io&via=jgthms">
-  <span class="icon">
-    <i class="fa fa-twitter"></i>
-  </span>
-  <span>
-    Tweet
-  </span>
-</a>
-
-          </p>
-          <p class="control">
-            <a class="button is-primary" href="https://github.com/jgthms/bulma/archive/0.5.2.zip">
-              <span class="icon">
-                <i class="fa fa-download"></i>
-              </span>
-              <span>Download</span>
-            </a>
+            <div class="field has-addons">
+  <div class="control">
+    <input class="input" type="text" placeholder="Cari Barang">
+  </div>
+  <div class="control">
+    <a class="button is-info">
+      Search
+    </a>
+  </div>
+</div>
           </p>
         </div>
       </div>
     </div>
   </div>
 </nav>
+
+<hr class="navbar-divider">
 
 <div class="container">
    
