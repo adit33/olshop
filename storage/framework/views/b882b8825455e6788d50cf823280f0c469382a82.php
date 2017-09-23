@@ -13,11 +13,39 @@
 
         <!-- Styles -->
         <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/bulma.css')); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/vendor.css')); ?>">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <style type="text/css">
           .container{
             margin-top: 50px;
           }
+          /* external css: flickity.css */
+
+          * { box-sizing: border-box; }
+
+          .carousel {
+            background: #EEE;
+          }
+
+          .carousel-cell {
+            width: 66%;
+            height: 200px;
+            margin-right: 10px;
+            background: #8C8;
+            border-radius: 5px;
+            counter-increment: carousel-cell;
+          }
+
+          /* cell number */
+          .carousel-cell:before {
+            display: block;
+            text-align: center;
+            content: counter(carousel-cell);
+            line-height: 200px;
+            font-size: 80px;
+            color: white;
+          }
+
         </style>
      </head>
     <body>
@@ -145,43 +173,17 @@
 </nav>
 
 <div class="container">
-    <div class="columns is-desktop">
-  <div class="column">
-      <div class="box">
-  <article class="media">
-    <div class="media-left">
-      <figure class="image is-64x64">
-        <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image">
-      </figure>
-    </div>
-    <div class="media-content">
-      <div class="content">
-        <p>
-          <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
-          <br>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-        </p>
-      </div>
-      <nav class="level is-mobile">
-        <div class="level-left">
-          <a class="level-item">
-            <span class="icon is-small"><i class="fa fa-reply"></i></span>
-          </a>
-          <a class="level-item">
-            <span class="icon is-small"><i class="fa fa-retweet"></i></span>
-          </a>
-          <a class="level-item">
-            <span class="icon is-small"><i class="fa fa-heart"></i></span>
-          </a>
-        </div>
-      </nav>
-    </div>
-  </article>
-</div>
-  </div>
-  <div class="column">2</div>
-  <div class="column">3</div>
-  <div class="column">4</div>
+   
+<h1>Flickity - wrapAround</h1>
+
+<!-- Flickity HTML init -->
+<div class="carousel"
+  data-flickity='{ "wrapAround": true , "autoPlay": true }'>
+  <div class="carousel-cell"></div>
+  <div class="carousel-cell"></div>
+  <div class="carousel-cell"></div>
+  <div class="carousel-cell"></div>
+  <div class="carousel-cell"></div>
 </div>
     
 <div class="tile is-ancestor">
@@ -253,6 +255,105 @@
     <div class="tile is-parent">
       <article class="tile is-child box">
         <!-- Put any content you want -->
+
+        <div class="columns is-desktop">
+          <div class="column">
+            <div class="card">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img src="http://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4">John Smith</p>
+        <p class="subtitle is-6">@johnsmith</p>
+      </div>
+    </div>
+
+    <div class="content">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+      <a href="#">#css</a> <a href="#">#responsive</a>
+      <br>
+      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+    </div>
+  </div>
+</div>
+          </div>
+          <div class="column">
+            <div class="card">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img src="http://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4">John Smith</p>
+        <p class="subtitle is-6">@johnsmith</p>
+      </div>
+    </div>
+
+    <div class="content">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+      <a href="#">#css</a> <a href="#">#responsive</a>
+      <br>
+      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+    </div>
+  </div>
+</div>
+          </div>
+
+          <div class="column">
+            <div class="card">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img src="http://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4">John Smith</p>
+        <p class="subtitle is-6">@johnsmith</p>
+      </div>
+    </div>
+
+    <div class="content">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+      <a href="#">#css</a> <a href="#">#responsive</a>
+      <br>
+      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+    </div>
+  </div>
+</div>
+          </div>
+
+          
+        </div>
+
+
+        
       </article>
     </div>
   </div>

@@ -11,5 +11,6 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('node_modules/bulma/bulma.sass', 'public/css');
+mix.js(['resources/assets/js/app.js','node_modules/flickity/dist/flickity.pkgd.js'], 'public/js')
+   .sass('node_modules/bulma/bulma.sass', 'public/css')
+   .styles('node_modules/flickity/dist/flickity.css','public/vendor.css');
