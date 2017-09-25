@@ -12,5 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('backend.layout.master');
 });
+
+Route::resource('product','ProductController');
