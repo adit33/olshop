@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\ProductRequest;
 
+use App\Models\Product;
+
+use App\Models\ProductImage;
+
 class ProductController extends Controller
 {
     public function create(){
@@ -13,8 +17,14 @@ class ProductController extends Controller
     	->withTitle('Add Product');
     }
 
-    public function store(ProductRequest $request){
+    public function store(Request $request){
+    	$product_image=new ProductImage;
     	$data=$request->all();
-    	Product::create($data);
+    	$product=Product::create($data);
+    	foreach ($request->file('file') as $image) {
+    		$image=$product_image->saveImage($image);
+    		ProductImage::create(['name'=>$image,'product_id'=>$product->id]);
+    	}
+    	
     }
 }

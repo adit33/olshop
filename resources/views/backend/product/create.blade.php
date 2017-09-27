@@ -25,6 +25,21 @@
 
 <script type="text/javascript">
   var form=$("#form-create");
+
+  function addProduct(){
+     $.ajax({
+      url:form.attr('action'),
+      type:'POST',
+      data:form.serializeArray(),
+      success:function(response){
+ 
+      },
+      error:function(response){
+        console.log(response.responseJSON)
+      }
+    })
+  }
+
   Dropzone.autoDiscover = false;
   var dropzone = new Dropzone("#photo",{
       addRemoveLinks: true, // tambah link hapus photo
@@ -33,6 +48,7 @@
           parallelUploads: 10, // samakan dengan max files
           url:form.attr('action'), // url 
           uploadMultiple: true, //untuk upload lebih dari 1
+          acceptedFiles:'image/*',
           init:function(){
             $("#btnSave").on('click',function(){
               if (dropzone.getQueuedFiles().length > 0) { //cek apakah ada attachment atau tidak
