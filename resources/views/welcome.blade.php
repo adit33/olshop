@@ -53,118 +53,71 @@
           .navbar{
 
           }
-          .navbar-divider{
-  height: 50px;
-  box-shadow: 0 20px 5px -20px #333;
-  margin: -50px auto 10px; 
-          }
 
         </style>
      </head>
     <body>
-    <nav class="navbar is-transparent">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="http://bulma.io">
-      <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
-    </a>
+  <header class="hero is-light">
+    <div class="hero-head">
+      <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
 
-    <a class="navbar-item is-hidden-desktop" href="https://github.com/jgthms/bulma" target="_blank">
-      <span class="icon" style="color: #333;">
-        <i class="fa fa-lg fa-github"></i>
-      </span>
-    </a>
-
-    <a class="navbar-item is-hidden-desktop" href="https://twitter.com/jgthms" target="_blank">
-      <span class="icon" style="color: #55acee;">
-        <i class="fa fa-lg fa-twitter"></i>
-      </span>
-    </a>
-
-    <div class="navbar-burger burger" data-target="navMenuTransparentExample">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-
-  <div id="navMenuTransparentExample" class="navbar-menu">
-    <div class="navbar-start">
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link  is-active" href="/documentation/overview/start/">
-          Docs
-        </a>
-        <div class="navbar-dropdown is-boxed">
-          <a class="navbar-item " href="/documentation/overview/start/">
-            Overview
+          <a class="navbar-item">
+            <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo">
           </a>
-          <a class="navbar-item " href="http://bulma.io/documentation/modifiers/syntax/">
-            Modifiers
-          </a>
-          <a class="navbar-item " href="http://bulma.io/documentation/columns/basics/">
-            Columns
-          </a>
-          <a class="navbar-item " href="http://bulma.io/documentation/layout/container/">
-            Layout
-          </a>
-          <a class="navbar-item " href="http://bulma.io/documentation/form/general/">
-            Form
-          </a>
-          <a class="navbar-item " href="http://bulma.io/documentation/elements/box/">
-            Elements
-          </a>
+          <a class="navbar-item is-tab is-hidden-mobile is-active"><span class="icon is-medium"><i class="fa fa-home"></i></span>Home</a>
+          <a class="navbar-item is-tab is-hidden-mobile">Features</a>
+          <a class="navbar-item is-tab is-hidden-mobile">Pricing</a>
+          <a class="navbar-item is-tab is-hidden-mobile">About</a>
           
-            <a class="navbar-item is-active" href="http://bulma.io/documentation/components/breadcrumb/">
-              Components
+          <button class="button navbar-burger" data-target="navMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+        </div>
+
+
+        <div class="navbar-menu navbar-end" id="navMenu">
+          <a class="navbar-item is-tab is-hidden-tablet is-active">Home</a>
+          <a class="navbar-item is-tab is-hidden-tablet">Features</a>
+          <a class="navbar-item is-tab is-hidden-tablet">Pricing</a>
+          <a class="navbar-item is-tab is-hidden-tablet">About</a>
+          <a class="navbar-item nav-tag">              
+            <span class="icon is-small">
+              <i class="fa fa-envelope-o"></i>
+            </span>
+            <span class="tag is-primary tag-notif">6</span>
+          </a>  
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">              
+              <figure class="image is-32x32" style="margin-right:.5em;">
+                <img src="https://avatars1.githubusercontent.com/u/7221389?v=4&s=32">
+              </figure>
+              mazipan
             </a>
           
-          <hr class="navbar-divider">
-          <div class="navbar-item">
-            <div>
-              <p class="is-size-6-desktop">
-                <strong class="has-text-info">0.5.2</strong>
-              </p>
-              
-                <small>
-                  <a class="bd-view-all-versions" href="/versions">View all versions</a>
-                </small>
-              
+            <div class="navbar-dropdown is-right">              
+                <a class="navbar-item">
+                  <span class="icon is-small">
+                    <i class="fa fa-user-o"></i>
+                  </span>
+                  Profile
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item">
+                  <span class="icon is-small">
+                    <i class="fa fa-power-off"></i>
+                  </span>
+                  Logout
+                </a>
             </div>
           </div>
         </div>
-      </div>
-      <a class="navbar-item " href="http://bulma.io/expo/">
-        <span class="bd-emoji">⭐️</span>
-        Expo
-      </a>
-      <a class="navbar-item " href="http://bulma.io/love/">
-        <span class="bd-emoji">❤️</span>
-        Love
-      </a>
+      </nav>
     </div>
-
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="field is-grouped">
-          <p class="control">
-            <div class="field has-addons">
-  <div class="control">
-    <input class="input" type="text" placeholder="Cari Barang">
-  </div>
-  <div class="control">
-    <a class="button is-info">
-      Search
-    </a>
-  </div>
-</div>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
-
-<hr class="navbar-divider">
-
+  </header>
 <div class="container">
    
 <h1>Flickity - wrapAround</h1>

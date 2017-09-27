@@ -17,14 +17,18 @@ class ProductController extends Controller
     	->withTitle('Add Product');
     }
 
-    public function store(Request $request){
+    public function store(ProductRequest $request){
     	$product_image=new ProductImage;
     	$data=$request->all();
     	$product=Product::create($data);
-    	foreach ($request->file('file') as $image) {
-    		$image=$product_image->saveImage($image);
-    		ProductImage::create(['name'=>$image,'product_id'=>$product->id]);
+
+    	if ($request->hasFile('file')) {
+	    	foreach ($request->file('file') as $image) {
+	    		$image=$product_image->saveImage($image);
+	    		ProductImage::create(['name'=>$image,'product_id'=>$product->id]);
+    		}
     	}
+    	
     	
     }
 }
