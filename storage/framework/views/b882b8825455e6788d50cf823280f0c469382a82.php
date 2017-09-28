@@ -7,7 +7,9 @@
            <div class="card">
   <div class="card-image">
     <figure class="image is-4by3">
-      <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+      <?php $__currentLoopData = $product->productImage; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+      <img src="<?php echo $image->name; ?>" alt="Placeholder image">
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </figure>
   </div>
   <div class="card-content">

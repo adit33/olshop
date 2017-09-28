@@ -10,4 +10,8 @@ class Product extends Model
     protected $primaryKey='id';
     protected $fillable=['name','description','price'];
     public $timestamp=true;
+
+    public function productImage(){
+    	return $this->hasMany(ProductImage::class);
+    }
 }

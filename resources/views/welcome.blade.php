@@ -9,7 +9,9 @@
            <div class="card">
   <div class="card-image">
     <figure class="image is-4by3">
-      <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+      @foreach($product->productImage as $image)
+      <img src="{!! $image->name !!}" alt="Placeholder image">
+      @endforeach
     </figure>
   </div>
   <div class="card-content">
