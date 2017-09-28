@@ -10,8 +10,14 @@ use App\Models\Product;
 
 use App\Models\ProductImage;
 
+use App\DataTables\ProductDataTable;
+
 class ProductController extends Controller
 {
+	public function index(ProductDataTable $dataTable){
+		return $dataTable->render('backend.product.index');
+	}
+
     public function create(){
     	return view('backend.product.create')
     	->withTitle('Add Product');
