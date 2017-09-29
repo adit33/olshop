@@ -33,8 +33,11 @@ class ProductController extends Controller
 	    		$image=$product_image->saveImage($image);
 	    		ProductImage::create(['name'=>$image,'product_id'=>$product->id]);
     		}
-    	}
-    	
-    	
+    	}    	
+    }
+
+    public function show($id){
+        $product=Product::findOrFail($id);
+        return view('frontend.product.show',compact('product'));
     }
 }

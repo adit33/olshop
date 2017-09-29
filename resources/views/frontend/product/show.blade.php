@@ -1,29 +1,3 @@
-
-Skip to content
-
-    Features
-    Business
-    Explore
-    Marketplace
-    Pricing
-
-This repository
-Sign in or Sign up
-
-37
-574
-
-    148
-
-dansup/bulma-templates
-Code
-Issues 5
-Pull requests 0
-Projects 1
-bulma-templates/templates/product.html
-2e15b34 on Sep 3, 2016
-@dansup dansup Update product template/listing
-184 lines (178 sloc) 8.43 KB
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,47 +10,12 @@ bulma-templates/templates/product.html
   <link rel="stylesheet" type="text/css" href="../css/product.css">
 </head>
 <body>
-  <nav class="nav has-shadow" id="top">
-    <div class="container">
-      <div class="nav-left">
-        <a class="nav-item" href="../index.html">
-          <img src="../images/bulma.png" alt="Description">
-        </a>
-      </div>
-      <span class="nav-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </span>
-      <div class="nav-right nav-menu">
-        <a class="nav-item is-tab is-active">
-          Home
-        </a>
-        <a class="nav-item is-tab">
-          Features
-        </a>
-        <a class="nav-item is-tab">
-          Team
-        </a>
-        <a class="nav-item is-tab">
-          Help
-        </a>
-        <span class="nav-item">
-          <a class="button">
-            Log in
-          </a>
-          <a class="button is-info">
-            Sign up
-          </a>
-        </span>
-      </div>
-    </div>
-  </nav>
+@include('frontend.layout.navbar')
   <div class="section product-header">
     <div class="container">
       <div class="columns">
         <div class="column">
-          <span class="title is-3">Product Name</span>
+          <span class="title is-3">{!! $product->name !!}</span>
           <span class="title is-3 has-text-muted">&nbsp;|&nbsp;</span>
           <span class="title is-4 has-text-muted">Category</span>
         </div>
@@ -88,12 +27,14 @@ bulma-templates/templates/product.html
       <div class="columns">
         <div class="column is-6">
           <div class="image is-2by2">
-            <img src="https://placehold.it/1000x1000">
+          @foreach($product->productImage as $image)
+            <img src="{!! asset($image->name) !!}">
+          @endforeach
           </div>
         </div>
         <div class="column is-5 is-offset-1">
-          <div class="title is-2">Item Title</div>
-          <p class="title is-3 has-text-muted">$ 39.95</p>
+          <div class="title is-2">{!! $product->name !!}</div>
+          <p class="title is-3 has-text-muted">Rp.{!! $product->price !!}</p>
           <hr>
           <br>
           <p class="">

@@ -55,9 +55,11 @@
           }
 
         </style>
+        @stack('styles')
      </head>
     <body>
- 
+    <div id="app">
+ @include("frontend.layout.navbar")
 <div class="container">
    
 <h1>Flickity - wrapAround</h1>
@@ -75,7 +77,8 @@
 <div class="tile is-ancestor">
 
 <!-- SIDEBAR -->
-
+ @include("frontend.layout.left_sidebar")
+<!-- END SIDEBAR -->
 <div class="tile is-parent">
     
 
@@ -108,8 +111,9 @@
 </div>
 
 <!-- footer -->
-
+ @include("frontend.layout.footer")
 <!-- end footer -->
+</div>
         <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
         <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function () {
@@ -137,6 +141,8 @@
   }
 
 });
+
         </script>
+        @stack('scripts')
     </body>
 </html>
