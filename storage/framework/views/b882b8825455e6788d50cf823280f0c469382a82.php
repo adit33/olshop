@@ -5,65 +5,86 @@
   }
   .hover{
     transform: scale(1.05,1.05);
+    box-shadow: 0 1px 2px black;
   }
 </style>
 <?php $__env->stopPush(); ?>
 
 <?php $__env->startSection('content'); ?>
-  <article class="tile is-child box">
-        <!-- Put any content you want -->
-<div class="columns is-desktop">
-        <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <div class="column">
-           <div class="card"  v-bind:class="{'': !isHover, 'hover':isHover }">
-  <div class="card-image">
-    <figure class="image is-4by3">
-      <?php $__currentLoopData = $product->productImage; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-      <!-- <img src="<?php echo $image->name; ?>" alt="Placeholder image" v-on:mouseover="hoverCard" v-on:mouseleave="hoverCard"> -->
-      <test :img-src="'<?php echo $image->name; ?>'"></test>
-      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-    </figure>
-  </div>
-  <div class="card-content">
-    <div class="media">
-      <div class="media-content">
-        <p class="title is-4"><?php echo $product->name; ?></p>
-        <p class="subtitle is-6">Rp.<?php echo $product->price; ?></p>
+  <!-- <card-product></card-product>         -->
+
+   <!-- <article class="tile is-child box">
+      <div class="columns is-desktop">
+          <div v-for="product in products" class="column">
+             <div class="card">
+    <div class="card-image">
+      <figure class="image is-4by3">
+        <div v-for="image in product.product_image">
+     
+          <image-product v-bind:img-src="image.name"></image-product>
+        </div>
+      </figure>
+    </div>
+    <div class="card-content">
+      <div class="media">
+        <div class="media-content">
+          <p class="title is-4">{{ product.name }}</p>
+          <p class="subtitle is-6">Rp. {{ product.price }}</p>
+        </div>
+      </div>
+
+      <div class="content">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Phasellus nec iaculis mauris. <a>@bulmaio</a>.     
       </div>
     </div>
-
-    <div class="content">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Phasellus nec iaculis mauris. <a>@bulmaio</a>.     
-    </div>
+     <footer class="card-footer">
+              <span class="card-footer-item">
+               
+              
+              <buy-btn></buy-btn>  
+              
+              </span>
+            </footer>
   </div>
-   <footer class="card-footer">
-            <span class="card-footer-item">
-              <!-- <a class="button is-large is-info is-hovered" href="<?php echo e(URL::to('product/'.$product->id)); ?>">Buy</a> -->
-            
-            <buy-btn></buy-btn>  
-            
-            </span>
-          </footer>
-</div>
-</div>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
   </div>
-
-
-        
-      </article>
+  </div>
+  </article> -->
+<article class="tile is-child box">
+      <div class="columns is-desktop">
+      <div class="column" v-for="product in products">
+<card-product :product="product"></card-product>
+      </div>
+ </div>
+  </article>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startPush('scripts'); ?>
 <script type="text/javascript">
+Vue.component('image-product',{
+  template:`<img v-bind:src=imgSrc v-on:mouseover="hoverCard" v-on:mouseleave="hoverCard" v-bind:class="{ '':isHover,'hover':!isHover }" />`,
+  props:['imgSrc'],
+  data(){
+      return {
+        isHover:true,
+        // products:JSON.parse('<?php echo $products; ?>')
+      };
+    },
+    methods:{
+      hoverCard(){
+        this.isHover=!this.isHover;
+      }
+    }
+})
+
+
   Vue.component('buy-btn',{
     data(){
       return {
         isOutlined:false
       };
     },
-    template:`<a class="button is-info " v-on:mouseover="hoverButton" v-on:mouseleave="hoverButton" v-bind:class="{'': isOutlined, 'is-outlined':!isOutlined }" href="<?php echo e(URL::to('product/'.$product->id)); ?>">Buy</a>`,
+    template:`<a class="button is-info " v-on:mouseover="hoverButton" v-on:mouseleave="hoverButton" v-bind:class="{'': isOutlined, 'is-outlined':!isOutlined }" href="#">Buy</a>`,
     methods:{
       hoverButton() {
         this.isOutlined=!this.isOutlined;
@@ -71,10 +92,40 @@
     }
   });
 
-  Vue.component('test',{
-    // template:`<img src="{{ imgSrc }}" alt="{{ imgSrc }}" v-on:mouseover="hoverCard" v-on:mouseleave="hoverCard">`,
-     template:`<span>{{ imgSrc }}</span>`,
-    props:['imgSrc'],
+  Vue.component('card-product',{
+    // template:`<img v-bind:src="imgSrc" v-on:mouseover="hoverCard" v-on:mouseleave="hoverCard" v-bind:class="{'': !isHover, 'hover':isHover }"/>`,
+    template:`
+   <div class="card" v-bind:class="{'': !isHover, 'hover':isHover }">
+    <div class="card-image">
+      <figure class="image is-4by3">
+        <div v-for="image in product.product_image">
+          <img v-bind:src="image.name" alt="Placeholder image" v-on:mouseover="hoverCard" v-on:mouseleave="hoverCard">
+        </div>
+      </figure>
+    </div>
+    <div class="card-content">
+      <div class="media">
+        <div class="media-content">
+          <p class="title is-4">{{ product.name }}</p>
+          <p class="subtitle is-6">Rp. {{ product.price }}</p>
+        </div>
+      </div>
+
+      <div class="content">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Phasellus nec iaculis mauris. <a>@bulmaio</a>.     
+      </div>
+      </div>
+     <footer class="card-footer">
+              <span class="card-footer-item">
+               
+              
+              <buy-btn></buy-btn>  
+              
+              </span>
+            </footer>
+  </div>`,
+  props:['product'],
     data(){
       return {
         isHover:false
@@ -91,12 +142,13 @@
     el:"#app",
     data:{
       name:'wkwkwk',
-      isHover:false,
+      // isHover:false,
+       products:JSON.parse('<?php echo $products; ?>')
     },
     methods:{
-      hoverCard(){
-        this.isHover=!this.isHover;
-      }
+      // hoverCard(){
+      //   this.isHover=!this.isHover;
+      // }
     }
   })
 </script>

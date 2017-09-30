@@ -37,7 +37,7 @@ class ProductController extends Controller
     }
 
     public function show($id){
-        $product=Product::findOrFail($id);
+        $product=Product::with('productImage')->findOrFail($id);
         return view('frontend.product.show',compact('product'));
     }
 }

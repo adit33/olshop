@@ -9,7 +9,12 @@ use App\Models\Product;
 class FrontController extends Controller
 {
     public function frontPage(){
-    	$products=Product::all();
+    	$products=Product::with('productImage')->get();
     	return view('welcome',compact('products'));
+    }
+
+    public function viewProduct(){
+    	$product=Product::findOrFail($id);
+    	
     }
 }
