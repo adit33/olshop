@@ -86,7 +86,8 @@ Vue.component('image-product',{
         isOutlined:false
       };
     },
-    template:`<a class="button is-info " v-on:mouseover="hoverButton" v-on:mouseleave="hoverButton" v-bind:class="{'': isOutlined, 'is-outlined':!isOutlined }" href="#">Buy</a>`,
+    template:`<a class="button is-info " v-on:mouseover="hoverButton" v-on:mouseleave="hoverButton" v-bind:class="{'': isOutlined, 'is-outlined':!isOutlined }" :href="'product/'+url">Buy</a>`,
+    props:['url'],
     methods:{
       hoverButton() {
         this.isOutlined=!this.isOutlined;
@@ -122,7 +123,7 @@ Vue.component('image-product',{
               <span class="card-footer-item">
                
               
-              <buy-btn></buy-btn>  
+              <buy-btn :url="product.id"></buy-btn>  
               
               </span>
             </footer>

@@ -7,7 +7,7 @@
   <title>Product - Free Bulma template</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="../css/bulma.css">
-  <link rel="stylesheet" type="text/css" href="../css/product.css">
+  <!-- <link rel="stylesheet" type="text/css" href="../css/product.css"> -->
 </head>
 <body>
 @include('frontend.layout.navbar')
