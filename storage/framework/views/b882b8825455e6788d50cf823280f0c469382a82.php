@@ -7,6 +7,49 @@
     transform: scale(1.05,1.05);
     box-shadow: 0 1px 2px black;
   }
+  .ribbon {
+  position: absolute;
+  left: -5px; top: -5px;
+  z-index: 1;
+  overflow: hidden;
+  width: 75px; height: 75px;
+  text-align: right;
+}
+.ribbon span {
+  font-size: 10px;
+  font-weight: bold;
+  color: #FFF;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 20px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  width: 100px;
+  display: block;
+  background: #79A70A;
+  background: linear-gradient(#2989d8 0%, #1e5799 100%);
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 19px; left: -21px;
+}
+.ribbon span::before {
+  content: "";
+  position: absolute; left: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid #1e5799;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #1e5799;
+}
+.ribbon span::after {
+  content: "";
+  position: absolute; right: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid transparent;
+  border-right: 3px solid #1e5799;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #1e5799;
+}
 </style>
 <?php $__env->stopPush(); ?>
 
@@ -76,7 +119,10 @@ Vue.component('image-product',{
       }
     }
 })
-
+  
+  Vue.component('outstock-label',{
+    template:``,
+  })
 
   Vue.component('buy-btn',{
     data(){
@@ -101,6 +147,7 @@ Vue.component('image-product',{
       <figure class="image is-4by3">
         <div v-for="image in product.product_image">
           <img v-bind:src="image.name" alt="Placeholder image" v-on:mouseover="hoverCard" v-on:mouseleave="hoverCard">
+           <div class="ribbon"><span>POPULAR</span></div>
         </div>
       </figure>
     </div>
@@ -121,7 +168,8 @@ Vue.component('image-product',{
               <span class="card-footer-item">
                
               
-              <buy-btn :url="product.id"></buy-btn>  
+              <buy-btn :url="product.id" v-if="product.stock >= 1"></buy-btn>
+              <span v-else="product.stock == 0" class="tag is-danger">Out Of Stock</span>  
               
               </span>
             </footer>
