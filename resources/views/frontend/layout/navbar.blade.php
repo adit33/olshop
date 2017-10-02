@@ -4,7 +4,7 @@
         <div class="navbar-brand">
 
           <a class="navbar-item">
-            <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo">
+            <img src="#" alt="Bulma logo">
           </a>
           <a class="navbar-item is-tab is-hidden-mobile is-active"><span class="icon is-medium"><i class="fa fa-home"></i></span>Home</a>
           <a class="navbar-item is-tab is-hidden-mobile">Features</a>

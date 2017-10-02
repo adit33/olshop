@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Product - Free Bulma template</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="../css/bulma.css">
-  <!-- <link rel="stylesheet" type="text/css" href="../css/product.css"> -->
-</head>
-<body>
-@include('frontend.layout.navbar')
-  <div class="section product-header">
+@extends('frontend.layout.master')
+@section('content')
+ <!--  <div class="section product-header">
     <div class="container">
       <div class="columns">
-        <div class="column">
+        <div class="column"> -->
           <span class="title is-3">{!! $product->name !!}</span>
           <span class="title is-3 has-text-muted">&nbsp;|&nbsp;</span>
           <span class="title is-4 has-text-muted">Category</span>
@@ -54,15 +43,7 @@
           <br>
           <br>
           <p class="">
-            <a href="#">
-              <i class="fa fa-minus cart-icon"></i>
-            </a>
-            &nbsp;
-            <input type="text" name="" class="input has-text-centered" value="1" style="width:40px;">
-            &nbsp;
-            <a href="#">
-              <i class="fa fa-plus cart-icon"></i>
-            </a>
+            <input-stock :available-stock="{!! $product->stock !!}"></input-stock>
             &nbsp; &nbsp; &nbsp;
             <a class="button is-primary">Add to cart</a>
           </p>
@@ -97,8 +78,8 @@
           </table>
         </div>
       </div>
-    </div>
-  </div>
+ <!--    </div>
+  </div> -->
   <div class="section">
     <div class="container">
       <div class="tabs">
@@ -127,39 +108,68 @@
 </p>
 
 </div>
-</div>
-</div>
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <p>
-        <strong>Bulma</strong> by <a href="http://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
-      </p>
-      <p>
-        <a class="icon" href="https://github.com/jgthms/bulma">
-          <i class="fa fa-github"></i>
-        </a>
-      </p>
+<!-- </div>
+</div> -->
+@endsection
+@push('scripts')
+<script type="text/javascript">
+  Vue.component('input-stock',{
+    template:`
+    <div>
+       <a v-on:click="decStock">
+              <i class="fa fa-minus cart-icon"></i>
+            </a>
+            &nbsp;
+            <input type="text" name="" class="input has-text-centered" :value="stock" style="width:50px;">
+            &nbsp;
+            <a v-on:click="incStock">
+              <i class="fa fa-plus cart-icon"></i>
+            </a>
     </div>
-  </div>
-</footer>
-<script async type="text/javascript" src="../js/bulma.js"></script>
+    `,
+    props:['availableStock'],
+    data(){
+      return{
+        stock:1,
+        availableStock:null
+      }
+    },
+    // computed:{
+    //   stock:function(){
+    //     if(this.stock < 0){
+    //       let stock = 0;
+    //     }
+    //     return stock;
+    //   }
+    // },
+    methods:{
+      incStock:function(){
+        if(this.stock >= this.availableStock ){
+            this.stock = this.availableStock
+        }else{
+          this.stock += 1  
+        }
+        
+      },
+      decStock:function(){
+        if(this.stock == 1){
+          this.stock=1
+        }
+        else{
+          this.stock -= 1  
+        }
+        
+      }
+    }
+  })
+
+  new Vue({
+    el:"#app",
+
+  })
+</script>
+@endpush
 </body>
 </html>
 
-    © 2017 GitHub, Inc.
-    Terms
-    Privacy
-    Security
-    Status
-    Help
-
-    Contact GitHub
-    API
-    Training
-    Shop
-    Blog
-    About
-
+  
