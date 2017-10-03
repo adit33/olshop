@@ -40,4 +40,9 @@ class ProductController extends Controller
         $product=Product::with('productImage')->findOrFail($id);
         return view('frontend.product.show',compact('product'));
     }
+
+    public function getProducts(){
+        $products=Product::with('productImage')->paginate(3);
+        return response()->json($products);       
+    }
 }

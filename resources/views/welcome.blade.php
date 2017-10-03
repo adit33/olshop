@@ -96,12 +96,38 @@
   </div>
   </article> -->
 <article class="tile is-child box">
-      <div class="columns is-desktop">
-      <div class="column" v-for="product in products">
+
+<div class="field has-addons">
+  <div class="control">
+    <input class="input" type="text" placeholder="Find a product">
+  </div>
+  <div class="control">
+    <a class="button is-info">
+      Search
+    </a>
+  </div>
+</div>
+
+<div class="columns is-multiline">
+      <div class="column is-4 " v-for="product in products.data">
 <card-product :product="product"></card-product>
       </div>
  </div>
+ <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+  <a class="pagination-previous" @click="getProducts(products.prev_page_url)">Previous</a>
+  <a class="pagination-next"     @click="getProducts(products.next_page_url)">Next page</a>
+  <ul class="pagination-list">
+    <li><a class="pagination-link" aria-label="Goto page 1">@{{ products.from }}</a></li>
+    <li><span class="pagination-ellipsis">&hellip;</span></li>
+    <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
+    <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
+    <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
+    <li><span class="pagination-ellipsis">&hellip;</span></li>
+    <li><a class="pagination-link" aria-label="Goto page 86">@{{ products.last_page }}</a></li>
+  </ul>
+</nav>
   </article>
+
 @endsection
 
 @push('scripts')
@@ -112,7 +138,6 @@ Vue.component('image-product',{
   data(){
       return {
         isHover:true,
-        // products:JSON.parse('{!! $products !!}')
       };
     },
     methods:{
@@ -194,12 +219,24 @@ Vue.component('image-product',{
     data:{
       name:'wkwkwk',
       // isHover:false,
-       products:JSON.parse('{!! $products !!}')
+       products:'',
+       api:{
+        url:'api/products',
+       }
     },
     methods:{
-      // hoverCard(){
-      //   this.isHover=!this.isHover;
-      // }
+      getProducts:function(url){
+        console.log(url);
+        var self=this;
+        axios.get(url).then(function(response){
+          self.products=response.data;
+        }).catch(function (error) {
+          console.log(error);
+        });
+      }
+    },
+    mounted(){
+      this.getProducts(this.api.url)
     }
   })
 </script>
