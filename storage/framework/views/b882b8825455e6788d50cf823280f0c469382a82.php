@@ -50,6 +50,16 @@
   border-bottom: 3px solid transparent;
   border-top: 3px solid #1e5799;
 }
+.blur{
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+    -webkit-transition: background-color 0;
+    transition: background-color 0;
+    background-color: #FFFFFF;
+}
 </style>
 <?php $__env->stopPush(); ?>
 
@@ -94,7 +104,6 @@
   </div>
   </article> -->
 <article class="tile is-child box">
-
 <div class="field has-addons">
   <div class="control">
     <input class="input" type="text" placeholder="Find a product">
@@ -106,7 +115,7 @@
   </div>
 </div>
 
-<div class="columns is-multiline">
+<div class="columns is-multiline blur">
       <div class="column is-4 " v-for="product in products.data">
 <card-product :product="product"></card-product>
       </div>
