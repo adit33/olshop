@@ -41943,7 +41943,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
         console.log('Component mounted.');
-    }
+    },
+
+    data: function data() {
+        return {
+            // message:''
+        };
+    },
+    props: ['message']
 });
 
 /***/ }),
@@ -41951,20 +41958,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('article', {
     staticClass: "message is-danger"
-  }, [_c('div', {
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "message-body"
+  }, [_vm._v("\n  " + _vm._s(_vm.message) + "\n  ")])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "message-header"
   }, [_c('p', [_c('strong', [_vm._v("Danger")]), _vm._v("! "), _c('a', [_vm._v("Learn more")])]), _vm._v(" "), _c('button', {
     staticClass: "delete",
     attrs: {
       "aria-label": "delete"
     }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "message-body"
-  }, [_vm._v("\n    Lorem ipsum dolor sit amet, consectetur adipiscing elit. "), _c('strong', [_vm._v("Pellentesque risus mi")]), _vm._v(", tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum "), _c('a', [_vm._v("felis venenatis")]), _vm._v(" efficitur. Aenean ac "), _c('em', [_vm._v("eleifend lacus")]), _vm._v(", in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.\n  ")])])
+  })])
 }]}
 module.exports.render._withStripped = true
 if (false) {
