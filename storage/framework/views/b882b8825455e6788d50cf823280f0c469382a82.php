@@ -60,6 +60,19 @@
     transition: background-color 0;
     background-color: #FFFFFF;
 }
+.loading {
+    background-color: #FFF;
+    background-image: url("img/loading.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1000;
+    -webkit-transition: background-color 0;
+    transition: background-color 0;
+    background-size: 120px 80px;
+}
+.hide{
+  z-index: -1;
+}
 </style>
 <?php $__env->stopPush(); ?>
 
@@ -114,12 +127,11 @@
     </a>
   </div>
 </div>
-
-<div class="columns is-multiline blur">
-      <div class="column is-4 " v-for="product in products.data">
+<div class="columns is-multiline">
+      <div class="column is-4" v-for="product in products.data">
 <card-product :product="product"></card-product>
       </div>
- </div>
+</div>
  <nav class="pagination is-centered" role="navigation" aria-label="pagination">
   <a class="pagination-previous" @click="getProducts(products.prev_page_url)">Previous</a>
   <a class="pagination-next"     @click="getProducts(products.next_page_url)">Next page</a>
@@ -227,6 +239,7 @@ Vue.component('image-product',{
       name:'wkwkwk',
       // isHover:false,
        products:'',
+       isLoading:true,
        api:{
         url:'api/products',
        }
@@ -242,8 +255,10 @@ Vue.component('image-product',{
         });
       }
     },
-    mounted(){
-      this.getProducts(this.api.url)
+    mounted(){      
+        // setTimeout(() => {
+        this.getProducts(this.api.url)
+      // }, 3000)
     }
   })
 </script>

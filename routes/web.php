@@ -14,3 +14,9 @@
 Route::get('/', 'FrontController@frontPage');
 
 Route::resource('product','ProductController');
+
+Route::resource('user','UserController');
+
+Route::GET('login','AuthController@login');
+
+Route::POST('login',['uses'=>'AuthController@auth','as'=>'auth']);
