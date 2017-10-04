@@ -21,6 +21,6 @@ class AuthController extends Controller
         }
         return redirect()
         ->back()
-        ->withErrors('email dan password tidak cocok');
+        ->with('errors','email dan password tidak cocok');
     }
 }
