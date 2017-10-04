@@ -1,358 +1,266 @@
-<!doctype html>
-<html lang="<?php echo e(app()->getLocale()); ?>">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" type="text/css" href="https://assets.hellogustav.com/fonts/bariol_bold-webfont.woff2">
-
-        <!-- Styles -->
-        <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/bulma.css')); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/vendor.css')); ?>">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <style type="text/css">
-          .container{
-            margin-top: 50px;
-          }
-
-          .footer{
-            margin-top: 50px;
-          }
-          /* external css: flickity.css */
-
-          * { box-sizing: border-box; }
-
-          .carousel {
-            background: #EEE;
-            margin-bottom: 50px;
-          }
-
-          .carousel-cell {
-            width: 66%;
-            height: 200px;
-            margin-right: 10px;
-            background: #8C8;
-            border-radius: 5px;
-            counter-increment: carousel-cell;
-          }
-
-          /* cell number */
-          .carousel-cell:before {
-            display: block;
-            text-align: center;
-            content: counter(carousel-cell);
-            line-height: 200px;
-            font-size: 80px;
-            color: white;
-          }
-          .navbar{
-
-          }
-
-        </style>
-     </head>
-    <body>
-  <header class="hero is-light">
-    <div class="hero-head">
-      <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-
-          <a class="navbar-item">
-            <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo">
-          </a>
-          <a class="navbar-item is-tab is-hidden-mobile is-active"><span class="icon is-medium"><i class="fa fa-home"></i></span>Home</a>
-          <a class="navbar-item is-tab is-hidden-mobile">Features</a>
-          <a class="navbar-item is-tab is-hidden-mobile">Pricing</a>
-          <a class="navbar-item is-tab is-hidden-mobile">About</a>
-          
-          <button class="button navbar-burger" data-target="navMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-
-        </div>
-
-
-        <div class="navbar-menu navbar-end" id="navMenu">
-          <a class="navbar-item is-tab is-hidden-tablet is-active">Home</a>
-          <a class="navbar-item is-tab is-hidden-tablet">Features</a>
-          <a class="navbar-item is-tab is-hidden-tablet">Pricing</a>
-          <a class="navbar-item is-tab is-hidden-tablet">About</a>
-          <a class="navbar-item nav-tag">              
-            <span class="icon is-small">
-              <i class="fa fa-envelope-o"></i>
-            </span>
-            <span class="tag is-primary tag-notif">6</span>
-          </a>  
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">              
-              <figure class="image is-32x32" style="margin-right:.5em;">
-                <img src="https://avatars1.githubusercontent.com/u/7221389?v=4&s=32">
-              </figure>
-              mazipan
-            </a>
-          
-            <div class="navbar-dropdown is-right">              
-                <a class="navbar-item">
-                  <span class="icon is-small">
-                    <i class="fa fa-user-o"></i>
-                  </span>
-                  Profile
-                </a>
-                <hr class="navbar-divider">
-                <a class="navbar-item">
-                  <span class="icon is-small">
-                    <i class="fa fa-power-off"></i>
-                  </span>
-                  Logout
-                </a>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </div>
-  </header>
-<div class="container">
-   
-<h1>Flickity - wrapAround</h1>
-
-<!-- Flickity HTML init -->
-<div class="carousel"
-  data-flickity='{ "wrapAround": true , "autoPlay": true }'>
-  <div class="carousel-cell"></div>
-  <div class="carousel-cell"></div>
-  <div class="carousel-cell"></div>
-  <div class="carousel-cell"></div>
-  <div class="carousel-cell"></div>
-</div>
-    
-<div class="tile is-ancestor">
-
-<!-- SIDEBAR -->
-
-<div class="tile is-parent">
-    
-<nav class="panel">
-  <p class="panel-heading">
-    Kategori
-  </p>
-<div class="panel-block">
-  <aside class="menu">
-  <p class="menu-label">
-    General
-  </p>
-  <ul class="menu-list">
-    <li><a>Dashboard</a></li>
-    <li><a>Customers</a></li>
-  </ul>
-  <p class="menu-label">
-    Administration
-  </p>
-  <ul class="menu-list">
-    <li><a>Team Settings</a></li>
-    <li>
-      <a class="is-active">Manage Your Team</a>
-      <ul>
-        <li><a>Members</a></li>
-        <li><a>Plugins</a></li>
-        <li><a>Add a member</a></li>
-      </ul>
-    </li>
-    <li><a>Invitations</a></li>
-    <li><a>Cloud Storage Environment Settings</a></li>
-    <li><a>Authentication</a></li>
-  </ul>
-  <p class="menu-label">
-    Transactions
-  </p>
-  <ul class="menu-list">
-    <li><a>Payments</a></li>
-    <li><a>Transfers</a></li>
-    <li><a>Balance</a></li>
-  </ul>
-  </aside>
-  </div>
-  </nav>
-
-  </div>
-
-  <div class="tile is-vertical is-8">
-    <div class="tile">
-      <div class="tile is-parent is-vertical">
-        <article class="tile is-child box">
-          <!-- Put any content you want -->
-        </article>
-        <article class="tile is-child box">
-          <!-- Put any content you want -->
-        </article>
-      </div>
-      <div class="tile is-parent">
-        <article class="tile is-child box">
-          <!-- Put any content you want -->
-        </article>
-      </div>
-    </div>
-    <div class="tile is-parent">
-      <article class="tile is-child box">
-        <!-- Put any content you want -->
-
-        <div class="columns is-desktop">
-          <div class="column">
-            <div class="card">
-  <div class="card-image">
-    <figure class="image is-4by3">
-      <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-    </figure>
-  </div>
-  <div class="card-content">
-    <div class="media">
-      <div class="media-left">
-        <figure class="image is-48x48">
-          <img src="http://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-        </figure>
-      </div>
-      <div class="media-content">
-        <p class="title is-4">John Smith</p>
-        <p class="subtitle is-6">@johnsmith</p>
-      </div>
-    </div>
-
-    <div class="content">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-      <a href="#">#css</a> <a href="#">#responsive</a>
-      <br>
-      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-    </div>
-  </div>
-</div>
-          </div>
-          <div class="column">
-            <div class="card">
-  <div class="card-image">
-    <figure class="image is-4by3">
-      <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-    </figure>
-  </div>
-  <div class="card-content">
-    <div class="media">
-      <div class="media-left">
-        <figure class="image is-48x48">
-          <img src="http://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-        </figure>
-      </div>
-      <div class="media-content">
-        <p class="title is-4">John Smith</p>
-        <p class="subtitle is-6">@johnsmith</p>
-      </div>
-    </div>
-
-    <div class="content">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-      <a href="#">#css</a> <a href="#">#responsive</a>
-      <br>
-      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-    </div>
-  </div>
-</div>
-          </div>
-
-          <div class="column">
-            <div class="card">
-  <div class="card-image">
-    <figure class="image is-4by3">
-      <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-    </figure>
-  </div>
-  <div class="card-content">
-    <div class="media">
-      <div class="media-left">
-        <figure class="image is-48x48">
-          <img src="http://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-        </figure>
-      </div>
-      <div class="media-content">
-        <p class="title is-4">John Smith</p>
-        <p class="subtitle is-6">@johnsmith</p>
-      </div>
-    </div>
-
-    <div class="content">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-      <a href="#">#css</a> <a href="#">#responsive</a>
-      <br>
-      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-    </div>
-  </div>
-</div>
-          </div>
-
-          
-        </div>
-
-
-        
-      </article>
-    </div>
-  </div>
-  
-</div>
-
-</div>
-
-
-
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <p>
-        <strong>Bulma</strong> by <a href="http://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-      </p>
-      <p>
-        <a class="icon" href="https://github.com/jgthms/bulma">
-          <i class="fa fa-github"></i>
-        </a>
-      </p>
-    </div>
-  </div>
-</footer>
-        <script type="text/javascript" src="<?php echo e(asset('js/app.js')); ?>"></script>
-        <script type="text/javascript">
-            document.addEventListener('DOMContentLoaded', function () {
-
-  // Get all "navbar-burger" elements
-  var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
-  // Check if there are any navbar burgers
-  if ($navbarBurgers.length > 0) {
-
-    // Add a click event on each of them
-    $navbarBurgers.forEach(function ($el) {
-      $el.addEventListener('click', function () {
-
-        // Get the target from the "data-target" attribute
-        var target = $el.dataset.target;
-        var $target = document.getElementById(target);
-
-        // Toggle the class on both the "navbar-burger" and the "navbar-menu"
-        $el.classList.toggle('is-active');
-        $target.classList.toggle('is-active');
-
-      });
-    });
+<?php $__env->startPush('styles'); ?>
+<style type="text/css">
+  .button{
+    border-radius: 0;
   }
+  .hover{
+    transform: scale(1.05,1.05);
+    box-shadow: 0 1px 2px black;
+  }
+  .ribbon {
+  position: absolute;
+  left: -5px; top: -5px;
+  z-index: 1;
+  overflow: hidden;
+  width: 75px; height: 75px;
+  text-align: right;
+}
+.ribbon span {
+  font-size: 10px;
+  font-weight: bold;
+  color: #FFF;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 20px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  width: 100px;
+  display: block;
+  background: #79A70A;
+  background: linear-gradient(#2989d8 0%, #1e5799 100%);
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 19px; left: -21px;
+}
+.ribbon span::before {
+  content: "";
+  position: absolute; left: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid #1e5799;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #1e5799;
+}
+.ribbon span::after {
+  content: "";
+  position: absolute; right: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid transparent;
+  border-right: 3px solid #1e5799;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #1e5799;
+}
+.blur{
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+    -webkit-transition: background-color 0;
+    transition: background-color 0;
+    background-color: #FFFFFF;
+}
+.loading {
+    background-color: #FFF;
+    background-image: url("img/loading.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1000;
+    -webkit-transition: background-color 0;
+    transition: background-color 0;
+    background-size: 120px 80px;
+}
+.hide{
+  z-index: -1;
+}
+</style>
+<?php $__env->stopPush(); ?>
 
-});
-        </script>
-    </body>
-</html>
+<?php $__env->startSection('content'); ?>
+  <!-- <card-product></card-product>         -->
+
+   <!-- <article class="tile is-child box">
+      <div class="columns is-desktop">
+          <div v-for="product in products" class="column">
+             <div class="card">
+    <div class="card-image">
+      <figure class="image is-4by3">
+        <div v-for="image in product.product_image">
+     
+          <image-product v-bind:img-src="image.name"></image-product>
+        </div>
+      </figure>
+    </div>
+    <div class="card-content">
+      <div class="media">
+        <div class="media-content">
+          <p class="title is-4">{{ product.name }}</p>
+          <p class="subtitle is-6">Rp. {{ product.price }}</p>
+        </div>
+      </div>
+
+      <div class="content">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Phasellus nec iaculis mauris. <a>@bulmaio</a>.     
+      </div>
+    </div>
+     <footer class="card-footer">
+              <span class="card-footer-item">
+               
+              
+              <buy-btn></buy-btn>  
+              
+              </span>
+            </footer>
+  </div>
+  </div>
+  </div>
+  </article> -->
+<article class="tile is-child box">
+<div class="field has-addons">
+  <div class="control">
+    <input class="input" type="text" placeholder="Find a product">
+  </div>
+  <div class="control">
+    <a class="button is-info">
+      Search
+    </a>
+  </div>
+</div>
+<div class="columns is-multiline">
+      <div class="column is-4" v-for="product in products.data">
+<card-product :product="product"></card-product>
+      </div>
+</div>
+ <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+  <a class="pagination-previous" @click="getProducts(products.prev_page_url)">Previous</a>
+  <a class="pagination-next"     @click="getProducts(products.next_page_url)">Next page</a>
+  <ul class="pagination-list">
+    <li><a class="pagination-link" aria-label="Goto page 1">{{ products.from }}</a></li>
+    <li><span class="pagination-ellipsis">&hellip;</span></li>
+    <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
+    <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
+    <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
+    <li><span class="pagination-ellipsis">&hellip;</span></li>
+    <li><a class="pagination-link" aria-label="Goto page 86">{{ products.last_page }}</a></li>
+  </ul>
+</nav>
+  </article>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startPush('scripts'); ?>
+<script type="text/javascript">
+Vue.component('image-product',{
+  template:`<img v-bind:src=imgSrc v-on:mouseover="hoverCard" v-on:mouseleave="hoverCard" v-bind:class="{ '':isHover,'hover':!isHover }" />`,
+  props:['imgSrc'],
+  data(){
+      return {
+        isHover:true,
+      };
+    },
+    methods:{
+      hoverCard(){
+        this.isHover=!this.isHover;
+      }
+    }
+})
+  
+  Vue.component('outstock-label',{
+    template:``,
+  })
+
+  Vue.component('buy-btn',{
+    data(){
+      return {
+        isOutlined:false
+      };
+    },
+    template:`<a class="button is-info " v-on:mouseover="hoverButton" v-on:mouseleave="hoverButton" v-bind:class="{'': isOutlined, 'is-outlined':!isOutlined }" :href="'product/'+url">Buy</a>`,
+    props:['url'],
+    methods:{
+      hoverButton() {
+        this.isOutlined=!this.isOutlined;
+      }
+    }
+  });
+
+  Vue.component('card-product',{
+    // template:`<img v-bind:src="imgSrc" v-on:mouseover="hoverCard" v-on:mouseleave="hoverCard" v-bind:class="{'': !isHover, 'hover':isHover }"/>`,
+    template:`
+   <div class="card" v-bind:class="{'': !isHover, 'hover':isHover }">
+    <div class="card-image">
+      <figure class="image is-4by3">
+        <div v-for="image in product.product_image">
+          <img v-bind:src="image.name" alt="Placeholder image" v-on:mouseover="hoverCard" v-on:mouseleave="hoverCard">
+           <div class="ribbon"><span>POPULAR</span></div>
+        </div>
+      </figure>
+    </div>
+    <div class="card-content">
+      <div class="media">
+        <div class="media-content">
+          <p class="title is-4">{{ product.name }}</p>
+          <p class="subtitle is-6">Rp. {{ product.price }}</p>
+        </div>
+      </div>
+
+      <div class="content">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Phasellus nec iaculis mauris. <a>@bulmaio</a>.     
+      </div>
+      </div>
+     <footer class="card-footer">
+              <span class="card-footer-item">
+               
+              
+              <buy-btn :url="product.id" v-if="product.stock >= 1"></buy-btn>
+              <span v-else="product.stock == 0" class="tag is-danger">Out Of Stock</span>  
+              
+              </span>
+            </footer>
+  </div>`,
+  props:['product'],
+    data(){
+      return {
+        isHover:false
+      };
+    },
+    methods:{
+      hoverCard(){
+        this.isHover=!this.isHover;
+      }
+    }
+  });
+ 
+  new Vue({
+    el:"#app",
+    data:{
+      name:'wkwkwk',
+      // isHover:false,
+       products:'',
+       isLoading:true,
+       api:{
+        url:'api/products',
+       }
+    },
+    methods:{
+      getProducts:function(url){
+        console.log(url);
+        var self=this;
+        axios.get(url).then(function(response){
+          self.products=response.data;
+        }).catch(function (error) {
+          console.log(error);
+        });
+      }
+    },
+    mounted(){      
+        // setTimeout(() => {
+        this.getProducts(this.api.url)
+      // }, 3000)
+    }
+  })
+</script>
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make('frontend.layout.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

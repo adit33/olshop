@@ -10,8 +10,14 @@ use App\Models\Product;
 
 use App\Models\ProductImage;
 
+use App\DataTables\ProductDataTable;
+
 class ProductController extends Controller
 {
+	public function index(ProductDataTable $dataTable){
+		return $dataTable->render('backend.product.index');
+	}
+
     public function create(){
     	return view('backend.product.create')
     	->withTitle('Add Product');
@@ -27,8 +33,16 @@ class ProductController extends Controller
 	    		$image=$product_image->saveImage($image);
 	    		ProductImage::create(['name'=>$image,'product_id'=>$product->id]);
     		}
-    	}
-    	
-    	
+    	}    	
+    }
+
+    public function show($id){
+        $product=Product::with('productImage')->findOrFail($id);
+        return view('frontend.product.show',compact('product'));
+    }
+
+    public function getProducts(){
+        $products=Product::with('productImage')->paginate(3);
+        return response()->json($products);       
     }
 }
