@@ -41945,12 +41945,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         console.log('Component mounted.');
     },
 
+    props: ['message'],
     data: function data() {
         return {
-            // message:''
+            isVisible: true
         };
     },
-    props: ['message']
+
+    methods: {
+        closeMessage: function closeMessage() {
+            this.isVisible = !this.isVisible;
+        }
+    }
 });
 
 /***/ }),
@@ -41958,20 +41964,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('article', {
+  return (_vm.isVisible) ? _c('article', {
     staticClass: "message is-danger"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "message-body"
-  }, [_vm._v("\n  " + _vm._s(_vm.message) + "\n  ")])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  }, [_c('div', {
     staticClass: "message-header"
-  }, [_c('p', [_c('strong', [_vm._v("Danger")]), _vm._v("! "), _c('a', [_vm._v("Learn more")])]), _vm._v(" "), _c('button', {
+  }, [_vm._m(0), _vm._v(" "), _c('button', {
     staticClass: "delete",
     attrs: {
       "aria-label": "delete"
+    },
+    on: {
+      "click": _vm.closeMessage
     }
-  })])
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "message-body"
+  }, [_vm._v("\n  " + _vm._s(_vm.message) + "\n  ")])]) : _vm._e()
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('strong', [_vm._v("Danger")]), _vm._v("! "), _c('a', [_vm._v("Learn more")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
