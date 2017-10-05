@@ -39,6 +39,7 @@
     35 => 'App\\Providers\\EventServiceProvider',
     36 => 'App\\Providers\\RouteServiceProvider',
     37 => 'Collective\\Html\\HtmlServiceProvider',
+    38 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
   ),
   'eager' => 
   array (
@@ -65,6 +66,7 @@
     20 => 'App\\Providers\\AuthServiceProvider',
     21 => 'App\\Providers\\EventServiceProvider',
     22 => 'App\\Providers\\RouteServiceProvider',
+    23 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
   ),
   'deferred' => 
   array (

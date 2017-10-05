@@ -1,6 +1,6 @@
 
 	<template>
-	<article class="message is-danger"  v-if="isVisible">
+	<article class="message" :class="messageClass"  v-if="isVisible">
   <div class="message-header">
     <p><strong>Danger</strong>! <a>Learn more</a></p>
     <button class="delete" aria-label="delete" @click="closeMessage"></button>
@@ -15,7 +15,7 @@
         mounted() {
             console.log('Component mounted.')
         },
-        props:['message'],
+        props:['message','messageClass'],
         data(){
         	return{
         		isVisible:true,

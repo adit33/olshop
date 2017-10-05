@@ -20,3 +20,5 @@ Route::resource('user','UserController');
 Route::GET('login','AuthController@login');
 
 Route::POST('login',['uses'=>'AuthController@auth','as'=>'auth']);
+
+Route::GET('logout',['uses'=>'AuthController@logout','as'=>'logout']);

@@ -41945,7 +41945,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         console.log('Component mounted.');
     },
 
-    props: ['message'],
+    props: ['message', 'messageClass'],
     data: function data() {
         return {
             isVisible: true
@@ -41965,7 +41965,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return (_vm.isVisible) ? _c('article', {
-    staticClass: "message is-danger"
+    staticClass: "message",
+    class: _vm.messageClass
   }, [_c('div', {
     staticClass: "message-header"
   }, [_vm._m(0), _vm._v(" "), _c('button', {
