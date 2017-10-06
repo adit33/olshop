@@ -79,28 +79,14 @@
 <!-- SIDEBAR -->
  @include("frontend.layout.left_sidebar")
 <!-- END SIDEBAR -->
-<div class="tile is-parent">
+<!-- <div class="tile is-parent">
     
 
 
-  </div>
+  </div> -->
 
-  <div class="tile is-vertical is-8">
-    <div class="tile">
-      <div class="tile is-parent is-vertical">
-        <article class="tile is-child box">
-          <!-- Put any content you want -->
-        </article>
-        <article class="tile is-child box">
-          <!-- Put any content you want -->
-        </article>
-      </div>
-      <div class="tile is-parent">
-        <article class="tile is-child box">
-          <!-- Put any content you want -->
-        </article>
-      </div>
-    </div>
+  <div class="tile is-vertical is-9">
+   
     <div class="tile is-parent">
       @yield('content')
     </div>

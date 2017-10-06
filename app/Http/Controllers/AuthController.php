@@ -13,6 +13,10 @@ class AuthController extends Controller
     	return view('frontend.layout.login');
     }
 
+    public function register(){
+    	return view('frontend.layout.register');
+    }
+
     public function auth(Request $request){
     	$email=$request->input('email');
     	$password=$request->input('password');

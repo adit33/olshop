@@ -17,8 +17,16 @@ Route::resource('product','ProductController');
 
 Route::resource('user','UserController');
 
+Route::GET('register',['uses'=>'AuthController@register']);
+
 Route::GET('login','AuthController@login');
 
 Route::POST('login',['uses'=>'AuthController@auth','as'=>'auth']);
 
 Route::GET('logout',['uses'=>'AuthController@logout','as'=>'logout']);
+
+Route::POST('addtocart/{product_id}',['uses'=>'TransactionController@addToCart','as'=>'addtocart']);
+
+Route::GET('cart','TransactionController@getCart');
+
+
