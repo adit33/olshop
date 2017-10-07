@@ -15,7 +15,7 @@ class TransactionController extends Controller
     public function addToCart(Request $request,$id){
     	$product=Product::find($id);
 
-    	$data['id']=str_random(10);
+    	$data['id']=$product->id;
     	$data['name']=$product->name;
     	$data['qty']=$request->input('qty');
     	$data['price']=$product->price;

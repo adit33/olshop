@@ -116,7 +116,7 @@ a.file:not(.button) {
         <div class="column is-6">
           <div class="image is-2by2">
           @foreach($product->productImage as $image)
-            <img src="{!! asset($image->name) !!}">
+            <img id="zoom_01" src="{!! asset($image->name) !!}" data-zoom-image="{!! asset($image->name) !!}">
           @endforeach
           </div>
           <br>
@@ -230,6 +230,11 @@ a.file:not(.button) {
 </div>
 @endsection
 @push('scripts')
+<script src="{{ asset('js/jquery-1.8.3.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery.elevatezoom.js') }}"></script>
+<script type="text/javascript">
+  $("#zoom_01").elevateZoom();
+</script>
 <script type="text/javascript">
   Vue.component('input-stock',{
     template:`
