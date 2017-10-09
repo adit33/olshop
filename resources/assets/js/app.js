@@ -14,6 +14,9 @@ window.Vue = require('vue');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+window.Flickity = require('vue-flickity');
+
+Vue.component('carousel',require('./components/product/ImageCarousel.vue'));
 
 Vue.component('message', require('./components/Message.vue'));
 
