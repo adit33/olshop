@@ -111,6 +111,9 @@ a.file:not(.button) {
   color: #B9C2C4;
 }
 
+
+/*build css*/
+
 .box {
   padding:50px;
   margin:50px;
@@ -189,112 +192,47 @@ button.is-blue:hover {
   margin:5px;
   cursor:pointer
 }
-
-
-.fader {
-  content: '';
-  position: fixed;
-  background: #1ed7a5;
-  opacity: .6;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.flex-aligner {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  height: 100vh;
-  position: relative;
-  z-index: 10;
-}
-@media (max-width: 640px) {
-  .flex-aligner {
-    display: block;
-  }
-}
-
-.zoomer {
-  position: relative;
-  width: 640px;
-  height: 640px;
-  border: 0;
-  overflow: hidden;
-  max-width: 100%;
-  max-height: 100%;
-  -webkit-transition: all .5s ease-out;
-  transition: all .5s ease-out;
-}
-.zoomer:hover {
-  cursor: move;
-}
-.zoomer:hover .normal {
-  opacity: 0;
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-}
-.zoomer:hover .plus {
-  opacity: 0;
-  -webkit-transform: scale(0.8);
-          transform: scale(0.8);
-}
-
-.img {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-color: white;
-  -webkit-transition: all ease-out .3s;
-  transition: all ease-out .3s;
-}
-
-.normal {
-  z-index: 20;
-  background-size: contain;
-}
-
-img.normal {
-  opacity: 0;
-  width: 100%;
-}
-
-.zoom {
-  z-index: 10;
-  -webkit-transition: none;
-  transition: none;
-}
-
-.plus {
-  position: absolute;
-  -webkit-transition: all ease-out .4s;
-  transition: all ease-out .4s;
-  width: 60px;
-  height: 60px;
-  z-index: 30;
-  left: calc(50% - 30px);
-  top: calc(50% - 30px);
-}
-
+/*set a border on the images to prevent shifting*/
+ #gallery_01 img{border:2px solid white;}
+ 
+ /*Change the colour*/
+ .active img{border:2px solid #333 !important;}
 
 </style>
 @endpush
 @section('content')
+
         <div class="column is-6">
           <div class="image is-2by2">
-          @foreach($product->productImage as $image)
-            <img id="zoom_01" src="{!! asset($image->name) !!}">
-          @endforeach
+            <img id="zoom_01" width="100px" src="{!! asset($product->productImage->first()->name) !!}" zoom-data-image="{!! asset($product->productImage->first()->name) !!}"></img>  
           </div>
+
+
+ <div class="slide-selectors">
+  <div id="gallery_01">
+  @foreach($product->productImage as $image)
+  <div class="slide-selector">
+    <!-- <img src="{!! asset($image->name) !!}" @click='choseImage("{!! $image->name !!}")'> -->
+   
+  <a href="#" data-image="{!! asset($image->name) !!}" data-zoom-image="{!! asset($image->name) !!}">
+    <img id="img_01" src="{!! asset($image->name) !!}" />
+  </a>
+
+
+    </div>
+     @endforeach
+     </div>
+ </div>
+     <!--  <div class="column is-2">
+           <a class="file">
+             <div class="image is-3by2">
+            <img src="{!! asset($image->name) !!}">
+            </div>
+           </a>            
+        </div> -->
+ 
+
+
           <br>
           <p>Suspendisse sodales metus justo, ullamcorper iaculis purus interdum in. Sed ultricies enim felis, in interdum urna malesuada a. Morbi id ligula vel leo elementum dignissim quis vel purus. Donec iaculis, est ac maximus vestibulum, sapien mi lacinia urna, at laoreet felis lectus nec urna. Fusce egestas, neque vitae blandit scelerisque, leo arcu pellentesque risus, et volutpat neque nunc id massa. Aenean dapibus leo vel purus malesuada, eu ultrices nulla consequat. Duis erat orci, lobortis sed dictum id, pretium a nibh. Mauris pharetra ligula consequat gravida ornare.
           </p>
@@ -361,35 +299,6 @@ img.normal {
         </div>
       </div>
 
-<img src="" />
-<div class="column is-2">
- @foreach($product->productImage as $image)
-      
-           <a class="file">
-             <div class="image is-3by2">
-            <img src="{!! asset($image->name) !!}">
-            </div>
-           </a>
-  @endforeach
-
-        </div>
-
-<img :src="imageName">
-
-<div class="slide-selectors">
-@foreach($product->productImage as $image)
-<a class="file" @click='choseImage("{!! $image->name !!}")'>
-   <div class="image is-3by2 slide-selector">
-            <img src="{!! asset($image->name) !!}">
-            </div>
-            </a>
- @endforeach
-</div>
-
-<div class="zoomer" v-on:mousemove="moveBG" ref="zoomImg">
-    <zoom img-zoom="http://www.afalchi.it/media/img/edea_.jpg" img-nornal="http://www.afalchi.it/media/img/edea_.jpg"></zoom>
-  </div>
-
  <!--    </div>
   </div> -->
   <div class="section">
@@ -426,11 +335,7 @@ img.normal {
 </div>
 @endsection
 @push('scripts')
-<script src="{{ asset('js/jquery-1.8.3.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/jquery.elevatezoom.js') }}"></script>
-<script type="text/javascript">
-  $("#zoom_01").elevateZoom();
-</script>
+
 <script type="text/javascript">
   Vue.component('input-stock',{
     template:`
@@ -482,45 +387,39 @@ img.normal {
     }
   })
 
-
-  Vue.component('zoom', {
-    props: ['imgNornal', 'imgZoom'],
-  template: `
-  <div>
-  <img src="http://www.afalchi.it/media/img/lens.png" alt="" class="plus"><div class="img normal" :style="{ 'background-image':'url('+imgNornal+')' }"></div><div class="img zoom" :style="{ 'background-image':'url('+imgZoom+')' }"></div></div>`  
-  })
-
   new Vue({
     el:"#app",
-    data:{
-      imageName:null
+     data:{
+      imageName:'{!! asset($product->productImage->first()->name) !!}'
     },
-    methods:{
+      methods:{
       choseImage(val){
         this.imageName ="{!! asset('') !!}"+"/"+val;
       },
-    moveBG: function (ev) {     
-      var self=this;
-      console.log(self.$refs.zoomImg);
-      var container = self.$refs.zoomImg;
-          imgZoom = container.childNodes[0].childNodes[2]; // MEMO: Yes, I can select this better
-      
-      
-      var e = {
-        w: imgZoom.offsetWidth,
-        h: imgZoom.offsetHeight
-      };     
-
-      var c = {
-        x: Math.round((ev.clientX - (container.offsetLeft - window.scrollX)) / (e.w / 100)),
-        y: Math.round((ev.clientY - (container.offsetTop - window.scrollY)) / (e.h / 100))
-      };
-      
-      imgZoom.style.backgroundPosition = c.x + '% ' + c.y + '%';
     }
-  }
 
   })
+</script>
+<script src="{{ asset('js/jquery-1.8.3.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery.elevatezoom.js') }}"></script>
+<script type="text/javascript">
+// $(document).ready(function(){
+//      $('#zoom_01').elevateZoom({
+//         zoomType  : "lens",
+//         lensShape : "round",
+//         lensSize  : 150
+//     });   
+// })
+
+$("#zoom_01").elevateZoom({gallery:'gallery_01', cursor: 'pointer', galleryActiveClass: 'active', imageCrossfade: true, loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif'}); 
+
+//pass the images to Fancybox
+$("#img_01").bind("click", function(e) {  
+  var ez =   $('#img_01').data('elevateZoom'); 
+  $.fancybox(ez.getGalleryList());
+  return false;
+});
+
 </script>
 @endpush
 </body>
