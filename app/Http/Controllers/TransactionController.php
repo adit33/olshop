@@ -15,6 +15,12 @@ class TransactionController extends Controller
     public function addToCart(Request $request,$id){
     	$product=Product::find($id);
 
+        $rules = [
+            'qty'=>'required|numeric|between:0,'.$product->stock
+        ];
+
+        $this->validate($request,$rules);
+
     	$data['id']=$product->id;
     	$data['name']=$product->name;
     	$data['qty']=$request->input('qty');
