@@ -123,10 +123,10 @@
 <article class="tile is-child box" :class="{ 'overlay' : isLoading }">
 <div class="field has-addons">
   <div class="control">
-    <input class="input" type="text" placeholder="Find a product">
+    <input class="input" type="text" v-model="inputSearch" placeholder="Find a product">
   </div>
   <div class="control">
-    <a class="button is-info">
+    <a @click="searchProducts" class="button is-info">
       Search
     </a>
   </div>
@@ -247,6 +247,7 @@ Vue.component('image-product',{
       // isHover:false,
        products:'',
        isLoading:true,
+       inputSearch:null,
        api:{
         url:'api/products',
        }
@@ -263,6 +264,12 @@ Vue.component('image-product',{
           });
           this.isLoading = false;
         }, 3000)
+      },
+      searchProducts(){
+        var self = this;
+        axios.get('api/products/search',{params:{ val:this.inputSearch }}).then(function(response){
+          self.products=response.data;
+        })
       }
     },
     mounted(){      

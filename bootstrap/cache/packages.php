@@ -90,4 +90,18 @@
       'Cart' => 'Gloudemans\\Shoppingcart\\Facades\\Cart',
     ),
   ),
+  'laravel/scout' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laravel\\Scout\\ScoutServiceProvider',
+    ),
+  ),
+  'yab/laravel-scout-mysql-driver' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Yab\\MySQLScout\\Providers\\MySQLScoutServiceProvider',
+    ),
+  ),
 );

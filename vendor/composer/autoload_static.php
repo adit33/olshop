@@ -11,14 +11,15 @@ class ComposerStaticInitfbea9a4951f827ab378148c17ba43d47
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '0b47d6d4a00ca9112ba3953b49e7c9a4' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/helper.php',
+        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
-        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
-        'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
-        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
+        'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        '67969b779fc2b57b79f39cdaef36a10e' => __DIR__ . '/..' . '/yab/laravel-scout-mysql-driver/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -29,6 +30,7 @@ class ComposerStaticInitfbea9a4951f827ab378148c17ba43d47
         'Y' => 
         array (
             'Yajra\\DataTables\\' => 17,
+            'Yab\\MySQLScout\\' => 15,
         ),
         'X' => 
         array (
@@ -84,6 +86,7 @@ class ComposerStaticInitfbea9a4951f827ab378148c17ba43d47
             'League\\Fractal\\' => 15,
             'League\\Flysystem\\' => 17,
             'Laravel\\Tinker\\' => 15,
+            'Laravel\\Scout\\' => 14,
         ),
         'I' => 
         array (
@@ -136,6 +139,10 @@ class ComposerStaticInitfbea9a4951f827ab378148c17ba43d47
             1 => __DIR__ . '/..' . '/yajra/laravel-datatables-fractal/src',
             2 => __DIR__ . '/..' . '/yajra/laravel-datatables-html/src',
             3 => __DIR__ . '/..' . '/yajra/laravel-datatables-buttons/src',
+        ),
+        'Yab\\MySQLScout\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yab/laravel-scout-mysql-driver/src',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -261,6 +268,10 @@ class ComposerStaticInitfbea9a4951f827ab378148c17ba43d47
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
         ),
+        'Laravel\\Scout\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravel/scout/src',
+        ),
         'Intervention\\Image\\' => 
         array (
             0 => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image',
@@ -374,6 +385,7 @@ class ComposerStaticInitfbea9a4951f827ab378148c17ba43d47
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\DataTables\\ProductDataTable' => __DIR__ . '/../..' . '/app/DataTables/ProductDataTable.php',
         'App\\DataTables\\UserDataTable' => __DIR__ . '/../..' . '/app/DataTables/UserDataTable.php',
+        'App\\DetailTransaction' => __DIR__ . '/../..' . '/app/DetailTransaction.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -383,6 +395,7 @@ class ComposerStaticInitfbea9a4951f827ab378148c17ba43d47
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\FrontController' => __DIR__ . '/../..' . '/app/Http/Controllers/FrontController.php',
         'App\\Http\\Controllers\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductController.php',
+        'App\\Http\\Controllers\\TransactionController' => __DIR__ . '/../..' . '/app/Http/Controllers/TransactionController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -390,11 +403,13 @@ class ComposerStaticInitfbea9a4951f827ab378148c17ba43d47
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\CartRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CartRequest.php',
         'App\\Http\\Requests\\ProductRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProductRequest.php',
         'App\\Http\\Requests\\UserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UserRequest.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
         'App\\Models\\ProductImage' => __DIR__ . '/../..' . '/app/Models/ProductImage.php',
+        'App\\Models\\Transaction' => __DIR__ . '/../..' . '/app/Models/Transaction.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -1948,6 +1963,19 @@ class ComposerStaticInitfbea9a4951f827ab378148c17ba43d47
         'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/ConsoleColor.php',
         'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/InvalidStyleException.php',
         'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/JakubOnderka/PhpConsoleHighlighter/Highlighter.php',
+        'Laravel\\Scout\\Builder' => __DIR__ . '/..' . '/laravel/scout/src/Builder.php',
+        'Laravel\\Scout\\Console\\FlushCommand' => __DIR__ . '/..' . '/laravel/scout/src/Console/FlushCommand.php',
+        'Laravel\\Scout\\Console\\ImportCommand' => __DIR__ . '/..' . '/laravel/scout/src/Console/ImportCommand.php',
+        'Laravel\\Scout\\EngineManager' => __DIR__ . '/..' . '/laravel/scout/src/EngineManager.php',
+        'Laravel\\Scout\\Engines\\AlgoliaEngine' => __DIR__ . '/..' . '/laravel/scout/src/Engines/AlgoliaEngine.php',
+        'Laravel\\Scout\\Engines\\Engine' => __DIR__ . '/..' . '/laravel/scout/src/Engines/Engine.php',
+        'Laravel\\Scout\\Engines\\NullEngine' => __DIR__ . '/..' . '/laravel/scout/src/Engines/NullEngine.php',
+        'Laravel\\Scout\\Events\\ModelsImported' => __DIR__ . '/..' . '/laravel/scout/src/Events/ModelsImported.php',
+        'Laravel\\Scout\\Jobs\\MakeSearchable' => __DIR__ . '/..' . '/laravel/scout/src/Jobs/MakeSearchable.php',
+        'Laravel\\Scout\\ModelObserver' => __DIR__ . '/..' . '/laravel/scout/src/ModelObserver.php',
+        'Laravel\\Scout\\ScoutServiceProvider' => __DIR__ . '/..' . '/laravel/scout/src/ScoutServiceProvider.php',
+        'Laravel\\Scout\\Searchable' => __DIR__ . '/..' . '/laravel/scout/src/Searchable.php',
+        'Laravel\\Scout\\SearchableScope' => __DIR__ . '/..' . '/laravel/scout/src/SearchableScope.php',
         'Laravel\\Tinker\\ClassAliasAutoloader' => __DIR__ . '/..' . '/laravel/tinker/src/ClassAliasAutoloader.php',
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',
@@ -3997,6 +4025,21 @@ class ComposerStaticInitfbea9a4951f827ab378148c17ba43d47
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
+        'Yab\\MySQLScout\\Commands\\ManageIndexes' => __DIR__ . '/..' . '/yab/laravel-scout-mysql-driver/src/Commands/ManageIndexes.php',
+        'Yab\\MySQLScout\\Engines\\Modes\\Boolean' => __DIR__ . '/..' . '/yab/laravel-scout-mysql-driver/src/Engines/Modes/Boolean.php',
+        'Yab\\MySQLScout\\Engines\\Modes\\Like' => __DIR__ . '/..' . '/yab/laravel-scout-mysql-driver/src/Engines/Modes/Like.php',
+        'Yab\\MySQLScout\\Engines\\Modes\\LikeExpanded' => __DIR__ . '/..' . '/yab/laravel-scout-mysql-driver/src/Engines/Modes/LikeExpanded.php',
+        'Yab\\MySQLScout\\Engines\\Modes\\Mode' => __DIR__ . '/..' . '/yab/laravel-scout-mysql-driver/src/Engines/Modes/Mode.php',
+        'Yab\\MySQLScout\\Engines\\Modes\\ModeContainer' => __DIR__ . '/..' . '/yab/laravel-scout-mysql-driver/src/Engines/Modes/ModeContainer.php',
+        'Yab\\MySQLScout\\Engines\\Modes\\NaturalLanguage' => __DIR__ . '/..' . '/yab/laravel-scout-mysql-driver/src/Engines/Modes/NaturalLanguage.php',
+        'Yab\\MySQLScout\\Engines\\MySQLEngine' => __DIR__ . '/..' . '/yab/laravel-scout-mysql-driver/src/Engines/MySQLEngine.php',
+        'Yab\\MySQLScout\\Events\\ModelIndexCreated' => __DIR__ . '/..' . '/yab/laravel-scout-mysql-driver/src/Events/ModelIndexCreated.php',
+        'Yab\\MySQLScout\\Events\\ModelIndexDropped' => __DIR__ . '/..' . '/yab/laravel-scout-mysql-driver/src/Events/ModelIndexDropped.php',
+        'Yab\\MySQLScout\\Events\\ModelIndexIgnored' => __DIR__ . '/..' . '/yab/laravel-scout-mysql-driver/src/Events/ModelIndexIgnored.php',
+        'Yab\\MySQLScout\\Events\\ModelIndexUpdated' => __DIR__ . '/..' . '/yab/laravel-scout-mysql-driver/src/Events/ModelIndexUpdated.php',
+        'Yab\\MySQLScout\\Providers\\MySQLScoutServiceProvider' => __DIR__ . '/..' . '/yab/laravel-scout-mysql-driver/src/Providers/MySQLScoutServiceProvider.php',
+        'Yab\\MySQLScout\\Services\\IndexService' => __DIR__ . '/..' . '/yab/laravel-scout-mysql-driver/src/Services/IndexService.php',
+        'Yab\\MySQLScout\\Services\\ModelService' => __DIR__ . '/..' . '/yab/laravel-scout-mysql-driver/src/Services/ModelService.php',
         'Yajra\\DataTables\\ButtonsServiceProvider' => __DIR__ . '/..' . '/yajra/laravel-datatables-buttons/src/ButtonsServiceProvider.php',
         'Yajra\\DataTables\\CollectionDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/CollectionDataTable.php',
         'Yajra\\DataTables\\Contracts\\DataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Contracts/DataTable.php',
