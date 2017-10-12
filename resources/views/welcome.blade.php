@@ -62,18 +62,20 @@
     transition: background-color 0;
     background-color: #FFFFFF;
 }
-.loading {
-    background-color: #FFF;
+#loading {
     background-image: url("img/loading.gif");
     background-repeat: no-repeat;
     background-position: center;
-    z-index: 1000;
-    -webkit-transition: background-color 0;
-    transition: background-color 0;
-    background-size: 120px 80px;
+    z-index: 20;
 }
 .hide{
   z-index: -1;
+}
+.overlay {
+    background: #e9e9e9;
+    /*display: none;*/
+  
+    opacity: 0.5;
 }
 </style>
 @endpush
@@ -118,8 +120,7 @@
   </div>
   </div>
   </article> -->
-<article class="tile is-child box">
-<h1>TEST</h1>
+<article class="tile is-child box" :class="{ 'overlay' : isLoading }">
 <div class="field has-addons">
   <div class="control">
     <input class="input" type="text" placeholder="Find a product">
@@ -130,10 +131,13 @@
     </a>
   </div>
 </div>
+ 
 <div class="columns is-multiline">
-      <div class="column is-4" v-for="product in products.data">
+<img v-if="isLoading" src="{!! asset('img/loading.gif') !!}" style="display: block; margin: 0 auto;" />
+      <div class="column is-4" v-for="product in products.data" v-if="! isLoading">
 <card-product :product="product"></card-product>
       </div>
+  
 </div>
  <nav class="pagination is-centered" role="navigation" aria-label="pagination">
   <a class="pagination-previous" @click="getProducts(products.prev_page_url)">Previous</a>
@@ -249,20 +253,21 @@ Vue.component('image-product',{
     },
     methods:{
       getProducts:function(url){
-        console.log(url);
-        var self=this;
-        axios.get(url).then(function(response){
-          self.products=response.data;
-        }).catch(function (error) {
-          console.log(error);
-        });
+        this.isLoading = true;
+        var self=this;        
+          setTimeout(() => {
+          axios.get(url).then(function(response){
+            self.products=response.data;
+          }).catch(function (error) {
+            console.log(error);
+          });
+          this.isLoading = false;
+        }, 3000)
       }
     },
     mounted(){      
-        // setTimeout(() => {
         this.getProducts(this.api.url)
-      // }, 3000)
-    }
+    }  
   })
 </script>
 @endpush
