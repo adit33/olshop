@@ -62,19 +62,11 @@
     transition: background-color 0;
     background-color: #FFFFFF;
 }
-#loading {
-    background-image: url("img/loading.gif");
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 20;
-}
 .hide{
   z-index: -1;
 }
 .overlay {
     background: #e9e9e9;
-    /*display: none;*/
-  
     opacity: 0.5;
 }
 </style>
@@ -120,7 +112,7 @@
   </div>
   </div>
   </article> -->
-<article class="tile is-child box" :class="{ 'overlay' : isLoading }">
+<article class="tile is-child box">
 <div class="field has-addons">
   <div class="control">
     <input class="input" type="text" v-model="inputSearch" placeholder="Find a product">
@@ -131,6 +123,25 @@
     </a>
   </div>
 </div>
+
+<layout @changed="changeLayout"></layout>
+
+<div class="field">
+  <label class="label">Sort By</label>
+  <div class="control">
+    <div class="select">
+      <select>
+        <option>Select dropdown</option>
+        <option>Harga Termurah</option>
+        <option>Harga Termahal</option>
+        <option>Nama A-Z</option>
+        <option>Nama Z-A</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<hr>
  
 <div class="columns is-multiline">
 <img v-if="isLoading" src="{!! asset('img/loading.gif') !!}" style="display: block; margin: 0 auto;" />
@@ -158,6 +169,34 @@
 
 @push('scripts')
 <script type="text/javascript">
+Vue.component('layout',{
+  template:
+  `<div>
+    <a href="#" @click="changeLayout">
+      <span class="icon">
+     <i class="fa fa-bars"></i>
+    </span>  
+    </a>
+
+    <a href="#" @click="changeLayout">
+      <span class="icon">
+     <i class="fa fa-th-large"></i>
+    </span>  
+    </a>
+  </div>`,
+  data(){
+    return{
+      layout:'grid',
+    }
+  },
+  methods:{
+    changeLayout(){
+      this.$emit('changed');
+    }
+  }
+});
+
+
 Vue.component('image-product',{
   template:`<img v-bind:src=imgSrc v-on:mouseover="hoverCard" v-on:mouseleave="hoverCard" v-bind:class="{ '':isHover,'hover':!isHover }" />`,
   props:['imgSrc'],
@@ -270,6 +309,12 @@ Vue.component('image-product',{
         axios.get('api/products/search',{params:{ val:this.inputSearch }}).then(function(response){
           self.products=response.data;
         })
+      },
+      changeLayout(){
+        alert('changed')
+      },
+      sortProducts(){
+        var self=this;
       }
     },
     mounted(){      

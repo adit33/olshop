@@ -29,4 +29,4 @@ Route::POST('addtocart/{product_id}',['uses'=>'TransactionController@addToCart',
 
 Route::GET('cart','TransactionController@getCart');
 
-
+Route::resource('category','CategoryController');
