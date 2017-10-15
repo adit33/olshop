@@ -31,6 +31,7 @@
     27 => 'Collective\\Html\\HtmlServiceProvider',
     28 => 'Yajra\\DataTables\\HtmlServiceProvider',
 <<<<<<< HEAD
+<<<<<<< HEAD
     29 => 'Yajra\\DataTables\\FractalServiceProvider',
     30 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
     31 => 'Yajra\\DataTables\\ButtonsServiceProvider',
@@ -42,6 +43,8 @@
     37 => 'Collective\\Html\\HtmlServiceProvider',
     38 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
 =======
+=======
+>>>>>>> 2c3ff047fca9ded6d47ff5775cb7df09c05de16e
     29 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
     30 => 'Yajra\\DataTables\\ButtonsServiceProvider',
     31 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
@@ -56,6 +59,9 @@
     40 => 'App\\Providers\\RouteServiceProvider',
     41 => 'Collective\\Html\\HtmlServiceProvider',
     42 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
+<<<<<<< HEAD
+>>>>>>> 2c3ff047fca9ded6d47ff5775cb7df09c05de16e
+=======
 >>>>>>> 2c3ff047fca9ded6d47ff5775cb7df09c05de16e
   ),
   'eager' => 
@@ -76,6 +82,7 @@
     13 => 'Yajra\\DataTables\\DataTablesServiceProvider',
     14 => 'Yajra\\DataTables\\HtmlServiceProvider',
 <<<<<<< HEAD
+<<<<<<< HEAD
     15 => 'Yajra\\DataTables\\FractalServiceProvider',
     16 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
     17 => 'Yajra\\DataTables\\ButtonsServiceProvider',
@@ -86,6 +93,8 @@
     22 => 'App\\Providers\\RouteServiceProvider',
     23 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
 =======
+=======
+>>>>>>> 2c3ff047fca9ded6d47ff5775cb7df09c05de16e
     15 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
     16 => 'Yajra\\DataTables\\ButtonsServiceProvider',
     17 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
@@ -99,6 +108,9 @@
     25 => 'App\\Providers\\EventServiceProvider',
     26 => 'App\\Providers\\RouteServiceProvider',
     27 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
+<<<<<<< HEAD
+>>>>>>> 2c3ff047fca9ded6d47ff5775cb7df09c05de16e
+=======
 >>>>>>> 2c3ff047fca9ded6d47ff5775cb7df09c05de16e
   ),
   'deferred' => 

@@ -12,6 +12,9 @@ return array(
 =======
     'Yajra\\DataTables\\' => array($vendorDir . '/yajra/laravel-datatables-oracle/src', $vendorDir . '/yajra/laravel-datatables-fractal/src', $vendorDir . '/yajra/laravel-datatables-html/src', $vendorDir . '/yajra/laravel-datatables-buttons/src'),
     'Yab\\MySQLScout\\' => array($vendorDir . '/yab/laravel-scout-mysql-driver/src'),
+<<<<<<< HEAD
+>>>>>>> 2c3ff047fca9ded6d47ff5775cb7df09c05de16e
+=======
 >>>>>>> 2c3ff047fca9ded6d47ff5775cb7df09c05de16e
     'XdgBaseDir\\' => array($vendorDir . '/dnoegel/php-xdg-base-dir/src'),
     'Whoops\\' => array($vendorDir . '/filp/whoops/src/Whoops'),

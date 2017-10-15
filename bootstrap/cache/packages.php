@@ -117,5 +117,8 @@
       0 => 'Yab\\MySQLScout\\Providers\\MySQLScoutServiceProvider',
     ),
   ),
+<<<<<<< HEAD
+>>>>>>> 2c3ff047fca9ded6d47ff5775cb7df09c05de16e
+=======
 >>>>>>> 2c3ff047fca9ded6d47ff5775cb7df09c05de16e
 );
