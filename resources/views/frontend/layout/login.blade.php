@@ -2,7 +2,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login - Free Bulma template</title>
+  <title>Register</title>
   <link rel="stylesheet" type="text/css" href="{{ asset('css/bulma.css') }}">
 </head>
 <body class="layout-default">
@@ -10,16 +10,12 @@
   <section class="hero is-fullheight is-medium is-primary is-bold">
         <div class="hero-body">
           <div class="container">
-           @if(Session::has('errors'))
-           <message message="{!! session('errors') !!}"></message>
-           @endif
-
+          @include('frontend.layout._flash')
             <div class="columns is-centered">
               <article class="card is-rounded">
                 {!! Form::open(['url'=>route('auth')]) !!}
                 <div class="card-content">
-                  <h1 class="title">
-                                   
+                  <h1 class="title">                                   
                     <img src="https://placeholdit.imgix.net/~text?txtsize=13&txt=150%C3%9750&w=150&h=50" alt="logo" width="200">
                   </h1>
                   <label>E-mail</label>

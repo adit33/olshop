@@ -25,7 +25,13 @@
           <a class="navbar-item is-tab is-hidden-tablet">Features</a>
           <a class="navbar-item is-tab is-hidden-tablet">Pricing</a>
           <a class="navbar-item is-tab is-hidden-tablet">About</a>
-          <a class="navbar-item nav-tag">              
+          <a class="navbar-item nav-tag">
+          <span class="icon is-large">
+  <span class="fa-stack fa-lg">
+    <i class="fa fa-camera fa-stack-1x"></i>
+    <i class="fa fa-ban fa-stack-2x has-text-danger"></i>
+  </span>
+</span>              
             <span class="icon is-small">
               <i class="fa fa-envelope-o"></i>
             </span>
@@ -47,7 +53,7 @@
                   Profile
                 </a>
                 <hr class="navbar-divider">
-                <a class="navbar-item">
+                <a href="{!! route('logout') !!}" class="navbar-item">
                   <span class="icon is-small">
                     <i class="fa fa-power-off"></i>
                   </span>

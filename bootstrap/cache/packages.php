@@ -90,4 +90,32 @@
       0 => 'Yajra\\DataTables\\ButtonsServiceProvider',
     ),
   ),
+<<<<<<< HEAD
+=======
+  'gloudemans/shoppingcart' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Cart' => 'Gloudemans\\Shoppingcart\\Facades\\Cart',
+    ),
+  ),
+  'laravel/scout' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laravel\\Scout\\ScoutServiceProvider',
+    ),
+  ),
+  'yab/laravel-scout-mysql-driver' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Yab\\MySQLScout\\Providers\\MySQLScoutServiceProvider',
+    ),
+  ),
+>>>>>>> 2c3ff047fca9ded6d47ff5775cb7df09c05de16e
 );

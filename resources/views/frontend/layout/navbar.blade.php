@@ -27,14 +27,14 @@
           <a class="navbar-item is-tab is-hidden-tablet">About</a>
           <a class="navbar-item nav-tag">              
             <span class="icon is-small">
-              <i class="fa fa-envelope-o"></i>
+              <i class="fa fa-shopping-cart"></i>
             </span>
-            <span class="tag is-primary tag-notif">6</span>
+            <span class="tag is-primary tag-notif">{!! Cart::count() !!}</span>
           </a>  
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">              
               <figure class="image is-32x32" style="margin-right:.5em;">
-                <img src="https://avatars1.githubusercontent.com/u/7221389?v=4&s=32">
+                <!-- <img src="https://avatars1.githubusercontent.com/u/7221389?v=4&s=32"> -->
               </figure>
               mazipan
             </a>

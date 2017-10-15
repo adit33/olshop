@@ -62,18 +62,12 @@
     transition: background-color 0;
     background-color: #FFFFFF;
 }
-.loading {
-    background-color: #FFF;
-    background-image: url("img/loading.gif");
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 1000;
-    -webkit-transition: background-color 0;
-    transition: background-color 0;
-    background-size: 120px 80px;
-}
 .hide{
   z-index: -1;
+}
+.overlay {
+    background: #e9e9e9;
+    opacity: 0.5;
 }
 </style>
 @endpush
@@ -119,21 +113,42 @@
   </div>
   </article> -->
 <article class="tile is-child box">
-<h1>TEST</h1>
 <div class="field has-addons">
   <div class="control">
-    <input class="input" type="text" placeholder="Find a product">
+    <input class="input" type="text" v-model="inputSearch" placeholder="Find a product">
   </div>
   <div class="control">
-    <a class="button is-info">
+    <a @click="searchProducts" class="button is-info">
       Search
     </a>
   </div>
 </div>
+
+<layout @changed="changeLayout"></layout>
+
+<div class="field">
+  <label class="label">Sort By</label>
+  <div class="control">
+    <div class="select">
+      <select>
+        <option>Select dropdown</option>
+        <option>Harga Termurah</option>
+        <option>Harga Termahal</option>
+        <option>Nama A-Z</option>
+        <option>Nama Z-A</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<hr>
+ 
 <div class="columns is-multiline">
-      <div class="column is-4" v-for="product in products.data">
+<img v-if="isLoading" src="{!! asset('img/loading.gif') !!}" style="display: block; margin: 0 auto;" />
+      <div class="column is-4" v-for="product in products.data" v-if="! isLoading">
 <card-product :product="product"></card-product>
       </div>
+  
 </div>
  <nav class="pagination is-centered" role="navigation" aria-label="pagination">
   <a class="pagination-previous" @click="getProducts(products.prev_page_url)">Previous</a>
@@ -154,6 +169,34 @@
 
 @push('scripts')
 <script type="text/javascript">
+Vue.component('layout',{
+  template:
+  `<div>
+    <a href="#" @click="changeLayout">
+      <span class="icon">
+     <i class="fa fa-bars"></i>
+    </span>  
+    </a>
+
+    <a href="#" @click="changeLayout">
+      <span class="icon">
+     <i class="fa fa-th-large"></i>
+    </span>  
+    </a>
+  </div>`,
+  data(){
+    return{
+      layout:'grid',
+    }
+  },
+  methods:{
+    changeLayout(){
+      this.$emit('changed');
+    }
+  }
+});
+
+
 Vue.component('image-product',{
   template:`<img v-bind:src=imgSrc v-on:mouseover="hoverCard" v-on:mouseleave="hoverCard" v-bind:class="{ '':isHover,'hover':!isHover }" />`,
   props:['imgSrc'],
@@ -243,26 +286,40 @@ Vue.component('image-product',{
       // isHover:false,
        products:'',
        isLoading:true,
+       inputSearch:null,
        api:{
         url:'api/products',
        }
     },
     methods:{
       getProducts:function(url){
-        console.log(url);
-        var self=this;
-        axios.get(url).then(function(response){
+        this.isLoading = true;
+        var self=this;        
+          setTimeout(() => {
+          axios.get(url).then(function(response){
+            self.products=response.data;
+          }).catch(function (error) {
+            console.log(error);
+          });
+          this.isLoading = false;
+        }, 3000)
+      },
+      searchProducts(){
+        var self = this;
+        axios.get('api/products/search',{params:{ val:this.inputSearch }}).then(function(response){
           self.products=response.data;
-        }).catch(function (error) {
-          console.log(error);
-        });
+        })
+      },
+      changeLayout(){
+        alert('changed')
+      },
+      sortProducts(){
+        var self=this;
       }
     },
     mounted(){      
-        // setTimeout(() => {
         this.getProducts(this.api.url)
-      // }, 3000)
-    }
+    }  
   })
 </script>
 @endpush

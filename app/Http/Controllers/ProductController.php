@@ -45,4 +45,11 @@ class ProductController extends Controller
         $products=Product::with('productImage')->paginate(3);
         return response()->json($products);       
     }
+
+    public function searchProducts(Request $request){
+        $value=$request->input('val');
+         $products=Product::search($value)->paginate(3);
+         $products->load('productImage');
+        return response()->json($products);  
+    }
 }
