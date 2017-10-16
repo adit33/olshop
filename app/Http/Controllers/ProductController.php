@@ -26,7 +26,14 @@ class ProductController extends Controller
     public function store(ProductRequest $request){
     	$product_image=new ProductImage;
     	$data=$request->all();
+        $categories_id=$request->input('category_id');
     	$product=Product::create($data);
+
+        foreach ($categories_id as $category_id) {
+            $product->categories()->attach($category_id);
+        }
+
+        
 
     	if ($request->hasFile('file')) {
 	    	foreach ($request->file('file') as $image) {

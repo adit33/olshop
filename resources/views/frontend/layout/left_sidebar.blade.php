@@ -29,13 +29,9 @@
     <li><a>Authentication</a></li>
   </ul>
   <p class="menu-label">
-    Transactions
+    Category
   </p>
-  <ul class="menu-list">
-    <li><a>Payments</a></li>
-    <li><a>Transfers</a></li>
-    <li><a>Balance</a></li>
-  </ul>
+  <list-category></list-category>
   </aside>
   </div>
   </nav>

@@ -20,6 +20,8 @@ Vue.component('tab',require('./components/Tab.vue'));
 
 Vue.component('tabs',require('./components/Tabs.vue'));
 
+Vue.component('list-category',require('./components/ListCategory.vue'));
+
 Vue.component('carousel',require('./components/product/ImageCarousel.vue'));
 
 Vue.component('message', require('./components/Message.vue'));

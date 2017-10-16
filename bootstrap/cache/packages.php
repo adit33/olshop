@@ -13,17 +13,6 @@
       0 => 'Laravel\\Tinker\\TinkerServiceProvider',
     ),
   ),
-  'gloudemans/shoppingcart' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Cart' => 'Gloudemans\\Shoppingcart\\Facades\\Cart',
-    ),
-  ),
   'intervention/image' => 
   array (
     'providers' => 
@@ -90,19 +79,6 @@
       0 => 'Yajra\\DataTables\\ButtonsServiceProvider',
     ),
   ),
-<<<<<<< HEAD
-=======
-  'gloudemans/shoppingcart' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Cart' => 'Gloudemans\\Shoppingcart\\Facades\\Cart',
-    ),
-  ),
   'laravel/scout' => 
   array (
     'providers' => 
@@ -117,8 +93,15 @@
       0 => 'Yab\\MySQLScout\\Providers\\MySQLScoutServiceProvider',
     ),
   ),
-<<<<<<< HEAD
->>>>>>> 2c3ff047fca9ded6d47ff5775cb7df09c05de16e
-=======
->>>>>>> 2c3ff047fca9ded6d47ff5775cb7df09c05de16e
+  'gloudemans/shoppingcart' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Cart' => 'Gloudemans\\Shoppingcart\\Facades\\Cart',
+    ),
+  ),
 );
