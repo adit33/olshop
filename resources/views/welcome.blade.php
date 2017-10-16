@@ -115,7 +115,7 @@
 <article class="tile is-child box">
 <div class="field has-addons">
   <div class="control">
-    <input class="input" type="text" v-model="inputSearch" placeholder="Find a product">
+    <input class="input" @blur="searchProducts" type="text" v-model="inputSearch" placeholder="Find a product">
   </div>
   <div class="control">
     <a @click="searchProducts" class="button is-info">
@@ -145,7 +145,7 @@
  
 <div class="columns is-multiline">
 <img v-if="isLoading" src="{!! asset('img/loading.gif') !!}" style="display: block; margin: 0 auto;" />
-      <div class="column is-4" v-for="product in products.data" v-if="! isLoading">
+      <div class="column" :class="{ 'is-4' : layout == 'grid' ,'is-12' : layout == 'list' }" v-for="product in products.data" v-if="! isLoading">
 <card-product :product="product"></card-product>
       </div>
   
@@ -172,13 +172,13 @@
 Vue.component('layout',{
   template:
   `<div>
-    <a href="#" @click="changeLayout">
+    <a href="#" @click="changeLayout('grid')">
       <span class="icon">
      <i class="fa fa-bars"></i>
     </span>  
     </a>
 
-    <a href="#" @click="changeLayout">
+    <a href="#" @click="changeLayout('list')">
       <span class="icon">
      <i class="fa fa-th-large"></i>
     </span>  
@@ -190,8 +190,8 @@ Vue.component('layout',{
     }
   },
   methods:{
-    changeLayout(){
-      this.$emit('changed');
+    changeLayout(layout){
+      this.$emit('changed',layout);
     }
   }
 });
@@ -287,6 +287,7 @@ Vue.component('image-product',{
        products:'',
        isLoading:true,
        inputSearch:null,
+       layout:'grid',
        api:{
         url:'api/products',
        }
@@ -310,8 +311,8 @@ Vue.component('image-product',{
           self.products=response.data;
         })
       },
-      changeLayout(){
-        alert('changed')
+      changeLayout(layout){
+          this.layout = layout ;
       },
       sortProducts(){
         var self=this;
