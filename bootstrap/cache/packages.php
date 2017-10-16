@@ -13,16 +13,15 @@
       0 => 'Laravel\\Tinker\\TinkerServiceProvider',
     ),
   ),
-  'laravelcollective/html' => 
+  'gloudemans/shoppingcart' => 
   array (
     'providers' => 
     array (
-      0 => 'Collective\\Html\\HtmlServiceProvider',
+      0 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
     ),
     'aliases' => 
     array (
-      'Form' => 'Collective\\Html\\FormFacade',
-      'Html' => 'Collective\\Html\\HtmlFacade',
+      'Cart' => 'Gloudemans\\Shoppingcart\\Facades\\Cart',
     ),
   ),
   'intervention/image' => 
@@ -47,11 +46,16 @@
       'DataTables' => 'Yajra\\DataTables\\Facades\\DataTables',
     ),
   ),
-  'yajra/laravel-datatables-fractal' => 
+  'laravelcollective/html' => 
   array (
     'providers' => 
     array (
-      0 => 'Yajra\\DataTables\\FractalServiceProvider',
+      0 => 'Collective\\Html\\HtmlServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Form' => 'Collective\\Html\\FormFacade',
+      'Html' => 'Collective\\Html\\HtmlFacade',
     ),
   ),
   'yajra/laravel-datatables-html' => 
@@ -59,6 +63,13 @@
     'providers' => 
     array (
       0 => 'Yajra\\DataTables\\HtmlServiceProvider',
+    ),
+  ),
+  'yajra/laravel-datatables-fractal' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Yajra\\DataTables\\FractalServiceProvider',
     ),
   ),
   'maatwebsite/excel' => 
@@ -79,6 +90,8 @@
       0 => 'Yajra\\DataTables\\ButtonsServiceProvider',
     ),
   ),
+<<<<<<< HEAD
+=======
   'gloudemans/shoppingcart' => 
   array (
     'providers' => 
@@ -104,4 +117,8 @@
       0 => 'Yab\\MySQLScout\\Providers\\MySQLScoutServiceProvider',
     ),
   ),
+<<<<<<< HEAD
+>>>>>>> 2c3ff047fca9ded6d47ff5775cb7df09c05de16e
+=======
+>>>>>>> 2c3ff047fca9ded6d47ff5775cb7df09c05de16e
 );

@@ -25,11 +25,26 @@
     21 => 'Illuminate\\View\\ViewServiceProvider',
     22 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
     23 => 'Laravel\\Tinker\\TinkerServiceProvider',
-    24 => 'Collective\\Html\\HtmlServiceProvider',
+    24 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
     25 => 'Intervention\\Image\\ImageServiceProvider',
     26 => 'Yajra\\DataTables\\DataTablesServiceProvider',
-    27 => 'Yajra\\DataTables\\FractalServiceProvider',
+    27 => 'Collective\\Html\\HtmlServiceProvider',
     28 => 'Yajra\\DataTables\\HtmlServiceProvider',
+<<<<<<< HEAD
+<<<<<<< HEAD
+    29 => 'Yajra\\DataTables\\FractalServiceProvider',
+    30 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
+    31 => 'Yajra\\DataTables\\ButtonsServiceProvider',
+    32 => 'Intervention\\Image\\ImageServiceProvider',
+    33 => 'App\\Providers\\AppServiceProvider',
+    34 => 'App\\Providers\\AuthServiceProvider',
+    35 => 'App\\Providers\\EventServiceProvider',
+    36 => 'App\\Providers\\RouteServiceProvider',
+    37 => 'Collective\\Html\\HtmlServiceProvider',
+    38 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
+=======
+=======
+>>>>>>> 2c3ff047fca9ded6d47ff5775cb7df09c05de16e
     29 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
     30 => 'Yajra\\DataTables\\ButtonsServiceProvider',
     31 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
@@ -44,6 +59,10 @@
     40 => 'App\\Providers\\RouteServiceProvider',
     41 => 'Collective\\Html\\HtmlServiceProvider',
     42 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
+<<<<<<< HEAD
+>>>>>>> 2c3ff047fca9ded6d47ff5775cb7df09c05de16e
+=======
+>>>>>>> 2c3ff047fca9ded6d47ff5775cb7df09c05de16e
   ),
   'eager' => 
   array (
@@ -58,10 +77,24 @@
     8 => 'Illuminate\\Session\\SessionServiceProvider',
     9 => 'Illuminate\\View\\ViewServiceProvider',
     10 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
-    11 => 'Intervention\\Image\\ImageServiceProvider',
-    12 => 'Yajra\\DataTables\\DataTablesServiceProvider',
-    13 => 'Yajra\\DataTables\\FractalServiceProvider',
+    11 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
+    12 => 'Intervention\\Image\\ImageServiceProvider',
+    13 => 'Yajra\\DataTables\\DataTablesServiceProvider',
     14 => 'Yajra\\DataTables\\HtmlServiceProvider',
+<<<<<<< HEAD
+<<<<<<< HEAD
+    15 => 'Yajra\\DataTables\\FractalServiceProvider',
+    16 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
+    17 => 'Yajra\\DataTables\\ButtonsServiceProvider',
+    18 => 'Intervention\\Image\\ImageServiceProvider',
+    19 => 'App\\Providers\\AppServiceProvider',
+    20 => 'App\\Providers\\AuthServiceProvider',
+    21 => 'App\\Providers\\EventServiceProvider',
+    22 => 'App\\Providers\\RouteServiceProvider',
+    23 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
+=======
+=======
+>>>>>>> 2c3ff047fca9ded6d47ff5775cb7df09c05de16e
     15 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
     16 => 'Yajra\\DataTables\\ButtonsServiceProvider',
     17 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
@@ -75,6 +108,10 @@
     25 => 'App\\Providers\\EventServiceProvider',
     26 => 'App\\Providers\\RouteServiceProvider',
     27 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
+<<<<<<< HEAD
+>>>>>>> 2c3ff047fca9ded6d47ff5775cb7df09c05de16e
+=======
+>>>>>>> 2c3ff047fca9ded6d47ff5775cb7df09c05de16e
   ),
   'deferred' => 
   array (

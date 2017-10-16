@@ -11,9 +11,21 @@ class ComposerStaticInitfbea9a4951f827ab378148c17ba43d47
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '0b47d6d4a00ca9112ba3953b49e7c9a4' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/helper.php',
+<<<<<<< HEAD
+<<<<<<< HEAD
+        'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
+        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
+        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
+=======
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
+>>>>>>> 2c3ff047fca9ded6d47ff5775cb7df09c05de16e
+=======
+        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
+        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
+        'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
+>>>>>>> 2c3ff047fca9ded6d47ff5775cb7df09c05de16e
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
@@ -136,8 +148,8 @@ class ComposerStaticInitfbea9a4951f827ab378148c17ba43d47
         'Yajra\\DataTables\\' => 
         array (
             0 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
-            1 => __DIR__ . '/..' . '/yajra/laravel-datatables-fractal/src',
-            2 => __DIR__ . '/..' . '/yajra/laravel-datatables-html/src',
+            1 => __DIR__ . '/..' . '/yajra/laravel-datatables-html/src',
+            2 => __DIR__ . '/..' . '/yajra/laravel-datatables-fractal/src',
             3 => __DIR__ . '/..' . '/yajra/laravel-datatables-buttons/src',
         ),
         'Yab\\MySQLScout\\' => 
