@@ -111,16 +111,6 @@
   </div>
   </article> -->
 <article class="tile is-child box">
-<div class="field has-addons">
-  <div class="control">
-    <input class="input" @blur="searchProducts" type="text" v-model="inputSearch" placeholder="Find a product">
-  </div>
-  <div class="control">
-    <a @click="searchProducts" class="button is-info">
-      Search
-    </a>
-  </div>
-</div>
 
 <layout @changed="changeLayout"></layout>
 
@@ -294,21 +284,19 @@ Vue.component('image-product',{
     },
     methods:{
       getProducts:function(url){
-        this.isLoading = true;
-        var self=this;        
+        this.isLoading = true;  
           setTimeout(() => {
-          axios.get(url).then(function(response){
-            self.products=response.data;
-          }).catch(function (error) {
+          axios.get(url).then((response)=>{
+            this.products=response.data;
+          }).catch((error) =>{
             console.log(error);
           });
           this.isLoading = false;
         }, 3000)
       },
       searchProducts(){
-        var self = this;
-        axios.get('api/products/search',{params:{ val:this.inputSearch }}).then(function(response){
-          self.products=response.data;
+        axios.get('api/products/search',{params:{ val:this.inputSearch }}).then((response)=>{
+          this.products=response.data;
         })
       },
       changeLayout(layout){
@@ -316,9 +304,8 @@ Vue.component('image-product',{
       },
       filterProducts(){
         var url='api/products/filter';
-        var self=this;
-        axios.get(url,{params:{order:this.order,categories:this.categories}}).then(function(response){
-          self.products=response.data;
+        axios.get(url,{params:{order:this.order,categories:this.categories}}).then((response)=>{
+          this.products=response.data;
         });
       }
     },

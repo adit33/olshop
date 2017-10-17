@@ -19,6 +19,18 @@
 
         </div>
 
+        <div class="navbar-item">
+          <div class="field has-addons">
+  <div class="control">
+    <input class="input" @blur="searchProducts" type="text" v-model="inputSearch" placeholder="Find a product">
+  </div>
+  <div class="control">
+    <a @click="searchProducts" class="button is-info">
+      Search
+    </a>
+  </div>
+</div>
+        </div>
 
         <div class="navbar-menu navbar-end" id="navMenu">
           <a class="navbar-item is-tab is-hidden-tablet is-active">Home</a>
