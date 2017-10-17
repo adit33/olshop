@@ -59,4 +59,25 @@ class ProductController extends Controller
          $products->load('productImage');
         return response()->json($products);  
     }
+
+    public function filterProducts(Request $request){
+
+        $order=$request->input('order');
+        $categories=$request->input('categories');
+        $arr_order=explode(',',$order);
+
+        $products=Product::with('productImage','categories')
+        ->when($categories,function($query) use ($categories){
+            return $query->whereHas('categories',function($query) use ($categories){
+                return $query->whereIn('category_id',$categories);
+            });
+        })
+        ->when($order,function($query) use ($arr_order){
+            return $query->orderBY($arr_order[0],$arr_order[1]);
+        })
+        ->paginate(3);
+        
+
+        return $products;
+    }
 }

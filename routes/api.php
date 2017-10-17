@@ -20,3 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('products','ProductController@getProducts');
 
 Route::get('products/search','ProductController@searchProducts');
+
+Route::get('categories',['uses'=>'CategoryController@getCategories','as'=>'categories']);
+
+Route::get('products/filter','ProductController@filterProducts');

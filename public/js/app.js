@@ -46339,10 +46339,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
-		return {
-			categories: JSON.parse('{!! App\Models\Category::all()->toJson() !!}')
-		};
-	}
+		return {};
+	},
+
+	props: ['categories'],
+	methods: {}
 });
 
 /***/ }),
@@ -46353,7 +46354,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('ul', {
     staticClass: "menu-list"
   }, _vm._l((_vm.categories), function(category) {
-    return _c('li', [_vm._v(_vm._s(category.name))])
+    return _c('li', [_c('input', {
+      attrs: {
+        "type": "checkbox",
+        "name": "category_id[]"
+      },
+      domProps: {
+        "value": category.id
+      }
+    }), _vm._v(_vm._s(category.name))])
   }))
 },staticRenderFns: []}
 module.exports.render._withStripped = true

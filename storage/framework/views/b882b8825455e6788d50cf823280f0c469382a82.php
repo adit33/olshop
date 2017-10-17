@@ -128,12 +128,12 @@
   <label class="label">Sort By</label>
   <div class="control">
     <div class="select">
-      <select>
-        <option>Select dropdown</option>
-        <option>Harga Termurah</option>
-        <option>Harga Termahal</option>
-        <option>Nama A-Z</option>
-        <option>Nama Z-A</option>
+      <select v-model="order" @change="filterProducts">
+        <option value="">Select dropdown</option>
+        <option value="price,asc">Harga Termurah</option>
+        <option value="price,desc">Harga Termahal</option>
+        <option value="name,asc">Nama A-Z</option>
+        <option value="name,desc">Nama Z-A</option>
       </select>
     </div>
   </div>
@@ -285,6 +285,8 @@ Vue.component('image-product',{
        products:'',
        isLoading:true,
        inputSearch:null,
+       order:null,
+       categories:[],
        layout:'grid',
        api:{
         url:'api/products',
@@ -312,8 +314,12 @@ Vue.component('image-product',{
       changeLayout(layout){
           this.layout = layout ;
       },
-      sortProducts(){
+      filterProducts(){
+        var url='api/products/filter';
         var self=this;
+        axios.get(url,{params:{order:this.order,categories:this.categories}}).then(function(response){
+          self.products=response.data;
+        });
       }
     },
     mounted(){      
