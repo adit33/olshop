@@ -15,6 +15,14 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 window.Flickity = require('vue-flickity');
+window.VueInstant = require('vue-instant')
+
+// import 'vue-instant/dist/vue-instant.css';
+// import VueInstant from 'vue-instant';
+
+// Vue.use(VueInstant);
+
+Vue.component('autocomplete',require('./components/Autocomplete.vue'));
 
 Vue.component('tab',require('./components/Tab.vue'));
 

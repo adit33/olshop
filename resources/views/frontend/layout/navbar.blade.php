@@ -30,6 +30,8 @@
     </a>
   </div>
 </div>
+      <autocomplete>
+</autocomplete>
         </div>
 
         <div class="navbar-menu navbar-end" id="navMenu">

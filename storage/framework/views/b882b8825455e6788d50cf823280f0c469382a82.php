@@ -119,7 +119,7 @@
   <div class="control">
     <div class="select">
       <select v-model="order" @change="filterProducts">
-        <option value="">Select dropdown</option>
+        <option >Select dropdown</option>
         <option value="price,asc">Harga Termurah</option>
         <option value="price,desc">Harga Termahal</option>
         <option value="name,asc">Nama A-Z</option>
@@ -311,7 +311,8 @@ Vue.component('image-product',{
     },
     mounted(){      
         this.getProducts(this.api.url)
-    }  
+    },
+      
   })
 </script>
 <?php $__env->stopPush(); ?>
