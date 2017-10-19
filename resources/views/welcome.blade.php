@@ -73,47 +73,13 @@
 @endpush
 
 @section('content')
-  <!-- <card-product></card-product>         -->
-
-   <!-- <article class="tile is-child box">
-      <div class="columns is-desktop">
-          <div v-for="product in products" class="column">
-             <div class="card">
-    <div class="card-image">
-      <figure class="image is-4by3">
-        <div v-for="image in product.product_image">
-     
-          <image-product v-bind:img-src="image.name"></image-product>
-        </div>
-      </figure>
-    </div>
-    <div class="card-content">
-      <div class="media">
-        <div class="media-content">
-          <p class="title is-4">@{{ product.name }}</p>
-          <p class="subtitle is-6">Rp. @{{ product.price }}</p>
-        </div>
-      </div>
-
-      <div class="content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Phasellus nec iaculis mauris. <a>@bulmaio</a>.     
-      </div>
-    </div>
-     <footer class="card-footer">
-              <span class="card-footer-item">
-               
-              
-              <buy-btn></buy-btn>  
-              
-              </span>
-            </footer>
-  </div>
-  </div>
-  </div>
-  </article> -->
 <article class="tile is-child box">
 
+<a class="button is-small is-primary" @click="test">Test</a>
+
+<simplert :useRadius="true"
+          :useIcon="true"
+          ref="simplert"></simplert>
 <layout @changed="changeLayout"></layout>
 
 <div class="field">
@@ -309,6 +275,19 @@ Vue.component('image-product',{
         axios.get(url,{params:{order:this.order,categories:this.categories}}).then((response)=>{
           this.products=response.data;
         });
+      },
+      test(){
+     let obj = {
+      title: 'Alert Title',
+      message: 'Alert Message',
+      type: 'info',
+      useConfirmBtn: true,
+      customConfirmBtnText: 'OK',
+      showXclose: true,
+      // onConfirm: x
+
+}
+this.$refs.simplert.openSimplert(obj)
       }
     },
     mounted(){      

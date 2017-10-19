@@ -16,11 +16,14 @@ window.Vue = require('vue');
  */
 window.Flickity = require('vue-flickity');
 window.VueInstant = require('vue-instant')
-
+import Simplert from 'vue2-simplert';
+Vue.use(Simplert)
 // import 'vue-instant/dist/vue-instant.css';
 // import VueInstant from 'vue-instant';
 
 // Vue.use(VueInstant);
+
+// Vue.component('alert',require('./components/SweetAlert.vue'));
 
 Vue.component('autocomplete',require('./components/Autocomplete.vue'));
 

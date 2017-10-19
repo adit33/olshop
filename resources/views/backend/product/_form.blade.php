@@ -51,7 +51,11 @@
   <label class="label">Kategori</label>
   <div class="control">
     @foreach(App\Models\Category::all() as $category)
+      @if(isset($product))
+      <input type="checkbox" name="category_id[]" value="{!! $category->id !!}" {!! in_array($category->id,$product->categoriesProduct()) ? "checked" : "" !!}>{!! $category->name !!}
+      @else
       <input type="checkbox" name="category_id[]" value="{!! $category->id !!}">{!! $category->name !!}
+      @endif
     @endforeach
   </div>  
 </div>

@@ -32,7 +32,6 @@ class ProductController extends Controller
         foreach ($categories_id as $category_id) {
             $product->categories()->attach($category_id);
         }
-
         
 
     	if ($request->hasFile('file')) {
@@ -41,6 +40,16 @@ class ProductController extends Controller
 	    		ProductImage::create(['name'=>$image,'product_id'=>$product->id]);
     		}
     	}    	
+    }
+
+    public function edit($id){
+        $product=Product::with('categories','productImage')->find($id);
+        return view('backend.product.edit',compact('product'))
+        ->withTitle('Edit Product');
+    }
+
+    public function update($id,Request $request){
+        return dd($request->all());
     }
 
     public function show($id){

@@ -22,4 +22,12 @@ class Product extends Model
     public function categories(){
     	return $this->belongsToMany(Category::class);
     }
+
+    public function categoriesProduct(){
+        $arr=[];
+        foreach ($this->categories as $category) {
+            array_push($arr, $category->id);
+        }
+        return $arr;
+    }
 }

@@ -18,7 +18,9 @@ class ProductDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'productdatatable.action');
+        return $dataTable->addColumn('action', function($query){
+            return '<a href="#" class="button is-small is-primary">Edit</a> <a class="button is-small is-danger">Delete</a>';
+        });
     }
 
     /**
@@ -42,7 +44,7 @@ class ProductDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->addAction(['width' => '80px'])
+                    ->addAction(['width' => '100px'])
                     ->parameters([
                         'dom'     => 'Bfrtip',
                         'order'   => [[0, 'desc']],
@@ -64,7 +66,6 @@ class ProductDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id',
             'name',
             'created_at',
             'updated_at'
