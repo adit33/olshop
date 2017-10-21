@@ -42,7 +42,10 @@ class Product extends Model
     }
 
     public function addCategoriesProduct($category_id){
-
+        // if has categories detach all first
+        if($this->categories()){
+            $this->categories()->detach()    
+        }        
         foreach($category_id as $id){
             $this->categories()->attach($id);
         }
