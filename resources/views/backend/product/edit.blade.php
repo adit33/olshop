@@ -10,7 +10,7 @@
         {{$title}}
     </div>
     <div class="panel-block">
-        {!! Form::model($product,['url'=>route('product.update',$product->id),'class'=>'control',"id"=>"form-edit","method"=>"PUT"]) !!}
+        {!! Form::model($product,['url'=>route('product.update',$product->id),'class'=>'control',"id"=>"form-edit","method"=>"POST"]) !!}
             @include('backend.product._form')
         {!! Form::close() !!}
     </div>
@@ -28,8 +28,16 @@ $(document).ready(function(){
   var mockFiles=<?php echo $product->productImage ?>;
     $.each(mockFiles,function (key,val) {
       var mockFile = { name: val.name,id:val.id};
-      myDropzone.options.addedfile.call(myDropzone, mockFile);
-      myDropzone.options.thumbnail.call(myDropzone, mockFile, "http://localhost/olshop/public/"+val.name);
+      // myDropzone.options.addedfile.call(myDropzone, mockFile);
+      // myDropzone.options.thumbnail.call(myDropzone, mockFile, "http://localhost/olshop/public/"+val.name);
+
+      // Call the default addedfile event handler
+      myDropzone.emit("addedfile", mockFile);
+
+      // And optionally show the thumbnail of the file:
+      myDropzone.emit("thumbnail", mockFile,"http://localhost/olshop/public/"+val.name);
+
+
       myDropzone.files.push(mockFile);
     })
 })
@@ -40,12 +48,19 @@ var myDropzone = new Dropzone("#photo", {
   addRemoveLinks: true,
   autoProcessQueue: false,
   maxFiles:10,
+  method:'post',
   parallelUploads: 10,
   url:$("form#form-edit").attr('action'), //url Store
   uploadMultiple: true,
   sending: function(file, xhr, formData) {
-    formData.append("_token", $('input[name="_token"]').val() );
+    form=$("#form-edit").serializeArray();
+    form.forEach(function(data){
+      formData.append(data.name,data.value);
+      formData.append(array_id);
+    })
+    // formData.append("_token", $('input[name="_token"]').val() );
  // Pass token. You can use the same method to pass any other values as well such as a id to associate the image with for example.
+
 },
 error:function(file,response){
   var errors = response;
@@ -122,22 +137,12 @@ init: function() {
         x++;
         this.x=x;
         array_id.push({name:'attachment_id['+x+']',value:file.id});
+        console.log(file)
         // this.array_id=array_id;
       });
       myDropzone.on("addedfile", function(file) {
         var removeButton = Dropzone.createElement("<button>Remove file</button>");
         // Listen to the click event
-
-        removeButton.addEventListener("click", function(e) {
-          // Make sure the button click doesn't submit the form:
-          e.preventDefault();
-          e.stopPropagation();
-
-          // Remove the file preview.
-          _this.removeFile(file);
-          // If you want to the delete the file on the server as well,
-          // you can do the AJAX request here.
-        });
       //
       });
 
@@ -152,9 +157,6 @@ init: function() {
         // If you want to the delete the file on the server as well,
         // you can do the AJAX request here.
       });
-
-      // Add the button to the file preview element.
-      file.previewElement.appendChild(removeButton);
 
       this.on("addedfile", function(file) {
 

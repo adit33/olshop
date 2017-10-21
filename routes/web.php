@@ -13,7 +13,9 @@
 
 Route::get('/', 'FrontController@frontPage');
 
-Route::resource('product','ProductController');
+Route::resource('product','ProductController',['except'=>['update']]);
+
+Route::POST('product/{id}',['uses'=>'ProductController@update','as'=>'product.update']);
 
 Route::resource('user','UserController');
 

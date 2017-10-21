@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Image;
+use File;
 class ProductImage extends Model
 {
 	protected $table='product_images';
@@ -18,5 +19,10 @@ class ProductImage extends Model
     	$image->save($path.DIRECTORY_SEPARATOR.$name);
 
     	return $path.DIRECTORY_SEPARATOR.$name;
+    }
+
+    public function removeImage($id){
+        $image=ProductImage::find($id);
+        $image->delete();
     }
 }

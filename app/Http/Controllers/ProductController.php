@@ -14,6 +14,11 @@ use App\DataTables\ProductDataTable;
 
 class ProductController extends Controller
 {
+
+    public function __construct(Product $product){
+        $this->product = $product;
+    }
+
 	public function index(ProductDataTable $dataTable){
 		return $dataTable->render('backend.product.index');
 	}
@@ -24,22 +29,8 @@ class ProductController extends Controller
     }
 
     public function store(ProductRequest $request){
-    	$product_image=new ProductImage;
-    	$data=$request->all();
         $categories_id=$request->input('category_id');
-    	$product=Product::create($data);
-
-        foreach ($categories_id as $category_id) {
-            $product->categories()->attach($category_id);
-        }
-        
-
-    	if ($request->hasFile('file')) {
-	    	foreach ($request->file('file') as $image) {
-	    		$image=$product_image->saveImage($image);
-	    		ProductImage::create(['name'=>$image,'product_id'=>$product->id]);
-    		}
-    	}    	
+    	$this->product->saveProduct($request);  	
     }
 
     public function edit($id){
@@ -49,7 +40,23 @@ class ProductController extends Controller
     }
 
     public function update($id,Request $request){
-        return dd($request->all());
+        $product_image = new ProductImage;
+        $photo_id=$request->input('attachment_id');
+
+        if ($request->hasFile('file')) {
+            foreach ($request->file('file') as $image) {
+                $image=$product_image->saveImage($image);
+                ProductImage::create(['name'=>$image,'product_id'=>$product->id]);
+            }
+        } 
+
+        if($photo_id != null){
+            foreach ($photo_id as $photo) {
+            $product_image->removeImage($photo->id);
+            }    
+        }
+
+        
     }
 
     public function show($id){
