@@ -234,6 +234,7 @@ return [
         'Html'         => Collective\Html\HtmlFacade::class,
         'Image'        => Intervention\Image\Facades\Image::class,
         'Cart'         => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'ImageHelper'  => App\Helpers\ImageHelper::class, 
 
     ],
 

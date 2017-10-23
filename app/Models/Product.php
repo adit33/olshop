@@ -23,8 +23,7 @@ class Product extends Model
     	return $this->belongsToMany(Category::class);
     }
 
-    public function saveProduct($request){
-        $product=new Product;
+    public function saveProduct($product,$request){
         $product_image=new ProductImage;
         $product->name=$request->input('name');
         $product->price=$request->input('price');
@@ -34,18 +33,20 @@ class Product extends Model
         $product->addCategoriesProduct($request->input('category_id'));
 
         if ($request->hasFile('file')) {
-            foreach ($request->file('file') as $image) {
-                $image=$product_image->saveImage($image);
-                ProductImage::create(['name'=>$image,'product_id'=>$product->id]);
-            }
+            $product_image->saveImage($request->file('file'),$product->id);
         }  
+
+        if($request->input('attachment_id')){
+            $product_image->removeImage($request->input('attachment_id'));
+        }
     }
 
     public function addCategoriesProduct($category_id){
         // if has categories detach all first
         if($this->categories()){
-            $this->categories()->detach()    
-        }        
+            $this->categories()->sync($category_id);
+        }
+
         foreach($category_id as $id){
             $this->categories()->attach($id);
         }
@@ -59,4 +60,5 @@ class Product extends Model
         }
         return $arr;
     }
+
 }

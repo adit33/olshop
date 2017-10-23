@@ -56,8 +56,9 @@ var myDropzone = new Dropzone("#photo", {
     form=$("#form-edit").serializeArray();
     form.forEach(function(data){
       formData.append(data.name,data.value);
-      formData.append(array_id);
+      
     })
+    formData.append('attachment_id',array_id);
     // formData.append("_token", $('input[name="_token"]').val() );
  // Pass token. You can use the same method to pass any other values as well such as a id to associate the image with for example.
 
@@ -137,7 +138,6 @@ init: function() {
         x++;
         this.x=x;
         array_id.push({name:'attachment_id['+x+']',value:file.id});
-        console.log(file)
         // this.array_id=array_id;
       });
       myDropzone.on("addedfile", function(file) {

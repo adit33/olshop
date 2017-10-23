@@ -30,7 +30,8 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request){
         $categories_id=$request->input('category_id');
-    	$this->product->saveProduct($request);  	
+        $product=new Product;
+    	$this->product->saveProduct($product,$request);  	
     }
 
     public function edit($id){
@@ -40,23 +41,8 @@ class ProductController extends Controller
     }
 
     public function update($id,Request $request){
-        $product_image = new ProductImage;
-        $photo_id=$request->input('attachment_id');
-
-        if ($request->hasFile('file')) {
-            foreach ($request->file('file') as $image) {
-                $image=$product_image->saveImage($image);
-                ProductImage::create(['name'=>$image,'product_id'=>$product->id]);
-            }
-        } 
-
-        if($photo_id != null){
-            foreach ($photo_id as $photo) {
-            $product_image->removeImage($photo->id);
-            }    
-        }
-
-        
+        $product=Product::find($id);
+        $this->product->saveProduct($product,$request);     
     }
 
     public function show($id){

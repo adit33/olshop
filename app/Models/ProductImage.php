@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Image;
+use ImageHelper;
 use File;
 class ProductImage extends Model
 {
@@ -11,25 +11,21 @@ class ProductImage extends Model
 	protected $id	='id';
 	protected $fillable=['id','name','product_id'];
 
-    public function saveImage($file){
-         if ($request->hasFile('file')) {
-            foreach ($request->file('file') as $image) {
-                $image=$product_image->saveImage($image);
-                ProductImage::create(['name'=>$image,'product_id'=>$product->id]);
-            }
+    public function saveImage($file,$product_id){
+            foreach ($file as $image) {               
+                $image_name=ImageHelper::storeImage($image);
+                ProductImage::create(['name'=>$image_name,'product_id'=>$product_id]);
         }
+    }
+
+    public function removeImage($attachment_id){
         
-    	$path='img';
-    	$ext=$file->getClientOriginalExtension();
-    	$name=str_random(10).'.'.$ext;
-    	$image=Image::make($file);
-    	$image->save($path.DIRECTORY_SEPARATOR.$name);
+          foreach ($attachment_id as $id) {  
+            $image=ProductImage::find($id);
+            ImageHelper::destroyImage($image->name);
+            $image->delete();            
+        }
 
-    	return $path.DIRECTORY_SEPARATOR.$name;
     }
 
-    public function removeImage($id){
-        $image=ProductImage::find($id);
-        $image->delete();
-    }
 }
