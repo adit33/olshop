@@ -10,8 +10,11 @@
 <body>
  
  @include('backend.layout.navbar')
-
-  <div class="section">
+<div id="app">
+<simplert :useRadius="true"
+          :useIcon="true"
+          ref="simplert"></simplert>
+            <div class="section">
     <div class="columns">
       <!-- START SIDEBAR -->
       @include('backend.layout.sidebar')
@@ -191,9 +194,63 @@
       </main>
     </div>
 </div>
+</div>
  <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+  <script type="text/javascript">
+    new Vue({
+      el:"#app",
+      methods:{
+        confirmDelete(){
+           let obj = {
+          title: 'Alert Title',
+          message: 'Alert Message',
+          type: 'info',
+          useConfirmBtn: true,
+          customConfirmBtnText: 'OK',
+          showXclose: true,
+          // onConfirm: x
+          }
+          this.$refs.simplert.openSimplert(obj)
+        }
+      }
+    })
+  </script>
+
+
   <script type="text/javascript" src="{{ asset('js/dropzone.js') }}"></script>
   <script type="text/javascript" src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+  <script type="text/javascript">
+         $.ajaxSetup({
+           headers: {
+               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+           }
+         });
+
+         $(document.body).on('click', '.js-submit-confirm', function(event) {
+           event.preventDefault();
+           var $form = $(this).closest('form');
+           // swal({
+           //     title: "Are you sure?",
+           //     text: "You will not be able to recover this resource!",
+           //     type: "warning",
+           //     showCancelButton: true,
+           //     confirmButtonColor: "#DD6B55",
+           //     confirmButtonText: "Yes, delete it!",
+           //     closeOnConfirm: true
+           //   },
+           //   function() {
+           //     $form.submit();
+           //   });
+
+           swal("Are you sure?", {
+            dangerMode: true,
+            buttons: true,
+          }).then(() => {
+             $form.submit();
+            });
+         });
+
+      </script>
 @stack('scripts')
 </body>
 </html>

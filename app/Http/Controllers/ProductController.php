@@ -32,6 +32,8 @@ class ProductController extends Controller
         $categories_id=$request->input('category_id');
         $product=new Product;
     	$this->product->saveProduct($product,$request);  	
+
+        return redirect('product');
     }
 
     public function edit($id){
@@ -42,12 +44,18 @@ class ProductController extends Controller
 
     public function update($id,Request $request){
         $product=Product::find($id);
-        $this->product->saveProduct($product,$request);     
+        $this->product->saveProduct($product,$request);  
+        return redirect('product');   
     }
 
     public function show($id){
         $product=Product::with('productImage')->findOrFail($id);
         return view('frontend.product.show',compact('product'));
+    }
+
+    public function destroy($id){
+        $this->product->deleteProduct($id);
+        return redirect('product');
     }
 
     public function getProducts(){

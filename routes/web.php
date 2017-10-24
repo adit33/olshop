@@ -13,6 +13,17 @@
 
 Route::get('/', 'FrontController@frontPage');
 
+Route::get('test',function(){
+	$p=App\Models\Product::find(5);
+	$p=$p->productImage()->pluck('id');
+
+
+
+	foreach ($p as $x) {
+		echo dd($x);
+	}
+});
+
 Route::resource('product','ProductController',['except'=>['update']]);
 
 Route::POST('product/{id}',['uses'=>'ProductController@update','as'=>'product.update']);

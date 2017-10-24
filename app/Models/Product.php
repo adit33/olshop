@@ -15,6 +15,16 @@ class Product extends Model
 
     use Searchable;
 
+    protected static function boot(){
+        self::deleting(function($product){
+            $product_image=new ProductImage;
+
+            $product->categories()->detach();
+            $product_image->removeImage($product->productImage()->pluck('id'));
+            $product->productImage()->delete();
+        });
+    }
+
     public function productImage(){
     	return $this->hasMany(ProductImage::class);
     }
@@ -39,6 +49,11 @@ class Product extends Model
         if($request->input('attachment_id')){
             $product_image->removeImage($request->input('attachment_id'));
         }
+    }
+
+    public function deleteProduct($id){
+        $product=Product::find($id);
+        $product->delete();
     }
 
     public function addCategoriesProduct($category_id){
