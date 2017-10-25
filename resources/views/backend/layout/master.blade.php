@@ -229,25 +229,19 @@
          $(document.body).on('click', '.js-submit-confirm', function(event) {
            event.preventDefault();
            var $form = $(this).closest('form');
-           // swal({
-           //     title: "Are you sure?",
-           //     text: "You will not be able to recover this resource!",
-           //     type: "warning",
-           //     showCancelButton: true,
-           //     confirmButtonColor: "#DD6B55",
-           //     confirmButtonText: "Yes, delete it!",
-           //     closeOnConfirm: true
-           //   },
-           //   function() {
-           //     $form.submit();
-           //   });
-
-           swal("Are you sure?", {
+    
+          swal({
+            title: "Are you sure?",
+            text: "Are you sure that you want to leave this page?",
+            icon: "warning",
             dangerMode: true,
-            buttons: true,
-          }).then(() => {
-             $form.submit();
-            });
+             buttons: true,
+          })
+          .then(willDelete => {
+            if (willDelete) {
+              $form.submit();
+            }
+          });
          });
 
       </script>

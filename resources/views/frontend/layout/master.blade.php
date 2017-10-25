@@ -53,7 +53,25 @@
           .navbar{
 
           }
-
+          .button.circle{
+            border-radius: 50%;
+            height: 50px;
+            width: 50px;
+            background-color: #33d2ee;
+            color: #FFF;
+            z-index: 999;
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+          }
+          .fade-enter-active,
+          .fade-leave-active {
+            transition: opacity .5s
+          }
+          .fade-enter,
+          .fade-leave-to{
+              opacity: 0
+          }
         </style>
         @stack('styles')
      </head>
@@ -115,6 +133,43 @@
   }
 
 });
+
+// var amountScrolled = 300;
+
+// $(window).scroll(function() {
+//     if ( $(window).scrollTop() > amountScrolled ) {
+//         $('a.sf-back-to-top').fadeIn('slow');
+//     } else {
+//         $('a.sf-back-to-top').fadeOut('slow');
+//     }
+// });
+
+// $('a.sf-back-to-top').click(function() {
+//     $('html, body').animate({
+//         scrollTop: 0
+//     }, 700);
+//     return false;
+// });
+
+
+ // new Vue({
+ //    el:"#app",
+ //    data:{
+ //      amountScrolled : 300,
+ //    },
+ //    mounted(){
+
+ //    },
+ //    methods:{
+ //      showButtonUp(){
+ //        if(document.body.scrollTop > this.amountScrolled || document.documentElement.scrollTop > this.amountScrolled){
+ //          document.getElementsByClassName("sf-back-to-top").fadeIn('slow');
+ //        }else{
+ //          document.getElementsByClassName("sf-back-to-top").fadeOut('slow');
+ //        }
+ //      }
+ //    }
+ // })
 
         </script>
         @stack('scripts')

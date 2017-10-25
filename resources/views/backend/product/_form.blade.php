@@ -63,7 +63,7 @@
 <div class="field">
   <label class="label">Deskripsi</label>
   <div class="control">
-    <textarea class="textarea" placeholder="Textarea"></textarea>
+    {!! Form::textarea('description',null,['class'=>'textarea']) !!}
   </div>
 </div>
 

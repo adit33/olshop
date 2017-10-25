@@ -1,5 +1,6 @@
 <footer class="footer">
   <div class="container">
+  <button-up></button-up>
     <div class="content has-text-centered">
       <p>
         <strong>Bulma</strong> by <a href="http://jgthms.com">Jeremy Thomas</a>. The source code is licensed

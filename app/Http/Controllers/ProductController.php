@@ -44,8 +44,7 @@ class ProductController extends Controller
 
     public function update($id,Request $request){
         $product=Product::find($id);
-        $this->product->saveProduct($product,$request);  
-        return redirect('product');   
+        $this->product->saveProduct($product,$request);  return redirect('product');   
     }
 
     public function show($id){

@@ -93,7 +93,7 @@ init: function() {
       this.on("success", function(file, responseText) {
          // Handle the responseText here. For example, add the text to the preview element:
         //  this.options.autoProcessQueue=true;
-         // window.location.href =' <?php echo URL::to('product'); ?> ';
+         window.location.href =' <?php echo URL::to('product'); ?> ';
        });
 
       submitButton.addEventListener("click", function() {
@@ -108,7 +108,7 @@ init: function() {
             method:'post',
             data:data,
             success:function(){
-              // window.location.href =' <?php echo URL::to('product'); ?> ';
+              window.location.href =' <?php echo URL::to('product'); ?> ';
             },
             error:function(data){
 

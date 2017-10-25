@@ -74,8 +74,8 @@ class ProductDataTable extends DataTable
     {
         return [
             'name',
-            'created_at',
-            'updated_at'
+            'stock',
+            'price'
         ];
     }
 

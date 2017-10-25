@@ -69,17 +69,13 @@
     background: #e9e9e9;
     opacity: 0.5;
 }
+
 </style>
 @endpush
 
 @section('content')
 <article class="tile is-child box">
 
-<a class="button is-small is-primary" @click="test">Test</a>
-
-<simplert :useRadius="true"
-          :useIcon="true"
-          ref="simplert"></simplert>
 <layout @changed="changeLayout"></layout>
 
 <div class="field">
@@ -120,6 +116,8 @@
   </ul>
 </nav>
   </article>
+
+  
 
 @endsection
 
@@ -245,6 +243,7 @@ Vue.component('image-product',{
        inputSearch:null,
        order:null,
        categories:[],
+       
        layout:'grid',
        api:{
         url:'api/products',
@@ -260,7 +259,7 @@ Vue.component('image-product',{
             console.log(error);
           });
           this.isLoading = false;
-        }, 3000)
+        }, 1000)
       },
       searchProducts(){
         axios.get('api/products/search',{params:{ val:this.inputSearch }}).then((response)=>{
@@ -277,21 +276,12 @@ Vue.component('image-product',{
         });
       },
       test(){
-     let obj = {
-      title: 'Alert Title',
-      message: 'Alert Message',
-      type: 'info',
-      useConfirmBtn: true,
-      customConfirmBtnText: 'OK',
-      showXclose: true,
-      // onConfirm: x
-
-}
-this.$refs.simplert.openSimplert(obj)
-      }
+      alert()
+      },
     },
     mounted(){      
         this.getProducts(this.api.url)
+        
     },
       
   })
