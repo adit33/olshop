@@ -1,9 +1,6 @@
 @extends('frontend.layout.master')
 
 @section('content')
-  
-  
-
   <table class="table is-bordered is-striped is-narrow is-fullwidth">
     <thead>
       <th>Nama</th>
@@ -32,3 +29,14 @@
   <input type="submit" class="button is-info" name="" value="Confirm" />
 
 @endsection
+
+@push('scripts')
+<script type="text/javascript">
+  new Vue({
+    el:"#app",
+    mounted(){
+      alert('ok')
+    }
+  })
+</script>
+@endpush

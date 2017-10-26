@@ -24,22 +24,26 @@ Route::get('test',function(){
 	}
 });
 
-Route::resource('product','ProductController',['except'=>['update']]);
-
-Route::POST('product/{id}',['uses'=>'ProductController@update','as'=>'product.update']);
-
-Route::resource('user','UserController');
-
 Route::GET('register',['uses'=>'AuthController@register']);
 
-Route::GET('login','AuthController@login');
+Route::GET('login',['uses'=>'AuthController@login','as'=>'login']);
 
 Route::POST('login',['uses'=>'AuthController@auth','as'=>'auth']);
 
-Route::GET('logout',['uses'=>'AuthController@logout','as'=>'logout']);
+Route::middleware(['auth.basic'])->group(function () {
 
-Route::POST('addtocart/{product_id}',['uses'=>'TransactionController@addToCart','as'=>'addtocart']);
+	Route::resource('product','ProductController',['except'=>['update']]);
 
-Route::GET('cart','TransactionController@getCart');
+	Route::POST('product/{id}',['uses'=>'ProductController@update','as'=>'product.update']);
 
-Route::resource('category','CategoryController');
+	Route::resource('user','UserController');
+
+	Route::GET('logout',['uses'=>'AuthController@logout','as'=>'logout']);
+
+	Route::POST('addtocart/{product_id}',['uses'=>'TransactionController@addToCart','as'=>'addtocart']);
+
+	Route::GET('cart','TransactionController@getCart');
+
+	Route::resource('category','CategoryController');
+
+});

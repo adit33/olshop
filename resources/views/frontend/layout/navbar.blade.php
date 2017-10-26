@@ -46,11 +46,15 @@
             <span class="tag is-primary tag-notif">{!! Cart::count() !!}</span>
           </a>  
           <div class="navbar-item has-dropdown is-hoverable">
+            @if(! Auth::check())
+            <a  class="navbar-item button is-info is-active">Login</a>
+            @else
+
             <a class="navbar-link">              
               <figure class="image is-32x32" style="margin-right:.5em;">
                 <!-- <img src="https://avatars1.githubusercontent.com/u/7221389?v=4&s=32"> -->
               </figure>
-              mazipan
+              {{ Auth::user()->name }}
             </a>
           
             <div class="navbar-dropdown is-right">              
@@ -61,13 +65,14 @@
                   Profile
                 </a>
                 <hr class="navbar-divider">
-                <a class="navbar-item">
+                <a class="navbar-item" href="logout">
                   <span class="icon is-small">
                     <i class="fa fa-power-off"></i>
                   </span>
                   Logout
                 </a>
             </div>
+            @endif
           </div>
         </div>
       </nav>

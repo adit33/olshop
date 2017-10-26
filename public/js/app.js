@@ -47307,24 +47307,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -47386,7 +47368,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "pagination-next",
     on: {
       "click": function($event) {
-        _vm.changePage(_vm.pagination.total)
+        _vm.changePage(_vm.pagination.last_page)
       }
     }
   }, [_vm._v("Last Page")]) : _vm._e(), _vm._v(" "), _c('ul', {

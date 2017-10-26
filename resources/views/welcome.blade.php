@@ -75,7 +75,11 @@
 
 @section('content')
 <article class="tile is-child box">
-
+<ul class="menu-list">
+    @foreach(App\Models\Category::all() as $category)
+      <li><input type="checkbox" @click="filterProducts" v-model="categories" name="category_id[]" value="{!! $category->id !!}">{!! $category->name !!}</li>
+    @endforeach
+  </ul>
 <layout @changed="changeLayout"></layout>
 
 <div class="field">
@@ -105,7 +109,7 @@
 
 <vue-pagination  v-bind:pagination="pagination"
                  v-on:click.native="getProducts(pagination.current_page)"
-                 :offset="4">
+                 :offset="2">
 </vue-pagination>
 
   </article>

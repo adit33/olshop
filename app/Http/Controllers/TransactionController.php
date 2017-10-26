@@ -35,6 +35,14 @@ class TransactionController extends Controller
     	return view('frontend.product.cart',compact('carts'));
     }
 
+    public function removeItem($id){
+
+    }
+
+    public function changeQty($id){
+
+    }
+
     // public function addToCart($data){
     	
     // }

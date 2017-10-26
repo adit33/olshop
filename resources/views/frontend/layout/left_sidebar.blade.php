@@ -33,11 +33,7 @@
   </p>
   <!-- <list-category :categories="{{ App\Models\Category::all()->toJson() }}"></list-category> -->
 
-  <ul class="menu-list">
-    @foreach(App\Models\Category::all() as $category)
-      <li><input type="checkbox" @click="filterProducts" v-model="categories" name="category_id[]" value="{!! $category->id !!}">{!! $category->name !!}</li>
-    @endforeach
-  </ul>
+  
 
   </aside>
   </div>

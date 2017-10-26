@@ -73,7 +73,11 @@
 
 <?php $__env->startSection('content'); ?>
 <article class="tile is-child box">
-
+<ul class="menu-list">
+    <?php $__currentLoopData = App\Models\Category::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+      <li><input type="checkbox" @click="filterProducts" v-model="categories" name="category_id[]" value="<?php echo $category->id; ?>"><?php echo $category->name; ?></li>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+  </ul>
 <layout @changed="changeLayout"></layout>
 
 <div class="field">
@@ -103,7 +107,7 @@
 
 <vue-pagination  v-bind:pagination="pagination"
                  v-on:click.native="getProducts(pagination.current_page)"
-                 :offset="4">
+                 :offset="2">
 </vue-pagination>
 
   </article>
