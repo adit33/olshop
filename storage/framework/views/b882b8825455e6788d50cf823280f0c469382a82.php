@@ -100,19 +100,12 @@
       </div>
   
 </div>
- <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-  <a class="pagination-previous" @click="getProducts(products.prev_page_url)">Previous</a>
-  <a class="pagination-next"     @click="getProducts(products.next_page_url)">Next page</a>
-  <ul class="pagination-list">
-    <li><a class="pagination-link" aria-label="Goto page 1">{{ products.from }}</a></li>
-    <li><span class="pagination-ellipsis">&hellip;</span></li>
-    <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
-    <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
-    <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
-    <li><span class="pagination-ellipsis">&hellip;</span></li>
-    <li><a class="pagination-link" aria-label="Goto page 86">{{ products.last_page }}</a></li>
-  </ul>
-</nav>
+
+<vue-pagination  v-bind:pagination="pagination"
+                 v-on:click.native="getProducts(pagination.current_page)"
+                 :offset="4">
+</vue-pagination>
+
   </article>
 
   
@@ -241,18 +234,27 @@ Vue.component('image-product',{
        inputSearch:null,
        order:null,
        categories:[],
-       
+       counter: 0,
+       pagination: {
+            total: 0,
+            per_page: 1,
+            from: 1,
+            to: 0,
+            current_page: 1
+       },
+       offset: 4,
        layout:'grid',
        api:{
-        url:'api/products',
+        url:'api/products?page=',
        }
     },
     methods:{
-      getProducts:function(url){
+      getProducts:function(page){
         this.isLoading = true;  
           setTimeout(() => {
-          axios.get(url).then((response)=>{
+          axios.get(this.api.url.concat(page)).then((response)=>{
             this.products=response.data;
+            this.pagination = response.data;
           }).catch((error) =>{
             console.log(error);
           });
@@ -278,7 +280,7 @@ Vue.component('image-product',{
       },
     },
     mounted(){      
-        this.getProducts(this.api.url)
+        this.getProducts(this.pagination.current_page)
         
     },
       

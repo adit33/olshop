@@ -25,6 +25,7 @@ Vue.use(Simplert)
 // Vue.use(VueInstant);
 
 // Vue.component('alert',require('./components/SweetAlert.vue'));
+Vue.component('vue-pagination', require('./components/Pagination.vue'));
 
 Vue.component('autocomplete',require('./components/Autocomplete.vue'));
 
