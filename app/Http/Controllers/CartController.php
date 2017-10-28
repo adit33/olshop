@@ -3,14 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\Product;
-
-use App\Models\DetailTransaction;
-
 use Cart;
-
-class TransactionController extends Controller
+class CartController extends Controller
 {
     public function addToCart(Request $request,$id){
     	$product=Product::find($id);
@@ -37,11 +32,11 @@ class TransactionController extends Controller
 
     public function removeItem($id){
         Cart::remove($id);
-        return->redirect()->back();
+        return redirect()->back();
     }
 
-    public function changeQty($id,Request $request){
+    public function updateItem($id,Request $request){
         Cart::update($id, $request->input('qty'));
+        return redirect()->back();
     }
-
 }

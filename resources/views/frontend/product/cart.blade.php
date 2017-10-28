@@ -16,7 +16,7 @@
         <td>{!! $cart->qty !!}</td>
         <td>{!! $cart->price !!}</td>
         <td>{!! $cart->qty * $cart->price !!}</td>
-        <td><a class="delete"></a></td>
+        <td><a class="delete" href="{{ route('cart.delete',$cart->rowId) }}"></a></td>
       </tr> 
      @endforeach
      <tr>
@@ -35,7 +35,7 @@
   new Vue({
     el:"#app",
     mounted(){
-      alert('ok')
+      // alert('ok')
     }
   })
 </script>
