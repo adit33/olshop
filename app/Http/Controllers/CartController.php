@@ -22,7 +22,7 @@ class CartController extends Controller
     	$data['price']=$product->price;
 
     	Cart::add($data);
-
+	   	return redirect('cart');
     }
 
     public function getCart(){
