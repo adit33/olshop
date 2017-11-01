@@ -32,7 +32,9 @@ Route::POST('login',['uses'=>'AuthController@auth','as'=>'auth']);
 
 Route::resource('product','ProductController',['except'=>['update']]);
 
-Route::GET('cart','CartController@getCart');
+Route::GET('cart',['uses'=>'CartController@getCart','as'=>'cart']);
+
+Route::GET('carts',['uses'=>'CartController@getCarts','as'=>'carts']);
 
 Route::PUT('cart/{id}/update',['uses'=>'CartController@updateItem','as'=>'cart.update']);
 

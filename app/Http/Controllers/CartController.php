@@ -26,8 +26,13 @@ class CartController extends Controller
     }
 
     public function getCart(){
-    	$carts=Cart::content();
-    	return view('frontend.product.cart',compact('carts'));
+    	// $carts=Cart::content();
+    	return view('frontend.product.cart');
+    }
+
+    public function getCarts(){
+        $carts=Cart::content();
+        return $carts;
     }
 
     public function removeItem($id){
@@ -37,6 +42,7 @@ class CartController extends Controller
 
     public function updateItem($id,Request $request){
         Cart::update($id, $request->input('qty'));
-        return redirect()->back();
+        // return redirect()->back();
+        return Cart::content();
     }
 }
