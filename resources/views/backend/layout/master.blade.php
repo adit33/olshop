@@ -197,6 +197,16 @@
 </div>
  <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
   <script type="text/javascript">
+  Vue.component('countcart',{
+      template:`
+      <div>
+         <span class="icon is-small">
+              <i class="fa fa-shopping-cart"></i>
+            </span>
+            <span class="tag is-primary tag-notif">5</span>
+            </div>`,
+    })
+  
     new Vue({
       el:"#app",
       methods:{

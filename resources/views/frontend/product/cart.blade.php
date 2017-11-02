@@ -1,7 +1,8 @@
 @extends('frontend.layout.master')
 
 @section('content')
-@{{ carts | json}}
+@{{ carts.length }}
+<example></example>
   <table class="table is-bordered is-striped is-narrow is-fullwidth">
     <thead>
       <th>Nama</th>
@@ -20,7 +21,7 @@
       </tr> 
      <tr>
         <td colspan="3">Sub TOTAL</td>
-        <td colspan="2">{!! Cart::subtotal() !!}</td>
+        <td colspan="2">{{ total }}</td>
       </tr>
     </tbody>
   </table>
@@ -31,11 +32,14 @@
 
 @push('scripts')
 <script type="text/javascript">
+
+
+
 Vue.component('qty-field',{
   template:`
   <div class="field">
     <input type="number" class="input" :class="{'is-danger':isError}" :max="availableStock" :min="min" :value="val" v-model="qty" v-on:blur="updateItem"></input>
-     <p v-if="isError" class="help is-danger">Stok Tersedia {{ availableStock }}</p
+     <p v-if="isError" class="help is-danger">Stok Tersedia @{{ availableStock }}</p
   </div>`,
   props:['min','val','row-id','id'],
   data(){
@@ -83,12 +87,14 @@ Vue.component('qty-field',{
 })
 
   new Vue({
+    // store,
     el:"#app",
     data:{
       carts:JSON.parse('{!! Cart::content() !!}')
     },
     mounted(){
       // this.getCarts()
+      console.log(this.$store)
     },
     methods:{
       getCarts(){
@@ -98,6 +104,20 @@ Vue.component('qty-field',{
           console.log(response.data)
         })
       },
+    },
+    computed:{
+        total(){
+          let carts=this.carts;
+          for(cart in carts){
+            return +carts[cart].subtotal;
+          }
+        },
+        amountCart(){
+          let carts=this.carts;
+          for(cart in carts){
+            return +carts[cart].qty;
+          }
+        }
     }
   })
 </script>

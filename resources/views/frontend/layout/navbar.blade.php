@@ -40,10 +40,7 @@
           <a class="navbar-item is-tab is-hidden-tablet">Pricing</a>
           <a class="navbar-item is-tab is-hidden-tablet">About</a>
           <a class="navbar-item nav-tag">              
-            <span class="icon is-small">
-              <i class="fa fa-shopping-cart"></i>
-            </span>
-            <span class="tag is-primary tag-notif">{!! Cart::count() !!}</span>
+            <countcart :amount-cart="amountCart"></countcart>
           </a>  
           
             @if(! Auth::check())

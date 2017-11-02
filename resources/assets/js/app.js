@@ -16,9 +16,16 @@ window.Vue = require('vue');
  */
 window.Flickity = require('vue-flickity');
 window.VueInstant = require('vue-instant')
+// window.store = require('./store');
+
+
 import Simplert from 'vue2-simplert';
 import swal from 'sweetalert';
-Vue.use(Simplert)
+import { store } from './store'
+Vue.use(Simplert);
+Vue.use(store);
+
+// Vue.use(store);
 // import 'vue-instant/dist/vue-instant.css';
 // import VueInstant from 'vue-instant';
 
@@ -40,6 +47,8 @@ Vue.component('list-category',require('./components/ListCategory.vue'));
 Vue.component('carousel',require('./components/product/ImageCarousel.vue'));
 
 Vue.component('message', require('./components/Message.vue'));
+
+// Vue.component('example',require('./components/Example.vue'));
 
 // const app = new Vue({
 //     el: '#app'
