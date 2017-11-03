@@ -272,7 +272,7 @@ button.is-blue:hover {
             <tbody>
               <tr>
                 <td class="has-text-right">
-                  <strong>Item ID</strong>
+                  <strong>Item ID</strong>a
                 </td>
                 <td>1234</td>
               </tr>
