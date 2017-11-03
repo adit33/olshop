@@ -35,8 +35,13 @@ class TransactionController extends Controller
     	return view('frontend.product.cart',compact('carts'));
     }
 
-    // public function addToCart($data){
-    	
-    // }
+    public function removeItem($id){
+        Cart::remove($id);
+        return->redirect()->back();
+    }
+
+    public function changeQty($id,Request $request){
+        Cart::update($id, $request->input('qty'));
+    }
 
 }

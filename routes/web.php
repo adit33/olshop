@@ -13,20 +13,45 @@
 
 Route::get('/', 'FrontController@frontPage');
 
-Route::resource('product','ProductController');
+Route::get('test',function(){
+	$p=App\Models\Product::find(5);
+	$p=$p->productImage()->pluck('id');
 
-Route::resource('user','UserController');
+
+
+	foreach ($p as $x) {
+		echo dd($x);
+	}
+});
 
 Route::GET('register',['uses'=>'AuthController@register']);
 
-Route::GET('login','AuthController@login');
+Route::GET('login',['uses'=>'AuthController@login','as'=>'login']);
 
 Route::POST('login',['uses'=>'AuthController@auth','as'=>'auth']);
 
-Route::GET('logout',['uses'=>'AuthController@logout','as'=>'logout']);
+Route::resource('product','ProductController',['except'=>['update']]);
 
-Route::POST('addtocart/{product_id}',['uses'=>'TransactionController@addToCart','as'=>'addtocart']);
+Route::GET('cart',['uses'=>'CartController@getCart','as'=>'cart']);
 
-Route::GET('cart','TransactionController@getCart');
+Route::GET('carts',['uses'=>'CartController@getCarts','as'=>'carts']);
 
-Route::resource('category','CategoryController');
+Route::PUT('cart/{id}/update',['uses'=>'CartController@updateItem','as'=>'cart.update']);
+
+Route::GET('cart/{id}/delete',['uses'=>'CartController@removeItem','as'=>'cart.delete']);
+
+Route::POST('addtocart/{product_id}',['uses'=>'CartController@addToCart','as'=>'addtocart']);
+
+Route::middleware(['auth'])->group(function () {
+
+	
+
+	Route::POST('product/{id}',['uses'=>'ProductController@update','as'=>'product.update']);
+
+	Route::resource('user','UserController');
+
+	Route::GET('logout',['uses'=>'AuthController@logout','as'=>'logout']);
+
+	Route::resource('category','CategoryController');
+
+});

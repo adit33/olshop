@@ -5,7 +5,7 @@ namespace App\DataTables;
 use App\Models\Product;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
-
+use Form;
 class ProductDataTable extends DataTable
 {
     /**
@@ -18,7 +18,16 @@ class ProductDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'productdatatable.action');
+        return $dataTable->addColumn('action', function($query){
+            return '<a href="'.route('product.edit',$query->id).'" class="button is-small is-primary">Edit</a> ' 
+            .Form::open([
+                "method" => "DELETE",
+                "id"     =>"form-delete",
+                "route"  => ["product.destroy", $query->id],
+                "style"  => "display:inline"
+                ])
+                .Form::submit('Delete',['class'=>'button is-small is-danger btn-danger js-submit-confirm']).'';
+        });
     }
 
     /**
@@ -29,7 +38,7 @@ class ProductDataTable extends DataTable
      */
     public function query(Product $model)
     {
-        return $model->newQuery()->select($this->getColumns());
+        return $model->newQuery()->select('*');
     }
 
     /**
@@ -42,7 +51,7 @@ class ProductDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->addAction(['width' => '80px'])
+                    ->addAction(['width' => '100px'])
                     ->parameters([
                         'dom'     => 'Bfrtip',
                         'order'   => [[0, 'desc']],
@@ -64,10 +73,9 @@ class ProductDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id',
             'name',
-            'created_at',
-            'updated_at'
+            'stock',
+            'price'
         ];
     }
 

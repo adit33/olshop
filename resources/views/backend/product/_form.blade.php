@@ -38,7 +38,7 @@
         </p>
         <p class="control is-expanded">
           
-           {!! Form::number('stock',null,['class'=> $errors->first('stock') ? "input is-danger" : "input" ,"placeholder"=>"Stok"]) !!} 
+           {!! Form::number('stock',null,['class'=> $errors->first('stock') ? "input is-danger" : "input" ,"placeholder"=>"Stok","min"=>0]) !!} 
         </p>
       </div>
        <p class="help is-danger">
@@ -50,19 +50,20 @@
 <div class="field">
   <label class="label">Kategori</label>
   <div class="control">
-    <div class="{!! $errors->first('category_id') ? 'select is-danger' : 'select' !!}">
-      {!! Form::select('category_id',App\Models\Category::pluck('name','id'),null,['placeholder'=>'Select Category']) !!}
-    </div>
-     <p class="help is-danger">
-        {!! $errors->first('category_id') !!}
-      </p>
-  </div>
+    @foreach(App\Models\Category::all() as $category)
+      @if(isset($product))
+      <input type="checkbox" name="category_id[]" value="{!! $category->id !!}" {!! in_array($category->id,$product->categoriesProduct()) ? "checked" : "" !!}>{!! $category->name !!}
+      @else
+      <input type="checkbox" name="category_id[]" value="{!! $category->id !!}">{!! $category->name !!}
+      @endif
+    @endforeach
+  </div>  
 </div>
 
 <div class="field">
   <label class="label">Deskripsi</label>
   <div class="control">
-    <textarea class="textarea" placeholder="Textarea"></textarea>
+    {!! Form::textarea('description',null,['class'=>'textarea']) !!}
   </div>
 </div>
 

@@ -1,6 +1,7 @@
 @extends('backend.layout.master')
 
 @section('content')
+
 <main class="column">
    <div class="columns is-multiline">
           <div class="column is-12">
@@ -8,6 +9,7 @@
     <div class="panel-heading">
         List Products
     </div>
+    
     <div class="panel-block column is-12">
 	{!! $dataTable->table() !!}
     </div>
@@ -19,5 +21,5 @@
 @endsection
 
 @push('scripts')
-	{!! $dataTable->scripts() !!}
+    {!! $dataTable->scripts() !!}
 @endpush

@@ -10,8 +10,11 @@
 <body>
  
  @include('backend.layout.navbar')
-
-  <div class="section">
+<div id="app">
+<simplert :useRadius="true"
+          :useIcon="true"
+          ref="simplert"></simplert>
+            <div class="section">
     <div class="columns">
       <!-- START SIDEBAR -->
       @include('backend.layout.sidebar')
@@ -191,9 +194,67 @@
       </main>
     </div>
 </div>
+</div>
  <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+  <script type="text/javascript">
+  Vue.component('countcart',{
+      template:`
+      <div>
+         <span class="icon is-small">
+              <i class="fa fa-shopping-cart"></i>
+            </span>
+            <span class="tag is-primary tag-notif">5</span>
+            </div>`,
+    })
+  
+    new Vue({
+      el:"#app",
+      methods:{
+        confirmDelete(){
+           let obj = {
+          title: 'Alert Title',
+          message: 'Alert Message',
+          type: 'info',
+          useConfirmBtn: true,
+          customConfirmBtnText: 'OK',
+          showXclose: true,
+          // onConfirm: x
+          }
+          this.$refs.simplert.openSimplert(obj)
+        }
+      }
+    })
+  </script>
+
+
   <script type="text/javascript" src="{{ asset('js/dropzone.js') }}"></script>
   <script type="text/javascript" src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+  <script type="text/javascript">
+         $.ajaxSetup({
+           headers: {
+               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+           }
+         });
+
+         $(document.body).on('click', '.js-submit-confirm', function(event) {
+           event.preventDefault();
+           var $form = $(this).closest('form');
+    
+          swal({
+            title: "Are you sure?",
+            text: "Are you sure that you want to leave this page?",
+            icon: "warning",
+            dangerMode: true,
+             buttons: true,
+          })
+          .then(willDelete => {
+            if (willDelete) {
+              $form.submit();
+            }
+          });
+         });
+
+      </script>
 @stack('scripts')
 </body>
 </html>

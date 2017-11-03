@@ -69,73 +69,29 @@
     background: #e9e9e9;
     opacity: 0.5;
 }
+
 </style>
 @endpush
 
 @section('content')
-  <!-- <card-product></card-product>         -->
-
-   <!-- <article class="tile is-child box">
-      <div class="columns is-desktop">
-          <div v-for="product in products" class="column">
-             <div class="card">
-    <div class="card-image">
-      <figure class="image is-4by3">
-        <div v-for="image in product.product_image">
-     
-          <image-product v-bind:img-src="image.name"></image-product>
-        </div>
-      </figure>
-    </div>
-    <div class="card-content">
-      <div class="media">
-        <div class="media-content">
-          <p class="title is-4">@{{ product.name }}</p>
-          <p class="subtitle is-6">Rp. @{{ product.price }}</p>
-        </div>
-      </div>
-
-      <div class="content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Phasellus nec iaculis mauris. <a>@bulmaio</a>.     
-      </div>
-    </div>
-     <footer class="card-footer">
-              <span class="card-footer-item">
-               
-              
-              <buy-btn></buy-btn>  
-              
-              </span>
-            </footer>
-  </div>
-  </div>
-  </div>
-  </article> -->
 <article class="tile is-child box">
-<div class="field has-addons">
-  <div class="control">
-    <input class="input" type="text" v-model="inputSearch" placeholder="Find a product">
-  </div>
-  <div class="control">
-    <a @click="searchProducts" class="button is-info">
-      Search
-    </a>
-  </div>
-</div>
-
+<ul class="menu-list">
+    @foreach(App\Models\Category::all() as $category)
+      <li><input type="checkbox" @click="filterProducts" v-model="categories" name="category_id[]" value="{!! $category->id !!}">{!! $category->name !!}</li>
+    @endforeach
+  </ul>
 <layout @changed="changeLayout"></layout>
 
 <div class="field">
   <label class="label">Sort By</label>
   <div class="control">
     <div class="select">
-      <select>
-        <option>Select dropdown</option>
-        <option>Harga Termurah</option>
-        <option>Harga Termahal</option>
-        <option>Nama A-Z</option>
-        <option>Nama Z-A</option>
+      <select v-model="order" @change="filterProducts">
+        <option >Select dropdown</option>
+        <option value="price,asc">Harga Termurah</option>
+        <option value="price,desc">Harga Termahal</option>
+        <option value="name,asc">Nama A-Z</option>
+        <option value="name,desc">Nama Z-A</option>
       </select>
     </div>
   </div>
@@ -145,25 +101,20 @@
  
 <div class="columns is-multiline">
 <img v-if="isLoading" src="{!! asset('img/loading.gif') !!}" style="display: block; margin: 0 auto;" />
-      <div class="column is-4" v-for="product in products.data" v-if="! isLoading">
+      <div class="column" :class="{ 'is-4' : layout == 'grid' ,'is-12' : layout == 'list' }" v-for="product in products.data" v-if="! isLoading">
 <card-product :product="product"></card-product>
       </div>
   
 </div>
- <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-  <a class="pagination-previous" @click="getProducts(products.prev_page_url)">Previous</a>
-  <a class="pagination-next"     @click="getProducts(products.next_page_url)">Next page</a>
-  <ul class="pagination-list">
-    <li><a class="pagination-link" aria-label="Goto page 1">@{{ products.from }}</a></li>
-    <li><span class="pagination-ellipsis">&hellip;</span></li>
-    <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
-    <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
-    <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
-    <li><span class="pagination-ellipsis">&hellip;</span></li>
-    <li><a class="pagination-link" aria-label="Goto page 86">@{{ products.last_page }}</a></li>
-  </ul>
-</nav>
+
+<vue-pagination  v-bind:pagination="pagination"
+                 v-on:click.native="getProducts(pagination.current_page)"
+                 :offset="2">
+</vue-pagination>
+
   </article>
+
+  
 
 @endsection
 
@@ -172,13 +123,13 @@
 Vue.component('layout',{
   template:
   `<div>
-    <a href="#" @click="changeLayout">
+    <a href="#" @click="changeLayout('grid')">
       <span class="icon">
      <i class="fa fa-bars"></i>
     </span>  
     </a>
 
-    <a href="#" @click="changeLayout">
+    <a href="#" @click="changeLayout('list')">
       <span class="icon">
      <i class="fa fa-th-large"></i>
     </span>  
@@ -190,8 +141,8 @@ Vue.component('layout',{
     }
   },
   methods:{
-    changeLayout(){
-      this.$emit('changed');
+    changeLayout(layout){
+      this.$emit('changed',layout);
     }
   }
 });
@@ -287,39 +238,58 @@ Vue.component('image-product',{
        products:'',
        isLoading:true,
        inputSearch:null,
+       order:null,
+       categories:[],
+       counter: 0,
+       pagination: {
+            total: 0,
+            per_page: 1,
+            from: 1,
+            to: 0,
+            current_page: 1
+       },
+       offset: 4,
+       layout:'grid',
        api:{
-        url:'api/products',
+        url:'api/products?page=',
        }
     },
     methods:{
-      getProducts:function(url){
-        this.isLoading = true;
-        var self=this;        
+      getProducts:function(page){
+        this.isLoading = true;  
           setTimeout(() => {
-          axios.get(url).then(function(response){
-            self.products=response.data;
-          }).catch(function (error) {
+          axios.get(this.api.url.concat(page)).then((response)=>{
+            this.products=response.data;
+            this.pagination = response.data;
+          }).catch((error) =>{
             console.log(error);
           });
           this.isLoading = false;
-        }, 3000)
+        }, 1000)
       },
       searchProducts(){
-        var self = this;
-        axios.get('api/products/search',{params:{ val:this.inputSearch }}).then(function(response){
-          self.products=response.data;
+        axios.get('api/products/search',{params:{ val:this.inputSearch }}).then((response)=>{
+          this.products=response.data;
         })
       },
-      changeLayout(){
-        alert('changed')
+      changeLayout(layout){
+          this.layout = layout ;
       },
-      sortProducts(){
-        var self=this;
-      }
+      filterProducts(){
+        var url='api/products/filter';
+        axios.get(url,{params:{order:this.order,categories:this.categories}}).then((response)=>{
+          this.products=response.data;
+        });
+      },
+      test(){
+      alert()
+      },
     },
     mounted(){      
-        this.getProducts(this.api.url)
-    }  
+        this.getProducts(this.pagination.current_page)
+        
+    },
+      
   })
 </script>
 @endpush
