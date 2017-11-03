@@ -21,9 +21,10 @@ window.VueInstant = require('vue-instant')
 
 import Simplert from 'vue2-simplert';
 import swal from 'sweetalert';
-import { store } from './store'
-Vue.use(Simplert);
-Vue.use(store);
+import store from './store';
+
+window.store = store;
+Vue.use(store)
 
 // Vue.use(store);
 // import 'vue-instant/dist/vue-instant.css';
@@ -48,8 +49,11 @@ Vue.component('carousel',require('./components/product/ImageCarousel.vue'));
 
 Vue.component('message', require('./components/Message.vue'));
 
+Vue.component('list-cart',require('./components/ListCart.vue'));
+
 // Vue.component('example',require('./components/Example.vue'));
 
 // const app = new Vue({
+// 	store,
 //     el: '#app'
 // });

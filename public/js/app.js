@@ -23443,7 +23443,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue2_simplert__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sweetalert__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store__ = __webpack_require__(72);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -23468,8 +23468,9 @@ window.VueInstant = __webpack_require__(18);
 
 
 
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue2_simplert__["a" /* default */]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_2__store__["store"]);
+
+window.store = __WEBPACK_IMPORTED_MODULE_2__store__["a" /* default */];
+Vue.use(__WEBPACK_IMPORTED_MODULE_2__store__["a" /* default */]);
 
 // Vue.use(store);
 // import 'vue-instant/dist/vue-instant.css';
@@ -23494,9 +23495,12 @@ Vue.component('carousel', __webpack_require__(96));
 
 Vue.component('message', __webpack_require__(99));
 
+Vue.component('list-cart', __webpack_require__(105));
+
 // Vue.component('example',require('./components/Example.vue'));
 
 // const app = new Vue({
+// 	store,
 //     el: '#app'
 // });
 
@@ -46346,7 +46350,7 @@ const plugin = {
 
 __WEBPACK_IMPORTED_MODULE_0__Simplert_vue___default.a.install = plugin.install
 
-/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0__Simplert_vue___default.a);
+/* unused harmony default export */ var _unused_webpack_default_export = (__WEBPACK_IMPORTED_MODULE_0__Simplert_vue___default.a);
 
 /***/ }),
 /* 63 */
@@ -47261,7 +47265,59 @@ if (false) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(10)))
 
 /***/ }),
-/* 72 */,
+/* 72 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
+
+
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */]);
+var state = {
+    title: '',
+    carts: null,
+    amountCarts: null
+};
+var getters = {};
+var mutations = {
+    SET_TITLE: function SET_TITLE(state, value) {
+        state.title = value;
+    },
+    SET_CARTS: function SET_CARTS(state, value) {
+        state.carts = value;
+    },
+    SET_AMOUNTCARTS: function SET_AMOUNTCARTS(state, value) {
+        state.amountCarts = value.map(function (t) {
+            return t;
+        });
+    }
+};
+var actions = {
+    FETCH_CARTS: function FETCH_CARTS(_ref) {
+        var commit = _ref.commit;
+
+        return __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get('carts').then(function (response) {
+            commit('SET_CARTS', response.data);
+            commit('SET_AMOUNTCARTS', response.data);
+        });
+    }
+};
+
+var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
+    state: state,
+    mutations: mutations,
+    actions: actions,
+    getters: getters
+});
+
+/* harmony default export */ __webpack_exports__["a"] = (store);
+
+/***/ }),
 /* 73 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -54335,33 +54391,136 @@ return Flickity;
 /***/ }),
 /* 104 */,
 /* 105 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(106),
+  /* template */
+  __webpack_require__(107),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/var/www/html/olshop/resources/assets/js/components/ListCart.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] ListCart.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-c554bcf6", Component.options)
+  } else {
+    hotAPI.reload("data-v-c554bcf6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 106 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(73);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      // carts:store.state.carts
+    };
+  },
+  mounted: function mounted() {
+    store.dispatch('FETCH_CARTS');
+  },
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */]);
-var state = {
-    title: '',
-    test: 'wkwkwk'
-};
-var getters = {};
-var mutations = {
-    SET_TITLE: function SET_TITLE(state, title) {
-        state.title = title;
+  methods: {},
+  computed: {
+    total: function total() {
+      return store.state.amountCart;
+    },
+
+    // amountCart(){
+    //   for(cart in carts){
+    //     return +carts[cart].qty;
+    //   }
+    // },
+    carts: function carts() {
+      return store.state.carts;
     }
-};
-var actions = {};
+  }
+});
 
-/* unused harmony default export */ var _unused_webpack_default_export = (new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
-    state: state,
-    getters: getters,
-    mutations: mutations,
-    actions: actions
-}));
+/***/ }),
+/* 107 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_vm._v("\n" + _vm._s(_vm._f("json")(_vm.carts)) + "\n\t "), _c('table', {
+    staticClass: "table is-bordered is-striped is-narrow is-fullwidth"
+  }, [_vm._m(0), _vm._v(" "), _c('tbody', [_vm._l((_vm.carts), function(cart) {
+    return _c('tr', [_c('td', [_vm._v(_vm._s(cart.name))]), _vm._v(" "), _c('td'), _vm._v(" "), _c('td', [_vm._v(_vm._s(cart.price))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(cart.qty * cart.price))]), _vm._v(" "), _c('td', [_vm._v(_vm._s())])])
+  }), _vm._v(" "), _c('tr', [_c('td', {
+    attrs: {
+      "colspan": "3"
+    }
+  }, [_vm._v("Sub TOTAL")]), _vm._v(" "), _c('td', {
+    attrs: {
+      "colspan": "2"
+    }
+  }, [_vm._v(_vm._s(_vm.total))])])], 2)])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('thead', [_c('th', [_vm._v("Nama")]), _vm._v(" "), _c('th', [_vm._v("Jumlah")]), _vm._v(" "), _c('th', [_vm._v("Harga")]), _vm._v(" "), _c('th', [_vm._v("Total")]), _vm._v(" "), _c('th', [_vm._v("Action")])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-c554bcf6", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

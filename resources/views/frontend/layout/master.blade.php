@@ -134,57 +134,44 @@
 
 });
 
- Vue.component('countcart',{
-      template:`
-      <div>
-         <span class="icon is-small">
-              <i class="fa fa-shopping-cart"></i>
-            </span>
-            <span class="tag is-primary tag-notif">@{{ amountCart }}</span>
-            </div>`,
-      props:['amount-cart'],      
-      data(){
-        return{
-        }
-      },
-      methods:{
-        updateItem(){
-          this.$emit('updated');
-        }
-      }
-    })
+ 
 
- new Vue({
-    el:"app",
-    data:{
-      carts:null
-    },
-    mounted(){
-      // this.getCarts()
-    },
-    methods:{
-      getCarts(){
-        let url="{{ route('carts') }}";
-        axios.get(url).then((response)=>{
-          this.carts = response.data;
-        })
-      },
-    },
-    computed:{
-        total(){
-          let carts=this.carts;
-          for(cart in carts){
-            return +carts[cart].subtotal;
-          }
-        },
-        amountCart(){
-          let carts=this.carts;
-          for(cart in carts){
-            return +carts[cart].qty;
-          }
-        }
-    }
- })
+ // new Vue({
+ //    store,
+ //    el:"app",
+ //    data:{
+ //      carts:null
+ //    },
+ //    mounted(){
+ //      this.getCarts()
+ //      console.log(this.carts)
+ //      store.commit('SET_TITLE','ckckckckck')
+ //    },
+ //    methods:{
+ //      getCarts(){
+ //        let url="{{ route('carts') }}";
+ //        var self = this
+ //        axios.get(url).then((response)=>{
+ //          this.carts = response.data;
+
+ //        })
+ //      },
+ //    },
+ //    computed:{
+ //        total(){
+ //          let carts=this.carts;
+ //          for(cart in carts){
+ //            return +carts[cart].subtotal;
+ //          }
+ //        },
+ //        amountCart(){
+ //          let carts=this.carts;
+ //          for(cart in carts){
+ //            return +carts[cart].qty;
+ //          }
+ //        }
+ //    }
+ // })
 
 
 // var amountScrolled = 300;

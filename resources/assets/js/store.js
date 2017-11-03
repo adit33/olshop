@@ -1,24 +1,41 @@
     import Vue from 'vue'
     import Vuex from 'vuex'
+    import axios from "axios";
     Vue.use(Vuex)
     const state = {
         title:'',
-        test:'wkwkwk'
+        carts:null,
+        amountCarts:null,
     }
     const getters = {
     }
     const mutations = {
-          SET_TITLE (state, title) {
-            state.title = title
+          SET_TITLE (state, value) {
+            state.title = value
+          },
+          SET_CARTS(state,value){
+            state.carts = value
+          },
+          SET_AMOUNTCARTS(state,value){
+           state.amountCarts = value.map(t=>{
+            return t;
+           })
           }
     }
     const actions = {
-        
+        FETCH_CARTS:({commit})=>{
+            return axios.get('carts').then((response)=>{
+                commit('SET_CARTS',response.data)
+                commit('SET_AMOUNTCARTS',response.data)
+            });
+        }
     }
     
-    export default new Vuex.Store({
-        state,
-        getters,
-        mutations,
-        actions
+    const store = new Vuex.Store({  
+      state,
+      mutations,
+      actions,
+      getters
     })
+
+    export default store

@@ -1,9 +1,9 @@
 @extends('frontend.layout.master')
 
 @section('content')
-@{{ carts.length }}
+
 <example></example>
-  <table class="table is-bordered is-striped is-narrow is-fullwidth">
+  <!-- <table class="table is-bordered is-striped is-narrow is-fullwidth">
     <thead>
       <th>Nama</th>
       <th>Jumlah</th>
@@ -24,8 +24,8 @@
         <td colspan="2">{{ total }}</td>
       </tr>
     </tbody>
-  </table>
-
+  </table> -->
+<list-cart></list-cart>
   <input type="submit" class="button is-info" name="" value="Confirm" />
 
 @endsection
@@ -86,39 +86,42 @@ Vue.component('qty-field',{
   }
 })
 
-  new Vue({
-    // store,
-    el:"#app",
-    data:{
-      carts:JSON.parse('{!! Cart::content() !!}')
-    },
-    mounted(){
-      // this.getCarts()
-      console.log(this.$store)
-    },
-    methods:{
-      getCarts(){
-        let url="{{ route('carts') }}";
-        axios.get(url).then((response)=>{
-          // this.carts = response.data;
-          console.log(response.data)
-        })
-      },
-    },
-    computed:{
-        total(){
-          let carts=this.carts;
-          for(cart in carts){
-            return +carts[cart].subtotal;
-          }
-        },
-        amountCart(){
-          let carts=this.carts;
-          for(cart in carts){
-            return +carts[cart].qty;
-          }
-        }
-    }
-  })
+new Vue({
+  el:"#app"
+})
+  // new Vue({
+  //   store,
+  //   el:"#app",
+  //   data:{
+  //     carts:JSON.parse('{!! Cart::content() !!}')
+  //   },
+  //   mounted(){
+      
+  //     this.getCarts()
+  //   },
+  //   methods:{
+  //     getCarts(){
+  //       let url="{{ route('carts') }}";
+  //       axios.get(url).then((response)=>{
+  //         // this.carts = response.data;
+  //         // store.commit('SET_CARTS',response.data);
+  //       })
+  //     },
+  //   },
+  //   computed:{
+  //       total(){
+  //         let carts=this.carts;
+  //         for(cart in carts){
+  //           return +carts[cart].subtotal;
+  //         }
+  //       },
+  //       amountCart(){
+  //         let carts=this.carts;
+  //         for(cart in carts){
+  //           return +carts[cart].qty;
+  //         }
+  //       }
+  //   }
+  // })
 </script>
 @endpush
