@@ -86,42 +86,10 @@ Vue.component('qty-field',{
   }
 })
 
-new Vue({
-  el:"#app"
-})
-  // new Vue({
-  //   store,
-  //   el:"#app",
-  //   data:{
-  //     carts:JSON.parse('{!! Cart::content() !!}')
-  //   },
-  //   mounted(){
-      
-  //     this.getCarts()
-  //   },
-  //   methods:{
-  //     getCarts(){
-  //       let url="{{ route('carts') }}";
-  //       axios.get(url).then((response)=>{
-  //         // this.carts = response.data;
-  //         // store.commit('SET_CARTS',response.data);
-  //       })
-  //     },
-  //   },
-  //   computed:{
-  //       total(){
-  //         let carts=this.carts;
-  //         for(cart in carts){
-  //           return +carts[cart].subtotal;
-  //         }
-  //       },
-  //       amountCart(){
-  //         let carts=this.carts;
-  //         for(cart in carts){
-  //           return +carts[cart].qty;
-  //         }
-  //       }
-  //   }
-  // })
+  new Vue({
+    store,
+    el:"#app",
+
+  })
 </script>
 @endpush

@@ -22,14 +22,14 @@ class Blueprint
     /**
      * The columns that should be added to the table.
      *
-     * @var array
+     * @var \Illuminate\Support\Fluent[]
      */
     protected $columns = [];
 
     /**
      * The commands that should be run for the table.
      *
-     * @var array
+     * @var \Illuminate\Support\Fluent[]
      */
     protected $commands = [];
 
@@ -142,7 +142,7 @@ class Blueprint
     protected function addFluentIndexes()
     {
         foreach ($this->columns as $column) {
-            foreach (['primary', 'unique', 'index'] as $index) {
+            foreach (['primary', 'unique', 'index', 'spatialIndex'] as $index) {
                 // If the index has been specified on the given column, but is simply equal
                 // to "true" (boolean), no name has been specified for this index so the
                 // index method can be called without a name and it will generate one.
@@ -383,6 +383,18 @@ class Blueprint
     public function index($columns, $name = null, $algorithm = null)
     {
         return $this->indexCommand('index', $columns, $name, $algorithm);
+    }
+
+    /**
+     * Specify a spatial index for the table.
+     *
+     * @param  string|array  $columns
+     * @param  string        $name
+     * @return \Illuminate\Support\Fluent
+     */
+    public function spatialIndex($columns, $name = null)
+    {
+        return $this->indexCommand('spatialIndex', $columns, $name);
     }
 
     /**
@@ -1184,7 +1196,7 @@ class Blueprint
     /**
      * Get the columns on the blueprint.
      *
-     * @return array
+     * @return \Illuminate\Support\Fluent[]
      */
     public function getColumns()
     {
@@ -1194,7 +1206,7 @@ class Blueprint
     /**
      * Get the commands on the blueprint.
      *
-     * @return array
+     * @return \Illuminate\Support\Fluent[]
      */
     public function getCommands()
     {
@@ -1204,7 +1216,7 @@ class Blueprint
     /**
      * Get the columns on the blueprint that should be added.
      *
-     * @return array
+     * @return \Illuminate\Support\Fluent[]
      */
     public function getAddedColumns()
     {
@@ -1216,7 +1228,7 @@ class Blueprint
     /**
      * Get the columns on the blueprint that should be changed.
      *
-     * @return array
+     * @return \Illuminate\Support\Fluent[]
      */
     public function getChangedColumns()
     {

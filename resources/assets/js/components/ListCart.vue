@@ -1,6 +1,5 @@
 <template>
 	<div>
-	{{ carts | json }}
 		 <table class="table is-bordered is-striped is-narrow is-fullwidth">
 		    <thead>
 		      <th>Nama</th>
@@ -31,25 +30,16 @@
 <script type="text/javascript">
 	export default{		
 	data(){
-		return{
-			// carts:store.state.carts
-		}
+		
     },
     mounted(){
       store.dispatch('FETCH_CARTS')
+   	  
     },
     methods:{
     
     },
     computed:{
-        total(){
-          return store.state.amountCart;
-        },
-        // amountCart(){
-        //   for(cart in carts){
-        //     return +carts[cart].qty;
-        //   }
-        // },
         carts(){
         	return store.state.carts;
         }

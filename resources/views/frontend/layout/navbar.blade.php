@@ -40,7 +40,7 @@
           <a class="navbar-item is-tab is-hidden-tablet">Pricing</a>
           <a class="navbar-item is-tab is-hidden-tablet">About</a>
           <a class="navbar-item nav-tag">              
-            <countcart :amount-cart="amountCart"></countcart>
+          <notif-cart></notif-cart>
           </a>  
           
             @if(! Auth::check())

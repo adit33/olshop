@@ -17,16 +17,13 @@
             state.carts = value
           },
           SET_AMOUNTCARTS(state,value){
-           state.amountCarts = value.map(t=>{
-            return t;
-           })
+           state.amountCarts = value
           }
     }
     const actions = {
         FETCH_CARTS:({commit})=>{
             return axios.get('carts').then((response)=>{
                 commit('SET_CARTS',response.data)
-                commit('SET_AMOUNTCARTS',response.data)
             });
         }
     }

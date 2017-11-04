@@ -51,6 +51,8 @@ Vue.component('message', require('./components/Message.vue'));
 
 Vue.component('list-cart',require('./components/ListCart.vue'));
 
+Vue.component('notif-cart',require('./components/NotifAmountCart.vue'));
+
 // Vue.component('example',require('./components/Example.vue'));
 
 // const app = new Vue({

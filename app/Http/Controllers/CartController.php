@@ -32,6 +32,7 @@ class CartController extends Controller
 
     public function getCarts(){
         $carts=Cart::content();
+        $qty=Cart::count();
         return $carts;
     }
 
