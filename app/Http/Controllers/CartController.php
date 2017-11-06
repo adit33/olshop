@@ -38,7 +38,7 @@ class CartController extends Controller
 
     public function removeItem($id){
         Cart::remove($id);
-        return redirect()->back();
+        // return redirect()->back();
     }
 
     public function updateItem($id,Request $request){

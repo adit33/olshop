@@ -10,25 +10,22 @@
 <script type="text/javascript">
   export default{
     mounted(){
-      this.getCarts()
+      store.dispatch('FETCH_CARTS');
     },
     data(){
       return{
-        carts:0,
+        
       }
     },
     methods:{
-      getCarts(){
-        let url='/olshop/public/carts';
-        axios.get(url).then((response)=>{
-        this.carts=response.data;
-      })
-      }
+      
     },
     computed:{
       amountCart(){
-        let carts=this.carts;
-          Object.keys(carts).map(t=>{console.log(carts[t])})
+          if(store.state.carts != null){
+          var x= Object.keys(store.state.carts).map(t=>{ return store.state.carts[t].qty });
+          return x.reduce((sum,val)=> parseInt(sum) + parseInt(val),0);
+        }
         }
       }
   }

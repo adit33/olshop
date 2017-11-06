@@ -53,6 +53,8 @@ Vue.component('list-cart',require('./components/ListCart.vue'));
 
 Vue.component('notif-cart',require('./components/NotifAmountCart.vue'));
 
+Vue.component('qty',require('./components/Qty-field.vue'));
+
 // Vue.component('example',require('./components/Example.vue'));
 
 // const app = new Vue({

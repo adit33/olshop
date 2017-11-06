@@ -23505,6 +23505,8 @@ Vue.component('list-cart', __webpack_require__(102));
 
 Vue.component('notif-cart', __webpack_require__(105));
 
+Vue.component('qty', __webpack_require__(111));
+
 // Vue.component('example',require('./components/Example.vue'));
 
 // const app = new Vue({
@@ -49784,6 +49786,8 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Qty_field_vue__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Qty_field_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Qty_field_vue__);
 //
 //
 //
@@ -49814,16 +49818,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {},
+  components: {
+    qty: __WEBPACK_IMPORTED_MODULE_0__Qty_field_vue___default.a
+  },
+  data: function data() {
+    return {};
+  },
   mounted: function mounted() {
     store.dispatch('FETCH_CARTS');
   },
 
-  methods: {},
+  methods: {
+    deleteItem: function deleteItem(rowId) {
+      var url = "/olshop/public/cart/:row-id/delete";
+      url = url.replace(':row-id', rowId);
+
+      axios.get(url, {
+        rowId: rowId
+      }).then(function (response) {
+        store.dispatch('FETCH_CARTS');
+      });
+    }
+  },
   computed: {
     carts: function carts() {
       return store.state.carts;
+    },
+    total: function total() {
+      if (store.state.carts != null) {
+        var x = Object.keys(store.state.carts).map(function (t) {
+          return store.state.carts[t].subtotal;
+        });
+        return x.reduce(function (sum, val) {
+          return sum + val;
+        }, 0);
+      }
     }
   }
 });
@@ -49833,10 +49864,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('table', {
+  return (_vm.total != 0) ? _c('div', [_c('table', {
     staticClass: "table is-bordered is-striped is-narrow is-fullwidth"
   }, [_vm._m(0), _vm._v(" "), _c('tbody', [_vm._l((_vm.carts), function(cart) {
-    return _c('tr', [_c('td', [_vm._v(_vm._s(cart.name))]), _vm._v(" "), _c('td'), _vm._v(" "), _c('td', [_vm._v(_vm._s(cart.price))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(cart.qty * cart.price))]), _vm._v(" "), _c('td', [_vm._v(_vm._s())])])
+    return _c('tr', [_c('td', [_vm._v(_vm._s(cart.name))]), _vm._v(" "), _c('td', [_c('qty', {
+      attrs: {
+        "val": cart.qty,
+        "row-id": cart.rowId,
+        "min": 1,
+        "id": cart.id
+      }
+    })], 1), _vm._v(" "), _c('td', [_vm._v(_vm._s(cart.price))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(cart.qty * cart.price))]), _vm._v(" "), _c('td', [_c('a', {
+      staticClass: "delete",
+      on: {
+        "click": function($event) {
+          _vm.deleteItem(cart.rowId)
+        }
+      }
+    })])])
   }), _vm._v(" "), _c('tr', [_c('td', {
     attrs: {
       "colspan": "3"
@@ -49845,7 +49890,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "colspan": "2"
     }
-  }, [_vm._v(_vm._s(_vm.total))])])], 2)])])
+  }, [_vm._v(_vm._s(_vm.total))])])], 2)])]) : _vm._e()
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('thead', [_c('th', [_vm._v("Nama")]), _vm._v(" "), _c('th', [_vm._v("Jumlah")]), _vm._v(" "), _c('th', [_vm._v("Harga")]), _vm._v(" "), _c('th', [_vm._v("Total")]), _vm._v(" "), _c('th', [_vm._v("Action")])])
 }]}
@@ -49915,30 +49960,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    this.getCarts();
+    store.dispatch('FETCH_CARTS');
   },
   data: function data() {
-    return {
-      carts: 0
-    };
+    return {};
   },
 
-  methods: {
-    getCarts: function getCarts() {
-      var _this = this;
-
-      var url = '/olshop/public/carts';
-      axios.get(url).then(function (response) {
-        _this.carts = response.data;
-      });
-    }
-  },
+  methods: {},
   computed: {
     amountCart: function amountCart() {
-      var carts = this.carts;
-      Object.keys(carts).map(function (t) {
-        console.log(carts[t]);
-      });
+      if (store.state.carts != null) {
+        var x = Object.keys(store.state.carts).map(function (t) {
+          return store.state.carts[t].qty;
+        });
+        return x.reduce(function (sum, val) {
+          return parseInt(sum) + parseInt(val);
+        }, 0);
+      }
     }
   }
 });
@@ -54614,6 +54652,155 @@ return Flickity;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 110 */,
+/* 111 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(113),
+  /* template */
+  __webpack_require__(112),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/var/www/html/olshop/resources/assets/js/components/Qty-field.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Qty-field.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-dd1aade8", Component.options)
+  } else {
+    hotAPI.reload("data-v-dd1aade8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "field"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.qty),
+      expression: "qty"
+    }],
+    staticClass: "input",
+    class: {
+      'is-danger': _vm.isError
+    },
+    attrs: {
+      "type": "number",
+      "max": _vm.availableStock,
+      "min": _vm.min
+    },
+    domProps: {
+      "value": _vm.val,
+      "value": (_vm.qty)
+    },
+    on: {
+      "blur": _vm.updateItem,
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.qty = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.isError) ? _c('p', {
+    staticClass: "help is-danger"
+  }, [_vm._v("Stok Tersedia @" + _vm._s(_vm.availableStock))]) : _vm._e()])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-dd1aade8", module.exports)
+  }
+}
+
+/***/ }),
+/* 113 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['min', 'val', 'row-id', 'id'],
+  data: function data() {
+    return {
+      qty: this.val,
+      isError: false,
+      availableStock: 0
+    };
+  },
+  mounted: function mounted() {
+    this.getAvailableStock();
+  },
+
+  methods: {
+    cekQty: function cekQty() {
+      this.isError = false;
+      if (parseInt(this.qty) > parseInt(this.availableStock) || this.qty <= 0) {
+        this.isError = true;
+        this.qty = this.val;
+      }
+    },
+    updateItem: function updateItem() {
+      var url = "/olshop/public/cart/:row-id/update";
+      url = url.replace(':row-id', this.rowId);
+
+      this.cekQty();
+
+      if (this.isError == false) {
+        axios.put(url, {
+          qty: this.qty,
+          rowId: this.rowId
+        }).then(function (response) {
+          // this.$parent.carts=response.data;
+          store.dispatch('FETCH_CARTS');
+        });
+      }
+    },
+    getAvailableStock: function getAvailableStock() {
+      var _this = this;
+
+      var stock = axios.get('api/product/' + this.id).then(function (response) {
+        _this.availableStock = response.data;
+      });
+    }
+  }
+});
 
 /***/ })
 /******/ ]);
