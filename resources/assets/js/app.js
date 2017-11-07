@@ -16,6 +16,7 @@ window.Vue = require('vue');
  */
 window.Flickity = require('vue-flickity');
 window.VueInstant = require('vue-instant')
+window.Select2 = require('select2');
 // window.store = require('./store');
 
 

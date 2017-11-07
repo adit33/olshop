@@ -14,14 +14,71 @@
 Route::get('/', 'FrontController@frontPage');
 
 Route::get('test',function(){
-	$p=App\Models\Product::find(5);
-	$p=$p->productImage()->pluck('id');
+
+
+// $client = new \GuzzleHttp\Client();
+// $headers = ['key' => 'f1499fdd21ba4442c850525be31cac5a'];
+// $body = 'Hello!';
+// $res = $client->request('GET', 'https://api.rajaongkir.com/starter/province>id=12',$headers,$body);
+// echo $res->getStatusCode();
+// // 200
+// echo $res->getHeaderLine('content-type');
+// // 'application/json; charset=utf8'
+// echo $res->getBody();
+// '{"id": 1420053, "name": "guzzle", ...}'
+
+
+    // $client = new GuzzleHttp\Client([
+    // 'base_uri'=>"https://api.rajaongkir.com",
+    // 'headers' => [
+    //     'User-Agent' => 'testing/1.0',
+    //     'Accept'     => 'application/json',
+    //     'X-Foo'      => ['Bar', 'Baz'],
+    //     'key'		 =>'f1499fdd21ba4442c850525be31cac5a'
+    // ]
+    // ]);
+
+    // // $response = $client->createRequest("GET", $url, ['headers' => [
+    // //     'User-Agent' => 'testing/1.0',
+    // //     'Accept'     => 'application/json',
+    // //     'X-Foo'      => ['Bar', 'Baz'],
+    // //     'key'		 =>'f1499fdd21ba4442c850525be31cac5a'
+    // // ]]);
+
+
+    // $response = $client->get('starter/province');
+
+
+    // dd($response);
 
 
 
-	foreach ($p as $x) {
-		echo dd($x);
-	}
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => "https://api.rajaongkir.com/starter/province",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "GET",
+  CURLOPT_HTTPHEADER => array(
+    "key: f1499fdd21ba4442c850525be31cac5a"
+  ),
+));
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+  return $response;
+}
+
 });
 
 Route::GET('register',['uses'=>'AuthController@register']);

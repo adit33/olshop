@@ -4,7 +4,7 @@
 	<title></title>
 </head>
 <link rel="stylesheet" type="text/css" href="{{ asset('css/bulma.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('css/vendor.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('vendor.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/dropzone.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.dataTables.min.css') }}">
 <body>
@@ -229,6 +229,7 @@
 
   <script type="text/javascript" src="{{ asset('js/dropzone.js') }}"></script>
   <script type="text/javascript" src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+  <script type="text/javascript" src="{{asset('js/app.js') }}"></script>
   <script type="text/javascript">
          $.ajaxSetup({
            headers: {
