@@ -69,6 +69,13 @@
     background: #e9e9e9;
     opacity: 0.5;
 }
+.name{
+  font-size: 14px;
+  color: #999;
+}
+.highlight {
+  color: #0096D9;
+}
 
 </style>
 @endpush
@@ -96,6 +103,9 @@
     </div>
   </div>
 </div>
+
+
+<list-search></list-search>
 
 <hr>
  
@@ -229,8 +239,52 @@ Vue.component('image-product',{
       }
     }
   });
+
+  Vue.component('list-search',{
+    template:`<div>
+    @{{ result }}
+    <input type="text" v-model="searchText" />
+        <ul><li v-for="p in cek">
+            <div class="name" 
+               v-html="highlightText(p.name, 'i')">
+            </div>
+        </li></ul>
+    </div>`,
+    data(){
+      return{
+        searchText:'',
+      }
+    },
+    methods: {
+    highlightText: function (words, query) {
+      function pregQuote (str) {
+        return (str.trim() + '').replace(/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g, "\\$1")
+      }
+      var iQuery = new RegExp(pregQuote(query), 'ig')
+      return words.toString().replace(iQuery, function (matchedTxt, a, b) {
+        return ('<span class=\'highlight\'>' + matchedTxt + '</span>')
+      })
+    }
+  },
+    mounted(){
+        store.dispatch('FETCH_PRODUCTS')
+    },
+    computed:{
+      cek(){
+        return store.getters.dataProducts;
+      },
+      result(){
+        var self = this;
+        return this.cek.filter(t=>{
+          return t.name.includes(self.searchText);
+        });
+      }
+    }
+  })
  
   new Vue({
+    store,
+    // mapGetters,
     el:"#app",
     data:{
       name:'wkwkwk',
@@ -248,6 +302,7 @@ Vue.component('image-product',{
             to: 0,
             current_page: 1
        },
+       // searchText:'',
        offset: 4,
        layout:'grid',
        api:{
@@ -287,9 +342,18 @@ Vue.component('image-product',{
     },
     mounted(){      
         this.getProducts(this.pagination.current_page)
-        
     },
+    computed:{
+      // cek(){
+      //   return store.getters.dataProducts;
+      // }
       
+      cek(){
+        // return store.getters.dataProducts.;
+        return mapGetters(['dataProducts']);
+      }
+
+    }
   })
 </script>
 @endpush

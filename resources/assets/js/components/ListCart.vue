@@ -29,6 +29,7 @@
 
 <script type="text/javascript">
 	import qty from './Qty-field.vue';
+	import { mapGetters } from 'vuex'
 	export default{	
 	components:{
 		qty
@@ -40,7 +41,7 @@
     },
     mounted(){
       store.dispatch('FETCH_CARTS')
-   	  
+   	  store.dispatch('FETCH_PRODUCTS');
     },
     methods:{
     	deleteItem(rowId){
@@ -51,10 +52,18 @@
             	rowId:rowId
           }).then((response)=>{
           		store.dispatch('FETCH_CARTS');
+          		
           })
     	}
     },
     computed:{
+		...mapGetters(["dataProducts"]),
+		cek(){
+			var self=this;
+			return self.dataProducts.filter(post=>{
+				return post.name.includes('mie');
+			});
+		},
         carts(){
         	return store.state.carts;
         },

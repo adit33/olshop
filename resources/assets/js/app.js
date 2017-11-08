@@ -17,14 +17,18 @@ window.Vue = require('vue');
 window.Flickity = require('vue-flickity');
 window.VueInstant = require('vue-instant')
 window.Select2 = require('select2');
+
 // window.store = require('./store');
 
 
 import Simplert from 'vue2-simplert';
 import swal from 'sweetalert';
 import store from './store';
+import {mapGetters} from 'vuex'
 
+window.vuex = require('vuex');
 window.store = store;
+window.mapGetters = mapGetters;
 Vue.use(store)
 
 // Vue.use(store);
