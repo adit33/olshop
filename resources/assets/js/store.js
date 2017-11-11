@@ -6,7 +6,7 @@
         title:'',
         carts:null,
         amountCarts:null,
-        products:null
+        products:[]
     }
     const getters = {
       dataProducts:(state)=>{

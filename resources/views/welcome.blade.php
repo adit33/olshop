@@ -105,7 +105,7 @@
 </div>
 
 
-<list-search></list-search>
+<highlight-search></highlight-search>
 
 <hr>
  
@@ -240,47 +240,47 @@ Vue.component('image-product',{
     }
   });
 
-  Vue.component('list-search',{
-    template:`<div>
-    @{{ result }}
-    <input type="text" v-model="searchText" />
-        <ul><li v-for="p in cek">
-            <div class="name" 
-               v-html="highlightText(p.name, 'i')">
-            </div>
-        </li></ul>
-    </div>`,
-    data(){
-      return{
-        searchText:'',
-      }
-    },
-    methods: {
-    highlightText: function (words, query) {
-      function pregQuote (str) {
-        return (str.trim() + '').replace(/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g, "\\$1")
-      }
-      var iQuery = new RegExp(pregQuote(query), 'ig')
-      return words.toString().replace(iQuery, function (matchedTxt, a, b) {
-        return ('<span class=\'highlight\'>' + matchedTxt + '</span>')
-      })
-    }
-  },
-    mounted(){
-        store.dispatch('FETCH_PRODUCTS')
-    },
-    computed:{
-      cek(){
-        return store.getters.dataProducts;
-      },
-      result(){
-        var self = this;
-        return this.cek.filter(t=>{
-          return t.name.includes(self.searchText);
-        });
-      }
-    }
-  })
+  // Vue.component('list-search',{
+  //   template:`<div>
+  //   @{{ result }}
+  //   <input type="text" v-model="searchText" />
+  //       <ul><li v-for="p in cek">
+  //           <div class="name" 
+  //              v-html="highlightText(p.name, 'i')">
+  //           </div>
+  //       </li></ul>
+  //   </div>`,
+  //   data(){
+  //     return{
+  //       searchText:'',
+  //     }
+  //   },
+  //   methods: {
+  //   highlightText: function (words, query) {
+  //     function pregQuote (str) {
+  //       return (str.trim() + '').replace(/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g, "\\$1")
+  //     }
+  //     var iQuery = new RegExp(pregQuote(query), 'ig')
+  //     return words.toString().replace(iQuery, function (matchedTxt, a, b) {
+  //       return ('<span class=\'highlight\'>' + matchedTxt + '</span>')
+  //     })
+  //   }
+  // },
+  //   mounted(){
+  //       store.dispatch('FETCH_PRODUCTS')
+  //   },
+  //   computed:{
+  //     cek(){
+  //       return store.getters.dataProducts;
+  //     },
+  //     result(){
+  //       var self = this;
+  //       return this.cek.filter(t=>{
+  //         return t.name.includes(self.searchText);
+  //       });
+  //     }
+  //   }
+  // })
  
   new Vue({
     store,
