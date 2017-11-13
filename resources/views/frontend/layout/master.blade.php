@@ -79,6 +79,7 @@
     <body>
     <div id="app">
  @include("frontend.layout.navbar")
+ 
 <div class="container">
 
 <div class="tile is-ancestor">

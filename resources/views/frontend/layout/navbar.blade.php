@@ -20,7 +20,7 @@
         </div>
 
         <div class="navbar-item">
-          <div class="field has-addons">
+          <!-- <div class="field has-addons">
   <div class="control">
     <input class="input" @blur="searchProducts" type="text" v-model="inputSearch" placeholder="Find a product">
   </div>
@@ -29,9 +29,10 @@
       Search
     </a>
   </div>
-</div>
+</div> -->
       <!-- <autocomplete>
 </autocomplete> -->
+<highlight-search></highlight-search>
         </div>
 
         <div class="navbar-menu navbar-end" id="navMenu">

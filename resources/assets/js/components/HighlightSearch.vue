@@ -1,11 +1,28 @@
 <template>
 	<div>
-		<input type="text" v-model="textSearch" name="">
-		<ul>
-			<li v-for="product in result"> 
-			<div class="title" v-html="highlightText(product.name, textSearch)"></div>
-			</li>
-		</ul>
+
+		     <div class="field has-addons">
+ <p class="control has-icons-left">
+	      <input v-model="textSearch" class="input is-small" type="text" placeholder="search">
+	      <span class="icon is-small is-left">
+	        <i class="fa fa-search"></i>
+	      </span>
+	    </p>
+</div>
+<div v-if="textSearch != ''" class="dropdown is-active" style="position:absolute; z-index:99999999; width:1000px">
+  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+    <div class="dropdown-content">
+    	<div  v-for="product in result">
+    	<div class="dropdown-item" style="width:500px">
+    		<span  class="title" v-html="highlightText(product.name, textSearch)"></span>
+    		<a style="left" :href="'product/'+product.id">Buy</a>
+    	</div> 
+    		
+    	</div>
+      
+    </div>
+  </div>
+</div>
 	</div>
 </template>
 
@@ -53,5 +70,15 @@
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 10px;
+}.
+.result{
+	display:none; 
+	list-style:none; 
+	position:absolute; 
+	background-color:#53bd84;
+	left:300px; 
+	top:50px; 
+	width:190px;
 }
+
 </style>

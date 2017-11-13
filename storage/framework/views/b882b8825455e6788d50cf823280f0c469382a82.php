@@ -103,8 +103,6 @@
 </div>
 
 
-<highlight-search></highlight-search>
-
 <hr>
  
 <div class="columns is-multiline">
