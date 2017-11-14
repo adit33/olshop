@@ -19,6 +19,8 @@ Route::get('city','CityController@getCity');
 
 Route::GET('register',['uses'=>'AuthController@register']);
 
+Route::POST('cost',['uses'=>'CourierController@getCourier']);
+
 Route::GET('login',['uses'=>'AuthController@login','as'=>'login']);
 
 Route::POST('login',['uses'=>'AuthController@auth','as'=>'auth']);

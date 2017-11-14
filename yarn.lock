@@ -6329,6 +6329,10 @@ vue-loader@^13.0.5:
     vue-style-loader "^3.0.0"
     vue-template-es2015-compiler "^1.6.0"
 
+vue-multiselect@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/vue-multiselect/-/vue-multiselect-2.0.6.tgz#7ca80e6c53db41e414bf76a66b9377ddf4659ebd"
+
 vue-style-loader@^3.0.0:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/vue-style-loader/-/vue-style-loader-3.0.3.tgz#623658f81506aef9d121cdc113a4f5c9cac32df7"

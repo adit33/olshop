@@ -4,9 +4,10 @@
 	<title></title>
 </head>
 <link rel="stylesheet" type="text/css" href="{{ asset('css/bulma.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('vendor.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/vendor.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/dropzone.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.dataTables.min.css') }}">
+<link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.0.6/dist/vue-multiselect.min.css">
 <body>
  
  @include('backend.layout.navbar')

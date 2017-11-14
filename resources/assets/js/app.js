@@ -24,7 +24,8 @@ window.Select2 = require('select2');
 import Simplert from 'vue2-simplert';
 import swal from 'sweetalert';
 import store from './store';
-import {mapGetters} from 'vuex'
+import {mapGetters} from 'vuex';
+import Multiselect from 'vue-multiselect';
 
 window.vuex = require('vuex');
 window.store = store;
@@ -38,6 +39,8 @@ Vue.use(store)
 // Vue.use(VueInstant);
 
 // Vue.component('alert',require('./components/SweetAlert.vue'));
+Vue.component('multiselect',Multiselect);
+
 Vue.component('highlight-search',require('./components/HighlightSearch.vue'));
 
 Vue.component('vue-pagination', require('./components/Pagination.vue'));
