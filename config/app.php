@@ -180,7 +180,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
 
     ],
 
@@ -234,7 +234,8 @@ return [
         'Html'         => Collective\Html\HtmlFacade::class,
         'Image'        => Intervention\Image\Facades\Image::class,
         'Cart'         => Gloudemans\Shoppingcart\Facades\Cart::class,
-        'ImageHelper'  => App\Helpers\ImageHelper::class, 
+        'ImageHelper'  => App\Helpers\ImageHelper::class,
+        'RajaOngkirHelper' => App\Helpers\RajaOngkirHelper::class, 
 
     ],
 

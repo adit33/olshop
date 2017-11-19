@@ -6,8 +6,12 @@
         title:'',
         carts:null,
         amountCarts:null,
+        products:[]
     }
     const getters = {
+      dataProducts:(state)=>{
+        return state.products;
+      }
     }
     const mutations = {
           SET_TITLE (state, value) {
@@ -17,18 +21,23 @@
             state.carts = value
           },
           SET_AMOUNTCARTS(state,value){
-           state.amountCarts = value.map(t=>{
-            return t;
-           })
+           state.amountCarts = value
+          },
+          SET_PRODUCTS(state,value){
+            state.products = value;
           }
     }
     const actions = {
         FETCH_CARTS:({commit})=>{
             return axios.get('carts').then((response)=>{
                 commit('SET_CARTS',response.data)
-                commit('SET_AMOUNTCARTS',response.data)
             });
-        }
+        },
+        FETCH_PRODUCTS:({commit})=>{
+            return axios.get('api/products').then((response)=>{
+                commit('SET_PRODUCTS',response.data.data)
+            });
+        },
     }
     
     const store = new Vuex.Store({  

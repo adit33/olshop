@@ -6,11 +6,15 @@
       0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
     ),
   ),
-  'laravel/tinker' => 
+  'gloudemans/shoppingcart' => 
   array (
     'providers' => 
     array (
-      0 => 'Laravel\\Tinker\\TinkerServiceProvider',
+      0 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Cart' => 'Gloudemans\\Shoppingcart\\Facades\\Cart',
     ),
   ),
   'intervention/image' => 
@@ -22,6 +26,27 @@
     'aliases' => 
     array (
       'Image' => 'Intervention\\Image\\Facades\\Image',
+    ),
+  ),
+  'laravel/tinker' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laravel\\Tinker\\TinkerServiceProvider',
+    ),
+  ),
+  'laravel/scout' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laravel\\Scout\\ScoutServiceProvider',
+    ),
+  ),
+  'yab/laravel-scout-mysql-driver' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Yab\\MySQLScout\\Providers\\MySQLScoutServiceProvider',
     ),
   ),
   'yajra/laravel-datatables-oracle' => 
@@ -77,31 +102,6 @@
     'providers' => 
     array (
       0 => 'Yajra\\DataTables\\ButtonsServiceProvider',
-    ),
-  ),
-  'laravel/scout' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Laravel\\Scout\\ScoutServiceProvider',
-    ),
-  ),
-  'yab/laravel-scout-mysql-driver' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Yab\\MySQLScout\\Providers\\MySQLScoutServiceProvider',
-    ),
-  ),
-  'gloudemans/shoppingcart' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Cart' => 'Gloudemans\\Shoppingcart\\Facades\\Cart',
     ),
   ),
 );

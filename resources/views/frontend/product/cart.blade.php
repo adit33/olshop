@@ -1,91 +1,124 @@
 @extends('frontend.layout.master')
 
 @section('content')
-
-<example></example>
-  <!-- <table class="table is-bordered is-striped is-narrow is-fullwidth">
-    <thead>
-      <th>Nama</th>
-      <th>Jumlah</th>
-      <th>Harga</th>
-      <th>Total</th>
-      <th>Action</th>
-    </thead>
-    <tbody>
-      <tr v-for="cart in carts">
-        <td>@{{ cart.name }}</td>
-        <td><qty-field :val="cart.qty" :row-id="cart.rowId" :min="1" :id="cart.id"></qty-field></td>
-        <td>@{{ cart.price }}</td>
-        <td>@{{ cart.qty * cart.price }}</td>
-        <td>@{{  }}</td>
-      </tr> 
-     <tr>
-        <td colspan="3">Sub TOTAL</td>
-        <td colspan="2">{{ total }}</td>
-      </tr>
-    </tbody>
-  </table> -->
 <list-cart></list-cart>
   <input type="submit" class="button is-info" name="" value="Confirm" />
+<hr>
+
+<div>
+@{{ province_id }}
+Province :
+<!-- <select class="js-example-basic-single" name="province" style="width: 200px" onchange="getCity()" id="province">
+  <option v-for="province in provinces">@{{ province.province }}</option>
+</select> -->
+<div>
+  <label class="typo__label">Provinsi</label>
+  <multiselect v-model="province_id" :options="provinces" placeholder="Select one" label="province" track-by="province" @input="getCity(province_id)"></multiselect>
+</div>
+	
+
+<div>
+  <label class="typo__label">Kota</label>
+  <multiselect v-model="city_id" :options="cities" :custom-label="city" placeholder="Select one" label="city_name" track-by="city_name" ></multiselect>
+</div>
+
+
+<div>
+  <label class="typo__label">Kurir</label>
+  <multiselect v-model="courier_id" :options="courier" :searchable="false" @input="postCost" :close-on-select="false" :show-labels="false" placeholder="Pick a value"></multiselect>
+</div>
+
+<ul>
+  <li v-for="(value , key) in costs.costs">
+    @{{ value.cost[0].value }} | @{{ key }}
+  </li>
+</ul>
+
+
+<table class="table is-bordered is-striped is-narrow is-fullwidth">
+  <th>Service</th>
+  <th>Description</th>
+  <th>Value</th>
+  <th>Etd</th>
+  <tr v-for="(value , key) in costs.costs">
+    <td> @{{ value.service }}</td>
+    <td>@{{ value.description }}</td>
+    <td> @{{ value.cost[0].value }}</td>
+    <td> @{{ value.cost[0].etd }}</td>
+  </tr>
+</table>
+  
+</div>
+
 
 @endsection
 
 @push('scripts')
+
 <script type="text/javascript">
 
+function getCity(){
+  var province_id=$("#province").val();
+  vm.getCity(province_id);
+}
 
-
-Vue.component('qty-field',{
-  template:`
-  <div class="field">
-    <input type="number" class="input" :class="{'is-danger':isError}" :max="availableStock" :min="min" :value="val" v-model="qty" v-on:blur="updateItem"></input>
-     <p v-if="isError" class="help is-danger">Stok Tersedia @{{ availableStock }}</p
-  </div>`,
-  props:['min','val','row-id','id'],
-  data(){
-    return {
-      qty:this.val,
-      isError:false,
-      availableStock:0,
-    }
+  Vue.directive('select', {
+  twoWay: true,
+  bind: function (el, binding, vnode) {
+    $(el).select2().on("select2:select", (e) => {
+      // v-model looks for
+      //  - an event named "change"
+      //  - a value with property path "$event.target.value"
+      el.dispatchEvent(new Event('change', { target: e.target }));
+      // vm.getCity(e.params.data.id)
+      console.log($(el).select2());
+    });
   },
-  mounted(){
-    this.getAvailableStock()
-  },
-  methods:{
-    cekQty(){
-      this.isError = false;
-      if ( parseInt(this.qty) > parseInt(this.availableStock) || this.qty <= 0){
-        this.isError = true;
-        this.qty = this.val;
-      }    
-        
-    },
-    updateItem(){
-      let url="{{ route('cart.update',[':row-id']) }}";
-      url = url.replace(':row-id', this.rowId);
-
-      this.cekQty()
-
-      if(this.isError == false){
-          axios.put(url,{
-            qty:this.qty,
-            rowId:this.rowId
-          }).then((response)=>{
-            this.$parent.carts=response.data;
-          })  
-      }
-
-      
-    },
-     getAvailableStock(){
-        var stock=axios.get('api/product/'+this.id).then((response)=>{
-          this.availableStock = response.data;
-        })
-      }
-  }
 })
 
+var vm=new Vue({
+    store,
+    el:"#app",
+    data:{
+      province_id:'',
+      city_id:'',
+    	provinces:[],
+      cities:[],
+      courier_id:'',
+      courier:['jne','pos','tiki',],
+      costs:[]
+    },
+    mounted(){
+    	 $('.js-example-basic-single').select2();
+    	 this.getProvince();
+    },
+    methods:{
+      getProvince(){
+       this.cities="";
+        let url='province';
+        axios.get(url).then(response=>{
+          this.provinces=response.data.rajaongkir.results;
+        })
+      },
+      getCity(province_id){  
+        let url='city';
+        axios.get(url,{params:{id:province_id.province_id}}).then(response=>{
+          this.cities=response.data.rajaongkir.results;
+        })
+      },
+      postCost(){
+        let url='cost';
+        axios.post(url,{origin:22,destination:this.city_id.city_id,weight:1000,courier:this.courier_id})
+        .then(response=>{
+          this.costs=response.data.rajaongkir.results[0];
+        })
+      },
+      city({city_name,type}){
+        return `${type} ${city_name}`
+      }
+    }
+
+<<<<<<< HEAD
 // new Vue({
 //   el:"#app"
 // })
@@ -121,6 +154,8 @@ Vue.component('qty-field',{
           return x.reduce((sum,val)=>parseInt(sum) + parseInt(val));
         }
     }
+=======
+>>>>>>> 12ebfdffc1bb9afe4aa13aca8bb83f73493d73c9
   })
 </script>
 @endpush

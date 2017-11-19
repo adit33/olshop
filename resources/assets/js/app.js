@@ -16,14 +16,20 @@ window.Vue = require('vue');
  */
 window.Flickity = require('vue-flickity');
 window.VueInstant = require('vue-instant')
+window.Select2 = require('select2');
+
 // window.store = require('./store');
 
 
 import Simplert from 'vue2-simplert';
 import swal from 'sweetalert';
 import store from './store';
+import {mapGetters} from 'vuex';
+import Multiselect from 'vue-multiselect';
 
+window.vuex = require('vuex');
 window.store = store;
+window.mapGetters = mapGetters;
 Vue.use(store)
 
 // Vue.use(store);
@@ -33,6 +39,10 @@ Vue.use(store)
 // Vue.use(VueInstant);
 
 // Vue.component('alert',require('./components/SweetAlert.vue'));
+Vue.component('multiselect',Multiselect);
+
+Vue.component('highlight-search',require('./components/HighlightSearch.vue'));
+
 Vue.component('vue-pagination', require('./components/Pagination.vue'));
 
 Vue.component('autocomplete',require('./components/Autocomplete.vue'));
@@ -50,6 +60,10 @@ Vue.component('carousel',require('./components/product/ImageCarousel.vue'));
 Vue.component('message', require('./components/Message.vue'));
 
 Vue.component('list-cart',require('./components/ListCart.vue'));
+
+Vue.component('notif-cart',require('./components/NotifAmountCart.vue'));
+
+Vue.component('qty',require('./components/Qty-field.vue'));
 
 // Vue.component('example',require('./components/Example.vue'));
 

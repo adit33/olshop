@@ -32,12 +32,13 @@ class CartController extends Controller
 
     public function getCarts(){
         $carts=Cart::content();
+        $qty=Cart::count();
         return $carts;
     }
 
     public function removeItem($id){
         Cart::remove($id);
-        return redirect()->back();
+        // return redirect()->back();
     }
 
     public function updateItem($id,Request $request){

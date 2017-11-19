@@ -13,18 +13,13 @@
 
 Route::get('/', 'FrontController@frontPage');
 
-Route::get('test',function(){
-	$p=App\Models\Product::find(5);
-	$p=$p->productImage()->pluck('id');
+Route::get('province','ProvinceController@getProvince');
 
-
-
-	foreach ($p as $x) {
-		echo dd($x);
-	}
-});
+Route::get('city','CityController@getCity');
 
 Route::GET('register',['uses'=>'AuthController@register']);
+
+Route::POST('cost',['uses'=>'CourierController@getCourier']);
 
 Route::GET('login',['uses'=>'AuthController@login','as'=>'login']);
 
