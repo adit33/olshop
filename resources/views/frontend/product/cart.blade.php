@@ -81,6 +81,44 @@ new Vue({
       }
     }
 
+<<<<<<< HEAD
+// new Vue({
+//   el:"#app"
+// })
+  new Vue({
+    store,
+    el:"#app",
+    data:{
+      carts:JSON.parse('{!! Cart::content() !!}')
+    },
+    mounted(){
+      
+      this.getCarts()
+    },
+    methods:{
+      getCarts(){
+        let url="{{ route('carts') }}";
+        axios.get(url).then((response)=>{
+          this.carts = response.data;
+          // store.commit('SET_CARTS',response.data);
+        })
+      },
+    },
+    computed:{
+        total(){
+          let carts=this.carts;
+          for(cart in carts){
+            return +carts[cart].subtotal;
+          }
+        },
+        amountCart(){
+          let carts=this.carts;
+          var x = Object.values(this.carts).map((t)=>{return t.qty});
+          return x.reduce((sum,val)=>parseInt(sum) + parseInt(val));
+        }
+    }
+=======
+>>>>>>> 12ebfdffc1bb9afe4aa13aca8bb83f73493d73c9
   })
 </script>
 @endpush
