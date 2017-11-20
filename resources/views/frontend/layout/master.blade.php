@@ -12,7 +12,7 @@
         <link rel="stylesheet" type="text/css" href="https://assets.hellogustav.com/fonts/bariol_bold-webfont.woff2">
 
         <!-- Styles -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/bulma.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/vendor.css') }}">
         
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -97,7 +97,11 @@
   <div class="tile is-vertical is-9">
    
     <div class="tile is-parent">
-      @yield('content')
+     <!-- <div class="columns is-dekstop">
+        <div class="column is-12"> -->
+         @yield('content')
+        <!-- </div>
+      </div> -->
     </div>
   </div>
   

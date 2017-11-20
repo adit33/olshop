@@ -17,7 +17,6 @@ window.Vue = require('vue');
 window.Flickity = require('vue-flickity');
 window.VueInstant = require('vue-instant')
 window.Select2 = require('select2');
-
 // window.store = require('./store');
 
 
@@ -64,6 +63,8 @@ Vue.component('list-cart',require('./components/ListCart.vue'));
 Vue.component('notif-cart',require('./components/NotifAmountCart.vue'));
 
 Vue.component('qty',require('./components/Qty-field.vue'));
+
+Vue.component('ongkir',require('./components/Ongkir.vue'));
 
 // Vue.component('example',require('./components/Example.vue'));
 
