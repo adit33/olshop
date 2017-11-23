@@ -37,6 +37,9 @@ Route::GET('cart/{id}/delete',['uses'=>'CartController@removeItem','as'=>'cart.d
 
 Route::POST('addtocart/{product_id}',['uses'=>'CartController@addToCart','as'=>'addtocart']);
 
+Route::POST('api/checkout',['uses'=>'TransactionController@checkout']);
+
+
 Route::middleware(['auth'])->group(function () {
 
 	

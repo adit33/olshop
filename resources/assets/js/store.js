@@ -6,7 +6,9 @@
         title:'',
         carts:null,
         amountCarts:null,
-        products:[]
+        products:[],
+        ongkir:0,
+        destination:{},
     }
     const getters = {
       dataProducts:(state)=>{
@@ -25,6 +27,12 @@
           },
           SET_PRODUCTS(state,value){
             state.products = value;
+          },
+          SET_ONGKIR(state,value){
+            state.ongkir = value;
+          },
+          SET_DESTINATION(state,value){
+            state.destination = value;
           }
     }
     const actions = {

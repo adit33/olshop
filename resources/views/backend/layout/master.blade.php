@@ -227,10 +227,10 @@
     })
   </script>
 
-
+  <script type="text/javascript" src="{{asset('js/app.js') }}"></script>
   <script type="text/javascript" src="{{ asset('js/dropzone.js') }}"></script>
   <script type="text/javascript" src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-  <script type="text/javascript" src="{{asset('js/app.js') }}"></script>
+  
   <script type="text/javascript">
          $.ajaxSetup({
            headers: {

@@ -76,4 +76,12 @@ class Product extends Model
         return $arr;
     }
 
+    public function decrementStock($id,$value){
+        Product::find($id)->decrement('stock',$value);    
+    }
+
+    public function incrementStock($id,$value){
+        Product::find($id)->increment('stock',$value);    
+    }
+
 }

@@ -10,8 +10,14 @@ use App\Models\DetailTransaction;
 
 use Cart;
 
+use App\Models\Transaction;
+
 class TransactionController extends Controller
 {
+    public function __construct(Transaction $transaction){
+        $this->transaction = $transaction;
+    }
+
     public function addToCart(Request $request,$id){
     	$product=Product::find($id);
 
@@ -37,11 +43,15 @@ class TransactionController extends Controller
 
     public function removeItem($id){
         Cart::remove($id);
-        return->redirect()->back();
+        return redirect()->back();
     }
 
     public function changeQty($id,Request $request){
         Cart::update($id, $request->input('qty'));
+    }
+
+    public function checkout(Request $request){
+        $this->transaction->checkout($request);
     }
 
 }

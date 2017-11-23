@@ -6,29 +6,36 @@
 		</div>
 			
 
-		<div>
+		<div v-if="provinces != '' ">
 		  <label class="typo__label">Kota</label>
 		  <multiselect v-model="city_id" :options="cities" :custom-label="city" placeholder="Select one" label="city_name" track-by="city_name" ></multiselect>
 		</div>
 
 
-		<div>
+		<div v-if="cities != '' ">
 		  <label class="typo__label">Kurir</label>
 		  <multiselect v-model="courier_id" :options="courier" :searchable="false" @input="postCost" :close-on-select="false" :show-labels="false" placeholder="Pick a value"></multiselect>
 		</div>
 
-		<table class="table is-bordered is-striped is-narrow is-fullwidth">
+		<table v-if="costs != '' " class="table is-bordered is-striped is-narrow is-fullwidth">
 		  <th>Service</th>
 		  <th>Description</th>
 		  <th>Value</th>
 		  <th>Etd</th>
+		  <th>Action</th>
 		  <tr v-for="(value , key) in costs.costs">
 		    <td>{{ value.service }}</td>
 		    <td>{{ value.description }}</td>
 		    <td>{{ value.cost[0].value }}</td>
 		    <td>{{ value.cost[0].etd }}</td>
+		    <td><input type="radio" v-model="ongkir" :value="value.cost[0].value" @change="setOngkir"></td>
 		  </tr>
 		</table>
+
+		<div v-if="costs != ''">
+			Alamat Lengkap:
+			<input type="textarea" v-model="alamat" name="alamat" />
+		</div>
 		  
 		</div>
 
@@ -44,12 +51,15 @@
 	      cities:[],
 	      courier_id:'',
 	      courier:['jne','pos','tiki',],
-	      costs:[]
+	      costs:[],
+	      ongkir:0,
+	      alamat:'',
+	      destination:{},
 		}
     },
     mounted(){
     	 $('.js-example-basic-single').select2();
-    	 this.getProvince();
+    	 this.getProvince();    	 
     },
     methods:{
       getProvince(){
@@ -70,10 +80,15 @@
         axios.post(url,{origin:22,destination:this.city_id.city_id,weight:1000,courier:this.courier_id})
         .then(response=>{
           this.costs=response.data.rajaongkir.results[0];
+          this.destination=response.data.rajaongkir.destination_details;
         })
       },
       city({city_name,type}){
         return `${type} ${city_name}`
+      },setOngkir(){
+      	this.destination.alamat=this.alamat;
+      	store.commit('SET_DESTINATION',this.destination);
+      	store.commit('SET_ONGKIR',this.ongkir);
       }
     }
 	}

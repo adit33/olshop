@@ -54185,52 +54185,60 @@ S2.define('jquery.select2',[
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex__["default"]);
 var state = {
-    title: '',
-    carts: null,
-    amountCarts: null,
-    products: []
+  title: '',
+  carts: null,
+  amountCarts: null,
+  products: [],
+  ongkir: 0,
+  destination: {}
 };
 var getters = {
-    dataProducts: function dataProducts(state) {
-        return state.products;
-    }
+  dataProducts: function dataProducts(state) {
+    return state.products;
+  }
 };
 var mutations = {
-    SET_TITLE: function SET_TITLE(state, value) {
-        state.title = value;
-    },
-    SET_CARTS: function SET_CARTS(state, value) {
-        state.carts = value;
-    },
-    SET_AMOUNTCARTS: function SET_AMOUNTCARTS(state, value) {
-        state.amountCarts = value;
-    },
-    SET_PRODUCTS: function SET_PRODUCTS(state, value) {
-        state.products = value;
-    }
+  SET_TITLE: function SET_TITLE(state, value) {
+    state.title = value;
+  },
+  SET_CARTS: function SET_CARTS(state, value) {
+    state.carts = value;
+  },
+  SET_AMOUNTCARTS: function SET_AMOUNTCARTS(state, value) {
+    state.amountCarts = value;
+  },
+  SET_PRODUCTS: function SET_PRODUCTS(state, value) {
+    state.products = value;
+  },
+  SET_ONGKIR: function SET_ONGKIR(state, value) {
+    state.ongkir = value;
+  },
+  SET_DESTINATION: function SET_DESTINATION(state, value) {
+    state.destination = value;
+  }
 };
 var actions = {
-    FETCH_CARTS: function FETCH_CARTS(_ref) {
-        var commit = _ref.commit;
+  FETCH_CARTS: function FETCH_CARTS(_ref) {
+    var commit = _ref.commit;
 
-        return __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get('carts').then(function (response) {
-            commit('SET_CARTS', response.data);
-        });
-    },
-    FETCH_PRODUCTS: function FETCH_PRODUCTS(_ref2) {
-        var commit = _ref2.commit;
+    return __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get('carts').then(function (response) {
+      commit('SET_CARTS', response.data);
+    });
+  },
+  FETCH_PRODUCTS: function FETCH_PRODUCTS(_ref2) {
+    var commit = _ref2.commit;
 
-        return __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get('api/products').then(function (response) {
-            commit('SET_PRODUCTS', response.data.data);
-        });
-    }
+    return __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get('api/products').then(function (response) {
+      commit('SET_PRODUCTS', response.data.data);
+    });
+  }
 };
 
 var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["default"].Store({
-    state: state,
-    mutations: mutations,
-    actions: actions,
-    getters: getters
+  state: state,
+  mutations: mutations,
+  actions: actions,
+  getters: getters
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (store);
@@ -56802,6 +56810,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -56812,7 +56827,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       cities: [],
       courier_id: '',
       courier: ['jne', 'pos', 'tiki'],
-      costs: []
+      costs: [],
+      ongkir: 0,
+      alamat: '',
+      destination: {}
     };
   },
   mounted: function mounted() {
@@ -56844,6 +56862,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var url = 'cost';
       axios.post(url, { origin: 22, destination: this.city_id.city_id, weight: 1000, courier: this.courier_id }).then(function (response) {
         _this3.costs = response.data.rajaongkir.results[0];
+        _this3.destination = response.data.rajaongkir.destination_details;
       });
     },
     city: function city(_ref) {
@@ -56851,6 +56870,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           type = _ref.type;
 
       return type + ' ' + city_name;
+    },
+    setOngkir: function setOngkir() {
+      this.destination.alamat = this.alamat;
+      store.commit('SET_DESTINATION', this.destination);
+      store.commit('SET_ONGKIR', this.ongkir);
     }
   }
 });
@@ -56893,83 +56917,145 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _c(
-      "div",
-      [
-        _c("label", { staticClass: "typo__label" }, [_vm._v("Kota")]),
-        _vm._v(" "),
-        _c("multiselect", {
-          attrs: {
-            options: _vm.cities,
-            "custom-label": _vm.city,
-            placeholder: "Select one",
-            label: "city_name",
-            "track-by": "city_name"
-          },
-          model: {
-            value: _vm.city_id,
-            callback: function($$v) {
-              _vm.city_id = $$v
-            },
-            expression: "city_id"
-          }
-        })
-      ],
-      1
-    ),
+    _vm.provinces != ""
+      ? _c(
+          "div",
+          [
+            _c("label", { staticClass: "typo__label" }, [_vm._v("Kota")]),
+            _vm._v(" "),
+            _c("multiselect", {
+              attrs: {
+                options: _vm.cities,
+                "custom-label": _vm.city,
+                placeholder: "Select one",
+                label: "city_name",
+                "track-by": "city_name"
+              },
+              model: {
+                value: _vm.city_id,
+                callback: function($$v) {
+                  _vm.city_id = $$v
+                },
+                expression: "city_id"
+              }
+            })
+          ],
+          1
+        )
+      : _vm._e(),
     _vm._v(" "),
-    _c(
-      "div",
-      [
-        _c("label", { staticClass: "typo__label" }, [_vm._v("Kurir")]),
-        _vm._v(" "),
-        _c("multiselect", {
-          attrs: {
-            options: _vm.courier,
-            searchable: false,
-            "close-on-select": false,
-            "show-labels": false,
-            placeholder: "Pick a value"
-          },
-          on: { input: _vm.postCost },
-          model: {
-            value: _vm.courier_id,
-            callback: function($$v) {
-              _vm.courier_id = $$v
-            },
-            expression: "courier_id"
-          }
-        })
-      ],
-      1
-    ),
+    _vm.cities != ""
+      ? _c(
+          "div",
+          [
+            _c("label", { staticClass: "typo__label" }, [_vm._v("Kurir")]),
+            _vm._v(" "),
+            _c("multiselect", {
+              attrs: {
+                options: _vm.courier,
+                searchable: false,
+                "close-on-select": false,
+                "show-labels": false,
+                placeholder: "Pick a value"
+              },
+              on: { input: _vm.postCost },
+              model: {
+                value: _vm.courier_id,
+                callback: function($$v) {
+                  _vm.courier_id = $$v
+                },
+                expression: "courier_id"
+              }
+            })
+          ],
+          1
+        )
+      : _vm._e(),
     _vm._v(" "),
-    _c(
-      "table",
-      { staticClass: "table is-bordered is-striped is-narrow is-fullwidth" },
-      [
-        _c("th", [_vm._v("Service")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Description")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Value")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Etd")]),
-        _vm._v(" "),
-        _vm._l(_vm.costs.costs, function(value, key) {
-          return _c("tr", [
-            _c("td", [_vm._v(_vm._s(value.service))]),
+    _vm.costs != ""
+      ? _c(
+          "table",
+          {
+            staticClass: "table is-bordered is-striped is-narrow is-fullwidth"
+          },
+          [
+            _c("th", [_vm._v("Service")]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(value.description))]),
+            _c("th", [_vm._v("Description")]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(value.cost[0].value))]),
+            _c("th", [_vm._v("Value")]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(value.cost[0].etd))])
-          ])
-        })
-      ],
-      2
-    )
+            _c("th", [_vm._v("Etd")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Action")]),
+            _vm._v(" "),
+            _vm._l(_vm.costs.costs, function(value, key) {
+              return _c("tr", [
+                _c("td", [_vm._v(_vm._s(value.service))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(value.description))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(value.cost[0].value))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(value.cost[0].etd))]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.ongkir,
+                        expression: "ongkir"
+                      }
+                    ],
+                    attrs: { type: "radio" },
+                    domProps: {
+                      value: value.cost[0].value,
+                      checked: _vm._q(_vm.ongkir, value.cost[0].value)
+                    },
+                    on: {
+                      change: [
+                        function($event) {
+                          _vm.ongkir = value.cost[0].value
+                        },
+                        _vm.setOngkir
+                      ]
+                    }
+                  })
+                ])
+              ])
+            })
+          ],
+          2
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.costs != ""
+      ? _c("div", [
+          _vm._v("\n\t\tAlamat Lengkap:\n\t\t"),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.alamat,
+                expression: "alamat"
+              }
+            ],
+            attrs: { type: "textarea", name: "alamat" },
+            domProps: { value: _vm.alamat },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.alamat = $event.target.value
+              }
+            }
+          })
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = []
