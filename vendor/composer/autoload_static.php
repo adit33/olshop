@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticIniteeab08a204ee96dff98ac0581858d200
+class ComposerStaticInit63092c6dea6d6d1e1886f8c462c9ec3e
 {
     public static $files = array (
         '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
@@ -16,13 +16,13 @@ class ComposerStaticIniteeab08a204ee96dff98ac0581858d200
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
-        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
-        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
-        '67969b779fc2b57b79f39cdaef36a10e' => __DIR__ . '/..' . '/yab/laravel-scout-mysql-driver/src/helpers.php',
+        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        '67969b779fc2b57b79f39cdaef36a10e' => __DIR__ . '/..' . '/yab/laravel-scout-mysql-driver/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -466,6 +466,7 @@ class ComposerStaticIniteeab08a204ee96dff98ac0581858d200
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
+        'DeepCopy\\Exception\\PropertyException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',
         'DeepCopy\\Filter\\Doctrine\\DoctrineCollectionFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Filter/Doctrine/DoctrineCollectionFilter.php',
         'DeepCopy\\Filter\\Doctrine\\DoctrineEmptyCollectionFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Filter/Doctrine/DoctrineEmptyCollectionFilter.php',
         'DeepCopy\\Filter\\Doctrine\\DoctrineProxyFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Filter/Doctrine/DoctrineProxyFilter.php',
@@ -479,9 +480,11 @@ class ComposerStaticIniteeab08a204ee96dff98ac0581858d200
         'DeepCopy\\Matcher\\PropertyNameMatcher' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Matcher/PropertyNameMatcher.php',
         'DeepCopy\\Matcher\\PropertyTypeMatcher' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Matcher/PropertyTypeMatcher.php',
         'DeepCopy\\Reflection\\ReflectionHelper' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Reflection/ReflectionHelper.php',
+        'DeepCopy\\TypeFilter\\Date\\DateIntervalFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/Date/DateIntervalFilter.php',
         'DeepCopy\\TypeFilter\\ReplaceFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/ReplaceFilter.php',
         'DeepCopy\\TypeFilter\\ShallowCopyFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/ShallowCopyFilter.php',
         'DeepCopy\\TypeFilter\\Spl\\SplDoublyLinkedList' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/Spl/SplDoublyLinkedList.php',
+        'DeepCopy\\TypeFilter\\Spl\\SplDoublyLinkedListFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/Spl/SplDoublyLinkedListFilter.php',
         'DeepCopy\\TypeFilter\\TypeFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/TypeFilter.php',
         'DeepCopy\\TypeMatcher\\TypeMatcher' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeMatcher/TypeMatcher.php',
         'Doctrine\\Common\\Inflector\\Inflector' => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector/Inflector.php',
@@ -2590,6 +2593,7 @@ class ComposerStaticIniteeab08a204ee96dff98ac0581858d200
         'PHPUnit\\Framework\\TestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/TestCase.php',
         'PHPUnit\\Framework\\TestFailure' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/TestFailure.php',
         'PHPUnit\\Framework\\TestListener' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/TestListener.php',
+        'PHPUnit\\Framework\\TestListenerDefaultImplementation' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/TestListenerDefaultImplementation.php',
         'PHPUnit\\Framework\\TestResult' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/TestResult.php',
         'PHPUnit\\Framework\\TestSuite' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/TestSuite.php',
         'PHPUnit\\Framework\\TestSuiteIterator' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/TestSuiteIterator.php',
@@ -2633,8 +2637,10 @@ class ComposerStaticIniteeab08a204ee96dff98ac0581858d200
         'PHPUnit\\Util\\TestDox\\ResultPrinter' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/TestDox/ResultPrinter.php',
         'PHPUnit\\Util\\TestDox\\TextResultPrinter' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/TestDox/TextResultPrinter.php',
         'PHPUnit\\Util\\TestDox\\XmlResultPrinter' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/TestDox/XmlResultPrinter.php',
+        'PHPUnit\\Util\\TextTestListRenderer' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/TextTestListRenderer.php',
         'PHPUnit\\Util\\Type' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Type.php',
         'PHPUnit\\Util\\Xml' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Xml.php',
+        'PHPUnit\\Util\\XmlTestListRenderer' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/XmlTestListRenderer.php',
         'PHPUnit_Framework_MockObject_BadMethodCallException' => __DIR__ . '/..' . '/phpunit/phpunit-mock-objects/src/Exception/BadMethodCallException.php',
         'PHPUnit_Framework_MockObject_Builder_Identity' => __DIR__ . '/..' . '/phpunit/phpunit-mock-objects/src/Builder/Identity.php',
         'PHPUnit_Framework_MockObject_Builder_InvocationMocker' => __DIR__ . '/..' . '/phpunit/phpunit-mock-objects/src/Builder/InvocationMocker.php',
@@ -4223,10 +4229,10 @@ class ComposerStaticIniteeab08a204ee96dff98ac0581858d200
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticIniteeab08a204ee96dff98ac0581858d200::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticIniteeab08a204ee96dff98ac0581858d200::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticIniteeab08a204ee96dff98ac0581858d200::$prefixesPsr0;
-            $loader->classMap = ComposerStaticIniteeab08a204ee96dff98ac0581858d200::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit63092c6dea6d6d1e1886f8c462c9ec3e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit63092c6dea6d6d1e1886f8c462c9ec3e::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit63092c6dea6d6d1e1886f8c462c9ec3e::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit63092c6dea6d6d1e1886f8c462c9ec3e::$classMap;
 
         }, null, ClassLoader::class);
     }
