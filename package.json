@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "bulma": "^0.6.1",
+    "bulma-steps": "^0.1.0",
     "select2": "^4.0.6-rc.0",
     "sweetalert": "^2.0.8",
     "vue-flickity": "^1.0.8",

@@ -29,3 +29,4 @@ Route::get('categories',['uses'=>'CategoryController@getCategories','as'=>'categ
 
 Route::get('products/filter','ProductController@filterProducts');
 
+

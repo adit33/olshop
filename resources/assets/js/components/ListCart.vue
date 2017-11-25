@@ -1,7 +1,7 @@
 <template>
-	<div v-if="total != 0">
-		 <table class="table is-bordered is-striped is-narrow is-fullwidth">
-		    <thead>
+	<!-- <div > -->
+		 <table v-if="total != 0" class="table is-bordered is-striped is-narrow is-fullwidth">
+		    <thead class="th-cart">
 		      <th>Nama</th>
 		      <th>Jumlah</th>
 		      <th>Harga</th>
@@ -24,7 +24,7 @@
 		      </tr>
 		    </tbody>
 		  </table>
-	</div>
+	<!-- </div> -->
 </template>
 
 <script type="text/javascript">
@@ -75,3 +75,9 @@
     }
 	}
 </script>
+
+<style type="text/css">
+	.th-cart{
+		/*background-color: #3273dc;*/
+	}
+</style>
