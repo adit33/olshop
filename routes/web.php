@@ -39,6 +39,8 @@ Route::POST('addtocart/{product_id}',['uses'=>'CartController@addToCart','as'=>'
 
 Route::POST('api/checkout',['uses'=>'TransactionController@checkout']);
 
+Route::resource('transaction','TransactionController');
+
 
 Route::middleware(['auth'])->group(function () {
 

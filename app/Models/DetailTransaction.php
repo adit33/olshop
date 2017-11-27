@@ -26,4 +26,9 @@ class DetailTransaction extends Model
             $product->decrementStock($cart->id,$cart->qty);
     	}
     }
+
+
+    public function product(){
+        return $this->belongsTo(Product::class,'product_id','id');
+    }
 }

@@ -35,6 +35,14 @@ class Transaction extends Model
     	
     }
 
+    public function product(){
+
+    }
+
+    public function detailTransaction(){
+        return $this->hasMany(DetailTransaction::class,'transaction_id','id');
+    }
+
 
     
 

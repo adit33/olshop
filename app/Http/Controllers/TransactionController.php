@@ -12,6 +12,8 @@ use Cart;
 
 use App\Models\Transaction;
 
+use App\DataTables\TransactionDataTable;
+
 class TransactionController extends Controller
 {
     public function __construct(Transaction $transaction){
@@ -36,6 +38,11 @@ class TransactionController extends Controller
 
     }
 
+    public function show($id){
+        $transaction=Transaction::with('detailTransaction.product')->find($id);
+        return view('backend.transaction.show',compact('transaction'));
+    }
+
     public function getCart(){
     	$carts=Cart::content();
     	return view('frontend.product.cart',compact('carts'));
@@ -52,6 +59,10 @@ class TransactionController extends Controller
 
     public function checkout(Request $request){
         $this->transaction->checkout($request);
+    }
+
+    public function index(TransactionDataTable $dataTable){
+        return $dataTable->render('backend.transaction.index');
     }
 
 }

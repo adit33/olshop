@@ -201,134 +201,117 @@ button.is-blue:hover {
 </style>
 @endpush
 @section('content')
-
-        <div class="column is-6">
-          <div class="image is-2by2">
-            <img id="zoom_01" width="100px" src="{!! asset($product->productImage->first()->name) !!}" zoom-data-image="{!! asset($product->productImage->first()->name) !!}"></img>  
-          </div>
-
-
- <div class="slide-selectors">
-  <div id="gallery_01">
-  @foreach($product->productImage as $image)
-  <div class="slide-selector">
-    <!-- <img src="{!! asset($image->name) !!}" @click='choseImage("{!! $image->name !!}")'> -->
-   
-  <a href="#" data-image="{!! asset($image->name) !!}" data-zoom-image="{!! asset($image->name) !!}">
-    <img id="img_01" src="{!! asset($image->name) !!}" />
-  </a>
-
-
-    </div>
-     @endforeach
-     </div>
- </div>
-     <!--  <div class="column is-2">
-           <a class="file">
-             <div class="image is-3by2">
-            <img src="{!! asset($image->name) !!}">
-            </div>
-           </a>            
-        </div> -->
- 
-
-
-          <br>
-          <p>Suspendisse sodales metus justo, ullamcorper iaculis purus interdum in. Sed ultricies enim felis, in interdum urna malesuada a. Morbi id ligula vel leo elementum dignissim quis vel purus. Donec iaculis, est ac maximus vestibulum, sapien mi lacinia urna, at laoreet felis lectus nec urna. Fusce egestas, neque vitae blandit scelerisque, leo arcu pellentesque risus, et volutpat neque nunc id massa. Aenean dapibus leo vel purus malesuada, eu ultrices nulla consequat. Duis erat orci, lobortis sed dictum id, pretium a nibh. Mauris pharetra ligula consequat gravida ornare.
-          </p>
-        </div>
-
-        
-        <div class="column is-5 is-offset-1">
-          <div class="title is-2">{!! $product->name !!}</div>
-          <p class="title is-3 has-text-muted">Rp.{!! $product->price !!}</p>
-          <hr>
-          <br>
-          <p class="">
-            <i class="fa fa-star title is-5" style="color:#ed6c63"></i>
-            <i class="fa fa-star title is-5" style="color:#ed6c63"></i>
-            <i class="fa fa-star title is-5" style="color:#ed6c63"></i>
-            <i class="fa fa-star title is-5"></i>
-            <i class="fa fa-star title is-5"></i>
-            &nbsp; &nbsp;
-            <strong>41 Reviews</strong>
-            &nbsp; &nbsp;
-            <a href="#">show all</a>
-          </p>
-          <br>
-          
-          <br>
-          <br>
-          <p class="">
-          {!! Form::open(['url'=>route('addtocart',$product->id),'method'=>'POST']) !!}
-            <input-stock :available-stock="{!! $product->stock !!}"></input-stock>
-            &nbsp; &nbsp; &nbsp;
-            
-            <input type="submit" class="button is-primary" value="Add to cart"></input>
-            {!! Form::close() !!}
-          </p>
-          <br>
-          <table class="table">
-            <tbody>
-              <tr>
-                <td class="has-text-right">
-                  <strong>Item ID</strong>a
-                </td>
-                <td>1234</td>
-              </tr>
-              <tr>
-                <td class="has-text-right">
-                  <strong>Seller</strong>
-                </td>
-                <td>jsmith</td>
-              </tr>
-              <tr>
-                <td class="has-text-right">
-                  <strong>Added</strong>
-                </td>
-                <td>3 days ago</td>
-              </tr>
-              <tr>
-                <td class="has-text-right">
-                  <strong>Views</strong>
-                </td>
-                <td>3</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+<div class="columns">
+   <div class="column is-7">
+      <div class="image is-2by2">
+         <img id="zoom_01" width="100px" src="{!! asset($product->productImage->first()->name) !!}" zoom-data-image="{!! asset($product->productImage->first()->name) !!}"></img>  
       </div>
+     
+      <div class="slide-selectors">
+         <div id="gallery_01">
+            @foreach($product->productImage as $image)
+            <div class="slide-selector">
+               <!-- <img src="{!! asset($image->name) !!}" @click='choseImage("{!! $image->name !!}")'> -->
+               <a href="#" data-image="{!! asset($image->name) !!}" data-zoom-image="{!! asset($image->name) !!}">
+               <img id="img_01" src="{!! asset($image->name) !!}" />
+               </a>
+            </div>
+            @endforeach
+         </div>
+      </div>
+      <!--  <div class="column is-2">
+         <a class="file">
+           <div class="image is-3by2">
+          <img src="{!! asset($image->name) !!}">
+          </div>
+         </a>            
+         </div> -->
+      <br>
+      <p>Suspendisse sodales metus justo, ullamcorper iaculis purus interdum in. Sed ultricies enim felis, in interdum urna malesuada a. Morbi id ligula vel leo elementum dignissim quis vel purus. Donec iaculis, est ac maximus vestibulum, sapien mi lacinia urna, at laoreet felis lectus nec urna. Fusce egestas, neque vitae blandit scelerisque, leo arcu pellentesque risus, et volutpat neque nunc id massa. Aenean dapibus leo vel purus malesuada, eu ultrices nulla consequat. Duis erat orci, lobortis sed dictum id, pretium a nibh. Mauris pharetra ligula consequat gravida ornare.
+      </p>
+   </div>
+   
+   <div class="column is-4">
+    <div class="title is-2">{!! $product->name !!}</div>
+   <p class="title is-3 has-text-muted">Rp.{!! $product->price !!}</p>
+   <hr>
+   <br>
+   <p class="">
+      <i class="fa fa-star title is-5" style="color:#ed6c63"></i>
+      <i class="fa fa-star title is-5" style="color:#ed6c63"></i>
+      <i class="fa fa-star title is-5" style="color:#ed6c63"></i>
+      <i class="fa fa-star title is-5"></i>
+      <i class="fa fa-star title is-5"></i>
+      &nbsp; &nbsp;
+      <strong>41 Reviews</strong>
+      &nbsp; &nbsp;
+      <a href="#">show all</a>
+   </p>
+   <br>
+   <br>
+   <br>
+   <p class="">
+      {!! Form::open(['url'=>route('addtocart',$product->id),'method'=>'POST']) !!}
+      <input-stock :available-stock="{!! $product->stock !!}"></input-stock>
+      &nbsp; &nbsp; &nbsp;
+      <input type="submit" class="button is-primary" value="Add to cart"></input>
+      {!! Form::close() !!}
+   </p>
+   <br>
+   <table class="table">
+      <tbody>
+         <tr>
+            <td class="has-text-right">
+               <strong>Item ID</strong>a
+            </td>
+            <td>1234</td>
+         </tr>
+         <tr>
+            <td class="has-text-right">
+               <strong>Seller</strong>
+            </td>
+            <td>jsmith</td>
+         </tr>
+         <tr>
+            <td class="has-text-right">
+               <strong>Added</strong>
+            </td>
+            <td>3 days ago</td>
+         </tr>
+         <tr>
+            <td class="has-text-right">
+               <strong>Views</strong>
+            </td>
+            <td>3</td>
+         </tr>
+      </tbody>
+   </table>  
+   </div>
+</div>
 
- <!--    </div>
-  </div> -->
-  <div class="section">
-    <div class="container">
-      <div class="column is-9"> 
-        
+
+<!--    </div>
+   </div> -->
+<div class="columns">
+   <div class="column is-11">
       <tabs>
-        <tab name="Overview" :selected="true">
-          <div class="box">Overview</div>
-        </tab>
-
-        <tab name="Details">
-          <div class="box">Details</div>  
-        </tab>
-
-        <tab name="Price">
-          <div class="box">Price</div> 
-        </tab>
-
-
-        <tab name="Test">
-          <div class="box">Test</div>  
-        </tab>
+         <tab name="Overview" :selected="true">
+            <div class="box">Overview</div>
+         </tab>
+         <tab name="Details">
+            <div class="box">Details</div>
+         </tab>
+         <tab name="Price">
+            <div class="box">Price</div>
+         </tab>
+         <tab name="Test">
+            <div class="box">Test</div>
+         </tab>
       </tabs>
-</div>
-</div>
+   </div>
 </div>
 @endsection
 @push('scripts')
-
 <script type="text/javascript">
 
   Vue.component('input-stock',{

@@ -81,12 +81,28 @@
     <div id="app">
  @include("frontend.layout.navbar")
  
-<div class="container">
 
-<div class="tile is-ancestor">
+
+<div class="columns is-desktop">
+  <div class="column is-3"> @include("frontend.layout.left_sidebar")</div>
+  <div class="column">
+  @yield('content')
+</div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    @include("frontend.layout.footer")
+  </div>
+</div>
+
+
+<!-- <div class="container">
+
+<div class="tile is-ancestor"> -->
 
 <!-- SIDEBAR -->
- @include("frontend.layout.left_sidebar")
+
 <!-- END SIDEBAR -->
 <!-- <div class="tile is-parent">
     
@@ -94,23 +110,23 @@
 
   </div> -->
 
-  <div class="tile is-vertical is-9">
+<!--   <div class="tile is-vertical is-9">
    
-    <div class="tile is-parent">
+    <div class="tile is-parent"> -->
      <!-- <div class="columns is-dekstop">
         <div class="column is-12"> -->
-         @yield('content')
+         
         <!-- </div>
       </div> -->
-    </div>
+    <!-- </div>
   </div>
-  
-</div>
+   -->
+<!-- </div> -->
 
-</div>
+<!-- </div> -->
 
 <!-- footer -->
- @include("frontend.layout.footer")
+ 
 <!-- end footer -->
 </div>
         <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
