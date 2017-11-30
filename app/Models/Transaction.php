@@ -43,6 +43,18 @@ class Transaction extends Model
         return $this->hasMany(DetailTransaction::class,'transaction_id','id');
     }
 
+    public function reportTransactionMonthly(){
+        $sum=[];
+        for ($i=1; $i < 13; $i++) { 
+            array_push($sum, Transaction::whereMonth('created_at',$i)->sum('total'));    
+        }
+        return $sum;
+    }
+
+    public function reportTransactionYearly(){
+
+    }
+
 
     
 

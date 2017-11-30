@@ -11,3 +11,7 @@
 @import "~bulma";
 
 @import "~bulma-steps/bulma-steps.sass";
+
+$fa-font-path: "../fonts";
+
+@import "~font-awesome/scss/font-awesome.scss";

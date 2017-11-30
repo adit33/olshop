@@ -4,6 +4,7 @@ namespace App\DataTables;
 
 use App\Models\Transaction;
 use Yajra\DataTables\Services\DataTable;
+use URL;
 
 class TransactionDataTable extends DataTable
 {
@@ -16,7 +17,14 @@ class TransactionDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
-            ->addColumn('action',   'transactiondatatable.action');
+            ->addColumn('action',function($query){
+                return '<a href='.URL::to('transaction/'.$query->id).' class="button is-info is-small">
+    <span class="icon">
+      <i class="fa fa-eye" aria-hidden="true"></i>
+    </span>
+    <span>View</span>
+  </a>';
+            });
     }
 
     /**

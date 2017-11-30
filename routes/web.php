@@ -11,6 +11,11 @@
 |
 */
 
+Route::get('test',function(){
+	$tr=new App\Models\Transaction;
+	$tr->reportTransactionMonthly();
+});
+
 Route::get('/', 'FrontController@frontPage');
 
 Route::get('province','ProvinceController@getProvince');
@@ -40,6 +45,8 @@ Route::POST('addtocart/{product_id}',['uses'=>'CartController@addToCart','as'=>'
 Route::POST('api/checkout',['uses'=>'TransactionController@checkout']);
 
 Route::resource('transaction','TransactionController');
+
+Route::get('report','TransactionController@report');
 
 
 Route::middleware(['auth'])->group(function () {
