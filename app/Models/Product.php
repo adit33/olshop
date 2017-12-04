@@ -33,6 +33,10 @@ class Product extends Model
     	return $this->belongsToMany(Category::class);
     }
 
+    public function detailTransaction(){
+        return $this->hasMany(DetailTransaction::class,'product_id','id');
+    }
+
     public function saveProduct($product,$request){
         $product_image=new ProductImage;
         $product->name=$request->input('name');
@@ -82,6 +86,14 @@ class Product extends Model
 
     public function incrementStock($id,$value){
         Product::find($id)->increment('stock',$value);    
+    }
+
+    public function productSold(){
+         $sum=0;
+         foreach($this->detailTransaction as $p){
+            $sum += $p->qty;
+         }
+         return $sum;
     }
 
 }

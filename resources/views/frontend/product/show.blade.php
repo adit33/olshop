@@ -304,8 +304,16 @@ button.is-blue:hover {
          <tab name="Price">
             <div class="box">Price</div>
          </tab>
-         <tab name="Test">
-            <div class="box">Test</div>
+         <tab name="review">
+            <div class="box">
+              <rating :value="starDefault" @setstar="setStar" name="Review"></rating>
+              <div class="field">
+              <label class="label">Review</label>
+              <div class="control">
+                <textarea class="textarea" placeholder="Textarea"></textarea>
+              </div>
+            </div>
+            </div>
          </tab>
       </tabs>
    </div>
@@ -331,7 +339,8 @@ button.is-blue:hover {
     props:['availableStock'],
     data(){
       return{
-        stock:1
+        stock:1,
+
       }
     },
     methods:{
@@ -366,13 +375,18 @@ button.is-blue:hover {
   new Vue({
     el:"#app",
      data:{
+       starDefault:1,
       imageName:'{!! asset($product->productImage->first()->name) !!}'
     },
       methods:{
       choseImage(val){
         this.imageName ="{!! asset('') !!}"+"/"+val;
       },
-    }
+      setStar (event) {
+       this.starDefault=event; // get the data after child dealing
+     }
+    },
+
 
   })
 </script>

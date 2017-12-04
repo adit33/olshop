@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/dropzone.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.dataTables.min.css') }}">
 
+
 <body>
  
  @include('backend.layout.navbar')

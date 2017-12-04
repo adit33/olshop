@@ -66,6 +66,8 @@ Vue.component('qty',require('./components/Qty-field.vue'));
 
 Vue.component('ongkir',require('./components/Ongkir.vue'));
 
+Vue.component('rating',require('./components/Rating.vue'));
+
 // Vue.component('example',require('./components/Example.vue'));
 
 // const app = new Vue({

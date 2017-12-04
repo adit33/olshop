@@ -12,8 +12,12 @@
 */
 
 Route::get('test',function(){
-	$tr=new App\Models\Transaction;
-	$tr->reportTransactionMonthly();
+	$tr=new App\Models\Product;
+	$p=App\Models\Product::find(13);
+	// foreach ($xs as $x) {
+	// 	echo dd($x->detailTransaction);
+	// }
+	echo dd($p->productSold());
 });
 
 Route::get('/', 'FrontController@frontPage');
