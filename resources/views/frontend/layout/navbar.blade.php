@@ -37,8 +37,8 @@
 
         <div class="navbar-menu navbar-end" id="navMenu">
           <a class="navbar-item is-tab is-hidden-tablet is-active">Home</a>
-          <a class="navbar-item is-tab is-hidden-tablet">Features</a>
-          <a class="navbar-item is-tab is-hidden-tablet">Pricing</a>
+          <a class="navbar-item is-tab is-hidden-tablet">Product</a>
+          <a class="navbar-item is-tab is-hidden-tablet">Category</a>
           <a class="navbar-item is-tab is-hidden-tablet">About</a>
           <a class="navbar-item nav-tag">              
           <notif-cart></notif-cart>

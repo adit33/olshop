@@ -79,16 +79,30 @@
      </head>
     <body>
     <div id="app">
+
+
  @include("frontend.layout.navbar")
- 
+ <section class="hero is-info">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Primary title
+      </h1>
+      <h2 class="subtitle">
+        Primary subtitle
+      </h2>
+    </div>
+  </div>
+</section>
 
-
-<div class="columns is-desktop">
-  <div class="column is-3"> @include("frontend.layout.left_sidebar")</div>
+<div class="container">
+  <div class="columns is-desktop">
   <div class="column">
   @yield('content')
 </div>
+</div>  
 </div>
+
 
 <div class="columns">
   <div class="column">
