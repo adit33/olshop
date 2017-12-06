@@ -85,7 +85,7 @@
   <img src="img/HaZWDGyLQy.jpg" style="width: 66%; height: 200px; margin-right: 10px; border-radius: 5px;"></img>
   <img src="img/HaZWDGyLQy.jpg" style="width: 66%; height: 200px; margin-right: 10px; border-radius: 5px;"></img>
 </div>
-<article class="tile is-child box">
+<!-- <article class="tile is-child box"> -->
 <ul class="menu-list">
     <?php $__currentLoopData = App\Models\Category::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
       <li><input type="checkbox" @click="filterProducts" v-model="categories" name="category_id[]" value="<?php echo $category->id; ?>"><?php echo $category->name; ?></li>
@@ -111,20 +111,25 @@
 
 <hr>
  
-<div class="columns is-multiline">
 <img v-if="isLoading" src="<?php echo asset('img/loading.gif'); ?>" style="display: block; margin: 0 auto;" />
-      <div class="column" :class="{ 'is-4' : layout == 'grid' ,'is-12' : layout == 'list' }" v-for="product in products.data" v-if="! isLoading">
-<card-product :product="product"></card-product>
-      </div>
-  
+<div class="columns is-multiline">
+   <!-- <div class="column is-12"> -->
+    <div class="pricing-table column is-12" :class="{ '' : layout == 'grid' ,'is-horizontal' : layout == 'list' }">
+    <div class="column" :class="{ 'is-4' : layout == 'grid' ,'is-12' : layout == 'list' }"  v-for="product in products.data" v-if="! isLoading">
+      <card-product :product="product"></card-product>     
+    </div>   
+      
+    </div>
+  <!-- </div>    -->
 </div>
+
 
 <vue-pagination  v-bind:pagination="pagination"
                  v-on:click.native="getProducts(pagination.current_page)"
                  :offset="2">
 </vue-pagination>
 
-  </article>
+  <!-- </article> -->
 
   
 
@@ -135,13 +140,13 @@
 Vue.component('layout',{
   template:
   `<div>
-    <a href="#" @click="changeLayout('grid')">
+    <a  @click="changeLayout('grid')">
       <span class="icon">
      <i class="fa fa-bars"></i>
     </span>  
     </a>
 
-    <a href="#" @click="changeLayout('list')">
+    <a @click="changeLayout('list')">
       <span class="icon">
      <i class="fa fa-th-large"></i>
     </span>  
@@ -197,38 +202,30 @@ Vue.component('image-product',{
   Vue.component('card-product',{
     // template:`<img v-bind:src="imgSrc" v-on:mouseover="hoverCard" v-on:mouseleave="hoverCard" v-bind:class="{'': !isHover, 'hover':isHover }"/>`,
     template:`
-   <div class="card" v-bind:class="{'': !isHover, 'hover':isHover }">
-    <div class="card-image">
-      <figure class="image is-4by3">
+    <div class="pricing-plan" v-bind:class="{'': !isHover, 'is-active':isHover }">
+    
+    <div class="plan-header">
+    <figure class="image is-4by3">
         <div v-for="image in product.product_image">
           <img v-bind:src="image.name" alt="Placeholder image" v-on:mouseover="hoverCard" v-on:mouseleave="hoverCard">
            <div class="ribbon"><span>POPULAR</span></div>
         </div>
       </figure>
+    {{ product.name }}</div>
+    <div class="plan-price"><span class="plan-price-amount"><span class="plan-price-currency">Rp</span>{{ product.price }}</span></div>
+    <div class="plan-items">
+      <div class="plan-item">200GB Storage</div>
     </div>
-    <div class="card-content">
-      <div class="media">
-        <div class="media-content">
-          <p class="title is-4">{{ product.name }}</p>
-          <p class="subtitle is-6">Rp. {{ product.price }}</p>
-        </div>
-      </div>
-
-      <div class="content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Phasellus nec iaculis mauris. <a>@bulmaio</a>.     
-      </div>
-      </div>
-     <footer class="card-footer">
-              <span class="card-footer-item">
-               
-              
-              <buy-btn :url="product.id" v-if="product.stock >= 1"></buy-btn>
+    <div class="plan-footer">
+       <buy-btn :url="product.id" v-if="product.stock >= 1"></buy-btn>
               <span v-else="product.stock == 0" class="tag is-danger">Out Of Stock</span>  
-              
-              </span>
-            </footer>
-  </div>`,
+    </div>
+  </div>
+
+
+   
+
+`,
   props:['product'],
     data(){
       return {
@@ -334,9 +331,13 @@ Vue.component('image-product',{
       },
       filterProducts(){
         var url='api/products/filter';
-        axios.get(url,{params:{order:this.order,categories:this.categories}}).then((response)=>{
+       this.$nextTick(function () {
+          var self=this;
+          axios.get(url,{params:{order:this.order,categories:this.categories}}).then((response)=>{
           this.products=response.data;
-        });
+         });
+        })
+        
       },
       test(){
       alert()

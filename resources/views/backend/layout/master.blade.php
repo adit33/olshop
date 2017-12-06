@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/vendor.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/dropzone.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.dataTables.min.css') }}">
-
+<meta name="api-base-url" content="{{ url('/') }}" />
 
 <body>
  
@@ -210,7 +210,9 @@
     })
   
     new Vue({
+       store,
       el:"#app",
+
       methods:{
         confirmDelete(){
            let obj = {

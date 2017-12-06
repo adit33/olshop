@@ -37,3 +37,4 @@ Alamat : {{ $transaction->alamat.' '.$transaction->type.' '.$transaction->city_n
 </table>
 
 @endsection
+

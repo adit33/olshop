@@ -58,7 +58,7 @@ class ProductController extends Controller
     }
 
     public function getProducts(){
-        $products=Product::with('productImage')->paginate(3);
+        $products=Product::with('productImage')->paginate(4);
         return response()->json($products);       
     }
 
@@ -84,7 +84,7 @@ class ProductController extends Controller
         ->when($order,function($query) use ($arr_order){
             return $query->orderBY($arr_order[0],$arr_order[1]);
         })
-        ->paginate(3);
+        ->paginate(4);
         
 
         return $products;

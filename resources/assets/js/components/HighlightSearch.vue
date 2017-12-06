@@ -14,10 +14,9 @@
     <div class="dropdown-content">
     	<div  v-for="product in result">
     	<div class="dropdown-item" style="width:500px">
-    		<span  class="title" v-html="highlightText(product.name, textSearch)"></span>
-    		<a style="left" :href="'product/'+product.id">Buy</a>
+    		<a  class="title" v-html="highlightText(product.name, textSearch)" :href="'product/'+product.id"></a>
     	</div> 
-    		
+    		<hr class="dropdown-divider">
     	</div>
       
     </div>

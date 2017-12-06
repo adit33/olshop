@@ -373,6 +373,7 @@ button.is-blue:hover {
   })
 
   new Vue({
+    store,
     el:"#app",
      data:{
        starDefault:1,
