@@ -8,7 +8,7 @@ use Cart;
 class CartController extends Controller
 {
     public function addToCart(Request $request,$id){
-    	$product=Product::find($id);
+    	$product=Product::with('productImage')->find($id);
 
         $rules = [
             'qty'=>'required|numeric|between:0,'.$product->stock
@@ -20,6 +20,7 @@ class CartController extends Controller
     	$data['name']=$product->name;
     	$data['qty']=$request->input('qty');
     	$data['price']=$product->price;
+        $data['options']['image']=$product->productImage->first()->name;
 
     	Cart::add($data);
 	   	return redirect('cart');

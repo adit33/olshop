@@ -3,6 +3,7 @@
 		 <table v-if="total != 0" class="table is-bordered is-striped is-narrow is-fullwidth">
 		    <thead class="th-cart">
 		      <th>Nama</th>
+		      <th>Image</th>
 		      <th>Jumlah</th>
 		      <th>Harga</th>
 		      <th>Total</th>
@@ -12,6 +13,11 @@
 		      <tr v-for="cart in carts">
 		        <td>{{ cart.name }}</td>
 		        <td>
+		        	<figure class="image is-128x128">
+					  <img v-bind:src="cart.options['image']">
+					</figure>
+		        </td>
+		        <td>
 		        <qty :val="cart.qty" :row-id="cart.rowId" :min="1" :id="cart.id"></qty>
 		        </td>
 		        <td>{{ cart.price }}</td>
@@ -19,7 +25,7 @@
 		        <td><a class="delete" @click="deleteItem(cart.rowId)"></a></td>
 		      </tr> 
 		     <tr>
-		        <td colspan="3">Sub TOTAL</td>
+		        <td colspan="4">Sub TOTAL</td>
 		        <td colspan="2">{{ total }}</td>
 		      </tr>
 		    </tbody>
@@ -45,7 +51,7 @@
     },
     methods:{
     	deleteItem(rowId){
-    		let url="/olshop/public/cart/:row-id/delete";
+    		let url="cart/:row-id/delete";
       		url = url.replace(':row-id', rowId);
 
     		axios.get(url,{

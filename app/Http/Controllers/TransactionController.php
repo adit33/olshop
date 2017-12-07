@@ -21,7 +21,7 @@ class TransactionController extends Controller
     }
 
     public function addToCart(Request $request,$id){
-    	$product=Product::find($id);
+    	$product=Product::with('productImage')->find($id);
 
         $rules = [
             'qty'=>'required|numeric|between:0,'.$product->stock
@@ -32,6 +32,7 @@ class TransactionController extends Controller
     	$data['id']=$product->id;
     	$data['name']=$product->name;
     	$data['qty']=$request->input('qty');
+      
     	$data['price']=$product->price;
 
     	Cart::add($data);

@@ -68,6 +68,10 @@ Vue.component('ongkir',require('./components/Ongkir.vue'));
 
 Vue.component('rating',require('./components/Rating.vue'));
 
+Vue.component('steps',require('./components/Steps.vue'));
+
+Vue.component('step',require('./components/Step.vue'));
+
 // Vue.component('example',require('./components/Example.vue'));
 
 // const app = new Vue({
