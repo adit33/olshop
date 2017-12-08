@@ -2,8 +2,10 @@
   <div>
     <div class="steps">
     <slot></slot>
-  </div>
-    <slot name="content"></slot>
+    </div>
+    <div>
+      <slot name="content"></slot>  
+    </div> 
   </div>
   
   <!-- content -->
@@ -17,6 +19,9 @@
         steps:[]
       }
     },
+     mounted(){
+        console.log(this.$children)
+      },
     created(){
       this.steps = this.$children;
     }
