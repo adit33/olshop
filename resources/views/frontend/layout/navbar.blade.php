@@ -1,15 +1,140 @@
  <header class="hero is-light">
     <div class="hero-head">
-      <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
+      <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
 
           <a class="navbar-item">
             <img src="#" alt="Bulma logo">
           </a>
-          <a class="navbar-item is-tab is-hidden-mobile is-active"><span class="icon is-medium"><i class="fa fa-home"></i></span>Home</a>
-          <a class="navbar-item is-tab is-hidden-mobile">Features</a>
-          <a class="navbar-item is-tab is-hidden-mobile">Pricing</a>
-          <a class="navbar-item is-tab is-hidden-mobile">About</a>
+          <a class="navbar-item is-hidden-mobile is-active"><span class="icon is-medium"><i class="fa fa-home"></i></span>Home</a>
+           <div class="navbar-menu navbar-end" id="navMenu">
+          <a class="navbar-item is-tab is-hidden-tablet is-active">Home</a>
+           <div class="navbar-item has-dropdown is-hoverable is-mega">
+        <div class="navbar-link">
+          Blog
+        </div>
+        <div id="blogDropdown" class="navbar-dropdown " data-style="width: 18rem;">
+          <div class="container is-fluid">
+            <div class="columns">
+              <div class="column">
+                <h1 class="title is-6 is-mega-menu-title">Sub Menu Title</h1>
+                <a class="navbar-item" href="/2017/08/03/list-of-tags/">
+                  <div class="navbar-content">
+                    <p>
+                      <small class="has-text-info">03 Aug 2017</small>
+                    </p>
+                    <p>New feature: list of tags</p>
+                  </div>
+                </a>
+                <a class="navbar-item" href="/2017/08/03/list-of-tags/">
+                  <div class="navbar-content">
+                    <p>
+                      <small class="has-text-info">03 Aug 2017</small>
+                    </p>
+                    <p>New feature: list of tags</p>
+                  </div>
+                </a>
+                <a class="navbar-item" href="/2017/08/03/list-of-tags/">
+                  <div class="navbar-content">
+                    <p>
+                      <small class="has-text-info">03 Aug 2017</small>
+                    </p>
+                    <p>New feature: list of tags</p>
+                  </div>
+                </a>
+              </div>
+              <div class="column">
+                <h1 class="title is-6 is-mega-menu-title">Sub Menu Title</h1>
+                <a class="navbar-item" href="/2017/08/03/list-of-tags/">
+                  <div class="navbar-content">
+
+                    <p>
+                      <small class="has-text-info">03 Aug 2017</small>
+                    </p>
+                    <p>New feature: list of tags</p>
+                  </div>
+                </a>
+                <a class="navbar-item " href="/documentation/overview/start/">
+            Overview
+          </a>
+                <a class="navbar-item " href="http://bulma.io/documentation/modifiers/syntax/">
+            Modifiers
+          </a>
+                <a class="navbar-item " href="http://bulma.io/documentation/columns/basics/">
+            Columns
+          </a>
+              </div>
+              <div class="column">
+                <h1 class="title is-6 is-mega-menu-title">Sub Menu Title</h1>
+                <a class="navbar-item" href="/2017/08/03/list-of-tags/">
+                  <div class="navbar-content">
+                    <p>
+                      <small class="has-text-info">03 Aug 2017</small>
+                    </p>
+                    <p>New feature: list of tags</p>
+                  </div>
+                </a>
+                <a class="navbar-item" href="/2017/08/03/list-of-tags/">
+                  <div class="navbar-content">
+                    <p>
+                      <small class="has-text-info">03 Aug 2017</small>
+                    </p>
+                    <p>New feature: list of tags</p>
+                  </div>
+                </a>
+                <a class="navbar-item" href="/2017/08/03/list-of-tags/">
+                  <div class="navbar-content">
+                    <p>
+                      <small class="has-text-info">03 Aug 2017</small>
+                    </p>
+                    <p>New feature: list of tags</p>
+                  </div>
+                </a>
+
+              </div>
+              <div class="column">
+                <h1 class="title is-6 is-mega-menu-title">Sub Menu Title</h1>
+                <a class="navbar-item " href="/documentation/overview/start/">
+            Overview
+          </a>
+                <a class="navbar-item " href="http://bulma.io/documentation/modifiers/syntax/">
+            Modifiers
+          </a>
+                <a class="navbar-item " href="http://bulma.io/documentation/columns/basics/">
+            Columns
+          </a>
+                <a class="navbar-item " href="http://bulma.io/documentation/layout/container/">
+            Layout
+          </a>
+              </div>
+            </div>
+          </div>
+
+          <hr class="navbar-divider">
+          <div class="navbar-item">
+            <div class="navbar-content">
+              <div class="level is-mobile">
+                <div class="level-left">
+                  <div class="level-item">
+                    <strong>Stay up to date!</strong>
+                  </div>
+                </div>
+                <div class="level-right">
+                  <div class="level-item">
+                    <a class="button bd-is-rss is-small" href="http://bulma.io/atom.xml">
+                      <span class="icon is-small">
+                        <i class="fa fa-rss"></i>
+                      </span>
+                      <span>Subscribe</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+          <a class="navbar-item is-hidden-mobile">About</a>
           
           <button class="button navbar-burger" data-target="navMenu">
             <span></span>
@@ -35,12 +160,11 @@
 <highlight-search></highlight-search>
         </div>
 
-        <div class="navbar-menu navbar-end" id="navMenu">
-          <a class="navbar-item is-tab is-hidden-tablet is-active">Home</a>
+       
           <a class="navbar-item is-tab is-hidden-tablet">Product</a>
           <a class="navbar-item is-tab is-hidden-tablet">Category</a>
           <a class="navbar-item is-tab is-hidden-tablet">About</a>
-          <a class="navbar-item nav-tag">              
+          <a class="navbar-item nav-tag" href="{!! URL::to('cart') !!}">              
           <notif-cart></notif-cart>
           </a>  
           

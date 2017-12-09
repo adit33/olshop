@@ -18,6 +18,15 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="{{ asset('vendor.css') }}">
         <style type="text/css">
+         .navbar-item.is-mega {
+              position: static;
+
+              .is-mega-menu-title {
+                margin-bottom: 0;
+                padding: .375rem 1rem;
+              }
+            }
+
           .container{
             margin-top: 50px;
           }
