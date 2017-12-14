@@ -17,7 +17,7 @@ Route::get('test',function(){
 	// foreach ($xs as $x) {
 	// 	echo dd($x->detailTransaction);
 	// }
-	echo dd($p->productSold());
+	echo dd(Socialite::driver('facebook')->user());
 });
 
 Route::get('/', 'FrontController@frontPage');
@@ -51,6 +51,11 @@ Route::POST('api/checkout',['uses'=>'TransactionController@checkout']);
 Route::resource('transaction','TransactionController');
 
 Route::get('report','TransactionController@report');
+
+Route::group(['prefix' => 'social-media'], function(){
+    Route::get('register/{provider}', 'SocialiteController@register');
+    Route::get('registered/{provider}', 'SocialiteController@registered');
+});
 
 
 Route::middleware(['auth'])->group(function () {

@@ -35,15 +35,17 @@
     31 => 'Yajra\\DataTables\\FractalServiceProvider',
     32 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
     33 => 'Yajra\\DataTables\\ButtonsServiceProvider',
-    34 => 'Intervention\\Image\\ImageServiceProvider',
-    35 => 'Laravel\\Scout\\ScoutServiceProvider',
-    36 => 'Yab\\MySQLScout\\Providers\\MySQLScoutServiceProvider',
-    37 => 'App\\Providers\\AppServiceProvider',
-    38 => 'App\\Providers\\AuthServiceProvider',
-    39 => 'App\\Providers\\EventServiceProvider',
-    40 => 'App\\Providers\\RouteServiceProvider',
-    41 => 'Collective\\Html\\HtmlServiceProvider',
-    42 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
+    34 => 'Laravel\\Socialite\\SocialiteServiceProvider',
+    35 => 'Intervention\\Image\\ImageServiceProvider',
+    36 => 'Laravel\\Scout\\ScoutServiceProvider',
+    37 => 'Yab\\MySQLScout\\Providers\\MySQLScoutServiceProvider',
+    38 => 'Laravel\\Socialite\\SocialiteServiceProvider',
+    39 => 'App\\Providers\\AppServiceProvider',
+    40 => 'App\\Providers\\AuthServiceProvider',
+    41 => 'App\\Providers\\EventServiceProvider',
+    42 => 'App\\Providers\\RouteServiceProvider',
+    43 => 'Collective\\Html\\HtmlServiceProvider',
+    44 => 'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider',
   ),
   'eager' => 
   array (
@@ -179,6 +181,7 @@
     'form' => 'Collective\\Html\\HtmlServiceProvider',
     'Collective\\Html\\HtmlBuilder' => 'Collective\\Html\\HtmlServiceProvider',
     'Collective\\Html\\FormBuilder' => 'Collective\\Html\\HtmlServiceProvider',
+    'Laravel\\Socialite\\Contracts\\Factory' => 'Laravel\\Socialite\\SocialiteServiceProvider',
   ),
   'when' => 
   array (
@@ -222,6 +225,9 @@
     array (
     ),
     'Collective\\Html\\HtmlServiceProvider' => 
+    array (
+    ),
+    'Laravel\\Socialite\\SocialiteServiceProvider' => 
     array (
     ),
   ),

@@ -34,5 +34,15 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
+    'facebook' => [
+        'client_id' => '1242340722563588',
+        'client_secret' => '3df374cf2c48f406ed17fce8d4e57229',
+        'redirect' => 'http://localhost/olshop/public/social-media/registered/facebook',
+    ],
+    'github' => [
+        'client_id'=>'8b7a4b65d389912b1e75',
+        'client_secret'=>'fb95e624eea9627a373dba61b7b051a050ecb559',
+        'redirect'=>'http://localhost/olshop/public/social-media/registered/github',
+    ]
 
 ];

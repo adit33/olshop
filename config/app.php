@@ -166,6 +166,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
         Yab\MySQLScout\Providers\MySQLScoutServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -236,6 +237,7 @@ return [
         'Cart'         => Gloudemans\Shoppingcart\Facades\Cart::class,
         'ImageHelper'  => App\Helpers\ImageHelper::class,
         'RajaOngkirHelper' => App\Helpers\RajaOngkirHelper::class, 
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 

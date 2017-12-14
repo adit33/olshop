@@ -68,6 +68,9 @@
     <button class="button is-link">Cancel</button>
   </div>
 </div>
+
+ <a class="button is-info" href="{!! URL::to('social-media/register/facebook') !!}">Facebook</a>
+
                 </div>
                 {!! Form::close() !!}
               </article>
