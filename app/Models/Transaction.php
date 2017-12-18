@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 use Cart;
 
+use App\Mail\Order;
+
 use App\Models\DetailTransaction;
 
 class Transaction extends Model
@@ -56,6 +58,9 @@ class Transaction extends Model
     }
 
 
-    
+    public function sendPaymentInformation($transaction){
+         Mail::to($transaction->email)
+        ->send(new Order($transaction));
+    }    
 
 }

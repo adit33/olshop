@@ -8,9 +8,9 @@
         <title>Laravel</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+       <!--  <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="https://assets.hellogustav.com/fonts/bariol_bold-webfont.woff2">
-
+ -->
         <!-- Styles -->
         <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/vendor.css') }}">

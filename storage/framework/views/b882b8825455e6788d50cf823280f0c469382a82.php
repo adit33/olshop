@@ -74,6 +74,12 @@
 .highlight {
   color: #0096D9;
 }
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0
+}
 
 </style>
 <?php $__env->stopPush(); ?>
@@ -202,6 +208,7 @@ Vue.component('image-product',{
   Vue.component('card-product',{
     // template:`<img v-bind:src="imgSrc" v-on:mouseover="hoverCard" v-on:mouseleave="hoverCard" v-bind:class="{'': !isHover, 'hover':isHover }"/>`,
     template:`
+     <transition name="fade">
     <div class="pricing-plan" v-bind:class="{'': !isHover, 'is-active':isHover }">
     
     <div class="plan-header">
@@ -221,7 +228,7 @@ Vue.component('image-product',{
               <span v-else="product.stock == 0" class="tag is-danger">Out Of Stock</span>  
     </div>
   </div>
-
+</transition>
 
    
 
