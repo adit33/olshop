@@ -3,7 +3,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Register</title>
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/bulma.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/vendor.css') }}">
 </head>
 <body class="layout-default">
 <div id="root">
@@ -34,6 +35,17 @@
                       Login
                     </button>
                   </p>
+                  <a class="button is-info" href="{!! URL::to('social-media/register/facebook') !!}">
+              <span class="icon">
+                <i class="fa fa-facebook"></i>
+              </span>
+            </a>
+
+            <a class="button" href="{!! URL::to('social-media/register/github') !!}">
+              <span class="icon is-small">
+                <i class="fa fa-github"></i>
+              </span>
+            </a>
                 </div>
                 {!! Form::close() !!}
               </article>

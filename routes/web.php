@@ -17,7 +17,7 @@ Route::get('test',function(){
 	// foreach ($xs as $x) {
 	// 	echo dd($x->detailTransaction);
 	// }
-	echo dd(Socialite::driver('facebook')->user());
+	echo dd(Socialite::driver('facebook')->stateless()->user());
 });
 
 Route::get('/', 'FrontController@frontPage');
@@ -34,23 +34,6 @@ Route::GET('login',['uses'=>'AuthController@login','as'=>'login']);
 
 Route::POST('login',['uses'=>'AuthController@auth','as'=>'auth']);
 
-Route::resource('product','ProductController',['except'=>['update']]);
-
-Route::GET('cart',['uses'=>'CartController@getCart','as'=>'cart']);
-
-Route::GET('carts',['uses'=>'CartController@getCarts','as'=>'carts']);
-
-Route::PUT('cart/{id}/update',['uses'=>'CartController@updateItem','as'=>'cart.update']);
-
-Route::GET('cart/{id}/delete',['uses'=>'CartController@removeItem','as'=>'cart.delete']);
-
-Route::POST('addtocart/{product_id}',['uses'=>'CartController@addToCart','as'=>'addtocart']);
-
-Route::POST('api/checkout',['uses'=>'TransactionController@checkout']);
-
-Route::resource('transaction','TransactionController');
-
-Route::get('report','TransactionController@report');
 
 Route::group(['prefix' => 'social-media'], function(){
     Route::get('register/{provider}', 'SocialiteController@register');
@@ -59,9 +42,24 @@ Route::group(['prefix' => 'social-media'], function(){
 
 
 Route::middleware(['auth'])->group(function () {
+	Route::resource('product','ProductController',['except'=>['update']]);
 
-	
+	Route::GET('cart',['uses'=>'CartController@getCart','as'=>'cart']);
 
+	Route::GET('carts',['uses'=>'CartController@getCarts','as'=>'carts']);
+
+	Route::PUT('cart/{id}/update',['uses'=>'CartController@updateItem','as'=>'cart.update']);
+
+	Route::GET('cart/{id}/delete',['uses'=>'CartController@removeItem','as'=>'cart.delete']);
+
+	Route::POST('addtocart/{product_id}',['uses'=>'CartController@addToCart','as'=>'addtocart']);
+
+	Route::POST('api/checkout',['uses'=>'TransactionController@checkout']);
+
+	Route::resource('transaction','TransactionController');
+
+	Route::get('report','TransactionController@report');
+		
 	Route::POST('product/{id}',['uses'=>'ProductController@update','as'=>'product.update']);
 
 	Route::resource('user','UserController');

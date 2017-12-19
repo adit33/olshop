@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Cart;
+use Cart,Mail,Auth;
 
 use App\Mail\Order;
 
@@ -22,17 +22,18 @@ class Transaction extends Model
     	$destination=$request->input('destination');
     	$ongkir=$request->input('ongkir');
     	$transaction=Transaction::create([
-			'city_name' =>$destination['city_name'],
-			'province'  =>$destination['province'],
-			'type'      =>$destination['type'],
-			'alamat'    =>$destination['alamat'],
-			'ongkir'	=>$ongkir,
-			'total'		=>floatval(Cart::subtotal('0','','')),
+            'city_name' =>$destination['city_name'],
+            'email'     =>Auth::user()->email,
+            'province'  =>$destination['province'],
+            'type'      =>$destination['type'],
+            'alamat'    =>$destination['alamat'],
+            'ongkir'    =>$ongkir,
+            'total'     =>floatval(Cart::subtotal('0','','')),
     	]);
 
     	$detail_transaction=new DetailTransaction;
     	$detail_transaction->addDetailTransaction($transaction);
-
+        $this->sendPaymentInformation($transaction);
     	Cart::destroy();
     	
     }
@@ -60,7 +61,7 @@ class Transaction extends Model
 
     public function sendPaymentInformation($transaction){
          Mail::to($transaction->email)
-        ->send(new Order($transaction));
+        ->send(new \App\Mail\Order($transaction));
     }    
 
 }

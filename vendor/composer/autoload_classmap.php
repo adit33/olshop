@@ -44,6 +44,7 @@ return array(
     'App\\Http\\Requests\\ProductRequest' => $baseDir . '/app/Http/Requests/ProductRequest.php',
     'App\\Http\\Requests\\UserRequest' => $baseDir . '/app/Http/Requests/UserRequest.php',
     'App\\Http\\Traits\\SocialCheckService' => $baseDir . '/app/Http/Trait/SocialCheckService.php',
+    'App\\Mail\\Order' => $baseDir . '/app/Mail/Order.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
     'App\\Models\\DetailTransaction' => $baseDir . '/app/Models/DetailTransaction.php',
     'App\\Models\\Product' => $baseDir . '/app/Models/Product.php',

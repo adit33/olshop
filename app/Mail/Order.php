@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Mail;
-
+use App\Models\Transaction;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -16,6 +16,8 @@ class Order extends Mailable
      *
      * @return void
      */
+    public $transaction;
+
     public function __construct(Transaction $transaction)
     {
         $this->transaction = $transaction;
@@ -29,10 +31,9 @@ class Order extends Mailable
     public function build()
     {
 
-         return $this->view('emails.order.payemnt_information')
+         return $this->view('backend.email.payment_information')
                     ->with([
-                        'orderName' => $this->order->name,
-                        'orderPrice' => $this->order->price,
+                        'transaction' => $this->transaction
                     ]);
 
     }

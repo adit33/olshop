@@ -443,6 +443,7 @@ class ComposerStaticInit63092c6dea6d6d1e1886f8c462c9ec3e
         'App\\Http\\Requests\\ProductRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProductRequest.php',
         'App\\Http\\Requests\\UserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UserRequest.php',
         'App\\Http\\Traits\\SocialCheckService' => __DIR__ . '/../..' . '/app/Http/Trait/SocialCheckService.php',
+        'App\\Mail\\Order' => __DIR__ . '/../..' . '/app/Mail/Order.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\DetailTransaction' => __DIR__ . '/../..' . '/app/Models/DetailTransaction.php',
         'App\\Models\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
