@@ -9,6 +9,8 @@
         products:[],
         ongkir:0,
         destination:{},
+        code:'',
+        service:''
     }
     const getters = {
       dataProducts:(state)=>{
@@ -33,6 +35,12 @@
           },
           SET_DESTINATION(state,value){
             state.destination = value;
+          },
+          SET_SERVICE(state,value){
+            state.service=value;
+          },
+          SET_CODE(state,value){
+            state.code = value;
           }
     }
     const actions = {

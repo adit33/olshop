@@ -14,13 +14,15 @@ class Transaction extends Model
 {
     protected $table='transaction';
     protected $primaryKey='id';
-    protected $fillable=['id','email','total','total','ongkir','city_name','province','type','alamat'];
+    protected $fillable=['id','email','total','total','service','code','ongkir','city_name','province','type','alamat'];
 
     public function checkout($request){
     	
 
     	$destination=$request->input('destination');
     	$ongkir=$request->input('ongkir');
+        $service=$request->input('service');
+        $code=$request->input('code');
     	$transaction=Transaction::create([
             'city_name' =>$destination['city_name'],
             'email'     =>Auth::user()->email,
@@ -28,6 +30,8 @@ class Transaction extends Model
             'type'      =>$destination['type'],
             'alamat'    =>$destination['alamat'],
             'ongkir'    =>$ongkir,
+            'service'   =>$service,
+            'code'      =>$code,
             'total'     =>floatval(Cart::subtotal('0','','')),
     	]);
 

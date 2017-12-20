@@ -2,9 +2,10 @@
 
 @section('content')
 <div class="columns">
-	
-</div>
+Kurir : {{ $transaction->code }} <br>
+Service : {{ $transaction->service }}<br>
 Alamat : {{ $transaction->alamat.' '.$transaction->type.' '.$transaction->city_name .' '. $transaction->province}}
+<br>
 <table class="table is-bordered">
 	<thead>
 		<th>Kode Barang</th>
@@ -35,6 +36,8 @@ Alamat : {{ $transaction->alamat.' '.$transaction->type.' '.$transaction->city_n
 		<td>{{ $transaction->total + $transaction->ongkir }}</td>
 	</tr>
 </table>
+</div>
+
 
 @endsection
 

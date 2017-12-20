@@ -92,7 +92,7 @@ new Vue({
     methods:{
       checkout(){
         let url = 'api/checkout';
-        axios.post(url,{destination:store.state.destination,ongkir:store.state.ongkir}).then(response=>{
+        axios.post(url,{destination:store.state.destination,ongkir:store.state.ongkir,code:store.state.code,service:store.state.service}).then(response=>{
           console.log(response.data)
         })
       },

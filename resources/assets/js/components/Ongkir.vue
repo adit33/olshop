@@ -28,7 +28,7 @@
 		    <td>{{ value.description }}</td>
 		    <td>{{ value.cost[0].value }}</td>
 		    <td>{{ value.cost[0].etd }}</td>
-		    <td><input type="radio" v-model="ongkir" :value="value.cost[0].value" @change="setOngkir"></td>
+		    <td><input type="radio" v-model="ongkir" :value="value" @change="setOngkir"></td>
 		  </tr>
 		</table>
 
@@ -52,9 +52,11 @@
 	      courier_id:'',
 	      courier:['jne','pos','tiki',],
 	      costs:[],
-	      ongkir:0,
+	      ongkir:{},
 	      alamat:'',
 	      destination:{},
+	      code:'',
+	      service:''
 		}
     },
     mounted(){
@@ -81,14 +83,18 @@
         .then(response=>{
           this.costs=response.data.rajaongkir.results[0];
           this.destination=response.data.rajaongkir.destination_details;
+          this.code=response.data.rajaongkir.results[0].code;
         })
       },
       city({city_name,type}){
         return `${type} ${city_name}`
-      },setOngkir(){
+      },
+      setOngkir(){
       	this.destination.alamat=this.alamat;
       	store.commit('SET_DESTINATION',this.destination);
-      	store.commit('SET_ONGKIR',this.ongkir);
+      	store.commit('SET_ONGKIR',this.ongkir.cost[0].value);
+      	store.commit('SET_SERVICE',this.ongkir.service);
+      	store.commit('SET_CODE',this.courier_id);
       }
     }
 	}

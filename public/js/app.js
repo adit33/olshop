@@ -54201,7 +54201,9 @@ var state = {
   amountCarts: null,
   products: [],
   ongkir: 0,
-  destination: {}
+  destination: {},
+  code: '',
+  service: ''
 };
 var getters = {
   dataProducts: function dataProducts(state) {
@@ -54226,6 +54228,12 @@ var mutations = {
   },
   SET_DESTINATION: function SET_DESTINATION(state, value) {
     state.destination = value;
+  },
+  SET_SERVICE: function SET_SERVICE(state, value) {
+    state.service = value;
+  },
+  SET_CODE: function SET_CODE(state, value) {
+    state.code = value;
   }
 };
 var actions = {
@@ -56846,9 +56854,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       courier_id: '',
       courier: ['jne', 'pos', 'tiki'],
       costs: [],
-      ongkir: 0,
+      ongkir: {},
       alamat: '',
-      destination: {}
+      destination: {},
+      code: '',
+      service: ''
     };
   },
   mounted: function mounted() {
@@ -56881,6 +56891,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.post(url, { origin: 22, destination: this.city_id.city_id, weight: 1000, courier: this.courier_id }).then(function (response) {
         _this3.costs = response.data.rajaongkir.results[0];
         _this3.destination = response.data.rajaongkir.destination_details;
+        _this3.code = response.data.rajaongkir.results[0].code;
       });
     },
     city: function city(_ref) {
@@ -56892,7 +56903,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     setOngkir: function setOngkir() {
       this.destination.alamat = this.alamat;
       store.commit('SET_DESTINATION', this.destination);
-      store.commit('SET_ONGKIR', this.ongkir);
+      store.commit('SET_ONGKIR', this.ongkir.cost[0].value);
+      store.commit('SET_SERVICE', this.ongkir.service);
+      store.commit('SET_CODE', this.courier_id);
     }
   }
 });
@@ -57029,13 +57042,13 @@ var render = function() {
                     ],
                     attrs: { type: "radio" },
                     domProps: {
-                      value: value.cost[0].value,
-                      checked: _vm._q(_vm.ongkir, value.cost[0].value)
+                      value: value,
+                      checked: _vm._q(_vm.ongkir, value)
                     },
                     on: {
                       change: [
                         function($event) {
-                          _vm.ongkir = value.cost[0].value
+                          _vm.ongkir = value
                         },
                         _vm.setOngkir
                       ]

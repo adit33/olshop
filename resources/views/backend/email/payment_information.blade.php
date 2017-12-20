@@ -2,7 +2,7 @@
 	
 </div>
 Alamat : {{ $transaction->alamat.' '.$transaction->type.' '.$transaction->city_name .' '. $transaction->province}}
-<table class="table is-bordered">
+<table border="1">
 	<thead>
 		<th>Kode Barang</th>
 		<th>Nama Barang</th>

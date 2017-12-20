@@ -13,11 +13,11 @@
 
 Route::get('test',function(){
 	$tr=new App\Models\Product;
-	$p=App\Models\Product::find(13);
+	$p=App\Models\Transaction::find(41);
 	// foreach ($xs as $x) {
 	// 	echo dd($x->detailTransaction);
 	// }
-	echo dd(Socialite::driver('facebook')->stateless()->user());
+	return new App\Mail\Order($p);
 });
 
 Route::get('/', 'FrontController@frontPage');
@@ -67,5 +67,10 @@ Route::middleware(['auth'])->group(function () {
 	Route::GET('logout',['uses'=>'AuthController@logout','as'=>'logout']);
 
 	Route::resource('category','CategoryController');
+
+
+	Route::group(['prefix'=>'admin'],function(){
+		Route::resource('permission','PermissionController');
+	});
 
 });
