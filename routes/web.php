@@ -69,8 +69,11 @@ Route::middleware(['auth'])->group(function () {
 	Route::resource('category','CategoryController');
 
 
+
+
 	Route::group(['prefix'=>'admin'],function(){
 		Route::resource('permission','PermissionController');
+		Route::resource('role','RoleController');
 	});
 
 });

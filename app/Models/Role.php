@@ -10,8 +10,20 @@ class Role extends Model
     protected $primaryKey='id';
     protected $fillable=['id','name'];
 
+
+    public function saveRole($role,$request){
+    	$permission_id=$request->input('permission_id');
+    	$role->name=$request->input('name');
+    	$role->save();
+
+		foreach ($permission_id as $id) {
+			$role->permissions()->attach($id);
+		}
+
+    }
+
     public function permissions(){
-    	return $this->belongsToMany(Role::class);
+    	return $this->belongsToMany(Permission::class);
     }
 
 }

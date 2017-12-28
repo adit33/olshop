@@ -8,12 +8,12 @@ use App\Models\Permission;
 
 class PermissionController extends Controller
 {
-	public function __construct(){
-
+	public function __construct(Permission $permission){
+		$this->permission=$permission;
 	}
 
-    public function index(Permission $permission){
-    	$this->permission=$permission;
+    public function index(){
+    	
     }
 
     public function create(){
@@ -23,6 +23,6 @@ class PermissionController extends Controller
 
     public function store(Request $request){
     	$permission = new Permission;
-    	$this->permission->savePermission($request,$permission)
+    	$this->permission->savePermission($permission,$request);
     }
 }

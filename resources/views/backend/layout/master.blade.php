@@ -3,6 +3,7 @@
 <head>
 	<title></title>
 </head>
+<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/bulma.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/vendor.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/dropzone.css') }}">

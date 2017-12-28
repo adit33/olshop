@@ -10,8 +10,8 @@
         {{$title}}
     </div>
     <div class="panel-block">
-        {!! Form::open(['url'=>route('permission.store'),'class'=>'control',"id"=>"form-create","method"=>"POST"]) !!}
-            @include('backend.permission._form')
+        {!! Form::open(['url'=>route('role.store'),'class'=>'control',"id"=>"form-create","method"=>"POST"]) !!}
+            @include('backend.role._form')
         {!! Form::close() !!}
     </div>
 </div>
