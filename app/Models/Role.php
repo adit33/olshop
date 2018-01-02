@@ -16,9 +16,20 @@ class Role extends Model
     	$role->name=$request->input('name');
     	$role->save();
 
-		foreach ($permission_id as $id) {
-			$role->permissions()->attach($id);
+    	if(is_null($role->permissions())){
+    		foreach ($permission_id as $id) {
+				$role->permissions()->attach($id);
+			}		
+    	}else{
+				$role->permissions()->sync($permission_id);
 		}
+
+
+		
+
+    }
+
+    public function addPermissionRole(){
 
     }
 

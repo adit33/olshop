@@ -11,8 +11,9 @@
 Permission :
 
 @foreach($permissions as $permission)
+<?php $checked = in_array($permission->id, $role->permissions->pluck('id')->toArray()); ?>
   <div class="field">
-    <input class="is-checkradio" id="{{ $permission->id }}" type="checkbox" value="{{ $permission->id }}" name="permission_id[]">
+    <input class="is-checkradio" id="{{ $permission->id }}" type="checkbox" value="{{ $permission->id }}" name="permission_id[]" {{ $checked ? "checked" : '' }}>
     <label for="{{ $permission->id }}">{{ $permission->name }}</label>
   </div>
 @endforeach
