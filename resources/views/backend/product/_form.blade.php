@@ -67,6 +67,12 @@
   </div>
 </div>
 
+<div>
+  <quilleditor></quilleditor>
+</div>
+
+<br>
+
 <div class="field">
   <div id="photo"
       class="dropzone"

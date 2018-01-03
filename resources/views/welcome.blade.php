@@ -86,11 +86,11 @@
 </style>
 @endpush
 
-@section('content')
+@section('content') 
 <div class="carousel"
   data-flickity='{ "wrapAround": true }'>
-  <img src="img/HaZWDGyLQy.jpg" style="width: 66%; height: 200px; margin-right: 10px; border-radius: 5px;"></img>
-  <img src="img/HaZWDGyLQy.jpg" style="width: 66%; height: 200px; margin-right: 10px; border-radius: 5px;"></img>
+  <img src="img/siskiu2.jpg" style="width: 66%; height: 200px; margin-right: 10px; border-radius: 5px;"></img>
+  <img src="img/breadcrum.jpg" style="width: 66%; height: 200px; margin-right: 10px; border-radius: 5px;"></img>
   <img src="img/HaZWDGyLQy.jpg" style="width: 66%; height: 200px; margin-right: 10px; border-radius: 5px;"></img>
 </div>
 <!-- <article class="tile is-child box"> -->

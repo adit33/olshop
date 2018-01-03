@@ -91,7 +91,7 @@
 
 
  @include("frontend.layout.navbar")
- <section class="hero is-info">
+ <section class="hero" style="background-image: url('img/breadcrum.jpg')">
   <div class="hero-body">
     <div class="container">
       <h1 class="title">

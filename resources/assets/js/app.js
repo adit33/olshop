@@ -26,16 +26,19 @@ import store from './store';
 import {mapGetters} from 'vuex';
 import Multiselect from 'vue-multiselect';
 
+
 window.vuex = require('vuex');
 window.store = store;
 window.mapGetters = mapGetters;
 Vue.use(store)
-
+// Vue.use(VueQuillEditor)
+window.VueQuillEditor = VueQuillEditor;
 // Vue.use(store);
 // import 'vue-instant/dist/vue-instant.css';
 // import VueInstant from 'vue-instant';
 
 // Vue.use(VueInstant);
+// Vue.component('quilleditor',require('./components/QuillEditor.vue'));
 
 // Vue.component('alert',require('./components/SweetAlert.vue'));
 Vue.component('multiselect',Multiselect);

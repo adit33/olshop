@@ -65,6 +65,11 @@
           }
         }
   });
+
+  new Vue({
+    el:"#app",
+    data:{}
+  })
 </script>
 
 @endpush
