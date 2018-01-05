@@ -58,7 +58,7 @@ Route::middleware(['auth'])->group(function () {
 
 	Route::resource('transaction','TransactionController');
 
-	Route::get('report','TransactionController@report');
+	Route::get('report',['uses'=>'TransactionController@report','as'=>'report']);
 		
 	Route::POST('product/{id}',['uses'=>'ProductController@update','as'=>'product.update']);
 

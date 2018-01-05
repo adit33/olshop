@@ -22,8 +22,10 @@
 </main>
 
 @push('scripts')
+<script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
 
 <script type="text/javascript">
+
 $(document).ready(function(){
   var mockFiles=<?php echo $product->productImage ?>;
     $.each(mockFiles,function (key,val) {
@@ -165,6 +167,30 @@ init: function() {
   }
 
 });
+
+ CKEDITOR.replace( 'editor1',
+    {
+        toolbar :
+        [
+          {
+            items : [ 'Bold','Italic','Underline','Strike','-','RemoveFormat' ]
+          },
+          {
+            items : [ 'Format']
+          },
+          {
+            items : [ 'Link','Unlink' ]
+          },
+          {
+            items : [ 'Indent','Outdent','-','BulletedList','NumberedList']
+          },
+          {
+            items : [ 'Undo','Redo']
+          }
+        ]
+    })
+
+ var data = CKEDITOR.instances.editor1.getData();
 
 </script>
 

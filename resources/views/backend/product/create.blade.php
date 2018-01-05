@@ -22,17 +22,44 @@
 </main>
 
 @push('scripts')
-
+<script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
 <script type="text/javascript">
   var form=$("#form-create");
 
+  CKEDITOR.replace( 'editor1',
+    {
+        toolbar :
+        [
+          {
+            items : [ 'Bold','Italic','Underline','Strike','-','RemoveFormat' ]
+          },
+          {
+            items : [ 'Format']
+          },
+          {
+            items : [ 'Link','Unlink' ]
+          },
+          {
+            items : [ 'Indent','Outdent','-','BulletedList','NumberedList']
+          },
+          {
+            items : [ 'Undo','Redo']
+          }
+        ]
+    })
+
+  var description = CKEDITOR.instances.editor1.getData();
+
   function addProduct(){
+    formData=form.serializeArray();
+    formData.find(item => item.name === 'description').value = CKEDITOR.instances.editor1.getData();
+    console.log(formData);
      $.ajax({
       url:form.attr('action'),
       type:'POST',
-      data:form.serializeArray(),
+      data:formData,
       success:function(response){
- 
+       ;
       },
       error:function(response){
         console.log(response.responseJSON)
@@ -60,16 +87,15 @@
           },
           sending: function(file, xhr, formData) {
             let data=form.serializeArray(); 
+            data.find(item => item.name === 'description').value = CKEDITOR.instances.editor1.getData();
             for (var i = 0; i < data.length; i++) {
               formData.append(data[i].name,data[i].value);
           }
         }
   });
 
-  new Vue({
-    el:"#app",
-    data:{}
-  })
+
+
 </script>
 
 @endpush

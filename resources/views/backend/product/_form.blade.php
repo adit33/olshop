@@ -63,13 +63,13 @@
 <div class="field">
   <label class="label">Deskripsi</label>
   <div class="control">
-    {!! Form::textarea('description',null,['class'=>'textarea']) !!}
+    {!! Form::textarea('description',null,['class'=>'textarea','id'=>'editor1']) !!}
   </div>
 </div>
-
+<!-- 
 <div>
   <quilleditor></quilleditor>
-</div>
+</div> -->
 
 <br>
 

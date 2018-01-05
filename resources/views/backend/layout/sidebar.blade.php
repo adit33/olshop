@@ -10,17 +10,17 @@
             Administration
           </p>
           <ul class="menu-list">
-            <li><a><span class="icon is-small"><i class="fa fa-pencil-square-o"></i></span> Forms</a></li>
+            <li><a href="{{ route('product.index') }}"><span class="icon is-small"><i class="fa fa-pencil-square-o"></i></span> Products</a></li>
             <li><a><span class="icon is-small"><i class="fa fa-desktop"></i></span> UI Elements</a></li>
             <li><a><span class="icon is-small"><i class="fa fa-table"></i></span> Tables</a></li>            
-            <li><a><span class="icon is-small"><i class="fa fa-bar-chart"></i></span> Presentations</a></li>
+            <li><a href="{{ route('report') }}"><span class="icon is-small"><i class="fa fa-bar-chart"></i></span> Report</a></li>
 
             <li>
               <a class=""><i class="fa fa-cog"></i></span> Settings</a>
               <ul>
-                <li><a>Members</a></li>
-                <li><a>Plugins</a></li>
-                <li><a>Add a member</a></li>
+                <li><a href="{{ route('user.index') }}">Users</a></li>
+                <li><a href="{{ route('role.index') }}">Roles</a></li>
+                <li><a href="{{ route('permission.index') }}">Peermissions</a></li>
               </ul>
             </li>
           </ul>

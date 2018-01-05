@@ -228,7 +228,7 @@ button.is-blue:hover {
          </div> -->
       <br>
       <div class="content">
-        <p>{{ $product->description }}
+        <p>{!! $product->description !!}
       </p>  
       </div>
       
@@ -236,7 +236,7 @@ button.is-blue:hover {
    
    <div class="column is-4">
     <div class="title is-2">{!! $product->name !!}</div>
-   <p class="title is-3 has-text-muted">Rp.{!! $product->price !!}</p>
+   <p class="title is-3 has-text-muted">@{{ price  | currency }}</p>
    <hr>
    <br>
    <p class="">
@@ -380,6 +380,7 @@ button.is-blue:hover {
     el:"#app",
      data:{
        starDefault:1,
+       price:'{!! $product->price !!}',
       imageName:'{!! asset($product->productImage->first()->name) !!}'
     },
       methods:{

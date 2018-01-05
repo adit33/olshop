@@ -221,7 +221,7 @@ Vue.component('image-product',{
         </div>
       </figure>
     @{{ product.name }}</div>
-    <div class="plan-price"><span class="plan-price-amount"><span class="plan-price-currency">Rp</span>@{{ product.price }}</span></div>
+    <div class="plan-price"><span class="plan-price-amount"><span class="plan-price-currency"></span>@{{ product.price | currency }}</span></div>
     <div class="plan-items">
       <div class="plan-item">200GB Storage</div>
     </div>

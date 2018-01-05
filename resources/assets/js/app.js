@@ -25,14 +25,24 @@ import swal from 'sweetalert';
 import store from './store';
 import {mapGetters} from 'vuex';
 import Multiselect from 'vue-multiselect';
+// import ckeditor from 'ckeditor';
 
+import VueCurrencyFilter from 'vue-currency-filter'
 
 window.vuex = require('vuex');
 window.store = store;
 window.mapGetters = mapGetters;
 Vue.use(store)
+Vue.use(VueCurrencyFilter,{
+  symbol : 'Rp', 
+  thousandsSeparator: '.',
+  fractionCount: 0,
+  fractionSeparator: ',',
+  symbolPosition: 'front',
+  symbolSpacing: true
+})
 // Vue.use(VueQuillEditor)
-window.VueQuillEditor = VueQuillEditor;
+// window.VueQuillEditor = VueQuillEditor;
 // Vue.use(store);
 // import 'vue-instant/dist/vue-instant.css';
 // import VueInstant from 'vue-instant';
