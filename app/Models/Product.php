@@ -37,6 +37,11 @@ class Product extends Model
         return $this->hasMany(DetailTransaction::class,'product_id','id');
     }
 
+    public function getProducts(){
+        $product=Product::all();
+        return $product;
+    }
+
     public function saveProduct($product,$request){
         $product_image=new ProductImage;
         $product->name=$request->input('name');

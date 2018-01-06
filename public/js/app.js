@@ -54263,7 +54263,7 @@ var actions = {
     var commit = _ref2.commit;
 
     return __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get('api/products').then(function (response) {
-      commit('SET_PRODUCTS', response.data.data);
+      commit('SET_PRODUCTS', response.data);
     });
   }
 };

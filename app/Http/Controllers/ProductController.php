@@ -58,8 +58,15 @@ class ProductController extends Controller
     }
 
     public function getProducts(){
-        $products=Product::with('productImage')->paginate(4);
+        // $products=Product::with('productImage')->get();
+        $products=$this->product->getProducts();
         return response()->json($products);       
+    }
+
+    public function getPaginateProducts(Request $request){
+        $page=$request->input('per_page');
+        $products=Product::with('productImage')->paginate($page);
+        return response()->json($products);
     }
 
     public function searchProducts(Request $request){

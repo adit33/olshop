@@ -114,6 +114,20 @@
   </div>
 </div>
 
+<div class="field">
+  <label class="label">Per Page</label>
+  <div class="control">
+    <div class="select">
+      <select v-model="per_page" @change="getProducts">
+        <option >Select Page</option>
+        <option value="3">3</option>
+        <option value="6">6</option>
+        <option value="9">9</option>
+      </select>
+    </div>
+  </div>
+</div>
+
 
 <hr>
  
@@ -299,6 +313,7 @@ Vue.component('image-product',{
        isLoading:true,
        inputSearch:null,
        order:null,
+       per_page:3,
        categories:[],
        counter: 0,
        pagination: {
@@ -312,14 +327,14 @@ Vue.component('image-product',{
        offset: 4,
        layout:'grid',
        api:{
-        url:'api/products?page=',
+        url:'api/productspaginate?page=',
        }
     },
     methods:{
       getProducts:function(page){
         this.isLoading = true;  
           setTimeout(() => {
-          axios.get(this.api.url.concat(page)).then((response)=>{
+          axios.get(this.api.url.concat(page),{params:{'per_page':this.per_page}}).then((response)=>{
             this.products=response.data;
             this.pagination = response.data;
           }).catch((error) =>{

@@ -19,6 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('products','ProductController@getProducts');
 
+Route::get('productspaginate','ProductController@getPaginateProducts');
+
 Route::get('product/{id}',function($id){
 	return App\Models\Product::find($id)->stock;
 });

@@ -51,7 +51,7 @@
         },
         FETCH_PRODUCTS:({commit})=>{
             return axios.get('api/products').then((response)=>{
-                commit('SET_PRODUCTS',response.data.data)
+                commit('SET_PRODUCTS',response.data)
             });
         },
     }
