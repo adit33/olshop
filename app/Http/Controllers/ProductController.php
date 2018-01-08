@@ -65,7 +65,7 @@ class ProductController extends Controller
 
     public function getPaginateProducts(Request $request){
         $page=$request->input('per_page');
-        $products=Product::with('productImage')->paginate($page);
+        $products=Product::with('productImage','brand','categories')->paginate($page);
         return response()->json($products);
     }
 
@@ -77,7 +77,7 @@ class ProductController extends Controller
     }
 
     public function filterProducts(Request $request){
-
+        $page=$request->input('per_page');
         $order=$request->input('order');
         $categories=$request->input('categories');
         $arr_order=explode(',',$order);
@@ -91,7 +91,7 @@ class ProductController extends Controller
         ->when($order,function($query) use ($arr_order){
             return $query->orderBY($arr_order[0],$arr_order[1]);
         })
-        ->paginate(4);
+        ->paginate($page);
         
 
         return $products;

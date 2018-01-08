@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
 use App\Models\ProductImage;
-
+use App\Brand;
 class Product extends Model
 {
     protected $table='product';
@@ -48,6 +48,7 @@ class Product extends Model
         $product->price=$request->input('price');
         $product->description=$request->input('description');
         $product->stock=$request->input('stock');
+        $product->brand_id=$request->input('brand_id');
         $product->save();
         $product->addCategoriesProduct($request->input('category_id'));
 
@@ -67,14 +68,13 @@ class Product extends Model
 
     public function addCategoriesProduct($category_id){
         // if has categories detach all first
-        if($this->categories()){
+        if(! is_null($this->categories())){
             $this->categories()->sync($category_id);
-        }
-
-        foreach($category_id as $id){
-            $this->categories()->attach($id);
-        }
-        
+        }else{
+            foreach($category_id as $id){
+                $this->categories()->attach($id);
+            }    
+        }       
     }
 
     public function categoriesProduct(){
@@ -99,6 +99,10 @@ class Product extends Model
             $sum += $p->qty;
          }
          return $sum;
+    }
+
+    public function brand(){
+       return $this->belongsTo(Brand::class); 
     }
 
 }

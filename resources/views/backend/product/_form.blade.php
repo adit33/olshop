@@ -48,6 +48,20 @@
 </div>
 
 <div class="field">
+  <label class="label">Brand</label>
+  <div class="field is-expanded">
+      <div class="field has-addons">
+                
+           {!! Form::select('brand_id',App\Brand::pluck('name','id'),null,['class'=> $errors->first('stock') ? "input is-danger" : "input" ,"placeholder"=>"Brand"]) !!} 
+  
+      </div>
+       <p class="help is-danger">
+        {!! $errors->first('stock') !!}
+      </p>
+    </div>
+</div>
+
+<div class="field">
   <label class="label">Kategori</label>
   <div class="control">
     @foreach(App\Models\Category::all() as $category)

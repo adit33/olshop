@@ -235,7 +235,12 @@ Vue.component('image-product',{
     {{ product.name }}</div>
     <div class="plan-price"><span class="plan-price-amount"><span class="plan-price-currency"></span>{{ product.price | currency }}</span></div>
     <div class="plan-items">
-      <div class="plan-item">200GB Storage</div>
+      <div class="plan-item">{{ product.brand.name }}</div>
+      <div class="plan-item">
+      <div class="tags"  v-if="product.categories">
+      <span class="tag is-info" v-for="category in product.categories">{{ category.name }}</span> 
+      </div>
+      </div>
     </div>
     <div class="plan-footer">
        <buy-btn :url="product.id" v-if="product.stock >= 1"></buy-btn>
@@ -355,7 +360,7 @@ Vue.component('image-product',{
         var url='api/products/filter';
        this.$nextTick(function () {
           var self=this;
-          axios.get(url,{params:{order:this.order,categories:this.categories}}).then((response)=>{
+          axios.get(url,{params:{order:this.order,categories:this.categories,per_page:this.per_page}}).then((response)=>{
           this.products=response.data;
          });
         })
