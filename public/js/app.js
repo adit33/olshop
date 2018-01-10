@@ -54517,7 +54517,7 @@ var render = function() {
               expression: "textSearch"
             }
           ],
-          staticClass: "input is-small",
+          staticClass: "input",
           attrs: { type: "text", placeholder: "search" },
           domProps: { value: _vm.textSearch },
           on: {
@@ -56755,9 +56755,11 @@ var render = function() {
   return _c("div", [
     _vm._m(0),
     _vm._v(" "),
-    _c("span", { staticClass: "tag is-primary tag-notif" }, [
-      _vm._v(_vm._s(_vm.amountCart))
-    ])
+    _vm.ammountCart > 0
+      ? _c("span", { staticClass: "tag is-primary tag-notif" }, [
+          _vm._v(_vm._s(_vm.amountCart))
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = [

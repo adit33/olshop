@@ -94,29 +94,72 @@
   <img src="img/HaZWDGyLQy.jpg" style="width: 66%; height: 200px; margin-right: 10px; border-radius: 5px;"></img>
 </div>
 <!-- <article class="tile is-child box"> -->
-<ul class="menu-list">
+
+
+
+<hr>
+ 
+<img v-if="isLoading" src="{!! asset('img/loading.gif') !!}" style="display: block; margin: 0 auto;" />
+<div class="columns">
+  <div class="column is-one-quarter is-narrow">
+    <nav class="panel">
+  <p class="panel-heading">
+    Categories
+  </p>
+  <div class="panel-block">
+    <div class="field">
     @foreach(App\Models\Category::all() as $category)
-      <li><input type="checkbox" @click="filterProducts" v-model="categories" name="category_id[]" value="{!! $category->id !!}">{!! $category->name !!}</li>
+        <input id="{{ $category->id }}" value="{{ $category->id }}" name="category_id[]" class="is-checkradio" type="checkbox" @click="filterProducts" v-model="categories">
+    <label for="{{ $category->id }}">{!! $category->name !!}</label> <br>
     @endforeach
-  </ul>
-<layout @changed="changeLayout"></layout>
-
-<div class="field">
-  <label class="label">Sort By</label>
-  <div class="control">
-    <div class="select">
-      <select v-model="order" @change="filterProducts">
-        <option >Select dropdown</option>
-        <option value="price,asc">Harga Termurah</option>
-        <option value="price,desc">Harga Termahal</option>
-        <option value="name,asc">Nama A-Z</option>
-        <option value="name,desc">Nama Z-A</option>
-      </select>
-    </div>
   </div>
-</div>
+  </div>
+  
+  <div class="panel-block">
+    <button class="button is-link is-outlined is-fullwidth">
+      reset all filters
+    </button>
+  </div>
+</nav>
 
-<div class="field">
+<nav class="panel">
+  <p class="panel-heading">
+    Brands
+  </p>
+  <div class="panel-block">
+    <div class="field">
+    @foreach(App\Brand::all() as $brand)
+        <input id="{{ $brand->id }}" value="{{ $brand->id }}" name="brand_id[]" class="is-checkradio" type="checkbox">
+    <label for="{{ $brand->id }}">{!! $brand->name !!}</label> <br>
+    @endforeach
+  </div>
+  </div>
+  
+  <div class="panel-block">
+    <button class="button is-link is-outlined is-fullwidth">
+      reset all filters
+    </button>
+  </div>
+</nav>
+  </div>
+  <div class="column">
+    <div class="columns is-multiline">
+
+    <div class="columns">
+      <div class="column is-4">
+        <div class="field">
+<label class="label">Layout</label>
+  <layout @changed="changeLayout"></layout>  
+</div>  
+
+
+
+
+
+      </div>
+
+      <div class="column is-4">
+        <div class="field">
   <label class="label">Per Page</label>
   <div class="control">
     <div class="select">
@@ -129,12 +172,24 @@
     </div>
   </div>
 </div>
+      </div>
 
+      <div class="column is-4"><div class="field">
+  <label class="label">Sort By</label>
+  <div class="control">
+    <div class="select">
+      <select v-model="order" @change="filterProducts">
+        <option >Select dropdown</option>
+        <option value="price,asc">Harga Termurah</option>
+        <option value="price,desc">Harga Termahal</option>
+        <option value="name,asc">Nama A-Z</option>
+        <option value="name,desc">Nama Z-A</option>
+      </select>
+    </div>
+  </div>
+</div></div>
+    </div>
 
-<hr>
- 
-<img v-if="isLoading" src="{!! asset('img/loading.gif') !!}" style="display: block; margin: 0 auto;" />
-<div class="columns is-multiline">
    <!-- <div class="column is-12"> -->
     <div class="pricing-table column is-12" :class="{ '' : layout == 'grid' ,'is-horizontal' : layout == 'list' }">
     <div class="column" :class="{ 'is-4' : layout == 'grid' ,'is-12' : layout == 'list' }"  v-for="product in products.data" v-if="! isLoading">
@@ -144,6 +199,9 @@
     </div>
   <!-- </div>    -->
 </div>
+  </div>
+</div>
+
 
 
 <vue-pagination  v-bind:pagination="pagination"

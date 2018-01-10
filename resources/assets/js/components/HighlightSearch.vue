@@ -3,7 +3,7 @@
 
 		     <div class="field has-addons">
  <p class="control has-icons-left">
-	      <input v-model="textSearch" class="input is-small" type="text" placeholder="search">
+	      <input v-model="textSearch" class="input" type="text" placeholder="search">
 	      <span class="icon is-small is-left">
 	        <i class="fa fa-search"></i>
 	      </span>

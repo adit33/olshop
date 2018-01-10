@@ -1040,6 +1040,10 @@ bulma-pricingtable@^0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/bulma-pricingtable/-/bulma-pricingtable-0.1.3.tgz#7977f900dc3b22e9c7ad7d5df3003479383a5ca8"
 
+bulma-slider@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/bulma-slider/-/bulma-slider-0.1.0.tgz#a7d9e8ddfb37e3f6c75bb57f2604d03c2c724acf"
+
 bulma-steps@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/bulma-steps/-/bulma-steps-0.1.0.tgz#b80498678c6213933f46003ce7ff0c242ef6341a"

@@ -83,7 +83,7 @@ class ProductController extends Controller
         $categories=$request->input('categories');
         $arr_order=explode(',',$order);
 
-        $products=Product::with('productImage','categories')
+        $products=Product::with('productImage','categories','brand')
         ->when($categories,function($query) use ($categories){
             return $query->whereHas('categories',function($query) use ($categories){
                 return $query->whereIn('category_id',$categories);

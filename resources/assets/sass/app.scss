@@ -8,9 +8,17 @@
 // Bootstrap
 // @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
+$black:#353535;
+
+//@import bulma/config/generated-variables
+
+$footer-background-color:$black;
+
 @import "~bulma";
 
 @import "~bulma-steps/bulma-steps.sass";
+
+@import "~bulma-slider/slider.sass";
 
 @import "~bulma-pricingtable/pricing-table.sass";
 
