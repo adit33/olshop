@@ -43,6 +43,32 @@ $(document).ready(function(){
       myDropzone.files.push(mockFile);
     })
 })
+
+
+ CKEDITOR.replace( 'editor1',
+    {
+        toolbar :
+        [
+          {
+            items : [ 'Bold','Italic','Underline','Strike','-','RemoveFormat' ]
+          },
+          {
+            items : [ 'Format']
+          },
+          {
+            items : [ 'Link','Unlink' ]
+          },
+          {
+            items : [ 'Indent','Outdent','-','BulletedList','NumberedList']
+          },
+          {
+            items : [ 'Undo','Redo']
+          }
+        ]
+    })
+
+ var description = CKEDITOR.instances.editor1.getData();
+
 var array_id=[];
 Dropzone.autoDiscover = false;
 var myDropzone = new Dropzone("#photo", {
@@ -61,6 +87,7 @@ var myDropzone = new Dropzone("#photo", {
       
     })
     formData.append('attachment_id',array_id);
+    formData.find(item => item.name === 'description').value = CKEDITOR.instances.editor1.getData();
     // formData.append("_token", $('input[name="_token"]').val() );
  // Pass token. You can use the same method to pass any other values as well such as a id to associate the image with for example.
 
@@ -104,6 +131,7 @@ init: function() {
             myDropzone.processQueue();
         }else{
           var formData=$("#form-edit").serializeArray();
+          formData.find(item => item.name === 'description').value = CKEDITOR.instances.editor1.getData();
           var data=formData.concat(array_id);
           $.ajax({
             url: $("form#form-edit").attr('action'),
@@ -168,29 +196,6 @@ init: function() {
 
 });
 
- CKEDITOR.replace( 'editor1',
-    {
-        toolbar :
-        [
-          {
-            items : [ 'Bold','Italic','Underline','Strike','-','RemoveFormat' ]
-          },
-          {
-            items : [ 'Format']
-          },
-          {
-            items : [ 'Link','Unlink' ]
-          },
-          {
-            items : [ 'Indent','Outdent','-','BulletedList','NumberedList']
-          },
-          {
-            items : [ 'Undo','Redo']
-          }
-        ]
-    })
-
- var data = CKEDITOR.instances.editor1.getData();
 
 </script>
 

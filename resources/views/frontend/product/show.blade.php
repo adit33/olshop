@@ -227,10 +227,7 @@ button.is-blue:hover {
          </a>            
          </div> -->
       <br>
-      <div class="content">
-        <p>{!! $product->description !!}
-      </p>  
-      </div>
+      
       
    </div>
    
@@ -238,6 +235,13 @@ button.is-blue:hover {
     <div class="title is-2">{!! $product->name !!}</div>
    <p class="title is-3 has-text-muted">@{{ price  | currency }}</p>
    <hr>
+   @if(! is_null($product->categories))
+    <div class="tags">
+      @foreach($product->categories as $category) 
+      <span class="tag is-info">{{ $category->name }}</span> 
+      @endforeach
+      </div>
+    @endif
    <br>
    <p class="">
       <i class="fa fa-star title is-5" style="color:#ed6c63"></i>
@@ -265,21 +269,21 @@ button.is-blue:hover {
       <tbody>
          <tr>
             <td class="has-text-right">
-               <strong>Item ID</strong>a
+               <strong>Item ID</strong>
             </td>
-            <td>1234</td>
+            <td>{{ $product->id }}</td>
          </tr>
          <tr>
             <td class="has-text-right">
-               <strong>Seller</strong>
+               <strong>Brand</strong>
             </td>
-            <td>jsmith</td>
+            <td>{{ $product->brand->name }}</td>
          </tr>
          <tr>
             <td class="has-text-right">
                <strong>Added</strong>
             </td>
-            <td>3 days ago</td>
+            <td>{{ $product->created_at }}</td>
          </tr>
          <tr>
             <td class="has-text-right">
@@ -302,7 +306,11 @@ button.is-blue:hover {
             <div class="box">Overview</div>
          </tab>
          <tab name="Details">
-            <div class="box">Details</div>
+            <div class="box">
+              <div class="content">
+                <p>{!! $product->description !!}</p>  
+              </div>
+            </div>
          </tab>
          <tab name="Price">
             <div class="box">Price</div>
