@@ -82,16 +82,18 @@
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0
 }
-
+.is-transparent{
+  background-color: #fff0;
+}
 </style>
 @endpush
 
 @section('content') 
 <div class="carousel"
   data-flickity='{ "wrapAround": true }'>
-  <img src="img/siskiu2.jpg" style="width: 66%; height: 200px; margin-right: 10px; border-radius: 5px;"></img>
-  <img src="img/breadcrum.jpg" style="width: 66%; height: 200px; margin-right: 10px; border-radius: 5px;"></img>
-  <img src="img/HaZWDGyLQy.jpg" style="width: 66%; height: 200px; margin-right: 10px; border-radius: 5px;"></img>
+  <img src="img/siskiu2.jpg" style="width: 66%; height: 400px; margin-right: 10px; border-radius: 5px;"></img>
+  <img src="img/thrill_wreak.jpg" style="width: 66%; height: 400px; margin-right: 10px; border-radius: 5px;"></img>
+  <img src="img/polygon helios c3.jpg" style="width: 66%; height: 400px; margin-right: 10px; border-radius: 5px;"></img>
 </div>
 <!-- <article class="tile is-child box"> -->
 
@@ -217,6 +219,15 @@
 
 @push('scripts')
 <script type="text/javascript">
+
+$(window).scroll(function () {
+if ($(window).scrollTop() >= 150) {
+$('.navbar').addClass('is-info');
+} else {
+$('.navbar').removeClass('is-info');
+}
+});
+
 Vue.component('layout',{
   template:
   `<div>

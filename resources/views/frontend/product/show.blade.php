@@ -321,7 +321,18 @@ button.is-blue:hover {
               <div class="field">
               <label class="label">Review</label>
               <div class="control">
-                <textarea class="textarea" placeholder="Textarea"></textarea>
+                <textarea class="textarea" placeholder="Textarea" v-model="reviews.description"></textarea><br>
+                <a class="button is-link" @click="addReview">Save</a>
+              </div>
+              <hr>
+              <div v-for="review in reviews">
+
+                 
+                <p>
+                  <i v-for="index in 5" class="fa fa-star title is-5" :class="{'is-active':index <= review.rating}"></i>
+                </p>
+                @{{ review.description }} 
+                <hr>
               </div>
             </div>
             </div>
@@ -389,7 +400,11 @@ button.is-blue:hover {
      data:{
        starDefault:1,
        price:'{!! $product->price !!}',
-      imageName:'{!! asset($product->productImage->first()->name) !!}'
+      imageName:'{!! asset($product->productImage->first()->name) !!}',
+      reviews:[{
+        description:'',
+        rating:1
+      }]
     },
       methods:{
       choseImage(val){
@@ -397,6 +412,11 @@ button.is-blue:hover {
       },
       setStar (event) {
        this.starDefault=event; // get the data after child dealing
+     },
+     addReview(){
+      this.reviews.push({description:this.reviews.description,rating:this.starDefault});
+      this.reviews.description="";
+      this.starDefault=1;
      }
     },
 

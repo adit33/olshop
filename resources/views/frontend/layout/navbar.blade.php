@@ -2,7 +2,7 @@
 
 <!-- <header class="hero is-light">
    <div class="hero-head"> -->
-      <nav class="navbar is-info is-fixed-top" role="navigation" aria-label="main navigation">
+      <nav class="navbar is-transparent is-fixed-top" role="navigation" aria-label="main navigation">
          <div class="navbar-brand">
             <a class="navbar-item">
             <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo">
