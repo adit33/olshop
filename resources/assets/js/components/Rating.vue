@@ -2,10 +2,7 @@
 	<div>
 		<p>
 		<i v-for="rating in ratings" class="fa fa-star title is-5" :class="{ 'is-active': ((starValue >= rating) && starValue != null), 'is-disabled': disabled }" v-on:click="set(rating)" v-on:mouseover="star_over(rating)" v-on:mouseout="star_out"></i> 
-		&nbsp; &nbsp;
-      <strong>41 Reviews</strong>
-      &nbsp; &nbsp;
-      <a href="#">show all</a></p>
+		&nbsp; &nbsp;</p>
 	</div>
 </template>
 
@@ -34,7 +31,14 @@
       ratings: [1, 2, 3, 4, 5]
     };
   },
-
+  mounted(){
+    
+  },
+  watch:{
+    value:function(val){
+      this.set(val)
+    }
+  },
   methods: {
     /*
      * Behaviour of the stars on mouseover.

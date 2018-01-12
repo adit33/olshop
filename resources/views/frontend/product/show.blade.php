@@ -244,13 +244,9 @@ button.is-blue:hover {
     @endif
    <br>
    <p class="">
-      <i class="fa fa-star title is-5" style="color:#ed6c63"></i>
-      <i class="fa fa-star title is-5" style="color:#ed6c63"></i>
-      <i class="fa fa-star title is-5" style="color:#ed6c63"></i>
-      <i class="fa fa-star title is-5"></i>
-      <i class="fa fa-star title is-5"></i>
+      <star :reviews="reviews"></star>
       &nbsp; &nbsp;
-      <strong>41 Reviews</strong>
+      <strong>@{{ reviews.length }} Reviews</strong>
       &nbsp; &nbsp;
       <a href="#">show all</a>
    </p>
@@ -317,7 +313,11 @@ button.is-blue:hover {
          </tab>
          <tab name="review">
             <div class="box">
+            <strong>@{{ reviews.length }} Reviews</strong>
+                  &nbsp; &nbsp;
+                  <a href="#">show all</a>
               <rating :value="starDefault" @setstar="setStar" name="Review"></rating>
+
               <div class="field">
               <label class="label">Review</label>
               <div class="control">
@@ -334,6 +334,12 @@ button.is-blue:hover {
                 @{{ review.description }} 
                 <hr>
               </div>
+
+              <vue-pagination  v-bind:pagination="pagination"
+                 v-on:click.native="fetchReview(pagination.current_page)"
+                 :offset="2">
+              </vue-pagination>
+
             </div>
             </div>
          </tab>
@@ -401,10 +407,17 @@ button.is-blue:hover {
        starDefault:1,
        price:'{!! $product->price !!}',
       imageName:'{!! asset($product->productImage->first()->name) !!}',
-      reviews:[{
-        description:'',
-        rating:1
-      }]
+      reviews:[],
+      pagination: {
+            total: 0,
+            per_page: 1,
+            from: 1,
+            to: 0,
+            current_page: 1
+       },
+    },
+    mounted(){
+      this.fetchReview();
     },
       methods:{
       choseImage(val){
@@ -413,11 +426,20 @@ button.is-blue:hover {
       setStar (event) {
        this.starDefault=event; // get the data after child dealing
      },
+     fetchReview(){
+        axios.get('api/review?page='+this.pagination.current_page).then(response=>{
+          this.reviews=response.data.data;
+          this.pagination=response.data;
+        })
+     }
+     ,
      addReview(){
+      let url='review';
       this.reviews.push({description:this.reviews.description,rating:this.starDefault});
+      axios.post(url,{description:this.reviews.description,rating:this.starDefault,product_id:'{!! $product->id !!}'});
       this.reviews.description="";
       this.starDefault=1;
-     }
+      }
     },
 
 

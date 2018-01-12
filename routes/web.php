@@ -34,6 +34,7 @@ Route::GET('login',['uses'=>'AuthController@login','as'=>'login']);
 
 Route::POST('login',['uses'=>'AuthController@auth','as'=>'auth']);
 
+Route::resource('review','ReviewController');
 
 Route::group(['prefix' => 'social-media'], function(){
     Route::get('register/{provider}', 'SocialiteController@register');
