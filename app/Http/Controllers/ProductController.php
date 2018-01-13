@@ -49,7 +49,7 @@ class ProductController extends Controller
     }
 
     public function show($id){
-        $product=Product::with('productImage')->findOrFail($id);
+        $product=Product::with(['productImage','reviews'])->findOrFail($id);
         return view('frontend.product.show',compact('product'));
     }
 
@@ -96,5 +96,9 @@ class ProductController extends Controller
         
 
         return $products;
+    }
+
+    public function getProductReviews(Request $request){
+        return Product::with('reviews.user')->find(14)->getProductReviews();
     }
 }

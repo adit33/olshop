@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
 use App\Models\ProductImage;
 use App\Brand;
+use App\Models\Review;
+use App\Models\User;
 class Product extends Model
 {
     protected $table='product';
@@ -103,6 +105,18 @@ class Product extends Model
 
     public function brand(){
        return $this->belongsTo(Brand::class); 
+    }
+
+    public function reviews(){
+        return $this->hasMany(Review::class);
+    }
+
+    public function getProductReviews(){
+        return $this->reviews()->paginate(10);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class,'email','email');
     }
 
 }

@@ -331,7 +331,8 @@ button.is-blue:hover {
                 <p>
                   <i v-for="index in 5" class="fa fa-star title is-5" :class="{'is-active':index <= review.rating}"></i>
                 </p>
-                @{{ review.description }} 
+                @{{ review.description }} <br>
+                <p style="font-size: 10px">@{{ review.email }} | @{{ review.created_at }}</p>
                 <hr>
               </div>
 
@@ -427,7 +428,7 @@ button.is-blue:hover {
        this.starDefault=event; // get the data after child dealing
      },
      fetchReview(){
-        axios.get('api/review?page='+this.pagination.current_page).then(response=>{
+        axios.get('api/productreviews?page='+this.pagination.current_page,{params:{id:'{!! $product->id !!}'}}).then(response=>{
           this.reviews=response.data.data;
           this.pagination=response.data;
         })

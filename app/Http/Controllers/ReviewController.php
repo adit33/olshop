@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Review;
+use App\Models\Product;
 class ReviewController extends Controller
 {
 	public function __construct(Review $review){
@@ -15,8 +16,9 @@ class ReviewController extends Controller
     	$this->review->addReview($review,$request);
     }
 
-    public function getApiReview(){
-    	$review=Review::paginate(5);
-    	return response()->json($review);
+    public function getApiReview(Request $request){
+    	// $review=Review::paginate(5);
+        $review=Product::find($request->id);
+    	return response()->json($review->reviews()->paginate(10));
     }
 }

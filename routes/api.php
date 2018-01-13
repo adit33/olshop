@@ -25,7 +25,7 @@ Route::get('product/{id}',function($id){
 	return App\Models\Product::find($id)->stock;
 });
 
-Route::get('review','ReviewController@getApiReview');
+Route::get('productreviews','ProductController@getProductReviews');
 
 Route::get('products/search','ProductController@searchProducts');
 
