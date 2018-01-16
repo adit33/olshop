@@ -313,7 +313,7 @@ button.is-blue:hover {
          </tab>
          <tab name="review">
             <div class="box">
-            <strong>@{{ reviews.length }} Reviews</strong>
+            <strong>@{{ pagination.total }} Reviews</strong>
                   &nbsp; &nbsp;
                   <a href="#">show all</a>
               <rating :value="starDefault" @setstar="setStar" name="Review"></rating>
@@ -332,7 +332,7 @@ button.is-blue:hover {
                   <i v-for="index in 5" class="fa fa-star title is-5" :class="{'is-active':index <= review.rating}"></i>
                 </p>
                 @{{ review.description }} <br>
-                <p style="font-size: 10px">@{{ review.email }} | @{{ review.created_at }}</p>
+                <p style="font-size: 10px">@{{ review.user.name }} | @{{ review.created_at }}</p>
                 <hr>
               </div>
 

@@ -99,6 +99,7 @@ class ProductController extends Controller
     }
 
     public function getProductReviews(Request $request){
-        return Product::with('reviews.user')->find(14)->getProductReviews();
+        // return dd(Product::with(['reviews.user'])->find(14));
+        return \App\Models\Review::with('user')->where('product_id',$request->id)->paginate(10);
     }
 }

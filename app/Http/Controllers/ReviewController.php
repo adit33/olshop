@@ -18,7 +18,7 @@ class ReviewController extends Controller
 
     public function getApiReview(Request $request){
     	// $review=Review::paginate(5);
-        $review=Product::find($request->id);
+        $review=Product::with('reviews.user')->find($request->id);
     	return response()->json($review->reviews()->paginate(10));
     }
 }

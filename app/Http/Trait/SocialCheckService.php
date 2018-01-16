@@ -18,14 +18,14 @@ trait SocialCheckService
             return $account->user;
         }else{
             $existEmail = User::whereEmail($providerUser->getEmail())->first();
-            if($existEmail){
+            if(! is_null($existEmail)){
                 $this->updateIfExistUser($providerUser, $existEmail);
                 $user = $existEmail;
             }else{
                 $user = User::firstOrCreate([
                     'name' => $providerUser->getName(),
                     'email' => $providerUser->getEmail(),
-                    // 'avatar' => $providerUser->getAvatar(),
+                    'avatar' => $providerUser->getAvatar(),
                 ]);
             }
             $account = $user->socialAccount()->create([

@@ -101,7 +101,6 @@
 
 <hr>
  
-<img v-if="isLoading" src="{!! asset('img/loading.gif') !!}" style="display: block; margin: 0 auto;" />
 <div class="columns">
   <div class="column is-one-quarter is-narrow">
     <nav class="panel">
@@ -110,17 +109,15 @@
   </p>
   <div class="panel-block">
     <div class="field">
-    @foreach(App\Models\Category::all() as $category)
-        <input id="{{ $category->id }}" value="{{ $category->id }}" name="category_id[]" class="is-checkradio" type="checkbox" @click="filterProducts" v-model="categories">
-    <label for="{{ $category->id }}">{!! $category->name !!}</label> <br>
-    @endforeach
+      <div v-for="category in categories">
+        <input :id="category.id" :value="category.id" name="category_id[]" class="is-checkradio" type="checkbox" v-model="checked">
+    <label :for="category.id">@{{ category.name }}</label> <br>
+      </div>       
   </div>
   </div>
   
   <div class="panel-block">
-    <button class="button is-link is-outlined is-fullwidth">
-      reset all filters
-    </button>
+    <input type="checkbox" v-model="checkedAll" class="" name="">Check All</input>
   </div>
 </nav>
 
@@ -131,8 +128,8 @@
   <div class="panel-block">
     <div class="field">
     @foreach(App\Brand::all() as $brand)
-        <input id="{{ $brand->id }}" value="{{ $brand->id }}" name="brand_id[]" class="is-checkradio" type="checkbox">
-    <label for="{{ $brand->id }}">{!! $brand->name !!}</label> <br>
+        <input id="brand-{{ $brand->id }}" value="{{ $brand->id }}" name="brand_id[]" class="is-checkradio" type="checkbox">
+    <label for="brand-{{ $brand->id }}">{!! $brand->name !!}</label> <br>
     @endforeach
   </div>
   </div>
@@ -181,7 +178,7 @@
   <div class="control">
     <div class="select">
       <select v-model="order" @change="filterProducts">
-        <option >Select dropdown</option>
+        <option value="" >Select dropdown</option>
         <option value="price,asc">Harga Termurah</option>
         <option value="price,desc">Harga Termahal</option>
         <option value="name,asc">Nama A-Z</option>
@@ -194,11 +191,17 @@
 
    <!-- <div class="column is-12"> -->
     <div class="pricing-table column is-12" :class="{ '' : layout == 'grid' ,'is-horizontal' : layout == 'list' }">
+    <img v-if="isLoading" src="{!! asset('img/loading.gif') !!}" style="display: block; margin: 0 auto;" />
+
     <div class="column" :class="{ 'is-4' : layout == 'grid' ,'is-12' : layout == 'list' }"  v-for="product in products.data" v-if="! isLoading">
       <card-product :product="product"></card-product>     
     </div>   
       
     </div>
+    <vue-pagination  v-bind:pagination="pagination"
+                 v-on:click.native="getProducts(pagination.current_page)"
+                 :offset="2">
+</vue-pagination>
   <!-- </div>    -->
 </div>
   </div>
@@ -206,10 +209,7 @@
 
 
 
-<vue-pagination  v-bind:pagination="pagination"
-                 v-on:click.native="getProducts(pagination.current_page)"
-                 :offset="2">
-</vue-pagination>
+
 
   <!-- </article> -->
 
@@ -390,7 +390,8 @@ Vue.component('image-product',{
        inputSearch:null,
        order:null,
        per_page:3,
-       categories:[],
+       categories:JSON.parse('{!! App\Models\Category::all() !!}'),
+       checked:[],
        counter: 0,
        pagination: {
             total: 0,
@@ -405,6 +406,11 @@ Vue.component('image-product',{
        api:{
         url:'api/productspaginate?page=',
        }
+    },
+    watch:{
+      checked(value){
+        this.filterProducts();
+      }
     },
     methods:{
       getProducts:function(page){
@@ -431,11 +437,10 @@ Vue.component('image-product',{
         var url='api/products/filter';
        this.$nextTick(function () {
           var self=this;
-          axios.get(url,{params:{order:this.order,categories:this.categories,per_page:this.per_page}}).then((response)=>{
+          axios.get(url,{params:{order:this.order,categories:this.checked,per_page:this.per_page}}).then((response)=>{
           this.products=response.data;
          });
         })
-        
       },
       test(){
       alert()
@@ -452,6 +457,21 @@ Vue.component('image-product',{
       cek(){
         // return store.getters.dataProducts.;
         return mapGetters(['dataProducts']);
+      },
+
+      checkedAll: {
+        
+        get() {
+          return this.checked.length === this.categories.length
+        },
+        
+        set(value) {
+          this.checked = []
+          
+          if (value) {
+            this.categories.forEach(category => this.checked.push(category.id))
+          }
+        },        
       }
 
     }

@@ -12,12 +12,8 @@
 */
 
 Route::get('test',function(){
-	$tr=new App\Models\Product;
-	$p=App\Models\Transaction::find(41);
-	// foreach ($xs as $x) {
-	// 	echo dd($x->detailTransaction);
-	// }
-	return new App\Mail\Order($p);
+	$user = Socialite::driver('facebook')->stateless()->user();
+	return dd($user);
 });
 
 Route::get('/', 'FrontController@frontPage');

@@ -40,9 +40,9 @@
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">              
               <figure class="image is-32x32" style="margin-right:.5em;">
-                <img src="https://avatars1.githubusercontent.com/u/7221389?v=4&s=32">
+                <img src="{{ asset(Auth::user()->avatar) }}">
               </figure>
-              mazipan
+              {{ Auth::user()->name }}
             </a>
           
             <div class="navbar-dropdown is-right">              
