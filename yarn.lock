@@ -6379,6 +6379,10 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
+vue-chartjs@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/vue-chartjs/-/vue-chartjs-3.1.0.tgz#bf29bd940312bfdbbde337e03cb538f2805b184e"
+
 vue-clickaway@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/vue-clickaway/-/vue-clickaway-2.1.0.tgz#392de764751f31cd20787e8fb3a6e319825f8d4f"

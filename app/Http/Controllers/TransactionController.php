@@ -66,9 +66,13 @@ class TransactionController extends Controller
         return $dataTable->render('backend.transaction.index');
     }
 
-    public function report(){
-        $sum=$this->transaction->reportTransactionMonthly();
-        return view('backend.transaction.report',compact('sum'));
+    public function report(Request $request){
+        
+        return view('backend.transaction.report');
+    }
+
+    public function getReportYearly(Request $request){
+        return $this->transaction->reportTransactionMonthly($request);
     }
 
 }

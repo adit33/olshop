@@ -1,17 +1,56 @@
 @extends('backend.layout.master')
 
 @section('content')
-
+    
     <div class="column is-10">
         <div class="box">
-            <canvas id="myChart" width="400" height="400"></canvas>
+        <div class="field">
+            <div class="control">
+            <div class="select">
+                {!! Form::selectYear('year',date('Y'),'2017',null,['class'=>'','v-model'=>'year']) !!}
+            </div>                
+            </div>
+        </div>
+        <bar></bar>
+      <!--   <bar-chart></bar-chart> -->
+            <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
         </div>
     </div>
+
+
 
 @endsection
 
 @push('scripts')
 <script>
+// 
+var data_chart=[];
+var date=new Date();
+var vm=new Vue({
+    el:"#app",
+    data:{
+        year:date.getFullYear().toString(),
+        chart_data:[]
+    },
+    watch:{
+        year(value){
+            this.getReport()
+        }
+    },
+    mounted(){
+        this.getReport()
+    },
+    methods:{
+        getReport(){
+            axios.get('api/report',{year:this.year}).then(response=>{
+                data_chart=response.data;
+                this.chart_data=response.data;
+            })
+        }
+    }
+})
+
+
 var ctx = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
@@ -19,7 +58,7 @@ var myChart = new Chart(ctx, {
         labels: ['jan','feb','mar','apr','mei','jun','jul','agt','sept','okt','nov','des'],
         datasets: [{
             label: '# of Votes',
-            data: {!! json_encode($sum) !!},
+            data: data_chart,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -49,5 +88,8 @@ var myChart = new Chart(ctx, {
         }
     }
 });
+
+
+
 </script>
 @endpush

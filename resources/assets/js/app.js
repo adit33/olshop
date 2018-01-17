@@ -87,6 +87,8 @@ Vue.component('steps',require('./components/Steps.vue'));
 
 Vue.component('step',require('./components/Step.vue'));
 
+Vue.component('bar',require('./components/BarChart.vue'));
+
 // Vue.component('example',require('./components/Example.vue'));
 
 // const app = new Vue({

@@ -199,7 +199,7 @@
 </div>
 </div>
  <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
-  <script type="text/javascript">
+ <!-- <script type="text/javascript">
   Vue.component('countcart',{
       template:`
       <div>
@@ -229,7 +229,7 @@
         }
       }
     })
-  </script>
+  </script> -->
 
   <script type="text/javascript" src="{{asset('js/app.js') }}"></script>
   <script type="text/javascript" src="{{ asset('js/dropzone.js') }}"></script>
