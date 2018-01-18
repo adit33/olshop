@@ -7,11 +7,11 @@
         <div class="field">
             <div class="control">
             <div class="select">
-                {!! Form::selectYear('year',date('Y'),'2017',null,['class'=>'','v-model'=>'year']) !!}
+                {!! Form::selectYear('year',date('Y'),'2017',null,['class'=>'','v-model'=>'year','v-on:change'=>'getReport']) !!}
             </div>                
             </div>
         </div>
-        <bar></bar>
+        <bar :data-chart="chart_data"></bar>
       <!--   <bar-chart></bar-chart> -->
             <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
         </div>
@@ -30,7 +30,7 @@ var vm=new Vue({
     el:"#app",
     data:{
         year:date.getFullYear().toString(),
-        chart_data:[]
+        chart_data:{}
     },
     watch:{
         year(value){
@@ -42,9 +42,15 @@ var vm=new Vue({
     },
     methods:{
         getReport(){
-            axios.get('api/report',{year:this.year}).then(response=>{
-                data_chart=response.data;
-                this.chart_data=response.data;
+            axios.get('api/report',{params:{year:this.year}}).then(response=>{
+                this.chart_data={
+                    labels:['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                    datasets:[{
+                        data:response.data,
+                        backgroundColor:'f87979',
+                        label:"Transaction"
+                    }]
+                };
             })
         }
     }

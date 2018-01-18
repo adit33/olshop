@@ -54,7 +54,7 @@ class Transaction extends Model
         $sum=[];
         for ($i=1; $i < 13; $i++) { 
             array_push($sum, Transaction::whereMonth('created_at',$i)
-                ->whereYear('created_at','2017')
+                ->whereYear('created_at',$request->input('year'))
                 ->sum('total'));    
         }
         return $sum;
