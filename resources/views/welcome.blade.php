@@ -85,6 +85,67 @@
 .is-transparent{
   background-color: #fff0;
 }
+
+::before, ::after {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+element {
+}
+.icon.is-medium {
+    height: 2rem;
+    width: 2rem;
+}
+.icon {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+span {
+    font-style: inherit;
+    font-weight: inherit;
+}
+* {
+    box-sizing: border-box;
+}
+* {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+.navbar-item.is-tab.is-active {
+    color: #fff;
+}
+.navbar-item, 
+.navbar-link {
+    color: #000000;
+    line-height: 1.5;
+    /*padding: 0.5rem 1rem;
+    position: relative;*/
+}
+a.navbar-item:hover, a.navbar-item.is-active, a.navbar-link:hover, a.navbar-link.is-active {
+    background-color: whitesmoke;
+    color: #fff;
+}
+.title {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.125;
+}
+.subtitle {
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.25;
+}
 </style>
 @endpush
 

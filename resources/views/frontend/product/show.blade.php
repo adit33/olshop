@@ -308,8 +308,8 @@ button.is-blue:hover {
               </div>
             </div>
          </tab>
-         <tab name="Price">
-            <div class="box">Price</div>
+         <tab name="Discussion">
+          <discussion :product_id="{!! $product->id !!}"></discussion>
          </tab>
          <tab name="review">
             <div class="box">

@@ -27,6 +27,8 @@ Route::get('product/{id}',function($id){
 
 Route::get('productreviews','ProductController@getProductReviews');
 
+Route::get('productdiscussions','ProductController@getProductDiscussions');
+
 Route::get('products/search','ProductController@searchProducts');
 
 Route::get('categories',['uses'=>'CategoryController@getCategories','as'=>'categories']);

@@ -47,7 +47,7 @@ var vm=new Vue({
                     labels:['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
                     datasets:[{
                         data:response.data,
-                        backgroundColor:'f87979',
+                        backgroundColor:'#3498db',
                         label:"Transaction"
                     }]
                 };

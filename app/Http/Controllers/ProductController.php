@@ -10,6 +10,8 @@ use App\Models\Product;
 
 use App\Models\ProductImage;
 
+use App\Models\Discussion;
+
 use App\DataTables\ProductDataTable;
 
 class ProductController extends Controller
@@ -101,5 +103,10 @@ class ProductController extends Controller
     public function getProductReviews(Request $request){
         // return dd(Product::with(['reviews.user'])->find(14));
         return \App\Models\Review::with('user')->where('product_id',$request->id)->paginate(10);
+    }
+
+    public function getProductDiscussions(Request $request){
+        // return dd(Product::with(['reviews.user'])->find(14));
+        return Discussion::with('user')->where('product_id',$request->product_id)->paginate(10);
     }
 }

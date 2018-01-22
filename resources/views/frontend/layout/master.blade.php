@@ -95,10 +95,10 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        Primary title
+        Bike Shop
       </h1>
       <h2 class="subtitle">
-        Primary subtitle
+        Good Bikes
       </h2>
     </div>
   </div>

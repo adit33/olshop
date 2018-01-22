@@ -111,6 +111,10 @@ class Product extends Model
         return $this->hasMany(Review::class);
     }
 
+    public function discussions(){
+        return $this->hasMany(Discussion::class);
+    }
+
     public function getProductReviews(){
         return $this->reviews()->paginate(10);
     }

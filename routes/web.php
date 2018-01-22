@@ -61,6 +61,8 @@ Route::middleware(['auth'])->group(function () {
 
 	Route::resource('user','UserController');
 
+	Route::resource('discussion','DiscussionController');
+
 	Route::GET('logout',['uses'=>'AuthController@logout','as'=>'logout']);
 
 	Route::resource('category','CategoryController');
