@@ -14,7 +14,7 @@ class DiscussionController extends Controller
 
     public function store(Request $request){
     	$discussion = new Discussion;
-    	$this->discussion->addDiscussion($discussion,$request);
+    	return $this->discussion->addDiscussion($discussion,$request);
     }
 
     public function getApiDiscussion(Request $request){

@@ -15,12 +15,10 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 window.Flickity = require('vue-flickity');
-window.VueInstant = require('vue-instant')
-window.Select2 = require('select2');
+window.VueInstant = require('vue-instant');
 // window.store = require('./store');
 
 
-import Simplert from 'vue2-simplert';
 import swal from 'sweetalert';
 import store from './store';
 import {mapGetters} from 'vuex';

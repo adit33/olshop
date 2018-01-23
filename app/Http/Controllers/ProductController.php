@@ -107,6 +107,9 @@ class ProductController extends Controller
 
     public function getProductDiscussions(Request $request){
         // return dd(Product::with(['reviews.user'])->find(14));
-        return Discussion::with('user')->where('product_id',$request->product_id)->paginate(10);
+        return Discussion::with('user','children.user')
+        ->where('product_id',$request->product_id)
+        ->whereNull('parent_id')
+        ->paginate(10);
     }
 }

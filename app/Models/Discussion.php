@@ -16,10 +16,16 @@ class Discussion extends Model
 		$discussion->message    =$request->input('message');
 		$discussion->parent_id  =$request->input('parent_id');
 		$discussion->save();
+
+		return Discussion::with('user','children')->find($discussion->id);
     }
 
     public function user(){
         return $this->belongsTo(User::class,'email','email');
+    }
+
+    public function children(){
+    	return $this->hasMany(Discussion::class,'parent_id','id');
     }
     
 }
