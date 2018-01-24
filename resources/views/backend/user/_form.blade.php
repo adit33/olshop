@@ -18,6 +18,19 @@
   </div>
 </div>
 
+<div class="field">
+ <div class="field">
+  <label class="label">Role</label>
+ <div class='{!! $errors->first("role") ? "select is-danger" : "select" !!}''>
+  {!! Form::select('role',App\Models\Role::pluck('name','id'),null,['placeholder'=>'Select Role']) !!}
+</div>
+   <p class="help is-danger">
+        {!! $errors->first('role') !!}
+      </p>
+</div>
+
+
+
  <div class="field">
  <div class="field">
   <label class="label">Password</label>
@@ -41,6 +54,8 @@
       </p>
   </div>
 </div>
+
+
 
 
 <div class="field is-grouped">

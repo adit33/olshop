@@ -2,10 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\Role;
+use App\Models\Permission;
 use Yajra\DataTables\Services\DataTable;
+use URL;
 
-class RoleDataTable extends DataTable
+class PermissionDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -17,17 +18,17 @@ class RoleDataTable extends DataTable
     {
         return datatables($query)
             ->addColumn('action',function($query){
-                return '<a href='.route('role.edit',$query->id).'>Edit</a>';
+                return '<a href='.route('permission.edit',$query->id).'>Edit</a>';
             });
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\User $model
+     * @param \App\Permission $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Role $model)
+    public function query(Permission $model)
     {
         return $model->newQuery()->select($this->getColumns());
     }
@@ -68,6 +69,6 @@ class RoleDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'roledatatable_' . time();
+        return 'permission_' . time();
     }
 }

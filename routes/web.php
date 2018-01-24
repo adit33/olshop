@@ -53,13 +53,8 @@ Route::middleware(['auth'])->group(function () {
 
 	Route::POST('api/checkout',['uses'=>'TransactionController@checkout']);
 
-	Route::resource('transaction','TransactionController');
-
-	Route::get('report',['uses'=>'TransactionController@report','as'=>'report']);
 		
 	Route::POST('product/{id}',['uses'=>'ProductController@update','as'=>'product.update']);
-
-	Route::resource('user','UserController');
 
 	Route::resource('discussion','DiscussionController');
 
@@ -74,6 +69,9 @@ Route::middleware(['auth'])->group(function () {
 		Route::resource('permission','PermissionController');
 		Route::resource('role','RoleController');
 		Route::resource('brand','BrandController');
+		Route::resource('user','UserController');
+		Route::resource('transaction','TransactionController');
+		Route::get('report',['uses'=>'TransactionController@report','as'=>'report']);
 	});
 
 });

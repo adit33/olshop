@@ -5,7 +5,7 @@ namespace App\DataTables;
 use App\Models\User;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
-
+use URL;
 class UserDataTable extends DataTable
 {
     /**
@@ -18,7 +18,9 @@ class UserDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'userdatatable.action');
+        return $dataTable->addColumn('action', function($query){
+            return '<a href="'.route('user.edit',$query->id).'">Edit</a>';
+        });
     }
 
     /**
@@ -42,7 +44,7 @@ class UserDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->addAction(['width' => '80px']);
+                    ->addAction(['width' => '80px'])
                     ->parameters([
                         'dom'     => 'Bfrtip',
                         'order'   => [[0, 'desc']],
@@ -64,6 +66,7 @@ class UserDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            'id',
             'email',
             'name',
             'created_at',

@@ -17,7 +17,7 @@
     props:['iconName','name','description','currentStep','stepId'],
     data(){
       return{
-        isActive:null,
+        active:null,
       }
     },
     mounted(){
@@ -25,7 +25,7 @@
     },
     methods:{
       isActive(){
-        this.isActive = this.currentStep === this.stepId
+        this.active = this.currentStep === this.stepId
       }
     }
   }

@@ -12,6 +12,10 @@ use App\DataTables\UserDataTable;
 
 class UserController extends Controller
 {
+    public function __construct(User $user){
+        $this->user= $user;
+    }
+
     public function index(UserDataTable $dataTable){
     	return $dataTable->render('backend.user.index');
     }
@@ -22,8 +26,22 @@ class UserController extends Controller
     }
 
     public function store(UserRequest $request){
-    	$data=$request->all();
-    	$data['password']=bcrypt($request->input('password'));
-    	User::create($data);
+        $user=new User;
+        $this->user->saveUser($user,$request);
+
+        return redirect()->route('user.index');
+    }
+
+    public function edit($id,Request $request){
+        $user=User::find($id);
+        return view('backend.user.edit',compact('user'))
+        ->with('title','Edit User');
+    }
+
+    public function update($id,Request $request){
+        $user=User::find($id);
+        $this->user->saveUser($user,$request);
+        
+        return redirect()->route('user.index');   
     }
 }

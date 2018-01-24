@@ -3,7 +3,7 @@
          <span class="icon is-small">
               <i class="fa fa-shopping-cart"></i>
             </span>
-           <span v-if="ammountCart > 0" class="tag is-primary tag-notif">{{ amountCart }}</span>
+           <span class="tag is-primary tag-notif">{{ amountCart }}</span>
       </div>
 </template>
 

@@ -15,8 +15,7 @@ mix.js(['resources/assets/js/app.js','node_modules/bulma-steps/steps.min.js'], '
    .sass('resources/assets/sass/app.scss', 'public/css')
    .styles(['node_modules/flickity/dist/flickity.css','node_modules/vue-multiselect/dist/vue-multiselect.min.css'],'public/css/vendor.css')
    .copy('node_modules/font-awesome/fonts', 'public/fonts')
-   .setPublicPath('public')
-   .setResourceRoot('./public/css');
+   .setPublicPath('public');
 //    .webpackConfig({
 //     plugins: [
 //         new BundleAnalyzerPlugin()

@@ -65791,11 +65791,9 @@ var render = function() {
   return _c("div", [
     _vm._m(0),
     _vm._v(" "),
-    _vm.ammountCart > 0
-      ? _c("span", { staticClass: "tag is-primary tag-notif" }, [
-          _vm._v(_vm._s(_vm.amountCart))
-        ])
-      : _vm._e()
+    _c("span", { staticClass: "tag is-primary tag-notif" }, [
+      _vm._v(_vm._s(_vm.amountCart))
+    ])
   ])
 }
 var staticRenderFns = [
@@ -65933,7 +65931,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     };
   },
   mounted: function mounted() {
-    $('.js-example-basic-single').select2();
+    // $('.js-example-basic-single').select2();
     this.getProvince();
   },
 
@@ -66706,7 +66704,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   props: ['iconName', 'name', 'description', 'currentStep', 'stepId'],
   data: function data() {
     return {
-      isActive: null
+      active: null
     };
   },
   mounted: function mounted() {
@@ -66715,7 +66713,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     isActive: function isActive() {
-      this.isActive = this.currentStep === this.stepId;
+      this.active = this.currentStep === this.stepId;
     }
   }
 });

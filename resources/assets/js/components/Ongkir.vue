@@ -60,7 +60,7 @@
 		}
     },
     mounted(){
-    	 $('.js-example-basic-single').select2();
+    	 // $('.js-example-basic-single').select2();
     	 this.getProvince();    	 
     },
     methods:{

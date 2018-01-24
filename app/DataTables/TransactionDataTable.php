@@ -18,7 +18,7 @@ class TransactionDataTable extends DataTable
     {
         return datatables($query)
             ->addColumn('action',function($query){
-                return '<a href='.URL::to('transaction/'.$query->id).' class="button is-info is-small">
+                return '<a href='.route('transaction.show',$query->id).' class="button is-info is-small">
     <span class="icon">
       <i class="fa fa-eye" aria-hidden="true"></i>
     </span>
