@@ -43,6 +43,7 @@
 
 <script type="text/javascript">
 	export default{
+	props:['weight'],
 	data(){
 		return{
 		  province_id:'',

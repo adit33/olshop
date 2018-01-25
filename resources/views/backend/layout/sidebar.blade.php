@@ -10,12 +10,10 @@
             Administration
           </p>
           <ul class="menu-list">
-            <li><a href="{{ route('product.index') }}"><span class="icon is-small"><i class="fa fa-pencil-square-o"></i></span> Products</a></li>
-            <li><a><span class="icon is-small"><i class="fa fa-desktop"></i></span> UI Elements</a></li>
-            <li><a><span class="icon is-small"><i class="fa fa-table"></i></span> Tables</a></li>            
+            <li><a href="{{ route('product.index') }}"><span class="icon is-small"><i class="fa fa-pencil-square-o"></i></span> Products</a></li>        
             <li><a href="{{ route('report') }}"><span class="icon is-small"><i class="fa fa-bar-chart"></i></span> Report</a></li>
             <li><a href="{{ route('transaction.index') }}"><span class="icon is-small"><i class="fa fa-bar-chart"></i></span>Transaction</a></li>
-
+            @can('user.create')
             <li>
               <a class=""><i class="fa fa-cog"></i></span> Settings</a>
               <ul>
@@ -24,6 +22,7 @@
                 <li><a href="{{ route('permission.index') }}">Permissions</a></li>
               </ul>
             </li>
+            @endcan
           </ul>
           <p class="menu-label">
             Live On

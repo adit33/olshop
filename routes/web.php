@@ -12,8 +12,7 @@
 */
 
 Route::get('test',function(){
-	$user = Socialite::driver('facebook')->stateless()->user();
-	return dd($user);
+	
 });
 
 Route::get('/', 'FrontController@frontPage');
@@ -52,7 +51,6 @@ Route::middleware(['auth'])->group(function () {
 	Route::POST('addtocart/{product_id}',['uses'=>'CartController@addToCart','as'=>'addtocart']);
 
 	Route::POST('api/checkout',['uses'=>'TransactionController@checkout']);
-
 		
 	Route::POST('product/{id}',['uses'=>'ProductController@update','as'=>'product.update']);
 
