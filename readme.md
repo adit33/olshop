@@ -4,11 +4,11 @@ npm install
 
 konfigurasi file .env
 
-MAIL_HOST=smtp.gmail.com
-MAIL_PORT=587 #atau 587 atau 465
-MAIL_USERNAME=your email	
-MAIL_PASSWORD=your app email
-MAIL_ENCRYPTION=tls
+MAIL_HOST=smtp.gmail.com<br />
+MAIL_PORT=587 #atau 587 atau 465<br />
+MAIL_USERNAME=your email	<br />
+MAIL_PASSWORD=your app email<br />
+MAIL_ENCRYPTION=tls<br /><br />
 
 FACEBOOK_KEY=<br />
 FACEBOOK_SECRET=<br />
