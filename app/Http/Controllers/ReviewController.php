@@ -13,7 +13,7 @@ class ReviewController extends Controller
 
     public function store(Request $request){
     	$review=new Review;
-    	$this->review->addReview($review,$request);
+    	return $this->review->addReview($review,$request);
     }
 
     public function getApiReview(Request $request){

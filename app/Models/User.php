@@ -46,7 +46,7 @@ class User extends Authenticatable
     }
 
      public function socialAccount(){
-         return $this->hasMany(SocialAccount::class);
+         return $this->hasMany(SocialAccount::class,'user_email','email');
      }
 
      public function roles(){

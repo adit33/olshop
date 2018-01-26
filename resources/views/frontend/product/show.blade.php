@@ -436,8 +436,11 @@ button.is-blue:hover {
      ,
      addReview(){
       let url='review';
-      this.reviews.push({description:this.reviews.description,rating:this.starDefault});
-      axios.post(url,{description:this.reviews.description,rating:this.starDefault,product_id:'{!! $product->id !!}'});
+      // this.reviews.push({description:this.reviews.description,rating:this.starDefault});
+      axios.post(url,{description:this.reviews.description,rating:this.starDefault,product_id:'{!! $product->id !!}'})
+      .then(response=>{
+        this.reviews.push(response.data);
+      });
       this.reviews.description="";
       this.starDefault=1;
       }
