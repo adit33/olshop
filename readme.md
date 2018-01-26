@@ -4,12 +4,12 @@ npm install
 
 konfigurasi file .env
 
-FACEBOOK_KEY=<space><space>
-FACEBOOK_SECRET=<space><space>
-FACEBOOK_CALLBACK_URL=http://localhost/olshop/public/social-media/registered/facebook<space><space>
+FACEBOOK_KEY=<br />
+FACEBOOK_SECRET=<br />
+FACEBOOK_CALLBACK_URL=http://localhost/olshop/public/social-media/registered/facebook<br />
 
-GITHUB_KEY=<space><space>
-GITHUB_SECRET=<space><space>
-GITHUB_CALLBACK_URL=http://localhost/olshop/public/social-media/registered/github<space><space>
+GITHUB_KEY=<br />
+GITHUB_SECRET=<br />
+GITHUB_CALLBACK_URL=http://localhost/olshop/public/social-media/registered/github<br />
 
 RAJAONGKIR_KEY=
