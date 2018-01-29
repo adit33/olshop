@@ -90,7 +90,7 @@
 
 
  @include("frontend.layout.navbar")
- <section class="hero" style="background-image: url('img/breadcrum.jpg')">
+<!--  <section class="hero is-info">
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
@@ -101,7 +101,7 @@
       </h2>
     </div>
   </div>
-</section>
+</section> -->
 
 <div class="container">
   <div class="columns is-desktop">

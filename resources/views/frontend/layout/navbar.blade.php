@@ -2,13 +2,13 @@
 
 <!-- <header class="hero is-light">
    <div class="hero-head"> -->
-      <nav class="navbar is-transparent is-fixed-top" role="navigation" aria-label="main navigation">
+      <nav class="navbar is-info is-fixed-top" role="navigation" aria-label="main navigation">
          <div class="navbar-brand">
             <a class="navbar-item">
             <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo">
             </a>
             <a class="navbar-item is-tab is-hidden-mobile is-active"><span class="icon is-medium"><i class="fa fa-home"></i></span>Home</a>
-            <div class="navbar-item has-dropdown is-hoverable">
+            <!-- <div class="navbar-item has-dropdown is-hoverable">
                <a class="navbar-link">
                   <figure class="image is-32x32" style="margin-right:.5em;">
                   </figure>
@@ -25,8 +25,8 @@
                   <hr class="navbar-divider">
                   @endforeach
                </div>
-            </div>
-            <div class="navbar-item has-dropdown is-hoverable is-mega">
+            </div> -->
+        <!--     <div class="navbar-item has-dropdown is-hoverable is-mega">
                <div class="navbar-link">
                   Blog
                </div>
@@ -147,7 +147,7 @@
                      </div>
                   </div>
                </div>
-            </div>
+            </div> -->
             <a class="navbar-item is-tab is-hidden-mobile">About</a>
             <button class="button navbar-burger" data-target="navMenu">
             <span></span>

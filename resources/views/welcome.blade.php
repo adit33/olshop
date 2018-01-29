@@ -120,42 +120,18 @@ span {
     -webkit-box-sizing: inherit;
     box-sizing: inherit;
 }
-.navbar-item.is-tab.is-active {
-    color: #fff;
-}
-.navbar-item, 
-.navbar-link {
-    color: #000000;
-    line-height: 1.5;
-    /*padding: 0.5rem 1rem;
-    position: relative;*/
-}
-a.navbar-item:hover, a.navbar-item.is-active, a.navbar-link:hover, a.navbar-link.is-active {
-    background-color: whitesmoke;
-    color: #fff;
-}
-.title {
-    color: #fff;
-    font-size: 2rem;
-    font-weight: 600;
-    line-height: 1.125;
-}
-.subtitle {
-    color: #fff;
-    font-size: 1.25rem;
-    font-weight: 400;
-    line-height: 1.25;
-}
+
+
 </style>
 @endpush
 
 @section('content') 
-<div class="carousel"
+<!-- <div class="carousel"
   data-flickity='{ "wrapAround": true }'>
   <img src="img/siskiu2.jpg" style="width: 66%; height: 400px; margin-right: 10px; border-radius: 5px;"></img>
   <img src="img/thrill_wreak.jpg" style="width: 66%; height: 400px; margin-right: 10px; border-radius: 5px;"></img>
   <img src="img/polygon helios c3.jpg" style="width: 66%; height: 400px; margin-right: 10px; border-radius: 5px;"></img>
-</div>
+</div> -->
 <!-- <article class="tile is-child box"> -->
 
 
@@ -281,13 +257,13 @@ a.navbar-item:hover, a.navbar-item.is-active, a.navbar-link:hover, a.navbar-link
 @push('scripts')
 <script type="text/javascript">
 
-$(window).scroll(function () {
-if ($(window).scrollTop() >= 150) {
-$('.navbar').addClass('is-info');
-} else {
-$('.navbar').removeClass('is-info');
-}
-});
+// $(window).scroll(function () {
+// if ($(window).scrollTop() >= 150) {
+// $('.navbar').addClass('is-info');
+// } else {
+// $('.navbar').removeClass('is-info');
+// }
+// });
 
 Vue.component('layout',{
   template:

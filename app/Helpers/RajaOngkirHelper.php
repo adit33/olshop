@@ -15,7 +15,7 @@ class RajaOngkirHelper
 		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 		  CURLOPT_CUSTOMREQUEST => "GET",
 		  CURLOPT_HTTPHEADER => array(
-		    "key: f1499fdd21ba4442c850525be31cac5a"
+		    "key: ".env('RAJAONGKIR_KEY')
 		  ),
 		));
 
@@ -23,10 +23,10 @@ class RajaOngkirHelper
 		$err = curl_error($curl);
 
 		curl_close($curl);
-
-		if ($err) {
-		  echo "cURL Error #:" . $err;
-		} else {
+	
+	if ($err) {
+		  echo "cURL Error #:" . $err
+;		} else {
 		  return $response;
 		}
 	}

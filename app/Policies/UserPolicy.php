@@ -20,11 +20,11 @@ class UserPolicy
     }
 
     public function index(User $user){
-        return $user->id == 1;
+        // return $user->id == 1;
     }
 
     public function create(){
-        return false;
+        // return false;
     }
 
 }
