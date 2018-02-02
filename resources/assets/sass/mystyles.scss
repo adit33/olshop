@@ -1,0 +1,33 @@
+@import "~bulma/sass/utilities/initial-variables.sass";
+@import "~bulma/sass/utilities/functions.sass";
+
+
+$footer-background-color:$black;
+
+//shadow navbar
+
+$navbar-dropdown-boxed-shadow:0 8px 8px rgba(#000000, 0.1), 0 0 0 1px rgba(#000000, 0.1);
+
+$navbar-background-color:#222f3e;
+
+$navbar-item-color:#7f8c8d;
+
+$navbar-item-hover-color:#000000;
+
+$navbar-item-hover-background-color:#7f8c8d;
+
+$navbar-tab-active-color:#c8d6e5;
+
+$navbar-tab-hover-background-color:#7f8c8d;
+
+$navbar-tab-active-border-bottom-width:3px;
+
+$navbar-tab-active-border-bottom-color:#ecf0f1;
+
+$navbar-tab-hover-border-bottom-color:#7f8c8d;
+
+$navbar-item-color:#7f8c8d;
+
+$navbar-dropdown-item-active-color:#000000;
+
+$navbar-item-active-background-color:#000000;

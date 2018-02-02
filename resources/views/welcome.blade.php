@@ -120,12 +120,20 @@ span {
     -webkit-box-sizing: inherit;
     box-sizing: inherit;
 }
-
+/*
+.navbar{
+  box-shadow: 0 0 10px 0;
+}
+*/
 
 </style>
 @endpush
 
+<div style="background: white; width: 1200px; height: 200px; margin: 5% 100px 0 100px; z-index: 9999; position: absolute; border-top: solid; box-shadow: 0 0 10px 0; display: none;"></div>
 @section('content') 
+
+
+
 <!-- <div class="carousel"
   data-flickity='{ "wrapAround": true }'>
   <img src="img/siskiu2.jpg" style="width: 66%; height: 400px; margin-right: 10px; border-radius: 5px;"></img>

@@ -8,11 +8,13 @@
 // Bootstrap
 // @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
-$black:#353535;
+$black:#000000;
 
 //@import bulma/config/generated-variables
 
 $footer-background-color:$black;
+
+@import "./mystyles.scss";
 
 @import "~bulma";
 
