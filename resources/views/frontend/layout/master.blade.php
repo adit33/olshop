@@ -103,13 +103,13 @@
   </div>
 </section> -->
 
-<div class="container">
+<!-- <div class="container"> -->
   <div class="columns is-desktop">
   <div class="column">
   @yield('content')
 </div>
 </div>  
-</div>
+<!-- </div> -->
 
 
 <div class="columns">

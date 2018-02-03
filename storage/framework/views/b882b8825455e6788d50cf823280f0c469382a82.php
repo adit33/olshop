@@ -132,6 +132,7 @@ span {
 
 
 
+
 <!-- <div class="carousel"
   data-flickity='{ "wrapAround": true }'>
   <img src="img/siskiu2.jpg" style="width: 66%; height: 400px; margin-right: 10px; border-radius: 5px;"></img>
@@ -141,7 +142,53 @@ span {
 <!-- <article class="tile is-child box"> -->
 
 
+<div class="columns is-multiline">
+  <div class="column is-12" style="background: red;">
+    <h1>SALE</h1>
+  </div>
 
+  <div class="column is-4">
+    <h1>Filter</h1>
+  </div>
+  <div class="column is-4">
+    <h1>Breadcumb</h1>
+  </div>
+  <div class="column is-4">
+    <h1>Sort</h1>
+  </div>
+
+
+
+   <div class="column is-3" style="border: 1px solid black;">
+   <h1 style="text-align: center;">Categories</h1>
+    <div style="margin-left: 15px;" v-for="category in categories">
+        <input :id="category.id" :value="category.id" name="category_id[]" class="is-checkradio" type="checkbox" v-model="checked">
+          <label :for="category.id">{{ category.name }}</label> <br>
+    </div>
+
+    <hr>
+
+    <h1 style="text-align: center;">Brand</h1>
+    <div style="margin-left: 15px">
+      <?php $__currentLoopData = App\Brand::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $brand): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <input id="brand-<?php echo e($brand->id); ?>" value="<?php echo e($brand->id); ?>" name="brand_id[]" class="is-checkradio" type="checkbox">
+    <label for="brand-<?php echo e($brand->id); ?>"><?php echo $brand->name; ?></label> <br>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
+    </div>
+    
+  </div>
+
+  <div class="column is-9" style="border-top: 1px solid black;border-bottom: 1px solid black;">
+     <div class="pricing-table column is-12" :class="{ '' : layout == 'grid' ,'is-horizontal' : layout == 'list' }">
+    <img v-if="isLoading" src="<?php echo asset('img/loading.gif'); ?>" style="display: block; margin: 0 auto;" />
+
+    <div class="column" :class="{ 'is-4' : layout == 'grid' ,'is-12' : layout == 'list' }"  v-for="product in products.data" v-if="! isLoading">
+      <card-product :product="product"></card-product>     
+    </div>   
+      
+    </div>
+  </div>
+</div>
 <hr>
  
 <div class="columns">
@@ -152,10 +199,7 @@ span {
   </p>
   <div class="panel-block">
     <div class="field">
-      <div v-for="category in categories">
-        <input :id="category.id" :value="category.id" name="category_id[]" class="is-checkradio" type="checkbox" v-model="checked">
-    <label :for="category.id">{{ category.name }}</label> <br>
-      </div>       
+             
   </div>
   </div>
   
