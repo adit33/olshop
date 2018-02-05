@@ -120,6 +120,27 @@ span {
     -webkit-box-sizing: inherit;
     box-sizing: inherit;
 }
+.grey-border{
+  border: 1px solid grey;
+}
+.product-box{
+  border-bottom: 1px solid grey;
+  border-top: 1px solid grey;
+}
+.sidebar-hidden{
+  display: none;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+#product-box{
+/*   -webkit-transition: all 2s ease;  
+  -moz-transition: all 2s ease;  
+  -o-transition: all 2s ease;  
+  -ms-transition: all 2s ease;  
+  transition: all 2s ease;*/
+}
+
 /*
 .navbar{
   box-shadow: 0 0 10px 0;
@@ -145,23 +166,47 @@ span {
 
 
 <div class="columns is-multiline">
-  <div class="column is-12" style="background: red;">
-    <h1>SALE</h1>
+
+  <div class="column is-12" style="background: transparent;">
+    <h1 style="text-align: center;">SALE</h1>
   </div>
 
-  <div class="column is-4">
-    <h1>Filter</h1>
+  <!-- <div class="column is-12"> -->
+    <!-- <nav class="navbar is-transparent"> -->
+      <div class="column is-4">
+    <h1 style="text-align: center;">Filter
+      <span class="icon" @click="hidden">
+      <i class="fa fa-close"></i>
+    </span>
+    </h1>
+    
   </div>
   <div class="column is-4">
     <h1>Breadcumb</h1>
   </div>
   <div class="column is-4">
-    <h1>Sort</h1>
+  <div class="control">
+    <div class="select">
+      <select v-model="order" @change="filterProducts">
+        <option value="" >Sort By</option>
+        <option value="price,asc">Harga Termurah</option>
+        <option value="price,desc">Harga Termahal</option>
+        <option value="name,asc">Nama A-Z</option>
+        <option value="name,desc">Nama Z-A</option>
+      </select>
+    </div>
   </div>
+  </div>    
+    <!-- </nav>   -->
+  <!-- </div> -->
+
+  
+
+  
 
 
 
-   <div class="column is-3" style="border: 1px solid black;">
+   <div class="grey-border column is-3" :class="{'sidebar-hidden' : sidebarHidden }" id="filter-column">
    <h1 style="text-align: center;">Categories</h1>
     <div style="margin-left: 15px;" v-for="category in categories">
         <input :id="category.id" :value="category.id" name="category_id[]" class="is-checkradio" type="checkbox" v-model="checked">
@@ -180,7 +225,7 @@ span {
     
   </div>
 
-  <div class="column is-9" style="border-top: 1px solid black;border-bottom: 1px solid black;">
+  <div class="column product-box" id="product-box">
      <div class="pricing-table column is-12" :class="{ '' : layout == 'grid' ,'is-horizontal' : layout == 'list' }">
     <img v-if="isLoading" src="{!! asset('img/loading.gif') !!}" style="display: block; margin: 0 auto;" />
 
@@ -307,6 +352,7 @@ span {
 @endsection
 
 @push('scripts')
+
 <script type="text/javascript">
 
 // $(window).scroll(function () {
@@ -474,6 +520,7 @@ Vue.component('image-product',{
     data:{
       name:'wkwkwk',
       // isHover:false,
+       sidebarHidden:false,
        products:'',
        isLoading:true,
        inputSearch:null,
@@ -513,6 +560,11 @@ Vue.component('image-product',{
           });
           this.isLoading = false;
         }, 1000)
+      },
+      hidden(){
+        let el=document.getElementById('product-box');
+        el.style.transition = '1s';
+        this.sidebarHidden =! this.sidebarHidden;
       },
       searchProducts(){
         axios.get('api/products/search',{params:{ val:this.inputSearch }}).then((response)=>{

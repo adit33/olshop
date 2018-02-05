@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "bulma": "^0.6.1",
+    "bulma-accordion": "^0.2.5",
     "bulma-checkradio": "^0.1.4",
     "bulma-divider": "^0.1.0",
     "bulma-pricingtable": "^0.1.3",

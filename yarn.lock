@@ -1032,6 +1032,10 @@ builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
 
+bulma-accordion@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/bulma-accordion/-/bulma-accordion-0.2.5.tgz#3d70f1d4b9f4f42cc4f8999864e03f5e5a1f5286"
+
 bulma-checkradio@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/bulma-checkradio/-/bulma-checkradio-0.1.4.tgz#9effbbd1ea0302e22e45daaa3a90bf991341a837"
