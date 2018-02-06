@@ -1,15 +1,20 @@
 <template>
 	<div>
 
-		     <div class="field has-addons">
- <p class="control has-icons-left">
-	      <input v-model="textSearch" class="input" type="text" placeholder="search">
-	      <span class="icon is-small is-left">
-	        <i class="fa fa-search"></i>
-	      </span>
-	    </p>
+
+		 <div class="field is-grouped">
+  <p class="control is-expanded">
+    <input class="input text-search" v-model="textSearch" :class="{ 'hidden' : this.$store.state.hiddenTextSearch }" type="text" placeholder="Find a Products">
+  </p>
+  <p class="control">
+   <a href="#" @click="isTextSearchHidden">
+                     <span class="icon">
+                  <i class="fa fa-search"></i> </span>  
+                  </a>
+  </p>
 </div>
-<div v-if="textSearch != ''" class="dropdown is-active" style="position:absolute; z-index:99999999; width:1000px">
+
+		  <div v-if="textSearch != ''" class="dropdown is-active" style="position:absolute; z-index:99999999; width:1000px">
   <div class="dropdown-menu" id="dropdown-menu" role="menu">
     <div class="dropdown-content">
     	<div  v-for="product in result">
@@ -25,15 +30,28 @@
 	</div>
 </template>
 
+<style type="text/css">
+	.text-search{
+  border-radius: 0px;
+  transition: all .5s ease-in-out; 
+  opacity: .1;
+}
+ .hidden{
+    opacity: 0;
+  }
+</style>
+
 <script type="text/javascript">
 	import {mapGetters} from 'vuex';
 	export default{
+		store,
 		mounted(){
 			store.dispatch('FETCH_PRODUCTS');
 		},
 		data(){
 			return{
-				textSearch:''
+				textSearch:'',
+				textSearchHidden:store.state.hiddenTextSearch,
 			}
 		},
 		methods: {
@@ -45,7 +63,11 @@
 		      return words.toString().replace(iQuery, function (matchedTxt, a, b) {
 		        return ('<span class=\'highlight\'>' + matchedTxt + '</span>')
 		      })
-		    }
+		    },
+		    isTextSearchHidden(){
+	        	let isHidden = this.$store.state.hiddenTextSearch;
+	        	store.commit('SET_HIDDEN_TEXT_SEARCH',! isHidden)
+	      	},
 		  },
 		computed:{
 			...mapGetters({dataProducts:'dataProducts'}),
@@ -57,6 +79,11 @@
 		        });
 		      	// return self.dataProducts.filter;
 		      }
+		    },
+		    watch:{
+		    	textSearch:function(value,oldValue){
+		    		store.commit('SET_TEXTSEARCH',value);
+		    	}
 		    }
 		}
 </script>

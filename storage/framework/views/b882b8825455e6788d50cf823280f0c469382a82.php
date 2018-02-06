@@ -119,11 +119,11 @@ span {
     box-sizing: inherit;
 }
 .grey-border{
-  border: 1px solid grey;
+  border: .1px solid grey;
 }
 .product-box{
-  border-bottom: 1px solid grey;
-  border-top: 1px solid grey;
+  border-bottom: .1px solid grey;
+  border-top: .1px solid grey;
 }
 .sidebar-hidden{
   display: none;
@@ -145,14 +145,15 @@ span {
 }
 */
 
+
 </style>
+
 <?php $__env->stopPush(); ?>
 
 <div style="background: white; width: 1200px; height: 200px; margin: 5% 100px 0 100px; z-index: 9999; position: absolute; border-top: solid; box-shadow: 0 0 10px 0; display: none;"></div>
 <?php $__env->startSection('content'); ?> 
 
-
-
+<search-result></search-result>
 
 <!-- <div class="carousel"
   data-flickity='{ "wrapAround": true }'>
@@ -171,7 +172,7 @@ span {
 
   <!-- <div class="column is-12"> -->
     <!-- <nav class="navbar is-transparent"> -->
-      <div class="column is-4">
+      <div class="column is-3">
     <h1 style="text-align: center;">Filter
       <span class="icon" @click="hidden">
       <i class="fa fa-close"></i>
@@ -179,10 +180,32 @@ span {
     </h1>
     
   </div>
-  <div class="column is-4">
-    <h1>Breadcumb</h1>
+
+     <div class="column is-3">
+        <div class="field">
+<label class="label">Layout</label>
+  <layout @changed="changeLayout"></layout>  
+</div>  
+      </div>
+
+      <div class="column is-3">
+        <div class="field">
+  <label class="label">Per Page</label>
+  <div class="control">
+    <div class="select">
+      <select v-model="per_page" @change="getProducts">
+        <option >Select Page</option>
+        <option value="3">3</option>
+        <option value="6">6</option>
+        <option value="9">9</option>
+      </select>
+    </div>
   </div>
-  <div class="column is-4">
+</div>
+  </div>
+  
+  <div class="column is-3">
+  <label><b>Order</b></label>
   <div class="control">
     <div class="select">
       <select v-model="order" @change="filterProducts">
@@ -206,11 +229,17 @@ span {
 
    <div class="grey-border column is-3" :class="{'sidebar-hidden' : sidebarHidden }" id="filter-column">
    <h1 style="text-align: center;">Categories</h1>
-    <div style="margin-left: 15px;" v-for="category in categories">
+   <div style="margin-left: 15px;">
+      <div v-for="category in categories">
         <input :id="category.id" :value="category.id" name="category_id[]" class="is-checkradio" type="checkbox" v-model="checked">
           <label :for="category.id">{{ category.name }}</label> <br>
-    </div>
-
+    </div> 
+    <br>
+    <input id="categories" type="checkbox" class="is-checkradio" v-model="checkedAll" class="" name=""></input>
+    <label for="categories"><b>Check All</b></label>
+   </div>
+    
+    
     <hr>
 
     <h1 style="text-align: center;">Brand</h1>
@@ -220,6 +249,8 @@ span {
     <label for="brand-<?php echo e($brand->id); ?>"><?php echo $brand->name; ?></label> <br>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
     </div>
+    
+    
     
   </div>
 
@@ -232,108 +263,14 @@ span {
     </div>   
       
     </div>
-  </div>
-</div>
-<hr>
- 
-<div class="columns">
-  <div class="column is-one-quarter is-narrow">
-    <nav class="panel">
-  <p class="panel-heading">
-    Categories
-  </p>
-  <div class="panel-block">
-    <div class="field">
-             
-  </div>
-  </div>
-  
-  <div class="panel-block">
-    <input type="checkbox" v-model="checkedAll" class="" name="">Check All</input>
-  </div>
-</nav>
-
-<nav class="panel">
-  <p class="panel-heading">
-    Brands
-  </p>
-  <div class="panel-block">
-    <div class="field">
-    <?php $__currentLoopData = App\Brand::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $brand): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <input id="brand-<?php echo e($brand->id); ?>" value="<?php echo e($brand->id); ?>" name="brand_id[]" class="is-checkradio" type="checkbox">
-    <label for="brand-<?php echo e($brand->id); ?>"><?php echo $brand->name; ?></label> <br>
-    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-  </div>
-  </div>
-  
-  <div class="panel-block">
-    <button class="button is-link is-outlined is-fullwidth">
-      reset all filters
-    </button>
-  </div>
-</nav>
-  </div>
-  <div class="column">
-    <div class="columns is-multiline">
-
-    <div class="columns">
-      <div class="column is-4">
-        <div class="field">
-<label class="label">Layout</label>
-  <layout @changed="changeLayout"></layout>  
-</div>  
-
-
-
-
-
-      </div>
-
-      <div class="column is-4">
-        <div class="field">
-  <label class="label">Per Page</label>
-  <div class="control">
-    <div class="select">
-      <select v-model="per_page" @change="getProducts">
-        <option >Select Page</option>
-        <option value="3">3</option>
-        <option value="6">6</option>
-        <option value="9">9</option>
-      </select>
-    </div>
-  </div>
-</div>
-      </div>
-
-      <div class="column is-4"><div class="field">
-  <label class="label">Sort By</label>
-  <div class="control">
-    <div class="select">
-      <select v-model="order" @change="filterProducts">
-        <option value="" >Select dropdown</option>
-        <option value="price,asc">Harga Termurah</option>
-        <option value="price,desc">Harga Termahal</option>
-        <option value="name,asc">Nama A-Z</option>
-        <option value="name,desc">Nama Z-A</option>
-      </select>
-    </div>
-  </div>
-</div></div>
-    </div>
-
-   <!-- <div class="column is-12"> -->
-    <div class="pricing-table column is-12" :class="{ '' : layout == 'grid' ,'is-horizontal' : layout == 'list' }">
-    <img v-if="isLoading" src="<?php echo asset('img/loading.gif'); ?>" style="display: block; margin: 0 auto;" />
-
-    <div class="column" :class="{ 'is-4' : layout == 'grid' ,'is-12' : layout == 'list' }"  v-for="product in products.data" v-if="! isLoading">
-      <card-product :product="product"></card-product>     
-    </div>   
-      
-    </div>
-    <vue-pagination  v-bind:pagination="pagination"
+     <vue-pagination  v-bind:pagination="pagination"
                  v-on:click.native="getProducts(pagination.current_page)"
                  :offset="2">
 </vue-pagination>
+  </div>
+</div>
+    </div>
+   
   <!-- </div>    -->
 </div>
   </div>
@@ -522,6 +459,7 @@ Vue.component('image-product',{
        products:'',
        isLoading:true,
        inputSearch:null,
+       textSearchHidden:store.state.hiddenTextSearch,
        order:null,
        per_page:3,
        categories:JSON.parse('<?php echo App\Models\Category::all(); ?>'),
@@ -571,6 +509,10 @@ Vue.component('image-product',{
       },
       changeLayout(layout){
           this.layout = layout ;
+      },
+      isTextSearchHidden(){
+        let isHidden = this.$store.state.hiddenTextSearch;
+        store.commit('SET_HIDDEN_TEXT_SEARCH',! isHidden)
       },
       filterProducts(){
         var url='api/products/filter';

@@ -171,6 +171,11 @@
          </div>
          <div class="navbar-menu navbar-end" id="navMenu">
             <div class="navbar-item" style="width:auto;">
+                <!-- <h1 style="text-align: center;">Search -->
+              
+
+                  
+                  
                <highlight-search></highlight-search>
             </div>
             <a class="navbar-item nav-tag" href="{!! URL::to('cart') !!}">
@@ -208,4 +213,5 @@
       </nav>
   <!--  </div>
 </header> -->
+
 

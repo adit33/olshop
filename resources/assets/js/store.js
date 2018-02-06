@@ -10,7 +10,9 @@
         ongkir:0,
         destination:{},
         code:'',
-        service:''
+        service:'',
+        hiddenTextSearch:true,
+        textSearch:null,
     }
     const getters = {
       dataProducts:(state)=>{
@@ -18,6 +20,9 @@
       }
     }
     const mutations = {
+          SET_TEXTSEARCH(state,value){
+            state.textSearch=value;
+          },
           SET_TITLE (state, value) {
             state.title = value
           },
@@ -41,6 +46,9 @@
           },
           SET_CODE(state,value){
             state.code = value;
+          },
+          SET_HIDDEN_TEXT_SEARCH(state,value){
+            state.hiddenTextSearch = value;
           }
     }
     const actions = {
