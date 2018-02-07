@@ -40,7 +40,7 @@ class Product extends Model
     }
 
     public function getProducts(){
-        $product=Product::all();
+        $product=Product::with('productImage')->get();
         return $product;
     }
 

@@ -1,32 +1,27 @@
 <template>
   <div>
-    <div v-if="this.$store.state.textSearch != null " class="box search-result" style="margin:5px 5px 0 5px">
-  <article class="media">
+    
+   
+    <div v-if="this.$store.state.textSearch != '' " class="box search-result" style="margin:5px 50px 0 50px">
+     <div class="columns is-multiline">
+       <div class="column is-4" v-for="product in result">
+          <article class="media">
     <div class="media-left">
-      <figure class="image is-64x64">
-        <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+      <figure class="image is-128x128">
+        <img :src="product.product_image[0].name" alt="Image">
       </figure>
     </div>
     <div class="media-content">
-    {{ textSearchHidden | json }}
-    <div  v-for="product in result">
   
 
         <div class="content">
-        <a  class="title" v-html="highlightText(product.name, this.$store.state.textSearch)" :href="'product/'+product.id"></a>
+        <a  class="title" v-html="highlightText(product.name, textSearch)" :href="'product/'+product.id"></a>
+        <h1>{{ product.price | currency }}</h1>
       </div>
-        <!-- <hr class="dropdown-divider"> -->
-      </div>
-
-      <!-- <div class="content">
-        <p>
-          <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
-          <br>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-        </p>
-      </div> -->
     </div>
   </article>
+        </div>
+     </div>
 </div>
 
   </div>
@@ -62,12 +57,17 @@
     computed:{
       ...mapGetters({dataProducts:'dataProducts'}),
           result(){
-            var self = this;
-            return self.dataProducts.filter(t=>{
-              let name =t.name.toLowerCase().includes(store.state.textSearch.toLowerCase())
-              return name;
+            if(store.state.textSearch != ''){
+              var self = this;
+                return self.dataProducts.filter(t=>{
+                let name =t.name.toLowerCase().includes(store.state.textSearch.toLowerCase())
+                return name;
             });
-            // return self.dataProducts.filter;
+            // return self.dataProducts.filter;  
+            }            
+          },
+          textSearch(){
+            return store.state.textSearch
           }
         }
   }

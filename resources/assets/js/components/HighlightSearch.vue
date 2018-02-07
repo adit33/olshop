@@ -4,7 +4,7 @@
 
 		 <div class="field is-grouped">
   <p class="control is-expanded">
-    <input class="input text-search" v-model="textSearch" :class="{ 'hidden' : this.$store.state.hiddenTextSearch }" type="text" placeholder="Find a Products">
+    <input class="input text-search" v-model="textSearch" :class="{ 'hidden' : this.$store.state.hiddenTextSearch }" type="text" placeholder="Find a Products" id="input-search">
   </p>
   <p class="control">
    <a href="#" @click="isTextSearchHidden">
@@ -14,7 +14,7 @@
   </p>
 </div>
 
-		  <div v-if="textSearch != ''" class="dropdown is-active" style="position:absolute; z-index:99999999; width:1000px">
+	<!-- 	  <div v-if="textSearch != ''" class="dropdown is-active" style="position:absolute; z-index:99999999; width:1000px">
   <div class="dropdown-menu" id="dropdown-menu" role="menu">
     <div class="dropdown-content">
     	<div  v-for="product in result">
@@ -26,7 +26,7 @@
       
     </div>
   </div>
-</div>
+</div> -->
 	</div>
 </template>
 
@@ -34,10 +34,17 @@
 	.text-search{
   border-radius: 0px;
   transition: all .5s ease-in-out; 
-  opacity: .1;
+  opacity: .3;
 }
  .hidden{
     opacity: 0;
+    width: 0px;
+    cursor: pointer;
+  }
+  .hidden:blur{
+  	opacity: 0;
+    width: 0px;
+    cursor: pointer;	
   }
 </style>
 
@@ -65,21 +72,31 @@
 		      })
 		    },
 		    isTextSearchHidden(){
+		    	let el = document.getElementById('input-search');
 	        	let isHidden = this.$store.state.hiddenTextSearch;
+
+	        	if(isHidden == true){
+	        		el.focus();
+	        	}
+	        	else{
+	        		this.textSearch = '';
+	        		el.blur();
+	        	}
+
 	        	store.commit('SET_HIDDEN_TEXT_SEARCH',! isHidden)
 	      	},
 		  },
-		computed:{
-			...mapGetters({dataProducts:'dataProducts'}),
-		      result(){
-		        var self = this;
-		        return self.dataProducts.filter(t=>{
-		        	let name =t.name.toLowerCase().includes(self.textSearch.toLowerCase())
-		          return name;
-		        });
-		      	// return self.dataProducts.filter;
-		      }
-		    },
+		// computed:{
+		// 	...mapGetters({dataProducts:'dataProducts'}),
+		//       result(){
+		//         var self = this;
+		//         return self.dataProducts.filter(t=>{
+		//         	let name =t.name.toLowerCase().includes(self.textSearch.toLowerCase())
+		//           return name;
+		//         });
+		//       	// return self.dataProducts.filter;
+		//       }
+		//     },
 		    watch:{
 		    	textSearch:function(value,oldValue){
 		    		store.commit('SET_TEXTSEARCH',value);
