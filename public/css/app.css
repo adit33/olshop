@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nanum+Pen+Script);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Quicksand);@charset "UTF-8";
 
 /*! bulma.io v0.6.1 | MIT License | github.com/jgthms/bulma */
 
@@ -145,7 +145,7 @@ button,
 input,
 select,
 textarea {
-  font-family: "Nanum Pen Script", cursive;
+  font-family: "Quicksand", sans-serif;
 }
 
 code,

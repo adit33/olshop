@@ -63258,7 +63258,7 @@ var state = {
   code: '',
   service: '',
   hiddenTextSearch: true,
-  textSearch: null
+  textSearch: ''
 };
 var getters = {
   dataProducts: function dataProducts(state) {
@@ -63435,7 +63435,7 @@ exports = module.exports = __webpack_require__(11)(undefined);
 
 
 // module
-exports.push([module.i, "\n.text-search{\n  border-radius: 0px;\n  -webkit-transition: all .5s ease-in-out;\n  transition: all .5s ease-in-out; \n  opacity: .3;\n}\n.hidden{\n    opacity: 0;\n    width: 0px;\n    cursor: pointer;\n}\n.hidden:blur{\n  \topacity: 0;\n    width: 0px;\n    cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n.text-search{\n  border-radius: 0px;\n  -webkit-transition: all .5s ease-in-out;\n  transition: all .5s ease-in-out;\n  opacity: .3;\n}\n.hidden{\n    opacity: 0;\n    width: 0px;\n    cursor: pointer;\n}\n.hidden:not(:focus){\n  \topacity: 0;\n    width: 0px;\n    cursor: pointer;\n}\n", ""]);
 
 // exports
 
@@ -81362,6 +81362,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -81392,13 +81394,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapGetters"])({ dataProducts: 'dataProducts' }), {
     result: function result() {
-      if (store.state.textSearch != '') {
+      if (store.state.textSearch != null) {
         var self = this;
         return self.dataProducts.filter(function (t) {
           var name = t.name.toLowerCase().includes(store.state.textSearch.toLowerCase());
           return name;
         });
         // return self.dataProducts.filter;  
+      } else {
+        return null;
       }
     },
     textSearch: function textSearch() {
@@ -81416,7 +81420,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    this.$store.state.textSearch != ""
+    _vm.textSearch.length != 0
       ? _c(
           "div",
           {
@@ -81424,44 +81428,57 @@ var render = function() {
             staticStyle: { margin: "5px 50px 0 50px" }
           },
           [
-            _c(
-              "div",
-              { staticClass: "columns is-multiline" },
-              _vm._l(_vm.result, function(product) {
-                return _c("div", { staticClass: "column is-4" }, [
-                  _c("article", { staticClass: "media" }, [
-                    _c("div", { staticClass: "media-left" }, [
-                      _c("figure", { staticClass: "image is-128x128" }, [
-                        _c("img", {
-                          attrs: {
-                            src: product.product_image[0].name,
-                            alt: "Image"
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "media-content" }, [
-                      _c("div", { staticClass: "content" }, [
-                        _c("a", {
-                          staticClass: "title",
-                          attrs: { href: "product/" + product.id },
-                          domProps: {
-                            innerHTML: _vm._s(
-                              _vm.highlightText(product.name, _vm.textSearch)
-                            )
-                          }
-                        }),
+            _vm.result.length != 0
+              ? _c(
+                  "div",
+                  { staticClass: "columns is-multiline" },
+                  _vm._l(_vm.result, function(product) {
+                    return _c("div", { staticClass: "column is-4" }, [
+                      _c("article", { staticClass: "media" }, [
+                        _c("div", { staticClass: "media-left" }, [
+                          _c("figure", { staticClass: "image is-128x128" }, [
+                            _c("img", {
+                              attrs: {
+                                src: product.product_image[0].name,
+                                alt: "Image"
+                              }
+                            })
+                          ])
+                        ]),
                         _vm._v(" "),
-                        _c("h1", [
-                          _vm._v(_vm._s(_vm._f("currency")(product.price)))
+                        _c("div", { staticClass: "media-content" }, [
+                          _c("div", { staticClass: "content" }, [
+                            _c("a", {
+                              staticClass: "title",
+                              attrs: { href: "product/" + product.id },
+                              domProps: {
+                                innerHTML: _vm._s(
+                                  _vm.highlightText(
+                                    product.name,
+                                    _vm.textSearch
+                                  )
+                                )
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("h1", [
+                              _vm._v(_vm._s(_vm._f("currency")(product.price)))
+                            ])
+                          ])
                         ])
                       ])
                     ])
+                  })
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.result.length === 0
+              ? _c("div", [
+                  _c("h1", { attrs: { align: "center" } }, [
+                    _vm._v("Product Tidak di Temukan")
                   ])
                 ])
-              })
-            )
+              : _vm._e()
           ]
         )
       : _vm._e()

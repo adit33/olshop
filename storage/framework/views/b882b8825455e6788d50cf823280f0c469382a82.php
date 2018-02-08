@@ -229,18 +229,15 @@ span {
 
    <div class="grey-border column is-3" :class="{'sidebar-hidden' : sidebarHidden }" id="filter-column">
    <h1 style="text-align: center;">Categories</h1>
-   <div style="margin-left: 15px;">
-      <div v-for="category in categories">
-        <input :id="category.id" :value="category.id" name="category_id[]" class="is-checkradio" type="checkbox" v-model="checked">
-          <label :for="category.id">{{ category.name }}</label> <br>
-    </div> 
-    <br>
-    <input id="categories" type="checkbox" class="is-checkradio" v-model="checkedAll" class="" name=""></input>
-    <label for="categories"><b>Check All</b></label>
-   </div>
-    
-    
-    <hr>
+     <div style="margin-left: 15px;">
+        <div v-for="category in categories">
+          <input :id="category.id" :value="category.id" name="category_id[]" class="is-checkradio" type="checkbox" v-model="checked">
+            <label :for="category.id">{{ category.name }}</label> <br>
+        </div> 
+      <br>
+      <input id="categories" type="checkbox" class="is-checkradio" v-model="checkedAll" class="" name=""></input>
+      <label for="categories"><b>Check All</b></label>
+     </div>
 
     <h1 style="text-align: center;">Brand</h1>
     <div style="margin-left: 15px">
@@ -248,10 +245,7 @@ span {
         <input id="brand-<?php echo e($brand->id); ?>" value="<?php echo e($brand->id); ?>" name="brand_id[]" class="is-checkradio" type="checkbox">
     <label for="brand-<?php echo e($brand->id); ?>"><?php echo $brand->name; ?></label> <br>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
-    </div>
-    
-    
-    
+    </div>    
   </div>
 
   <div class="column product-box" id="product-box">

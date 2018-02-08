@@ -2,9 +2,9 @@
   <div>
     
    
-    <div v-if="this.$store.state.textSearch != '' " class="box search-result" style="margin:5px 50px 0 50px">
-     <div class="columns is-multiline">
-       <div class="column is-4" v-for="product in result">
+    <div v-if="textSearch.length != 0" class="box search-result" style="margin:5px 50px 0 50px">
+     <div class="columns is-multiline" v-if="result.length != 0 ">
+       <div class="column is-4" v-for="product in result" >
           <article class="media">
     <div class="media-left">
       <figure class="image is-128x128">
@@ -12,7 +12,7 @@
       </figure>
     </div>
     <div class="media-content">
-  
+    
 
         <div class="content">
         <a  class="title" v-html="highlightText(product.name, textSearch)" :href="'product/'+product.id"></a>
@@ -21,7 +21,9 @@
     </div>
   </article>
         </div>
+         
      </div>
+      <div v-if="result.length === 0"><h1 align="center">Product Tidak di Temukan</h1></div>
 </div>
 
   </div>
@@ -57,13 +59,15 @@
     computed:{
       ...mapGetters({dataProducts:'dataProducts'}),
           result(){
-            if(store.state.textSearch != ''){
+            if(store.state.textSearch != null){
               var self = this;
                 return self.dataProducts.filter(t=>{
                 let name =t.name.toLowerCase().includes(store.state.textSearch.toLowerCase())
                 return name;
             });
             // return self.dataProducts.filter;  
+            }else{
+              return null;
             }            
           },
           textSearch(){

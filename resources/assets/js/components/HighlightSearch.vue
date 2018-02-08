@@ -33,7 +33,7 @@
 <style type="text/css">
 	.text-search{
   border-radius: 0px;
-  transition: all .5s ease-in-out; 
+  transition: all .5s ease-in-out;
   opacity: .3;
 }
  .hidden{
@@ -41,7 +41,7 @@
     width: 0px;
     cursor: pointer;
   }
-  .hidden:blur{
+  .hidden:not(:focus){
   	opacity: 0;
     width: 0px;
     cursor: pointer;	

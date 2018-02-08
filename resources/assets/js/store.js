@@ -12,7 +12,7 @@
         code:'',
         service:'',
         hiddenTextSearch:true,
-        textSearch:null,
+        textSearch:'',
     }
     const getters = {
       dataProducts:(state)=>{
