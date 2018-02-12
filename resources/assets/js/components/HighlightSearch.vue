@@ -4,7 +4,7 @@
 
 		 <div class="field is-grouped">
   <p class="control is-expanded">
-    <input class="input text-search" v-model="textSearch" :class="{ 'hidden' : this.$store.state.hiddenTextSearch }" type="text" placeholder="Find a Products" id="input-search">
+    <input class="input" v-model="textSearch" :class="[ this.$store.state.hiddenTextSearch ? 'hidden' : 'text-search' ]" type="text" placeholder="Find a Products" id="input-search">
   </p>
   <p class="control">
    <a href="#" @click="isTextSearchHidden">
@@ -32,20 +32,24 @@
 
 <style type="text/css">
 	.text-search{
-  border-radius: 0px;
-  transition: all .5s ease-in-out;
+  border-radius: 0px !important;
+  transition: all .3s;
   opacity: .3;
+  right: 100%;
+  left: 0;
+  width: 300px !important;
 }
  .hidden{
     opacity: 0;
-    width: 0px;
+    transition: all .3s ease-in-out;
+    width: 0px !important;
     cursor: pointer;
   }
-  .hidden:not(:focus){
+ /* .hidden:not(:focus){
   	opacity: 0;
     width: 0px;
     cursor: pointer;	
-  }
+  }*/
 </style>
 
 <script type="text/javascript">

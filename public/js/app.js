@@ -63435,7 +63435,7 @@ exports = module.exports = __webpack_require__(11)(undefined);
 
 
 // module
-exports.push([module.i, "\n.text-search{\n  border-radius: 0px;\n  -webkit-transition: all .5s ease-in-out;\n  transition: all .5s ease-in-out;\n  opacity: .3;\n}\n.hidden{\n    opacity: 0;\n    width: 0px;\n    cursor: pointer;\n}\n.hidden:not(:focus){\n  \topacity: 0;\n    width: 0px;\n    cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n.text-search{\n  border-radius: 0px !important;\n  -webkit-transition: all .3s;\n  transition: all .3s;\n  opacity: .3;\n  right: 100%;\n  left: 0;\n  width: 300px !important;\n}\n.hidden{\n    opacity: 0;\n    -webkit-transition: all .3s ease-in-out;\n    transition: all .3s ease-in-out;\n    width: 0px !important;\n    cursor: pointer;\n}\n /* .hidden:not(:focus){\n  \topacity: 0;\n    width: 0px;\n    cursor: pointer;\t\n  }*/\n", ""]);
 
 // exports
 
@@ -63570,6 +63570,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -63646,8 +63650,10 @@ var render = function() {
               expression: "textSearch"
             }
           ],
-          staticClass: "input text-search",
-          class: { hidden: this.$store.state.hiddenTextSearch },
+          staticClass: "input",
+          class: [
+            this.$store.state.hiddenTextSearch ? "hidden" : "text-search"
+          ],
           attrs: {
             type: "text",
             placeholder: "Find a Products",

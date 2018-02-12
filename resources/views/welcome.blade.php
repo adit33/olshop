@@ -121,11 +121,11 @@ span {
     box-sizing: inherit;
 }
 .grey-border{
-  border: .1px solid grey;
+  border: .1px solid #eee;
 }
 .product-box{
-  border-bottom: .1px solid grey;
-  border-top: .1px solid grey;
+  border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
 }
 .sidebar-hidden{
   display: none;
@@ -139,6 +139,15 @@ span {
   -o-transition: all 2s ease;  
   -ms-transition: all 2s ease;  
   transition: all 2s ease;*/
+}
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.filter-group{
+  border-bottom: 1px solid #eee;
 }
 
 /*
@@ -230,7 +239,9 @@ span {
 
 
    <div class="grey-border column is-3" :class="{'sidebar-hidden' : sidebarHidden }" id="filter-column">
-   <h1 style="text-align: center;">Categories</h1>
+   <div class="columns is-multiline">
+     <div class="column is-12 filter-group">
+       <h1 style="text-align: center;">Categories</h1>
      <div style="margin-left: 15px;">
         <div v-for="category in categories">
           <input :id="category.id" :value="category.id" name="category_id[]" class="is-checkradio" type="checkbox" v-model="checked">
@@ -240,14 +251,21 @@ span {
       <input id="categories" type="checkbox" class="is-checkradio" v-model="checkedAll" class="" name=""></input>
       <label for="categories"><b>Check All</b></label>
      </div>
+     </div>
 
-    <h1 style="text-align: center;">Brand</h1>
+     <div class="column is-12 filter-group">
+       <h1 style="text-align: center;">Brand</h1>
     <div style="margin-left: 15px">
       @foreach(App\Brand::all() as $brand)
         <input id="brand-{{ $brand->id }}" value="{{ $brand->id }}" name="brand_id[]" class="is-checkradio" type="checkbox">
     <label for="brand-{{ $brand->id }}">{!! $brand->name !!}</label> <br>
     @endforeach  
-    </div>    
+    </div>  
+     </div>
+   </div>
+   
+
+      
   </div>
 
   <div class="column product-box" id="product-box">
