@@ -175,8 +175,8 @@ hr {
 
 <div class="columns is-multiline">
 
-  <div class="column is-12" style="background: transparent;">
-    <h1 style="text-align: center;">SALE</h1>
+  <div class="column is-12" style="background: transparent; border-bottom: 1px solid #eee;">
+    <center><span style="text-align: center; font-size: 30px;"><b>SALE</b></span></center>
   </div>
 
   <!-- <div class="column is-12"> -->
