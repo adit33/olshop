@@ -13,6 +13,10 @@ class FrontController extends Controller
     	return view('welcome',compact('products'));
     }
 
+    public function home(){
+    	return view('home');
+    }
+
     public function viewProduct(){
     	$product=Product::findOrFail($id);
     	

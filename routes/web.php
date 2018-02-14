@@ -15,6 +15,8 @@ Route::get('test',function(){
 	
 });
 
+Route::get('/home','FrontController@home');
+
 Route::get('/', 'FrontController@frontPage');
 
 Route::get('province','ProvinceController@getProvince');
