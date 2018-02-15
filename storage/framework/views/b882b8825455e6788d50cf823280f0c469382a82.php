@@ -127,11 +127,13 @@ span {
 }
 .sidebar-hidden{
   display: none;
+  transition: 1s;
 }
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }
 #product-box{
+  transition: 1s;
 /*   -webkit-transition: all 2s ease;  
   -moz-transition: all 2s ease;  
   -o-transition: all 2s ease;  
@@ -147,7 +149,22 @@ hr {
 .filter-group{
   border-bottom: 1px solid #eee;
 }
+#filter-column{
+  /*animation: anim 1s;*/
+}
 
+@keyframes  anim {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: block;
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 /*
 .navbar{
   box-shadow: 0 0 10px 0;
@@ -510,9 +527,10 @@ Vue.component('image-product',{
         }, 1000)
       },
       hidden(){
-        let el=document.getElementById('product-box');
-        el.style.transition = '1s';
-        this.sidebarHidden =! this.sidebarHidden;
+        // let el=document.getElementById('product-box');
+        // el.style.transition = '1s';
+        // this.sidebarHidden =! this.sidebarHidden;
+        $("#filter-column").animate({width:'toggle'},'slow');
       },
       searchProducts(){
         axios.get('api/products/search',{params:{ val:this.inputSearch }}).then((response)=>{
