@@ -82,6 +82,9 @@
           .fade-leave-to{
               opacity: 0
           }
+          .navbar-item img {
+              max-height: 300px;
+          }
         </style>
         @stack('styles')
      </head>

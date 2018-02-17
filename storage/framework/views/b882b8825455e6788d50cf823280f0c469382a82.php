@@ -319,6 +319,8 @@ hr {
 
 <script type="text/javascript">
 
+
+
 // $(window).scroll(function () {
 // if ($(window).scrollTop() >= 150) {
 // $('.navbar').addClass('is-info');
