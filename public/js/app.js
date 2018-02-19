@@ -63558,22 +63558,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -81445,7 +81429,9 @@ var render = function() {
                           _c("figure", { staticClass: "image is-128x128" }, [
                             _c("img", {
                               attrs: {
-                                src: product.product_image[0].name,
+                                src:
+                                  "127.0.0.1:8000/" +
+                                  product.product_image[0].name,
                                 alt: "Image"
                               }
                             })

@@ -2,10 +2,7 @@
 @extends('frontend.layout.master')
 @push('styles')
 <style type="text/css">
-  body {
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  height: 100%;
-}
+
 .button.is-success {
   background-color: #2EB398;
 }

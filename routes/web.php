@@ -31,6 +31,8 @@ Route::GET('login',['uses'=>'AuthController@login','as'=>'login']);
 
 Route::POST('login',['uses'=>'AuthController@auth','as'=>'auth']);
 
+Route::GET('product/{id}',['uses'=>'ProductController@show']);
+
 Route::resource('review','ReviewController');
 
 Route::group(['prefix' => 'social-media'], function(){
@@ -40,7 +42,7 @@ Route::group(['prefix' => 'social-media'], function(){
 
 
 Route::middleware(['auth'])->group(function () {
-	Route::resource('product','ProductController',['except'=>['update']]);
+	Route::resource('product','ProductController',['except'=>['update','show']]);
 
 	Route::GET('cart',['uses'=>'CartController@getCart','as'=>'cart']);
 

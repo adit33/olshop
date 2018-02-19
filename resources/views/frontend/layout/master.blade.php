@@ -93,6 +93,8 @@
 
 
  @include("frontend.layout.navbar")
+ <search-result></search-result>
+
 <!--  <section class="hero is-info">
   <div class="hero-body">
     <div class="container">

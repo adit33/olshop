@@ -178,142 +178,115 @@ hr {
 
 @endpush
 
+
 <div style="background: white; width: 1200px; height: 200px; margin: 5% 100px 0 100px; z-index: 9999; position: absolute; border-top: solid; box-shadow: 0 0 10px 0; display: none;"></div>
 @section('content') 
-
-<search-result></search-result>
-
 <!-- <div class="carousel"
-  data-flickity='{ "wrapAround": true }'>
-  <img src="img/siskiu2.jpg" style="width: 66%; height: 400px; margin-right: 10px; border-radius: 5px;"></img>
-  <img src="img/thrill_wreak.jpg" style="width: 66%; height: 400px; margin-right: 10px; border-radius: 5px;"></img>
-  <img src="img/polygon helios c3.jpg" style="width: 66%; height: 400px; margin-right: 10px; border-radius: 5px;"></img>
-</div> -->
+   data-flickity='{ "wrapAround": true }'>
+   <img src="img/siskiu2.jpg" style="width: 66%; height: 400px; margin-right: 10px; border-radius: 5px;"></img>
+   <img src="img/thrill_wreak.jpg" style="width: 66%; height: 400px; margin-right: 10px; border-radius: 5px;"></img>
+   <img src="img/polygon helios c3.jpg" style="width: 66%; height: 400px; margin-right: 10px; border-radius: 5px;"></img>
+   </div> -->
 <!-- <article class="tile is-child box"> -->
-
-
 <div class="columns is-multiline">
-
-  <div class="column is-12" style="background: transparent; border-bottom: 1px solid #eee;">
-    <center><span style="text-align: center; font-size: 30px;"><b>SALE</b></span></center>
-  </div>
-
-  <!-- <div class="column is-12"> -->
-    <!-- <nav class="navbar is-transparent"> -->
-      <div class="column is-3">
-    <h1 style="text-align: center;">Filter
-      <span class="icon" @click="hidden">
-      <i class="fa fa-close"></i>
-    </span>
-    </h1>
-    
-  </div>
-
-     <div class="column is-3">
-        <div class="field">
-<label class="label">Layout</label>
-  <layout @changed="changeLayout"></layout>  
-</div>  
-      </div>
-
-      <div class="column is-3">
-        <div class="field">
-  <label class="label">Per Page</label>
-  <div class="control">
-    <div class="select">
-      <select v-model="per_page" @change="getProducts">
-        <option >Select Page</option>
-        <option value="3">3</option>
-        <option value="6">6</option>
-        <option value="9">9</option>
-      </select>
-    </div>
-  </div>
-</div>
-  </div>
-  
-  <div class="column is-3">
-  <label><b>Order</b></label>
-  <div class="control">
-    <div class="select">
-      <select v-model="order" @change="filterProducts">
-        <option value="" >Sort By</option>
-        <option value="price,asc">Harga Termurah</option>
-        <option value="price,desc">Harga Termahal</option>
-        <option value="name,asc">Nama A-Z</option>
-        <option value="name,desc">Nama Z-A</option>
-      </select>
-    </div>
-  </div>
-  </div>    
-    <!-- </nav>   -->
-  <!-- </div> -->
-
-  
-
-  
-
-
-
-   <div class="grey-border column is-3" :class="{'sidebar-hidden' : sidebarHidden }" id="filter-column">
-   <div class="columns is-multiline">
-     <div class="column is-12 filter-group">
-       <h1 style="text-align: center;">Categories</h1>
-     <div style="margin-left: 15px;">
-        <div v-for="category in categories">
-          <input :id="category.id" :value="category.id" name="category_id[]" class="is-checkradio" type="checkbox" v-model="checked">
-            <label :for="category.id">@{{ category.name }}</label> <br>
-        </div> 
-      <br>
-      <input id="categories" type="checkbox" class="is-checkradio" v-model="checkedAll" class="" name=""></input>
-      <label for="categories"><b>Check All</b></label>
-     </div>
-     </div>
-
-     <div class="column is-12 filter-group">
-       <h1 style="text-align: center;">Brand</h1>
-    <div style="margin-left: 15px">
-      @foreach(App\Brand::all() as $brand)
-        <input id="brand-{{ $brand->id }}" value="{{ $brand->id }}" name="brand_id[]" class="is-checkradio" type="checkbox">
-    <label for="brand-{{ $brand->id }}">{!! $brand->name !!}</label> <br>
-    @endforeach  
-    </div>  
-     </div>
+   <div class="column is-12" style="background: transparent; border-bottom: 1px solid #eee;">
+      <center><span style="text-align: center; font-size: 30px;"><b>SALE</b></span></center>
    </div>
-   
-
-      
-  </div>
-
-  <div class="column product-box" id="product-box">
-     <div class="pricing-table column is-12" :class="{ '' : layout == 'grid' ,'is-horizontal' : layout == 'list' }">
-    <img v-if="isLoading" src="{!! asset('img/loading.gif') !!}" style="display: block; margin: 0 auto;" />
-
-    <div class="column" :class="{ 'is-4' : layout == 'grid' ,'is-12' : layout == 'list' }"  v-for="product in products.data" v-if="! isLoading">
-      <card-product :product="product"></card-product>     
-    </div>   
-      
-    </div>
-     <vue-pagination  v-bind:pagination="pagination"
-                 v-on:click.native="getProducts(pagination.current_page)"
-                 :offset="2">
-</vue-pagination>
-  </div>
+   <div class="column is-12">
+      <nav class="navbar" id="filter_nav" style="background-color: rgba(250,250,250,0.8);">
+         <div class="column">
+            <h1 style="text-align: center;">Filter
+               <span class="icon" @click="hidden">
+               <i class="fa fa-close"></i>
+               </span>
+            </h1>
+         </div>
+         <div class="column">
+            <div class="field">
+               <!-- <label class="label">Layout</label> -->
+               <layout @changed="changeLayout"></layout>
+            </div>
+         </div>
+         <div class="column">
+            <div class="field">
+               <!-- <label class="label">Per Page</label> -->
+               <div class="control">
+                  <div class="select">
+                     <select v-model="per_page" @change="getProducts">
+                        <option >Select Page</option>
+                        <option value="3">3</option>
+                        <option value="6">6</option>
+                        <option value="9">9</option>
+                     </select>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="column">
+            <!-- <label><b>Order</b></label> -->
+            <div class="control">
+               <div class="select">
+                  <select v-model="order" @change="filterProducts">
+                     <option value="" >Sort By</option>
+                     <option value="price,asc">Harga Termurah</option>
+                     <option value="price,desc">Harga Termahal</option>
+                     <option value="name,asc">Nama A-Z</option>
+                     <option value="name,desc">Nama Z-A</option>
+                  </select>
+               </div>
+            </div>
+         </div>
+      </nav>
+   </div>
+   <!-- <div class="column is-12"> -->
+   <!-- <nav class="navbar is-transparent"> -->
+   <!-- </nav>   -->
+   <!-- </div> -->
+   <div class="grey-border column is-3 is-hidden-mobile" :class="{'sidebar-hidden' : sidebarHidden }" id="filter-column">
+      <div class="columns is-multiline">
+         <div class="column is-12 filter-group">
+            <h1 style="text-align: center;">Categories</h1>
+            <div style="margin-left: 15px;">
+               <div v-for="category in categories">
+                  <input :id="category.id" :value="category.id" name="category_id[]" class="is-checkradio" type="checkbox" v-model="checked">
+                  <label :for="category.id">@{{ category.name }}</label> <br>
+               </div>
+               <br>
+               <input id="categories" type="checkbox" class="is-checkradio" v-model="checkedAll" class="" name=""></input>
+               <label for="categories"><b>Check All</b></label>
+            </div>
+         </div>
+         <div class="column is-12 filter-group">
+            <h1 style="text-align: center;">Brand</h1>
+            <div style="margin-left: 15px">
+               @foreach(App\Brand::all() as $brand)
+               <input id="brand-{{ $brand->id }}" value="{{ $brand->id }}" name="brand_id[]" class="is-checkradio" type="checkbox">
+               <label for="brand-{{ $brand->id }}">{!! $brand->name !!}</label> <br>
+               @endforeach  
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="column product-box" id="product-box">
+      <div class="pricing-table column is-12" :class="{ '' : layout == 'grid' ,'is-horizontal' : layout == 'list' }">
+         <img v-if="isLoading" src="{!! asset('img/loading.gif') !!}" style="display: block; margin: 0 auto;" />
+         <div class="column" :class="{ 'is-4' : layout == 'grid' ,'is-12' : layout == 'list' }"  v-for="product in products.data" v-if="! isLoading">
+            <card-product :product="product"></card-product>
+         </div>
+      </div>
+      <vue-pagination  v-bind:pagination="pagination"
+         v-on:click.native="getProducts(pagination.current_page)"
+         :offset="2"></vue-pagination>
+   </div>
 </div>
-    </div>
-   
-  <!-- </div>    -->
 </div>
-  </div>
+<!-- </div>    -->
 </div>
+</div>
+</div>
+<!-- </article> -->
 
 
-
-
-
-  <!-- </article> -->
-
-  
 
 @endsection
 
@@ -330,6 +303,21 @@ hr {
 // $('.navbar').removeClass('is-info');
 // }
 // });
+
+
+window.onscroll = function(){setFixedNav()};
+
+var filter_nav=document.getElementById("filter_nav");
+var sticky =filter_nav.offsetTop;
+
+
+function setFixedNav(){
+  if(window.pageYOffset >= sticky){
+      $('#filter_nav').addClass('is-fixed-top');
+    }else{
+      $('#filter_nav').removeClass("is-fixed-top");
+    }
+}
 
 Vue.component('layout',{
   template:

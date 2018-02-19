@@ -3,7 +3,9 @@
 <nav class="navbar ">
   <div class="navbar-brand">
     <a class="navbar-item" href="http://bulma.io">
-      <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+      <span class="icon">
+                <i class="fa fa-bicycle"></i>
+              </span>
     </a>
 
     <a class="navbar-item is-hidden-desktop" href="https://twitter.com/jgthms" target="_blank">
@@ -14,7 +16,7 @@
 
             <a class="navbar-item is-hidden-desktop" href="login">
               <span class="icon">
-                <i class="fa fa-download"></i>
+                <i class="fa fa-sign-in-alt"></i>
               </span>
               <span>Login</span>
             </a>
@@ -238,7 +240,7 @@
           <p class="control">
             <a class="button is-primary" href="login">
               <span class="icon">
-                <i class="fa fa-download"></i>
+                <i class="fa fa-sign-in-alt"></i>
               </span>
               <span>Login</span>
             </a>

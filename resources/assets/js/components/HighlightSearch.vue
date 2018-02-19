@@ -1,33 +1,17 @@
 <template>
-	<div>
-
-
-		 <div class="field is-grouped">
-  <p class="control is-expanded">
-    <input class="input" v-model="textSearch" :class="[ this.$store.state.hiddenTextSearch ? 'hidden' : 'text-search' ]" type="text" placeholder="Find a Products" id="input-search">
-  </p>
-  <p class="control">
-   <a href="#" @click="isTextSearchHidden">
-                     <span class="icon">
-                  <i class="fa fa-search"></i> </span>  
-                  </a>
-  </p>
-</div>
-
-	<!-- 	  <div v-if="textSearch != ''" class="dropdown is-active" style="position:absolute; z-index:99999999; width:1000px">
-  <div class="dropdown-menu" id="dropdown-menu" role="menu">
-    <div class="dropdown-content">
-    	<div  v-for="product in result">
-    	<div class="dropdown-item" style="width:500px">
-    		<a  class="title" v-html="highlightText(product.name, textSearch)" :href="'product/'+product.id"></a>
-    	</div> 
-    		<hr class="dropdown-divider">
-    	</div>
-      
-    </div>
-  </div>
-</div> -->
-	</div>
+   <div>
+      <div class="field is-grouped">
+         <p class="control is-expanded">
+            <input class="input" v-model="textSearch" :class="[ this.$store.state.hiddenTextSearch ? 'hidden' : 'text-search' ]" type="text" placeholder="Find a Products" id="input-search">
+         </p>
+         <p class="control">
+            <a href="#" @click="isTextSearchHidden">
+            <span class="icon">
+            <i class="fa fa-search"></i> </span>  
+            </a>
+         </p>
+      </div>
+   </div>
 </template>
 
 <style type="text/css">
